@@ -65,9 +65,9 @@ def get_team_roster_from_id(team_id):
     response = connection.getresponse()
     data = response.read()
 
-    json_data = json.loads(data.decode("utf-8"))
-
     try:
+        json_data = json.loads(data.decode("utf-8"))
+        
         for player in json_data['players']:
             print(f"{player['full_name']} / {player['position']} / {player['jersey_number']}")
     except:
