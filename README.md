@@ -8,4 +8,4 @@ This project aims to display live scores.
 - Jordan Grewe
 - Ayman Elfayoumi
 - Mitchel Brown
-- Rory Jolif
+- Rory Jolliff
