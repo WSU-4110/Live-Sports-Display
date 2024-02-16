@@ -83,6 +83,9 @@ def get_team_roster_from_id(team_id):
     return None
     
 
-# Begining of calls to the API
+# Beginning of calls to the API
+get_current_schedule()
 input_team = input("Enter a team name: ")
-print(get_team_id(input_team))
+team_id = get_team_id(input_team)
+print(team_id)
+print(get_team_roster_from_id(team_id))
