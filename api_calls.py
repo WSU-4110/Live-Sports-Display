@@ -29,6 +29,9 @@ def get_current_schedule():
             print(f"{game['home']['name']} vs {game['away']['name']}")
 
         return None
+
+    except json.JSONDecodeError as e:
+        print("Something went wrong with the api")
     except:
         print("No games today")
 
@@ -53,6 +56,8 @@ def get_team_id(team_name):
                 team_id = game['home']['id']
             elif game['away']['name'] == team_name:
                 team_id = game['away']['id']
+    except json.JSONDecodeError as e:
+        print("Something went wrong with the api")
     except:
         print("No games today")
     return team_id
@@ -70,6 +75,8 @@ def get_team_roster_from_id(team_id):
         
         for player in json_data['players']:
             print(f"{player['full_name']} / {player['position']} / {player['jersey_number']}")
+    except json.JSONDecodeError as e:
+        print("Something went wrong with the api")
     except:
         print("No players found")
 
