@@ -1,5 +1,5 @@
 ﻿# Live-Sports-Display
-This project aims to display live scores.
+This project aims to display live Scores on an LED Matrix Panel.
 
 ## Team members:
 
