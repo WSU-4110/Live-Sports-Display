@@ -19,10 +19,11 @@ def get_current_schedule():
 
     try:
         json_data = json.loads(data.decode("utf-8"))
-
+        
         # Add the home and away teams to their respective array, and print the scheudle
         home_teams = []
         away_teams = []
+        print(f"Today's games: {month}/{day}/{year}")
         for game in json_data['games']:
             home_teams.append(game['home']['name'])
             away_teams.append(game['away']['name'])
@@ -61,21 +62,81 @@ def get_team_id(team_name):
 
 # Get the team roster in format of player name, position, and jersey number
 def get_team_roster_from_id(team_id):
-    connection.request("GET", f"/nba/trial/v8/en/teams/583ecae2-fb46-11e1-82cb-f4ce4684ea4c/profile.json?api_key={api_key}")
+    connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}//profile.json?api_key={api_key}")
     response = connection.getresponse()
     data = response.read()
 
-    json_data = json.loads(data.decode("utf-8"))
-
     try:
+        json_data = json.loads(data.decode("utf-8"))
+
         for player in json_data['players']:
             print(f"{player['full_name']} / {player['position']} / {player['jersey_number']}")
     except:
         print("No players found")
 
     return None
-    
 
-# Begining of calls to the API
-input_team = input("Enter a team name: ")
-print(get_team_id(input_team))
+def get_league_standings():
+    connection.request("GET", f"/nba/trial/v8/en/seasons/2023/REG/standings.json?api_key={api_key}")
+    response = connection.getresponse()
+    data = response.read()
+
+    try:
+        json_data = json.loads(data.decode("utf-8"))
+
+
+        print("Western Conference\n")
+        print("Southwest Division:")
+        for team in json_data['conferences'][0]['divisions'][0]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+
+        print("Pacific Division:")
+        for team in json_data['conferences'][0]['divisions'][1]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+
+        print("Northwest Division:")
+        for team in json_data['conferences'][0]['divisions'][2]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+
+        print("\n\n\nEastern Conference\n")
+        print("Southeast Division:")
+        for team in json_data['conferences'][1]['divisions'][1]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+       
+        print("Central Division:")
+        for team in json_data['conferences'][1]['divisions'][0]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+
+        print("Atlantic Division:")
+        for team in json_data['conferences'][1]['divisions'][2]['teams']:
+            print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
+    except:
+        print("No standings found")
+
+    return None
+
+def get_live_game_stats():
+    connection.request("GET", f"/nba/trial/v8/en/games/20adc0dd-2579-445a-9f06-a5420b648645/summary.json?api_key={api_key}")
+    response = connection.getresponse()
+    data = response.read()
+
+    try:
+        json_data = json.loads(data.decode("utf-8"))
+
+        print(f"Home Team: {json_data['home']['market']} {json_data['home']['name']}\n")
+        for player in json_data['home']['players']:
+            if player['statistics']['minutes'] != "00:00":
+                print(f"{player['full_name']} ||| Points:{player['statistics']['points']} ||| Assists:{player['statistics']['assists']} ||| Rebounds:{player['statistics']['rebounds']} ||| Field Goals:{player['statistics']['field_goals_made']}/{player['statistics']['field_goals_att']} ||| Three Pointers:{player['statistics']['three_points_made']}/{player['statistics']['three_points_att']} ||| Free Throws:{player['statistics']['free_throws_made']}/{player['statistics']['free_throws_att']}")
+       
+        print(f"Away Team: {json_data['away']['market']} {json_data['away']['name']}\n")
+        for player in json_data['away']['players']:
+           if player['statistics']['minutes'] != "00:00":
+                print(f"{player['full_name']} ||| Points:{player['statistics']['points']} ||| Assists:{player['statistics']['assists']} ||| Rebounds:{player['statistics']['rebounds']} ||| Field Goals:{player['statistics']['field_goals_made']}/{player['statistics']['field_goals_att']} ||| Three Pointers:{player['statistics']['three_points_made']}/{player['statistics']['three_points_att']} ||| Free Throws:{player['statistics']['free_throws_made']}/{player['statistics']['free_throws_att']}")
+        
+    except:
+            print("No game found")
+
+    return None
+
+# Beginning of calls to the API
+get_live_game_stats()
