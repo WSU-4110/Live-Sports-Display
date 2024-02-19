@@ -17,8 +17,11 @@ def OCR_Image(path):
 
 def findFullName(s,i):
     spaceCount = 0
+    restOfString = s[i:]
     temp_str = ""
     while(spaceCount<2):
+        if(len(restOfString)<=len(temp_str)):
+            return temp_str
         if(s[i]==" "):
             spaceCount = spaceCount+1
         if(spaceCount!=2):
@@ -31,8 +34,11 @@ def findFullName(s,i):
 def findNextStartIndex(s,i):
     spaceCount = 0
     temp_str = ""
+    restOfString = s[i:]
     x = 0
     while(spaceCount<2):
+        if(len(restOfString)<=len(temp_str)):
+            return (len(temp_str)+i)
         if(s[i]==" "):
             if(spaceCount==0):
                 x = i
@@ -50,22 +56,31 @@ def getLastNameFromString(s1):
     return s1[(i+1):]
 #This functions takes as input a string with text on two sides of a space a returns the text after the space
 #presumably this will be the last name of the player if the string is a players full name
-      
+
+def getFirstNameFromString(s1):
+    i = 0
+    while(s1[i]!=" "):
+        i = i +1
+    return s1[:i]
+#This functions takes as input a string with text on two sides of a space a returns the text before the space 
+
+
 def isPlayer(s1):
     s2 = getLastNameFromString(s1)
     x = players.find_players_by_last_name(s2)
     if(len(x)>=1):
         for item in x:
             if(item['last_name']==s2):
-
-                return (item['first_name']+" "+s2)
+                ch = getFirstNameFromString(s1)[-1]
+                if(item['first_name'][0]==ch):
+                    return (item['first_name']+" "+s2)
         
     return 0
 #This function takes a string with text on two sides of a space and checks if the second part matches any player last name
 #If it does it returns the full name of said player
 
 
-def searchForNames2(s1):
+def searchForNames(s1):
     i = 0
     sbuff = ""
     arr = []
@@ -76,32 +91,26 @@ def searchForNames2(s1):
         i = findNextStartIndex(s1,i)
         x = isPlayer(sbuff)
         if(x!=0):
-            arr.append(x)
-            print(x)
-            print()
-        
+            arr.append(x)      
     
-    return 0
+    return arr
 #This function takes a cleaned string and searches it for player names
 #It prints any player names it finds
 
 def cleanText(s1):
+    s2 = ""
     s1 = s1.replace("(", "").replace(")", "").replace("/", "")
-    return s1
+    for ch in s1:
+        if(ch.isalpha() or ch==" " or ch=="-"):
+            s2 = s2+ch
+        
+    return s2
 #This function removed unwanted characters such as parantheses and slashes
 #This prevents regex errors from occuring when passing text into other functions
 
 
 unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\nba-roster-1.png')
-
-print(unprocessedText)
-
-str1 = cleanText(unprocessedText)
-
-
-print("Final Name output: ")
-
-searchForNames2(str1)
+#Example file path being passed
 
 
 
@@ -109,37 +118,3 @@ searchForNames2(str1)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def searchForNames(s1):
-    i = 0
-    lastNameLength= 0
-    sbuff = ""
-    while((i+lastNameLength)<len(s1)):
-        sbuff = findFullName(s1,i)
-        i = findNextStartIndex(s1,i)
-        lastName = getLastNameFromString(sbuff)
-        lastNameLength = len(lastName)
-        if(len(players.find_players_by_last_name(lastName))!=0):
-            actualMatch = 0
-            for item in x:
-                print(item['last_name'],"=?",lastName)
-                if(item['last_name']==lastName):
-                    actualMatch = 1
-            if(actualMatch==1):              
-                print(sbuff)
-                print()
-    return 0
