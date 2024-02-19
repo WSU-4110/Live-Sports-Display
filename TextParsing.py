@@ -9,8 +9,6 @@ from nba_api.stats.static import players
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\FreeOCR\tesseract.exe'
 #Path to Tesseract.exe on local system must be specified
 
-stest = "Ayman Sara will Bill John"
-
 def OCR_Image(path):
     image = Image.open(path)
     txt = pytesseract.image_to_string(path)
@@ -96,9 +94,10 @@ def cleanText(s1):
 
 unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\nba-roster-1.png')
 
+print(unprocessedText)
+
 str1 = cleanText(unprocessedText)
 
-print(str1)
 
 print("Final Name output: ")
 
