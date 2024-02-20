@@ -78,7 +78,11 @@ def get_team_roster_from_id(team_id):
         json_data = json.loads(data.decode("utf-8"))
         
         for player in json_data['players']:
-            print(f"{player['full_name']} / {player['position']} / {player['jersey_number']}")
+            print(f"{player['full_name']} / Position: {player['position']} / Primary position: {player['primary_position']} / Jersey #:{player['jersey_number']}")
+            print(f"Player id: {player['id']}")
+            print(f"Draft team:{player['draft']['team_id']}  / Year: {player['draft']['year']} / Round: {player['draft']['round']} / Pick: {player['draft']['pick']}")
+
+            a = input("Next player:")
     except json.JSONDecodeError as e:
         print("Something went wrong with the api")
     except:
@@ -88,8 +92,9 @@ def get_team_roster_from_id(team_id):
     
 
 # Beginning of calls to the API
-get_current_schedule()
-input_team = input("Enter a team name: ")
-team_id = get_team_id(input_team)
-print(team_id)
+#get_current_schedule()
+#input_team = input("Enter a team name: ")
+#team_id = get_team_id(input_team)
+#print(team_id)
+team_id = "583ed157-fb46-11e1-82cb-f4ce4684ea4c"
 print(get_team_roster_from_id(team_id))
