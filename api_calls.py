@@ -17,21 +17,24 @@ def get_current_schedule():
     response = connection.getresponse()
     data = response.read()
 
-    try:
-        json_data = json.loads(data.decode("utf-8"))
-
-        # Add the home and away teams to their respective array, and print the scheudle
-        home_teams = []
-        away_teams = []
-        for game in json_data['games']:
-            home_teams.append(game['home']['name'])
-            away_teams.append(game['away']['name'])
-            print(f"{game['home']['name']} vs {game['away']['name']}")
-
+    if(response.status != 200):
+        print("Error: ", response.status, response.reason)
         return None
-    except:
-        print("No games today")
 
+    else:
+        try:
+            json_data = json.loads(data.decode("utf-8"))
+
+            home_teams = []
+            away_teams = []
+
+            for game in json_data['games']:
+                home_teams.append(game['home']['name'])
+                away_teams.append(game['away']['name'])
+                print(f"{game['home']['name']} vs {game['away']['name']}")
+
+        except:
+            print("No games today")
         return None
 
 
