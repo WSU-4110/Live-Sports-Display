@@ -68,9 +68,6 @@ def clear_input(input):
     print(players_in_string)
     string_input=set(input.split())
     string_players=set(players_in_string.split())
-    clarity=",!?."
-    string_input={word.strip(clarity) for word in string_input}
-    string_players = {word.strip(clarity) for word in string_input}
     cleaned=string_input&string_players
     return cleaned
 
