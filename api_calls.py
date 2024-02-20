@@ -11,6 +11,30 @@ year = datetime.datetime.now().year
 
 
 
+# Get the team ID from the team name
+def get_team_id(team_name):
+    connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={api_key}")
+    response = connection.getresponse()
+    data = response.read()
+
+    team_id = None
+
+    try:
+        json_data = json.loads(data.decode("utf-8"))
+
+        # Loop through the games and find the team id from param team_name
+        for game in json_data['games']:
+            if game['home']['name'] == team_name:
+                team_id = game['home']['id']
+            elif game['away']['name'] == team_name:
+                team_id = game['away']['id']
+
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
+    return team_id
+
+
+
 # Get the current schedule of games for today
 def get_current_schedule():
     connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={api_key}")
@@ -33,34 +57,9 @@ def get_current_schedule():
                 away_teams.append(game['away']['name'])
                 print(f"{game['home']['name']} vs {game['away']['name']}")
 
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
         return None
-    except:
-        print("No games today")
-
-        return None
-
-
-
-# Get the team ID from the team name
-def get_team_id(team_name):
-    connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={api_key}")
-    response = connection.getresponse()
-    data = response.read()
-
-    team_id = None
-
-    try:
-        json_data = json.loads(data.decode("utf-8"))
-
-        # Loop through the games and find the team id from param team_name
-        for game in json_data['games']:
-            if game['home']['name'] == team_name:
-                team_id = game['home']['id']
-            elif game['away']['name'] == team_name:
-                team_id = game['away']['id']
-    except:
-        print("No games today")
-    return team_id
 
 
 
@@ -75,29 +74,30 @@ def get_team_roster_from_id(team_id):
 
         for player in json_data['players']:
             print(f"{player['full_name']} / {player['position']} / {player['jersey_number']}")
-    except:
-        print("No players found")
 
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
     return None
+
+
 
 def get_league_standings():
     connection.request("GET", f"/nba/trial/v8/en/seasons/2023/REG/standings.json?api_key={api_key}")
     response = connection.getresponse()
+    reponse.raise_for_status()
     data = response.read()
 
     try:
         json_data = json.loads(data.decode("utf-8"))
 
-
+        # Print the standings for the Western and Eastern Conference
         print("Western Conference\n")
         print("Southwest Division:")
         for team in json_data['conferences'][0]['divisions'][0]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
-
         print("Pacific Division:")
         for team in json_data['conferences'][0]['divisions'][1]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
-
         print("Northwest Division:")
         for team in json_data['conferences'][0]['divisions'][2]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
@@ -106,18 +106,18 @@ def get_league_standings():
         print("Southeast Division:")
         for team in json_data['conferences'][1]['divisions'][1]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
-       
         print("Central Division:")
         for team in json_data['conferences'][1]['divisions'][0]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
-
         print("Atlantic Division:")
         for team in json_data['conferences'][1]['divisions'][2]['teams']:
             print(f"{team['market']} {team['name']} ||| Wins:{team['wins']} |||  Losses:{team['losses']}")
-    except:
-        print("No standings found")
 
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
     return None
+
+
 
 def get_live_game_stats():
     connection.request("GET", f"/nba/trial/v8/en/games/20adc0dd-2579-445a-9f06-a5420b648645/summary.json?api_key={api_key}")
@@ -127,6 +127,7 @@ def get_live_game_stats():
     try:
         json_data = json.loads(data.decode("utf-8"))
 
+        # Iterate through the home and away teams and print the player stats
         print(f"Home Team: {json_data['home']['market']} {json_data['home']['name']}\n")
         for player in json_data['home']['players']:
             if player['statistics']['minutes'] != "00:00":
@@ -137,8 +138,8 @@ def get_live_game_stats():
            if player['statistics']['minutes'] != "00:00":
                 print(f"{player['full_name']} ||| Points:{player['statistics']['points']} ||| Assists:{player['statistics']['assists']} ||| Rebounds:{player['statistics']['rebounds']} ||| Field Goals:{player['statistics']['field_goals_made']}/{player['statistics']['field_goals_att']} ||| Three Pointers:{player['statistics']['three_points_made']}/{player['statistics']['three_points_att']} ||| Free Throws:{player['statistics']['free_throws_made']}/{player['statistics']['free_throws_att']}")
         
-    except:
-            print("No game found")
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
 
     return None
 
