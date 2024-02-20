@@ -23,10 +23,14 @@ def get_current_schedule():
         # Add the home and away teams to their respective array, and print the scheudle
         home_teams = []
         away_teams = []
+        gamesQ = False
         for game in json_data['games']:
+            gamesQ = True
             home_teams.append(game['home']['name'])
             away_teams.append(game['away']['name'])
             print(f"{game['home']['name']} vs {game['away']['name']}")
+        if not(gamesQ):
+            print("No games today")
 
         return None
 
