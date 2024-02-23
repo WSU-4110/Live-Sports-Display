@@ -1,0 +1,83 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+main {
+    background-color: #fff; 
+    padding: 20px; 
+    margin: 20px auto; 
+    width: 80%; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+}
+
+form {
+    width: 50%; /* Adjust width as necessary */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.results-container, .upload-container {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: white; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+button, #confirmBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, #confirmBtn:hover {
+    background-color: #005f73;
+    opacity: 0.8;
+}
+
+#confirmationStatus {
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .results-container, .upload-container {
+        padding: 10px;
+    }
+
+    button, #confirmBtn {
+        width: 100%;
+        padding: 15px;
+        margin-top: 10px;
+    }
+}

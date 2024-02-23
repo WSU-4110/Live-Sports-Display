@@ -4,6 +4,8 @@ import datetime
 import time
 
 api_key = '6musfbnhsy2dembz5cxzxade'
+connection = http.client.HTTPSConnection("api.sportradar.us")
+
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
 year = datetime.datetime.now().year
