@@ -26,7 +26,7 @@ class RunText(SampleBase):
         # Now rect_width and rect_height are the last two parameters as intended
         for x in range(xcord, xcord + rect_width):
             for y in range(ycord, ycord + rect_height):
-                offscreen_canvas.SetPixel(x, y, 0, 0, 0)  # Drawing black rectangle
+                offscreen_canvas.SetPixel(x, y, 2, 32, 100)  # Drawing black rectangle
 
     def run(self):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
@@ -50,11 +50,23 @@ class RunText(SampleBase):
         # Start positions for scrolling text, one for each player
         team_positions = [offscreen_canvas.width for _ in self.players]
         jnumber_positions = [offscreen_canvas.width for _ in self.players]
+        text_positions = [offscreen_canvas.width for _ in self.players]
         
+        #Text Height
+        char_width = 6
+        clearence = 2
         text_height =8
         gap = 8
         starting_offset = 1
         seperation = 5
+        
+        # Calculate width of moving text for each players string
+        moving_text_widths=[]
+        for player in self.players:
+            team_width = len(player.team) * char_width
+            jnumber_width = len(str(player.jnumber)) * char_width
+            total_width = team_width + seperation + jnumber_width
+            moving_text_widths.append(total_width)
 
 
         while True:
@@ -62,34 +74,49 @@ class RunText(SampleBase):
             
             for i, player in enumerate(self.players):
                 vertical_pos =( i *(text_height + gap)) + gap
-                self.blackRectangle(offscreen_canvas, 0, vertical_pos - gap, 0, 128, 8)
+                #parameters-    (where at, x-cord,y-cord,z-cord, Width ,Height)
+                self.blackRectangle(offscreen_canvas,0,0,0,128, text_height + clearence)
+                self.blackRectangle(offscreen_canvas,0,16,0,player_name_lengths[i] + clearence, text_height + clearence)
+                self.blackRectangle(offscreen_canvas,0,32,0,player_name_lengths[i] + clearence, text_height + clearence)
+                self.blackRectangle(offscreen_canvas,0,48,0,player_name_lengths[i] + clearence, text_height + clearence)
+                
+        
 
         
                 
                 # Draw the scrolling team name
-                if team_positions[i] > 0:
+                if team_positions[i] > -moving_text_widths[i]:
                     graphics.DrawText(offscreen_canvas, font, team_positions[i] + seperation, vertical_pos + gap, team_color, player.team)
                 team_positions[i] -= 1
 
-                # Draw the scrolling jersey number
-                if jnumber_positions[i] + seperation  > 0:
+                # Draw the scrolling jersey number - WIth dynamic moving_text_widths
+                if jnumber_positions[i] + seperation  > -moving_text_widths[i]:
                     graphics.DrawText(offscreen_canvas, font, jnumber_positions[i] - seperation, vertical_pos + gap, jnumber_color, str(player.jnumber))  # Adjusted for separation
                 jnumber_positions[i] -= 1
 
                 # Reset position if text has scrolled off
-                if team_positions[i] < -max_name_length: #Off the Screen
-                    team_positions[i] = offscreen_canvas.width  + 20
-                if jnumber_positions[i] < -max_name_length: #Off the Screen
-                    jnumber_positions[i] = offscreen_canvas.width + 20 # Start jersey numbers further to the right
+                if team_positions[i] < -moving_text_widths[i]: #Off the Screen
+                    team_positions[i] = offscreen_canvas.width  + moving_text_widths[i]
+                if jnumber_positions[i] < -moving_text_widths[i]: #Off the Screen
+                    jnumber_positions[i] = offscreen_canvas.width + moving_text_widths[i] # Start jersey numbers further to the right
 
 
 
 
             for i, player in enumerate(self.players): #stationary text
-                vertical_pos =( i *(text_height + gap)) + gap
+                vertical_pos =( (i%4) *(text_height + gap)) + gap
+          
 
                 # Draw the stationary player name
-                graphics.DrawText(offscreen_canvas, font, 2, vertical_pos, name_color, player.name)  # Adjusted for padding
+                if i< 4:
+                    horizontal_pos = 2
+                   
+               
+                else:
+                    horizontal_pos = 128 - player_name_lengths[i] -2
+                
+                graphics.DrawText(offscreen_canvas, font, horizontal_pos, vertical_pos, name_color, player.name)  # Adjusted for padding
+                
 
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
             time.sleep(0.05)
