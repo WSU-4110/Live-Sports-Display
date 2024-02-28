@@ -1,9 +1,13 @@
+
 from django.shortcuts import render
 from .forms import UploadFileForm
 from PIL import Image
 import pytesseract
 from django.conf import settings
 import os
+
+from django.http import HttpResponse
+from api_calls import *
 
 # Configure the path to Tesseract-OCR on your system
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\17344\Desktop\djangotest\djangotest2\Lib\site-packages\pytesseract\pytesseract.py'  # Update this path
@@ -36,3 +40,9 @@ def OCR_Image(path):
     image = Image.open(path)
     text = pytesseract.image_to_string(image)
     return text
+
+
+def returnInfo(request):
+    team_id = "583ed157-fb46-11e1-82cb-f4ce4684ea4c"
+    return HttpResponse(returnData(team_id))
+
