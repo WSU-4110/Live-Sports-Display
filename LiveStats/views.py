@@ -20,6 +20,7 @@ def home_view(request):
     return render(request, 'home.html')
 
 #jordan testing git
+#yuh
 
 def upload_and_ocr(request):
     if request.method == 'POST':
