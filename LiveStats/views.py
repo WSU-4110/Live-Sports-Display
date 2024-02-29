@@ -19,6 +19,7 @@ def handle_uploaded_file(f, file_name):
 def home_view(request):
     return render(request, 'home.html')
 
+#jordan testing git
 
 def upload_and_ocr(request):
     if request.method == 'POST':
