@@ -34,6 +34,34 @@ class RunText(SampleBase):
             PlayerStats("Player 7", "Team G", 89),
             PlayerStats("Player 8", "Team H", 90)
         ]
+        # Loading Font
+        self.font = graphics.Font()
+        self.font.LoadFont("../../../fonts/4x6.bdf")
+        
+        # Define colors
+        self.name_color = graphics.Color(255, 0, 0)
+        self.team_color = graphics.Color(0, 255, 0)
+        self.jnumber_color = graphics.Color(0, 0, 255)
+        self.datetime_color = graphics.Color(255, 255, 255)
+        
+        #initualise team positions
+        self.team_positions = None
+        
+    def displayDateTime(self,offscreen_canvas):
+        # Getting Current Time
+        now = datetime.now()
+        date_str = now.strftime("%d/%m/%Y") # format DAY/MONTH/YEAR 
+        datetime_str = now.strftime( "%H:%M:%S") #format HOUR:MINUTES:SECONDS
+        
+        #local Variables
+        x_position = 0;
+        y_position = offscreen_canvas.height
+        text_height = 6
+        
+        # Draw the stationary Date with Time
+        graphics.DrawText(offscreen_canvas, self.font, x_position, y_position, self.datetime_color, datetime_str)
+        graphics.DrawText(offscreen_canvas, self.font, x_position, y_position-text_height, self.datetime_color, date_str)
+    
 
     def blackRectangle(self, offscreen_canvas, xcord, ycord, rect_width, rect_height):
         for x in range(xcord, xcord + rect_width):
@@ -45,76 +73,76 @@ class RunText(SampleBase):
             for y in range(ycord, ycord + rect_height):
                 offscreen_canvas.SetPixel(x, y, 1, 50, 1)  # Drawing black rectangle
 
-    def run(self):
-        offscreen_canvas = self.matrix.CreateFrameCanvas()
-        font = graphics.Font()
-        font.LoadFont("../../../fonts/4x6.bdf")
-
-        # Define colors
-        name_color = graphics.Color(255, 0, 0)
-        team_color = graphics.Color(0, 255, 0)
-        jnumber_color = graphics.Color(0, 0, 255)
-        datetime_color = graphics.Color(255, 255, 255)
-
+    def clearScreen(self,offscreen_canvas):
+        offscreen_canvas.Clear()
+        
+    def displayPlayerStats(self, offscreen_canvas):
+        
+        # Player name Lengths
+        clearance = 2
+        text_height = 6
+        separation = 5
+        
         player_name_lengths = []
         for player in self.players:
             # Temporarily draw the text offscreen to measure its length
-            length = graphics.DrawText(offscreen_canvas, font, -offscreen_canvas.width, -offscreen_canvas.height, name_color, player.name)
+            length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player.name)
             player_name_lengths.append(length)
-        max_name_length = max(player_name_lengths)  
+        max_name_length = max(player_name_lengths)
+        
 
-        # Start positions for scrolling text, one for each player
-        team_positions = [offscreen_canvas.width for _ in self.players]
-        gap = 8 
-        clearance = 2
-        text_height = 6
-        x_pos = 0
-        y_pos = offscreen_canvas.height
+        for i, player in enumerate(self.players):
+            vertical_pos =  text_height * (i + 1)
+        
+            # Draw the scrolling team name
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos, self.team_color, player.team)
+            self.team_positions[i] -= 1
+    
+            # Reset position if text has scrolled off
+            if self.team_positions[i] < -len(player.team) * 6:  # Off the Screen, adjusted to the length of the team name
+                self.team_positions[i] = offscreen_canvas.width
 
+            # Draw black rectangles
+            self.blackRectangle(offscreen_canvas, 0, vertical_pos - text_height+1, max_name_length + clearance + 1, text_height + clearance)
+            self.blackRectangle(offscreen_canvas, offscreen_canvas.width - 11 - (2 * clearance), vertical_pos-text_height, max_name_length + (2 * clearance), text_height + clearance)
+    
+            # Draw the stationary player name
+            graphics.DrawText(offscreen_canvas, self.font, clearance, vertical_pos, self.name_color, player.name)
+    
+            # Draw the stationary player number with '#'
+            graphics.DrawText(offscreen_canvas, self.font, offscreen_canvas.width - 11 - clearance, vertical_pos, self.name_color, "#" + str(player.jnumber))
+            
+        
+    def run(self):
+        if not self.team_positions:
+            self.team_positions = [self.matrix.width for _ in self.players]
+        
+        offscreen_canvas = self.matrix.CreateFrameCanvas()
+        
         while True:
-            offscreen_canvas.Clear()
-            
-            now = datetime.now()
-            date_str = now.strftime("%d/%m/%Y") # format DAY/MONTH/YEAR 
-            datetime_str = now.strftime( "%H:%M:%S") #format HOUR:MINUTES:SECONDS
-            
-
-
-            for i, player in enumerate(self.players):
-                vertical_pos =  text_height * (i + 1)
-                separation = 5
-                
-
-                # Draw the scrolling team name
-                if team_positions[i] > 0:
-                    graphics.DrawText(offscreen_canvas, font, team_positions[i] + separation, vertical_pos, team_color, player.team)
-                team_positions[i] -= 1
-
-                # Reset position if text has scrolled off
-                if team_positions[i] < -len(player.team) * 6:  # Off the Screen, adjusted to the length of the team name
-                    team_positions[i] = offscreen_canvas.width
-
-            for i, player in enumerate(self.players):
-                vertical_pos = text_height * (i + 1)
-
-                # Draw black rectangles
-                self.blackRectangle(offscreen_canvas, 0, vertical_pos - text_height+1, max_name_length + clearance + 1, text_height + clearance)
-                self.blackRectangle(offscreen_canvas, offscreen_canvas.width - 11 - (2 * clearance), vertical_pos-text_height, max_name_length + (2 * clearance), text_height + clearance)
-
-                # Draw the stationary player name
-                graphics.DrawText(offscreen_canvas, font, clearance, vertical_pos, name_color, player.name)
-
-                # Draw the stationary player number with '#'
-                graphics.DrawText(offscreen_canvas, font, offscreen_canvas.width - 11 - clearance, vertical_pos, name_color, "#" + str(player.jnumber))
-                
-                # Draw the stationary Date with Time
-                graphics.DrawText(offscreen_canvas, font, x_pos, y_pos, datetime_color, datetime_str)
-                graphics.DrawText(offscreen_canvas, font, x_pos, y_pos-text_height, datetime_color, date_str)
-
+            # Clear Display
+            self.clearScreen(offscreen_canvas)
+            # Display Player Stats
+            self.displayPlayerStats(offscreen_canvas)
+            # Draw date and time
+            self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-            time.sleep(0.05)
+            # Time inbetween each screen refresh
+            time.sleep(0.02)
+    
+class LEDDisplayFacade:
+    def __init__(self):
+        self.run_text = RunText()
+    
+    def display_info(self):
+        if not self.run_text.process():
+            print("Failed to run Matrix")
+            return
+        self.run_text.run()
 
 if __name__ == "__main__":
-    run_text = RunText()
-    if not run_text.process():
-        run_text.print_help()
+    facade = LEDDisplayFacade()
+    while True:
+        facade.display_info()
+    
+    
