@@ -8,6 +8,7 @@
 # [Description of Program Here]
 #  Drives my LED Matrix Panel, Adifruit Display
 #==========================================================
+
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
@@ -64,11 +65,11 @@ class RunText(SampleBase):
 
         # Start positions for scrolling text, one for each player
         team_positions = [offscreen_canvas.width for _ in self.players]
-        gap = 8  # Added missing gap variable
+        gap = 8 
         clearance = 2
         text_height = 6
-        x_pos = 0;
-        y_pos = offscreen_canvas.height;
+        x_pos = 0
+        y_pos = offscreen_canvas.height
 
         while True:
             offscreen_canvas.Clear()
