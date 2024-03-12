@@ -1,11 +1,9 @@
 #==========================================================
 #
-# Title:      Sports Disply 64x128 LED Matrix
+# Title:      Sports Display 64x128 LED Matrix
 # Author:     Timothy Kosinski
 # Date:       06MAR2024
 # Description:
-#
-# [Description of Program Here]
 #  Drives my LED Matrix Panel, Adifruit Display
 #==========================================================
 
