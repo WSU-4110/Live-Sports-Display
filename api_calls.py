@@ -12,7 +12,7 @@ year = datetime.datetime.now().year
 
 class schedule:
     
-    file_path = "gameSchedule.txt"
+    __file_path = "gameSchedule.txt"
 
     # Constructor
     def __init__(self):
@@ -23,8 +23,8 @@ class schedule:
     def __make_file(self):
 
         # if the file does not exist, create it
-        if not(os.path.isfile(self.file_path)):
-            add = open(self.file_path, "w")
+        if not(os.path.isfile(self.__file_path)):
+            add = open(self.__file_path, "w")
             add.close()
         
 
@@ -34,7 +34,7 @@ class schedule:
     def __input_data(self):
         #Sets up the file with year at the top
         self.__make_file()
-        add = open(self.file_path, "a")
+        add = open(self.__file_path, "a")
 
         try:
             #connect to sports API, collects data
