@@ -551,9 +551,95 @@ char_map = {
     ],
 
 
-
-    # Add more character mappings here (numbers, symbols)...
 }
+
+class MessageDisplay:
+    def __init__(self, strip, message, wait_ms=100):
+        self.strip = strip
+        self.message = message
+        self.wait_ms = wait_ms
+
+    def display(self):
+        pass
+
+    def clear(self):
+        colorWipe(self.strip, Color(0, 0, 0), 50)
+
+
+class ScrollingMessageDisplay(MessageDisplay):
+    def display(self):
+        height = 8
+        width = 96
+        message_matrices = [char_map.get(char, char_map[' ']) for char in self.message]
+        display_length = sum(5 + 1 for char in self.message) - 1
+
+        for offset in range(width, -display_length, -1):
+            for i in range(LED_COUNT):
+                self.strip.setPixelColor(i, Color(0, 0, 0))
+
+            for i, char_matrix in enumerate(message_matrices):
+                for y in range(height):
+                    for x in range(5):
+                        global_x = x + (i * (5 + 1)) + offset
+                        if 0 <= global_x < width:
+                            led_index = self._getLedIndex(global_x, y)
+                            color = Color(255, 255, 255) if char_matrix[y][x] else Color(0, 0, 0)
+                            self.strip.setPixelColor(led_index, color)
+
+            self.strip.show()
+            time.sleep(self.wait_ms / 10000.0)
+
+    def _getLedIndex(self, x, y):
+        column_start_index = (95 - x) * 8
+        return column_start_index + y if x % 2 == 0 else column_start_index + (7 - y)
+
+
+class DisplayFactory:
+    def get_display(self, display_type, *args, **kwargs):
+        if display_type == 'scrolling':
+            return ScrollingMessageDisplay(*args, **kwargs)
+        else:
+            raise ValueError(f'Unknown display type {display_type}')
+
+
+def colorWipe(strip, color, wait_ms=50):
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, color)
+        strip.show()
+        time.sleep(wait_ms/1000.0)
+
+# Main program logic
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
+    args = parser.parse_args()
+
+    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+    strip.begin()
+
+    print ('Press Ctrl-C to quit.')
+    if not args.clear:
+        print('Use "-c" argument to clear LEDs on exit')
+
+    display_factory = DisplayFactory()
+    message_display = display_factory.get_display('scrolling', strip, "CSC SOFTWARE ENGINEERING LIVE SPORTS DISPLAY")
+
+    try:
+        while True:
+            message_display.display()
+    except KeyboardInterrupt:
+        if args.clear:
+            message_display.clear()
+
+
+
+
+
+
+
+
+''' Old logic before factory design pattern waws implemented 
+
 
 # Define the displayMessage function
 def displayMessage(strip, message, wait_ms=100):
@@ -656,3 +742,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         if args.clear:
             colorWipe(strip, Color(0,0,0), 10)
+'''
