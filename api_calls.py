@@ -2,6 +2,7 @@ import http.client
 import json
 import datetime
 import time
+import csv
 
 api_key = '6musfbnhsy2dembz5cxzxade'
 month = datetime.datetime.now().month
@@ -11,7 +12,7 @@ year = datetime.datetime.now().year
 
 
 ## Facade Pattern for the API calls
-class SportsAPI:
+class GameFacade:
     ## Constructor for the class
     def __init__(self):
         self.api_key = api_key
@@ -218,17 +219,100 @@ class SportsAPI:
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         return None
+    
 
 
+    def download_season_schedule(self,year) -> None:
+        try:
+            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/REG/schedule.json?api_key={api_key}")
+            response = self.connection.getresponse()
+
+            if response.status != 200:
+                print("Error: ", response.status, response.reason)
+                return None
+
+            data = response.read()
+            json_data = json.loads(data.decode("utf-8"))
+
+            #Creating csv file with the schedule and writing each line as a game
+            with open(f"{year}_season_schedule.csv", "w", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow(["Game ID", "Home Team", "Away Team", "Date", "Time"])
+
+                for game in json_data['games']:
+
+                    # Convert GMT time to EST
+                    gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
+                    est_time = gmt_time - datetime.timedelta(hours=4)
+                    est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
+
+                    writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], est_time_str[11:16]])
+
+        except json.JSONDecodeError as e:
+            print(f"A JSONDecodeError occurred: {str(e)}")
+        except http.client.HTTPException as e:
+            print(f"An exception occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        return None
+
+
+
+class Player(GameFacade):
+    def __init__(self, player_id, api):
+        self.api = api
+        self.stats = {
+            'points': 0,
+            'assists' : 0,
+            'rebounds' : 0,
+            'field_goals_made' : 0,
+            'field_goals_att' : 0,
+            'three_pointers_made' : 0,
+            'three_pointers_att' : 0,
+            'free_throws_made' : 0,
+            'free_throws_att' : 0
+        }
+    
+    def update_player_info(self, player_id):
+        try:
+            self.connection.request("GET", f"/nba/trial/v8/en/players/{player_id}/profile.json?api_key={api_key}")
+            response = self.connection.getresponse()
+
+            if response.status != 200:
+                print("Error: ", response.status, response.reason)
+                return None
+            
+            data = response.read()
+            json_data = json.loads(data.decode("utf-8"))
+
+            self.stats['points'] = json_data['points']
+            self.stats['assists'] = json_data['assists']
+            self.stats['rebounds'] = json_data['rebounds']
+            self.stats['field_goals_made'] = json_data['field_goals_made']
+            self.stats['field_goals_att'] = json_data['field_goals_att']
+            self.stats['three_pointers_made'] = json_data['three_pointers_made']
+            self.stats['three_pointers_att'] = json_data['three_pointers_att']
+            self.stats['free_throws_made'] = json_data['free_throws_made']
+            self.stats['free_throws_att'] = json_data['free_throws_att']
+
+        except json.JSONDecodeError as e:
+            print(f"A JSONDecodeError occurred: {str(e)}")
+        except http.client.HTTPException as e:
+            print(f"An exception occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+    
+
+class SportsAPI(GameFacade):
+    def __init__(self,api):
+        self.api = api
+
+    def download_schedule(self,year) -> None:
+        try:
+            self.api.download_season_schedule(year)
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        return None
 
 # Beginning of calls to the API
 
-api = SportsAPI()
-api.get_current_schedule(year,month, '15')
-time.sleep(1)
-game_id = api.get_game_id('Milwaukee Bucks', year, month, 15)
-time.sleep(1)
-api.get_live_game_stats(game_id)
-time.sleep(1)
-print ('\n\n\n')
-api.get_league_standings()
