@@ -132,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # New line to define the directory where collectstatic will collect static files for deployment. Heroku
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # New line to define the directory where collectstatic will collect static files for deployment. Heroku
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # New line to use whitenoise to serve compressed static files Heroku
 
 # Default primary key field type
