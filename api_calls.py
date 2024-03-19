@@ -10,7 +10,79 @@ month = datetime.datetime.now().month
 day = datetime.datetime.now().day
 year = datetime.datetime.now().year
 
+class schedule:
+    
+    __file_path = "gameSchedule.txt"
 
+    # Constructor
+    def __init__(self):
+        self.api_key = api_key
+        self.connection = http.client.HTTPSConnection("api.sportradar.us")
+        
+    # creates the file
+    def __make_file(self):
+
+        # if the file does not exist, create it
+        if not(os.path.isfile(self.__file_path)):
+            add = open(self.__file_path, "w")
+            add.close()
+        
+
+        return None
+
+
+    def __input_data(self):
+        #Sets up the file with year at the top
+        self.__make_file()
+        add = open(self.__file_path, "a")
+
+        try:
+            #connect to sports API, collects data
+            self.connection.request("GET", f"/nba/trial/v8/en/games/{year-1}/REG/schedule.json?api_key={self.api_key}")
+            response = self.connection.getresponse()
+
+            if response.status != 200:
+                print("Error: ", response.status, response.reason)
+                return None
+                
+            data = response.read()
+            json_data = json.loads(data.decode("utf-8"))
+                
+            if not json_data.get('games'):
+                raise Exception("No games!")
+            
+        
+            #decodes
+
+            json_data = json.loads(data.decode("utf-8"))
+
+            #prints sets of times and teams for the games
+            for game in json_data['games']:
+                print(game['scheduled'])
+                add.write(game['scheduled'] + "\n")
+                add.write(game['home']['name']+ " vs " + game['away']['name'] + "\n")
+                
+                
+            print("all games printed")
+
+        #error handling
+        except json.JSONDecodeError as e:
+            print(f"Something went wrong with the api: {e}")
+
+        return None
+    
+    def check(self):
+        #if info is out of date, replace
+            #self.__input_data()
+
+        #create output list for games
+        #go through text doc (while loop)
+            #if year month day time smaller, continue
+            #elif year month day time equal, collect game in output
+            #elif year month day time larger, exit loop
+
+        
+        #return output list  
 
 ## Facade Pattern for the API calls
 class SportsAPI:
