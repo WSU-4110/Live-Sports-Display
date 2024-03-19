@@ -65,8 +65,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', #heroku
 ]
 
-#ROOT_URLCONF = 'LSDtest1.urls'
-ROOT_URLCONF = 'LiveStats.urls'
+ROOT_URLCONF = 'LSDtest1.urls'
+#ROOT_URLCONF = 'LiveStats.urls'
 
 TEMPLATES = [
     {
@@ -84,8 +84,8 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'LSDtest1.wsgi.application'
-WSGI_APPLICATION = 'LiveStats.wsgi.application'
+WSGI_APPLICATION = 'LSDtest1.wsgi.application'
+#WSGI_APPLICATION = 'LiveStats.wsgi.application'
 
 
 # Database
