@@ -1,1 +1,1 @@
-web: gunicorn Live-Sports-Display.wsgi:application --log-file -
+web: gunicorn livesportsdisplay.wsgi:application --log-file -
