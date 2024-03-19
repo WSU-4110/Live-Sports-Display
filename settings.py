@@ -66,6 +66,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'LSDtest1.urls'
+#ROOT_URLCONF = 'LiveStats.urls'
 
 TEMPLATES = [
     {
@@ -84,6 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'LSDtest1.wsgi.application'
+#WSGI_APPLICATION = 'LiveStats.wsgi.application'
 
 
 # Database
@@ -153,4 +155,3 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3') #heroku
 }
-
