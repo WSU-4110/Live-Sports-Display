@@ -6,7 +6,7 @@ from django.conf import settings
 import os
 import TextParsing
 
-pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
+#pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
 def handle_uploaded_file(f, file_name):
     file_path = os.path.join(settings.MEDIA_ROOT, file_name)
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
