@@ -1,4 +1,4 @@
-from asyncio.windows_events import NULL
+#from asyncio.windows_events import NULL #####changing windows specific for heroku deploment
 from PIL import Image
 import pytesseract
 
@@ -6,7 +6,7 @@ from nba_api.stats.static import players
 
 
 
-pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe' ####changing windows specific for heroku deploment
 #Path to Tesseract.exe on local system must be specified - will depend on how you install pip install tesseract-ocr (ask jordan)
 
 def OCR_Image(path):
