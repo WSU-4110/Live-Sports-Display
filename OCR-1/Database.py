@@ -28,10 +28,13 @@ def abbreviatednames():
     for player in all_players:
         abbreviated_names.append(player['first_name'][:1] + '. ' + player['last_name'])
     return abbreviated_names
-print(abbreviatednames())
+
 df = pd.DataFrame(fullnames(), columns=['Full Name'])
 df.loc[:,"First Name"]=firstnames()
 df.loc[:,"Last Name"]=lastnames()
 df.loc[:,"First Name Initial with Full Last Name"]=abbreviatednames()
 print(df)
 df.to_csv('Database.csv')
+
+abbreviated_names=str(abbreviatednames())
+names=[]

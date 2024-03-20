@@ -2,6 +2,7 @@ import cv2
 from matplotlib import pyplot as plt
 import pytesseract
 from nba_api.stats.static import players
+import re
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 image_file="Pictures/OCR Team Sample.png"
@@ -11,10 +12,10 @@ teams_image_2=cv2.imread(image_file_2)
 
 
 #This is where the PyTesseract OCR scans the images.
-ocr=pytesseract.image_to_string(teams_image)
-ocr_2=pytesseract.image_to_string(teams_image_2)
-print(ocr)
-print(ocr_2)
+text=pytesseract.image_to_string(teams_image)
+text_2=pytesseract.image_to_string(teams_image_2)
+#print(text)
+print(text_2)
 
 #This is the function for making comparison with OCR
 
@@ -25,7 +26,6 @@ def playerlist():
         players_in_string += ' ' + player['full_name'] + '\n'
     return players_in_string
 def clear_input(input):
-    all_players = players.get_players()
     players_in_string=playerlist()
     print(players_in_string)
     string_input=set(input.split())
@@ -33,8 +33,21 @@ def clear_input(input):
     cleaned=string_input&string_players
     return cleaned
 
-#Test for OCR refinement.
-ocr_clean=clear_input(ocr)
-ocr_clean_2=clear_input(ocr_2)
-print("Clean Test 1: ",ocr_clean)
-print("Clean Test 2: ",ocr_clean_2)
+
+def clean_input(input):
+    players_list=playerlist()
+    inputwords=input.split()
+    playerwords=players_list.split()
+    common=set(inputwords).intersection( set(playerwords) )
+    return common
+
+
+
+
+"""
+Test for OCR refinement.
+#text_clean=clear_input(text)
+#text_clean_2=clear_input(text)
+#print("Clean Test 1: ",text_clean)
+#print("Clean Test 2: ",text_clean_2)
+"""
