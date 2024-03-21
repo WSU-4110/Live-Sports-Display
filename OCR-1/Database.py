@@ -36,5 +36,5 @@ df.loc[:,"First Name Initial with Full Last Name"]=abbreviatednames()
 print(df)
 df.to_csv('Database.csv')
 
-abbreviated_names=str(abbreviatednames())
-names=[]
+
+
