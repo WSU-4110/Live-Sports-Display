@@ -14,8 +14,7 @@ teams_image_2=cv2.imread(image_file_2)
 #This is where the PyTesseract OCR scans the images.
 text=pytesseract.image_to_string(teams_image)
 text_2=pytesseract.image_to_string(teams_image_2)
-#print(text)
-print(text_2)
+
 
 #This is the function for making comparison with OCR
 
