@@ -272,4 +272,4 @@ class SportsAPI():
 ## Main method to call the API class ##
 api = GameFacade()
 
-api.get_game_id('Chicago Bulls', year, month, day)
+api.get_game_id('Detroit Pistons', year, month, day)
