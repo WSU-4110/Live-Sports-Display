@@ -247,8 +247,6 @@ class GameFacade:
     ### End of roster methods ###
 ## End of facade class for the API calls ##
 
-
-
 ## API class to call the facade class ##
 class SportsAPI():
     def __init__(self):
