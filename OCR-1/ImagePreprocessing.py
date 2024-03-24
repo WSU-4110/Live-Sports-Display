@@ -2,7 +2,7 @@ import cv2
 from PIL import Image
 from matplotlib import pyplot as plt
 
-teams1="Pictures/OCR Team Sample-2.jpg"
+teams1="Pictures/Sample-2.jpg"
 teams1_image=cv2.imread(teams1)
 
 
