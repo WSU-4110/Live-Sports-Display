@@ -1,5 +1,7 @@
-﻿# Live-Sports-Display]
-The aim of our project is to display live sports data to a specially built screen - allowing fans to have a greater immersion into the game.
+# Live-Sports-Display
+
+## Purpose:
+This project aims to display live Scores on an LED Matrix Panel.
 
 ## Team members:
 
@@ -9,3 +11,16 @@ The aim of our project is to display live sports data to a specially built scree
 - Ayman Elfayoumi
 - Mitchel Brown
 - Rory Jolliff
+
+## How it works:
+Our project has four main code sections:
+- The Webserver connection
+- Optical Character Recognition (OCR)
+- Sports API data collection (API)
+- Hardware
+
+These four section work together to create our product:
+- The webserver code connects the other portions, allowing for user input of images - and output of relevant information to the hardware
+- The OCR code allows for images to be searched for both team and player names - sending them to the API code
+- The API code allows for the collection of the data on the teams and players - sending it to the Hardware code
+- The Hardware code takes the data it is given, and displays it to the user on an LED Matrix Panel
