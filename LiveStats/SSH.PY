@@ -14,9 +14,9 @@ import paramiko
 import time
 def run_stacked_display():
     # SSH connection parameters
-    hostname = 'Raspberry Pi IP'  
-    username = 'Raspberry Pi UserName'  
-    password = 'Raspberry Pi Password'  
+    hostname = '192.168.1.49'
+    username = 'timkosinski'
+    password = '20010972'
     port = 22  # SSH port default is 22
     
     # Command to run on the Raspberry Pi
