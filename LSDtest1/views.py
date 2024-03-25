@@ -5,7 +5,22 @@ import pytesseract
 from django.conf import settings
 import os
 import TextParsing
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .SSH import run_stacked_display
 
+@csrf_exempt
+def run_ssh(request):
+    if request.method == "POST":
+        data = request.json
+        action = data.get("action")
+        
+        if action == "stackedDisplay":
+            response_message = run_stacked_display()
+            return JsonResponse({"message": response_message})
+    
+    return JsonResponse({"message": "Invalid request"}, status=400)
+    
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
 def handle_uploaded_file(f, file_name):
     file_path = os.path.join(settings.MEDIA_ROOT, file_name)
