@@ -72,8 +72,33 @@
         };
         
         document.getElementById("stackedDisplayBtn").onclick = function() {
-            document.getElementById("confirmationStatus").innerText = "Stacked display mode selected. Sending to display...";
+            fetch('/run-ssh/', { // URL to Django view
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                },
+                body: JSON.stringify({ action: 'stackedDisplay' }) // Data you want to send
+            }).then(response => response.json())
+              .then(data => {
+                document.getElementById("confirmationStatus").innerText = data.message;
+              });
         };
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
     </script>  
 </body>
 </html>
