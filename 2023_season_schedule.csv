@@ -1,4 +1,4 @@
-Game ID,Home Team,Away Team,Date,Time
+Game ID,Home ID,Away Team,Date,Time
 0343c99e-bd5e-4887-aa21-94875b8dfba3,Denver Nuggets,Los Angeles Lakers,2023-10-24,19:30
 b06ae4da-247e-4696-973a-7f1cbd813fec,Golden State Warriors,Phoenix Suns,2023-10-24,22:00
 2ccf34f5-0139-4b4d-b84e-810af53ea9ba,Charlotte Hornets,Atlanta Hawks,2023-10-25,19:00
@@ -1140,9 +1140,9 @@ bd8133c5-9eb0-430d-829e-755702d23ace,Sacramento Kings,LA Clippers,2024-04-02,22:
 c4ab090e-9a7d-416a-b949-f7f5b5d8f339,Washington Wizards,Los Angeles Lakers,2024-04-03,19:00
 16aed93b-cb1f-46a0-b68e-513f4d61faaa,Atlanta Hawks,Detroit Pistons,2024-04-03,19:30
 1e59b606-e2e3-46ed-b9ed-be115bd160c5,Boston Celtics,Oklahoma City Thunder,2024-04-03,19:30
-6af09b2d-0483-4616-a2ec-b2f5d34ba3c9,Milwaukee Bucks,Memphis Grizzlies,2024-04-03,19:30
 d07098c0-a722-4ebe-9787-fc06bf26acb5,Brooklyn Nets,Indiana Pacers,2024-04-03,19:30
 5b9775f6-61e8-4407-aaee-eb2b8c9a27d7,New Orleans Pelicans,Orlando Magic,2024-04-03,20:00
+6af09b2d-0483-4616-a2ec-b2f5d34ba3c9,Milwaukee Bucks,Memphis Grizzlies,2024-04-03,20:00
 7ac5fe68-6962-4f28-9bbb-85aa137f00cd,Minnesota Timberwolves,Toronto Raptors,2024-04-03,20:00
 afb6b532-b001-4889-b4c6-ded47e4226b7,Phoenix Suns,Cleveland Cavaliers,2024-04-03,22:00
 2a12cef9-1615-4ec6-a709-bdf4cfb1aae7,Dallas Mavericks,Atlanta Hawks,2024-04-04,19:30

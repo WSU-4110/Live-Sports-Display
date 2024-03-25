@@ -25,6 +25,9 @@ class PlayerStats:
         self.three_pointers_percent = three_pointers_percent
         self.free_throws_percent = free_throws_percent
 ## End of player class ## 
+        
+
+
 ## Team roster class ##
 class TeamRoster:
     def __init__(self, full_name, position, jersey_number):
@@ -32,6 +35,9 @@ class TeamRoster:
         self.position = position
         self.jersey_number = jersey_number
 ## End of team roster class ##
+        
+
+
 ## Team standings class ##
 class TeamStandings:
     def __init__(self, team_name, wins, losses, team_id):
@@ -41,6 +47,8 @@ class TeamStandings:
         self.team_id = team_id
 ## End of team standings class ##
 
+
+
 ## Facade class for the API calls ##
 class GameFacade:
     ''' Constructor for the class '''
@@ -48,17 +56,17 @@ class GameFacade:
         self.api_key = api_key
         self.connection = http.client.HTTPSConnection("api.sportradar.us")
 
-
-
     ### Download methods ###
-    ''' USE ONLY ON THE FIRST TIME TO DOWNLOAD THE SCHEDULE '''
-    def download_season_schedule(self,year) -> None:
+    ''' ONLY USE THESE METHODS WHEN INITIALIZING SYSTEM TO DOWNLOAD 
+        NEEDED INFORMATION FOR REDUCING AMOUNT OF API CALLS SUCH AS 
+        GETTING FULL ROSTER, SCHEDULE, AND TEAM NAMES/TEAM ID
+    '''
+    def download_season_schedule(self)-> None:
+        nba_year = datetime.datetime.now().year - 1
+        nba_year = str(nba_year)
+
         try:
-            ### FIX THIS TO GET YEAR - 1
-            ###
-            ###
-            ###
-            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/REG/schedule.json?api_key={api_key}")
+            self.connection.request("GET", f"/nba/trial/v8/en/games/{nba_year}/REG/schedule.json?api_key={api_key}")
             response = self.connection.getresponse()
 
             if response.status != 200:
@@ -69,9 +77,9 @@ class GameFacade:
             json_data = json.loads(data.decode("utf-8"))
 
             ''' Creating csv file with the schedule and writing each line as a game '''
-            with open(f"{year}_season_schedule.csv", "w", newline="") as file:
+            with open(f"{nba_year}_season_schedule.csv", "w", newline="") as file:
                 writer = csv.writer(file)
-                writer.writerow(["Game ID", "Home ID", "Away Team",  "Date", "Time"])
+                writer.writerow(["Game ID", "Home Team", "Away Team",  "Date", "Time"])
 
                 for game in json_data['games']:
 
@@ -81,7 +89,6 @@ class GameFacade:
                     est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
 
                     writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], est_time_str[11:16]])
-
 
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -122,17 +129,10 @@ class GameFacade:
         return None
     
     ''' Get the team roster in format of player name, position, and jersey number and player_id'''
-   
-    '''
-    
-    
-    
-    NEEDS TO BE FIXED STILL
-    
-    
-    '''
     def download_nba_roster(self):
         nba_team_ids = []
+        nba_year = datetime.datetime.now().year - 1
+        nba_year = str(nba_year)
 
         with open("nba_teams.csv", "r") as file:
             reader = csv.reader(file)
@@ -141,33 +141,39 @@ class GameFacade:
                 nba_team_ids.append(row[0])
 
 
-        ##create new csv file for the roster each time the method is called
-        with open(f"{year}_nba_roster.csv", "w", newline="") as file:
+        '''create new csv file for the roster each time the method is called'''
+        with open(f"{nba_year}_nba_roster.csv", "w", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(["Team ID", "Team Name", "Player Name", "Position", "Jersey Number", "Player ID"])
 
-        for team_id in nba_team_ids:
-            try:
+            for team in nba_team_ids:
                 time.sleep(2)
-                self.connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}//profile.json?api_key={api_key}")
-                response = self.connection.getresponse()
+                try:
+                    self.connection.request("GET", f"/nba/trial/v8/en/teams/{team}//profile.json?api_key={api_key}")
+                    response = self.connection.getresponse()
+                    
+                    if response.status != 200:
+                        print("Error: ", response.status, response.reason)
+                        return None
 
-                if response.status != 200:
-                    print("Error: ", response.status, response.reason)
-                    return None
+                    data = response.read()
+                    json_data = json.loads(data.decode("utf-8"))
 
-                data = response.read()
-                json_data = json.loads(data.decode("utf-8"))
-
-                for team in json_data:
-                    writer.writerow([team['id'], team['market'] + " " + team['name']])
-            # Catching exceptions #
-            except json.JSONDecodeError as e:
-                print(f"A JSONDecodeError occurred: {str(e)}")
-            except http.client.HTTPException as e:
-                print(f"An exception occurred: {str(e)}")
-            except Exception as e:
-                print(f"An exception occurred: {str(e)}")
+                    for player in json_data['players']:
+                        writer.writerow([team, json_data['market'] + " " + json_data['name'], player['full_name'], player['position'], player['jersey_number'], player['id']])
+                except json.JSONDecodeError as e:
+                    print(f"A JSONDecodeError occurred: {str(e)}")
+                except http.client.HTTPException as e:
+                    print(f"An exception occurred: {str(e)}")
+                except Exception as e:
+                    print(f"An exception occurred: {str(e)}")
+                # Catching exceptions #
+                except json.JSONDecodeError as e:
+                    print(f"A JSONDecodeError occurred: {str(e)}")
+                except http.client.HTTPException as e:
+                    print(f"An exception occurred: {str(e)}")
+                except Exception as e:
+                    print(f"An exception occurred: {str(e)}")
         return None
     ### End of download methods ###
     
@@ -227,73 +233,63 @@ class GameFacade:
     
 
     ### ID methods (Not used on website) ###
-    # Get the game id from the team name
+    '''Get game id from reading pre-generated nba schedule file'''
     def get_game_id(self, team_name, year, month, day) -> int:
         game_id = None
 
         try:
-            ''' Request to API for the game id '''
-            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={api_key}")
-            response = self.connection.getresponse()
-
-            if response.status != 200:
-                print("Error: ", response.status, response.reason)
-                return None
-            
-            data = response.read()
-            json_data = json.loads(data.decode("utf-8"))
-
-            ''' Loop through the games and find the game id the team name '''
-            for game in json_data['games']:
-                if game['home']['name'] == team_name:
-                    game_id = game['id']
-                    break
-                elif game['away']['name'] == team_name:
-                    game_id = game['id']
-                    break
-            if game_id == None:
-                print(f"No game found for {team_name} on {month}-{day}-{year}")
+            with open("2023_season_schedule.csv", "r") as file:
+                reader = csv.reader(file)
+                
+                for row in reader:
+                    if row[1] == team_name or row[2] == team_name:
+                        if row[3] == f"{year}-{month}-{day}":
+                            game_id = row[0]
 
         # Catching exceptions #
-        except json.JSONDecodeError as e:
-            print(f"A JSONDecodeError occurred: {str(e)}")
-        except http.client.HTTPException as e:
-            print(f"An exception occurred: {str(e)}")
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         return game_id
     
-    # Get the team id from the team name
+    '''Get team id from reading pre-generated nba teams file'''
     def get_team_id(self, team_name) -> int:
         team_id = None
-
         try:
-            ''' Request to API for the team id '''
-            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={self.api_key}")
-            response = self.connection.getresponse()
+            with open("nba_teams.csv", "r") as file:
+                reader = csv.reader(file)
 
-            if response.status != 200:
-                print("Error: ", response.status, response.reason)
-                return None
-            
-            data = response.read()
-            json_data = json.loads(data.decode("utf-8"))
+                for row in reader:
+                    if row[1] == team_name:
+                        team_id = row[0]
 
-            ''' Loop through the games and find the team id from param team_name '''
-            for game in json_data['games']:
-                if game['home']['name'] == team_name:
-                    team_id = game['home']['id']
-                elif game['away']['name'] == team_name:
-                    team_id = game['away']['id']
         # Catching exceptions #
-        except json.JSONDecodeError as e:
-            print(f"A JSONDecodeError occurred: {str(e)}")
-        except http.client.HTTPException as e:
-            print(f"An exception occurred: {str(e)}")
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         
         return team_id
+    
+    '''Get player id from reading the pre-generated nba roster'''
+    def get_player_id(self, player_name) -> int:
+        player_id = None
+        try:
+            with open("2023_nba_roster.csv", "r") as file:
+                reader = csv.reader(file)
+
+                for row in reader:
+                    if row[2] == player_name:
+                        player_id = row[5]
+
+        # Catching exceptions #
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        
+        return player_id
     ### End of ID methods ###
 
 
@@ -303,33 +299,19 @@ class GameFacade:
         roster = []
 
         try:
-            self.connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}//profile.json?api_key={api_key}")
-            response = self.connection.getresponse()
+            with open("2023_nba_roster.csv", "r") as file:
+                reader = csv.reader(file)
 
-            if response.status != 200:
-                print("Error: ", response.status, response.reason)
-                return None
-
-            data = response.read()
-            json_data = json.loads(data.decode("utf-8"))
-
-            for player in json_data['players']:
-                roster.append(TeamRoster(player['full_name'], player['position'], player['jersey_number']))
+                for row in reader:
+                    if row[0] == team_id:
+                        roster.append(TeamRoster(row[2], row[3], row[4]))
             
         # Catching exceptions #
-        except json.JSONDecodeError as e:
-            print(f"A JSONDecodeError occurred: {str(e)}")
-        except http.client.HTTPException as e:
-            print(f"An exception occurred: {str(e)}")
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         return roster
-    
-    def find_player(self, roster, player_name):
-        for player in roster:
-            if player.full_name == player_name:
-                return player
-        return None
     ### End of roster methods ###
 
 
@@ -348,7 +330,6 @@ class GameFacade:
             
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
-
             ''' Iterate through the home and away teams and add to the players list if the player has played in the game'''
             for player in json_data['home']['players']:
                 if player['statistics']['minutes'] != "00:00":
@@ -366,9 +347,10 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return players
     
-    def find_player_stats(self, players, player_name):
+    def get_player_stats(self, player_name, team_name,year,month,day):
+        players_stats = api.get_live_game_stats(api.get_game_id(team_name, year, month, day))
 
-        for player in players:
+        for player in players_stats:
             if player.name == player_name:
                 return player
         return None
@@ -380,8 +362,8 @@ class SportsAPI():
     def __init__(self):
         self.game_facade = GameFacade()
 
-    def download_season_schedule(self, year):
-        self.game_facade.download_season_schedule(year)
+    def download_season_schedule(self):
+        self.game_facade.download_season_schedule()
 
     def download_nba_teams(self):
         self.game_facade.download_nba_teams()
@@ -410,8 +392,8 @@ class SportsAPI():
     def get_live_game_stats(self, game_id):
         return self.game_facade.get_live_game_stats(game_id)
 
-    def find_player_stats(self, players, player_name):
-        return self.game_facade.find_player_stats(players, player_name)
+    def get_player_stats(self, player_name, team_name,year,month,day):
+        return self.game_facade.find_player_stats(player_name, team_name,year,month,day)
 ## End of API class ##
 
 
@@ -429,6 +411,8 @@ How to use the main method:
 '''
 
 api = GameFacade()
-api.download_nba_roster()
+player = api.get_player_stats("Jayson Tatum","Boston Celtics", "2024", "04", "03")
 
+for stats in player:
+    print(player.name, player.team, player.points)
 ### End of main method ###
