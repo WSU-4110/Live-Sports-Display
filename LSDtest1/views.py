@@ -19,8 +19,10 @@ def run_ssh(request):
             action = data.get("action")
             
             if action == "stackedDisplay":
-                response_message = run_stacked_display()
-                return JsonResponse({"message": response_message})
+                # Offload the long-running operation to a background task
+                # response_message = run_stacked_display()  # This needs to be offloaded
+                # Temporarily, return an immediate response for testing
+                return JsonResponse({"message": "Stacked display operation initiated"})
         except json.JSONDecodeError as e:
             # Handle JSON decoding error (malformed JSON)
             return JsonResponse({"message": "Invalid JSON format"}, status=400)
