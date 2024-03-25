@@ -10,6 +10,5 @@ urlpatterns = [
     path('LiveStats/', include('LiveStats.urls')),
   #  path("__debug__/", include("debug_toolbar.urls")),
     path('upload/', views.upload_and_ocr, name='upload'),
-    path('', include('LSDtest1.urls')),
   #  path('run-ssh/', views.run_ssh, name='run_ssh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
