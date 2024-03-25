@@ -1,2 +1,2 @@
-web: gunicorn your_project.wsgi:application --timeout 12000 --log-file -
+web: gunicorn LSDtest1.wsgi:application --timeout 12000 --log-file -
 
