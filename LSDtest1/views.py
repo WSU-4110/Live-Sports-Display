@@ -5,20 +5,27 @@ import pytesseract
 from django.conf import settings
 import os
 import TextParsing
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
+from django.views.decorators.http import require_http_methods
+import json
 
 @csrf_exempt
 def run_ssh(request):
     if request.method == "POST":
-        data = request.json
-        action = data.get("action")
-        
-        if action == "stackedDisplay":
-            response_message = run_stacked_display()
-            return JsonResponse({"message": response_message})
-    
+        try:
+            data = json.loads(request.body.decode('utf-8'))  # Parse the JSON data
+            action = data.get("action")
+            
+            if action == "stackedDisplay":
+                response_message = run_stacked_display()
+                return JsonResponse({"message": response_message})
+        except json.JSONDecodeError as e:
+            # Handle JSON decoding error (malformed JSON)
+            return JsonResponse({"message": "Invalid JSON format"}, status=400)
+
+    # If the request method isn't POST or if the action is not specified or recognized
     return JsonResponse({"message": "Invalid request"}, status=400)
     
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
