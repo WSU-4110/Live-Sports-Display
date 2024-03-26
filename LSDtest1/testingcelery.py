@@ -3,6 +3,6 @@
 from celery import shared_task
 
 @shared_task
-def my_background_task(arg1, arg2):
-    result  = arg1 + arg2
+def my_background_task():
+    result  = 5
     return result
