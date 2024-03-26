@@ -26,7 +26,7 @@ pyproject-api==1.6.1
 pytesseract @ git+https://github.com/madmaze/pytesseract.git@e89f059bfe8c0e164a29f6de4689cdbcf741b232
 PyNaCl==1.5.0
 requests==2.31.0
-setuptools>=59.1.1
+
 sqlparse==0.4.4
 tox==4.13.0
 tzdata==2024.1
