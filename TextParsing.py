@@ -6,7 +6,7 @@ from nba_api.stats.static import players
 from PIL import Image
 
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 image_file= "Pictures/Sample-1.png"
 teams_image=cv2.imread(image_file)
 text=pytesseract.image_to_string(teams_image)
