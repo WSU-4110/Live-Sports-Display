@@ -26,8 +26,11 @@ def run_ssh(request):
                 # response_message = run_stacked_display()  # This needs to be offloaded
                 result = my_background_task.delay(2, 3)
                 print(result.get(timeout=100))
+                return JsonResponse({"message": "Task is running in the background"})
+            else:
+                return JsonResponse({"error": "Invalid request"}, status=400)
                 # Temporarily, return an immediate response for testing
-                return JsonResponse({"message": "Stacked display operation initiated"})
+               # return JsonResponse({"message": "Stacked display operation initiated"})
         except json.JSONDecodeError as e:
             # Handle JSON decoding error (malformed JSON)
             return JsonResponse({"message": "Invalid JSON format"}, status=400)
