@@ -29,7 +29,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-l-bv0-ty@p0gwk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')  # Use Redis URL from environment variables
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')   #heroku
