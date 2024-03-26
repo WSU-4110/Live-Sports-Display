@@ -161,12 +161,6 @@ class GameFacade:
 
                     for player in json_data['players']:
                         writer.writerow([team, json_data['market'] + " " + json_data['name'], player['full_name'], player['position'], player['jersey_number'], player['id']])
-                except json.JSONDecodeError as e:
-                    print(f"A JSONDecodeError occurred: {str(e)}")
-                except http.client.HTTPException as e:
-                    print(f"An exception occurred: {str(e)}")
-                except Exception as e:
-                    print(f"An exception occurred: {str(e)}")
                 # Catching exceptions #
                 except json.JSONDecodeError as e:
                     print(f"A JSONDecodeError occurred: {str(e)}")
@@ -317,6 +311,7 @@ class GameFacade:
 
 
     ### Stats methods ###
+    '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
     def get_live_game_stats(self, game_id):
         players = []
 
@@ -330,6 +325,7 @@ class GameFacade:
             
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
+
             ''' Iterate through the home and away teams and add to the players list if the player has played in the game'''
             for player in json_data['home']['players']:
                 if player['statistics']['minutes'] != "00:00":
@@ -347,13 +343,25 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return players
     
-    def get_player_stats(self, player_name, team_name,year,month,day):
-        players_stats = api.get_live_game_stats(api.get_game_id(team_name, year, month, day))
+    '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
+    def get_player_stats(self, player_name):
+        player_team = None
+        player_stats = []
+        all_player_stats = []
+        
+        with open("2023_nba_roster.csv", "r") as file:
+            reader = csv.reader(file)
+            reader.__next__()
+            for row in reader:
+                if row[2] == player_name:
+                    player_team = row[1]
+                    all_player_stats = api.get_live_game_stats(api.get_game_id(player_team, year, month, day))
+                    
+                    for player in all_player_stats:
+                        if (player.name == player_name):
+                            player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
 
-        for player in players_stats:
-            if player.name == player_name:
-                return player
-        return None
+        return player_stats
     ### End of stats methods ###
 ## End of facade class for the API calls ##
 
@@ -376,7 +384,7 @@ class SportsAPI():
 
     def get_game_id(self, team_name, year, month, day):
         return self.game_facade.get_game_id(team_name, year, month, day)
-    
+       
     def get_team_id(self, team_name):  
         return self.game_facade.get_team_id(team_name)
     
@@ -385,15 +393,12 @@ class SportsAPI():
 
     def download_nba_roster(self):
         self.game_facade.download_nba_roster()
-
-    def find_player(self, roster, player_name):
-        return self.game_facade.find_player(roster, player_name)
     
     def get_live_game_stats(self, game_id):
         return self.game_facade.get_live_game_stats(game_id)
 
-    def get_player_stats(self, player_name, team_name,year,month,day):
-        return self.game_facade.find_player_stats(player_name, team_name,year,month,day)
+    def get_player_stats(self, player_name):
+        return self.game_facade.find_player_stats(player_name)
 ## End of API class ##
 
 
@@ -411,8 +416,9 @@ How to use the main method:
 '''
 
 api = GameFacade()
-player = api.get_player_stats("Jayson Tatum","Boston Celtics", "2024", "04", "03")
+
+player = api.get_player_stats("Patrick Baldwin Jr.")
 
 for stats in player:
-    print(player.name, player.team, player.points)
+    print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
 ### End of main method ###
