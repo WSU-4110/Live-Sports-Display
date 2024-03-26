@@ -206,7 +206,7 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return standings
     
-    def get_current_schedule(self,year,month,day):
+    def get_current_schedule(self):
         schedule = []
         try:
             date_col = 3
@@ -393,8 +393,8 @@ class SportsAPI():
     def get_league_standings(self):
         self.game_facade.get_league_standings()
 
-    def get_current_schedule(self, year, month, day):
-        self.game_facade.get_current_schedule(year, month, day)
+    def get_current_schedule(self):
+        self.game_facade.get_current_schedule()
 
     def get_game_id(self, team_name, year, month, day):
         return self.game_facade.get_game_id(team_name, year, month, day)
@@ -431,9 +431,15 @@ How to use the main method:
 
 api = GameFacade()
 
-player = api.get_player_stats("Mo Bamba", "2024", "03", "25")
+player_name = ["Mo Bamba", "LeBron James"]
+for name in player_name:
+    player = api.get_player_stats(name, "2024", "03", "25")
+    if player:
+        for stats in player:
+            print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
 
-if player:
-    for stats in player:
-        print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
+schedule = api.get_current_schedule()
+for game in schedule:
+    print (game)
+
 ### End of main method ###
