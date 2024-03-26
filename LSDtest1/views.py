@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
 from django.views.decorators.http import require_http_methods
 import json
-from LSDtest1.testingcelery import my_background_task
+from .tasks import my_background_task
 
 
 
