@@ -10,6 +10,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
 from django.views.decorators.http import require_http_methods
 import json
+from LSDtest1.testingcelery import my_background_task
+
+
 
 @csrf_exempt
 def run_ssh(request):
@@ -21,6 +24,7 @@ def run_ssh(request):
             if action == "stackedDisplay":
                 # Offload the long-running operation to a background task
                 # response_message = run_stacked_display()  # This needs to be offloaded
+                my_background_task.delay(arg1, arg2)
                 # Temporarily, return an immediate response for testing
                 return JsonResponse({"message": "Stacked display operation initiated"})
         except json.JSONDecodeError as e:
