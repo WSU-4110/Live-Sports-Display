@@ -16,3 +16,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 app.conf.broker_url = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
