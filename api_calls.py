@@ -312,16 +312,20 @@ class GameFacade:
 
     ### Stats methods ###
     '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
-    def get_live_game_stats(self, game_id):
+    def get_live_game_stats(self, game_id, player_name):
         players = []
 
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
             
-            if response.status != 200:
+            if response.status == 404:
+                print(player_name + " is not playing a game today.")
+                return players
+
+            if response.status != 200 and response.status != 404:
                 print("Error: ", response.status, response.reason)
-                return None
+                return players
             
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
@@ -344,23 +348,33 @@ class GameFacade:
         return players
     
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_player_stats(self, player_name):
+    def get_player_stats(self, player_name,year,month,day):
         player_team = None
         player_stats = []
         all_player_stats = []
         
-        with open("2023_nba_roster.csv", "r") as file:
-            reader = csv.reader(file)
-            reader.__next__()
-            for row in reader:
-                if row[2] == player_name:
-                    player_team = row[1]
-                    all_player_stats = api.get_live_game_stats(api.get_game_id(player_team, year, month, day))
-                    
-                    for player in all_player_stats:
-                        if (player.name == player_name):
-                            player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
+        try:
+            with open("2023_nba_roster.csv", "r") as file:
+                reader = csv.reader(file)
+                reader.__next__()
+                for row in reader:
+                    if row[2] == player_name:
+                        player_team = row[1]
+                        all_player_stats = api.get_live_game_stats(api.get_game_id(player_team,year,month,day),player_name)
+                        
+                        if all_player_stats is None:
+                            return all_player_stats
 
+                        for player in all_player_stats:
+                            if (player.name == player_name):
+                                player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
+        
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        
+        
         return player_stats
     ### End of stats methods ###
 ## End of facade class for the API calls ##
@@ -394,11 +408,11 @@ class SportsAPI():
     def download_nba_roster(self):
         self.game_facade.download_nba_roster()
     
-    def get_live_game_stats(self, game_id):
-        return self.game_facade.get_live_game_stats(game_id)
+    def get_live_game_stats(self, game_id, player_name):
+        return self.game_facade.get_live_game_stats(game_id,player_name)
 
-    def get_player_stats(self, player_name):
-        return self.game_facade.find_player_stats(player_name)
+    def get_player_stats(self, player_name,year,month,day):
+        return self.game_facade.get_player_stats(player_name,year,month,day)
 ## End of API class ##
 
 
@@ -417,8 +431,9 @@ How to use the main method:
 
 api = GameFacade()
 
-player = api.get_player_stats("Patrick Baldwin Jr.")
+player = api.get_player_stats("Mo Bamba", "2024", "03", "25")
 
-for stats in player:
-    print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
+if player:
+    for stats in player:
+        print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
 ### End of main method ###
