@@ -24,7 +24,8 @@ def run_ssh(request):
             if action == "stackedDisplay":
                 # Offload the long-running operation to a background task
                 # response_message = run_stacked_display()  # This needs to be offloaded
-                print (my_background_task.delay(2, 3))
+                result = my_background_task.delay(2, 3)
+                print(result.get(timeout=10))
                 # Temporarily, return an immediate response for testing
                 return JsonResponse({"message": "Stacked display operation initiated"})
         except json.JSONDecodeError as e:
