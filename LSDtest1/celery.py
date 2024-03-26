@@ -4,9 +4,9 @@ from celery import Celery
 from django.conf import settings
 
 # Set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LSDtest1.settings')
 
-app = Celery('myproject')
+app = Celery('LSDtest1')
 
 # Using a string here means the worker process will serialize
 # the configuration object to child processes.
