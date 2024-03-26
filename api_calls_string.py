@@ -27,94 +27,115 @@ teams_file = "teams.csv"
 
 # makes a csv file containing the team ids
 def get_teams():
-    try:
-        connection.request("GET", f"/nba/trial/v8/en/seasons/{season_year}/{season_type}/rankings.json?api_key={api_key}")
-        response = connection.getresponse()
+    #if teams_file exists, exit (and save an api call)
+    if os.path.isfile(teams_file):
+        return None
+    else:
+        try:
+            # Connection and response status 
+            connection.request("GET", f"/nba/trial/v8/en/seasons/{season_year}/{season_type}/rankings.json?api_key={api_key}")
+            response = connection.getresponse()
+    
+            if response.status != 200:
+                print("Error: ", response.status, response.reason)
+                return None
+    
+            # Read & decode data
+            data = response.read()
+            json_data = json.loads(data.decode("utf-8"))
 
-        if response.status != 200:
-            print("Error: ", response.status, response.reason)
-            return None
-        
-        data = response.read()
-        print(data)
-        json_data = json.loads(data.decode("utf-8"))
-
-        teams = open(teams_file,"w")
-        writer = csv.writer(teams)
-        writer.writerow(["Team ID", "Market", "Team Name"])
-        for conference in json_data['conferences']:
-            print("new conference")
-            for division in conference['divisions']:
-                print("new division")
-                for team in division['teams']:
-                    print("new team")
-                    writer.writerow([team['id'],team['name'],team['market']])
+            # creates file to store teams
+            teams = open(teams_file,"w")
+            writer = csv.writer(teams)
+            writer.writerow(["Team ID", "Market", "Team Name"])
+            # goes through each thing to write down all teams
+            for conference in json_data['conferences']:
+            
+                for division in conference['divisions']:
+                
+                    for team in division['teams']:
+                    
+                        writer.writerow([team['id'],team['name'],team['market']])
                     
                     
-    # Catching exceptions #
-    except json.JSONDecodeError as e:
-        print(f"A JSONDecodeError occurred: {str(e)}")
-    except http.client.HTTPException as e:
-        print(f"An exception occurred: {str(e)}")
-    except Exception as e:
-        print(f"An exception occurred: {str(e)}")
-    return None
+        # Catching exceptions #
+        except json.JSONDecodeError as e:
+            print(f"A JSONDecodeError occurred: {str(e)}")
+        except http.client.HTTPException as e:
+            print(f"An exception occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        return None
 
 #makes a csv file containing player ids and name
 def get_team_players(team_id):
-    try:
-        connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}/profile.json?api_key={api_key}")
-        response = connection.getresponse()
+    #if team_file exists, exit (and save an api call)
+    if os.path.isfile(f"{team_id}.csv"):
+        return None
+    else:
+        try:
 
-        if response.status != 200:
-            print("Error: ", response.status, response.reason)
-            return None
-        
-        data = response.read()
-    
-        json_data = json.loads(data.decode("utf-8"))
-        players = open(f"{team_id}.csv","w")
-        writer = csv.writer(players)
-        writer.writerow(["Player ID", "Player Name"])
-        for player in json_data['players']:
-            writer.writerow([player['id'],player['full_name']])
+            # Connection and response status 
+            connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}/profile.json?api_key={api_key}")
+            response = connection.getresponse()
+
+            if response.status != 200:
+                print("Error: ", response.status, response.reason)
+                return None
+
+            # read and decode
+            data = response.read()
+            json_data = json.loads(data.decode("utf-8"))
+
+            # create team file
+            players = open(f"{team_id}.csv","w")
+            writer = csv.writer(players)
+            writer.writerow(["Player ID", "Player Name"])
+            
+            # write all players to team file
+            for player in json_data['players']:
+                writer.writerow([player['id'],player['full_name']])
                     
                     
                     
-    # Catching exceptions #
-    except json.JSONDecodeError as e:
-        print(f"A JSONDecodeError occurred: {str(e)}")
-    except http.client.HTTPException as e:
-        print(f"An exception occurred: {str(e)}")
-    except Exception as e:
-        print(f"An exception occurred: {str(e)}")
-    return None
+        # Catching exceptions #
+        except json.JSONDecodeError as e:
+            print(f"A JSONDecodeError occurred: {str(e)}")
+        except http.client.HTTPException as e:
+            print(f"An exception occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        return None
 
 
-#Percentage
+#Percentage (turns numbers into a percentage)
 def per(made, att):
     return 100 * made // att
 
 
+# gets and returns player stats in a single string
 def get_player_stats(player_id):
     try:
+        # Connection and response status
         connection.request("GET", f"/nba/trial/v8/en/players/{player_id}/profile.json?api_key={api_key}")
         response = connection.getresponse()
 
         if response.status != 200:
             print("Error: ", response.status, response.reason)
             return None
-        
+
+        # read and decode
         data = response.read()
-    
         json_data = json.loads(data.decode("utf-8"))
+
+        # Adds name and team to output
         output = "Name: " + json_data['full_name']
         team = json_data['team']
         output +=" Team: " + team['market'] + " " + team['name']
 
         team_id = team['id']
 
-
+        # finds the relevant season
         for season in json_data['seasons']:
             
             if (season['type'] == season_type) and (season['year'] == season_year):
@@ -122,6 +143,7 @@ def get_player_stats(player_id):
                 for team in season['teams']:
                     
                     if team['id'] == team_id:
+                        # collects the relevant data, and adds it to the output
                         data = team['total']
                         
                         FGM = data['field_goals_made']
@@ -173,31 +195,36 @@ def get_schedule():
         with open(schedule_file, 'r') as check:
             reader = csv.reader(check)
             line = 0
-            
+
+            # look at second line (skips beginning)
             for row in reader:
-                
-                #if year is season_year, end
                 if line == 1:
                     
                     date_time = row[0]
 
+                    #if the date fits the season-year, it's up to date
                     if date_time[0:4] == str(season_year):
                         return None
+                    else: # if not, continue with the rest of the program
+                        break
                 line += 1
     
         
                 
     try:
+        # connection and response status
         connection.request("GET", f"/nba/trial/v8/en/games/{season_year}/{season_type}/schedule.json?api_key={api_key}")
         response = connection.getresponse()
 
         if response.status != 200:
             print("Error: ", response.status, response.reason)
             return None
-        
+
+        # read and ... (yawn) ... decode
         data = response.read()
-    
         json_data = json.loads(data.decode("utf-8"))
+
+        # create file, write times and teams of games
         with open(schedule_file,"w", newline = "") as games:
             writer = csv.writer(games)
             writer.writerow(["Time", "Home", "Away"])
@@ -221,33 +248,40 @@ def get_schedule():
 # checks if there's any games between hours (est military time)
 #   and returns all
 def game_in_time(hour_start, hour_end):
+    # makes sure there's a schedule to read from
     get_schedule()
-    
+
+    #opens the schedule file
     output = ""
     with open(schedule_file, 'r') as file:
         games = csv.reader(file)
         first = True
         for game in games:
-            if first:
+            if first: # gets past the first line
                 first = False
             else:
+                # gets the date of the game
                 time = game[0]
                 game_year = int(time[0:4])
                 game_month = int(time[5:7])
                 game_day = int(time[8:10])
-                #check year, month, day
+                #checks the date
                 if game_year == year:
                     
                     if game_month == month:
                         
                         if game_day == day:
-                            
+                            # checks the time
                             game_hour = int(time[11:13])
 
                             if (game_hour >= hour_start) and (game_hour <= hour_end):  # game found
                                 output += f"{game[1]}vs{game[2]}\n"
+                        #if we've gone past the current date, stop checking
+                        elif game_day > day:
+                            return output
+                            
 
-    return output
+    return output # just in case there are no more games in the season
                                           
 #game_in_time(20,22)     
 
