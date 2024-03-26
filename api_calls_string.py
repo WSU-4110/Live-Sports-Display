@@ -164,9 +164,101 @@ def get_player_stats(player_id):
         print(f"An exception occurred: {str(e)}")
     return None
 
-i = get_player_stats("0718c0e1-7804-471a-b4ed-cde778948d4d")
 
-print(i)
+
+def get_schedule():
+    
+    #if schedule exists, check to see if it's up to date
+    if os.path.isfile(schedule_file):
+        with open(schedule_file, 'r') as check:
+            reader = csv.reader(check)
+            line = 0
+            
+            for row in reader:
+                
+                #if year is season_year, end
+                if line == 1:
+                    
+                    date_time = row[0]
+
+                    if date_time[0:4] == str(season_year):
+                        return None
+                line += 1
+    
+        
+                
+    try:
+        connection.request("GET", f"/nba/trial/v8/en/games/{season_year}/{season_type}/schedule.json?api_key={api_key}")
+        response = connection.getresponse()
+
+        if response.status != 200:
+            print("Error: ", response.status, response.reason)
+            return None
+        
+        data = response.read()
+    
+        json_data = json.loads(data.decode("utf-8"))
+        with open(schedule_file,"w", newline = "") as games:
+            writer = csv.writer(games)
+            writer.writerow(["Time", "Home", "Away"])
+            for game in json_data['games']:
+                #Time conversion
+                gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
+                est_time = gmt_time - datetime.timedelta(hours=4)
+                est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
+                writer.writerow([est_time_str,game['home']['name'],game['away']['name']])
+                        
+                    
+    # Catching exceptions #
+    except json.JSONDecodeError as e:
+        print(f"A JSONDecodeError occurred: {str(e)}")
+    except http.client.HTTPException as e:
+        print(f"An exception occurred: {str(e)}")
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
+    return None
+
+# checks if there's any games between hours (est military time)
+#   and returns all
+def game_in_time(hour_start, hour_end):
+    get_schedule()
+    
+    output = ""
+    with open(schedule_file, 'r') as file:
+        games = csv.reader(file)
+        first = True
+        for game in games:
+            if first:
+                first = False
+            else:
+                time = game[0]
+                game_year = int(time[0:4])
+                game_month = int(time[5:7])
+                game_day = int(time[8:10])
+                #check year, month, day
+                if game_year == year:
+                    
+                    if game_month == month:
+                        
+                        if game_day == day:
+                            
+                            game_hour = int(time[11:13])
+
+                            if (game_hour >= hour_start) and (game_hour <= hour_end):  # game found
+                                output += f"{game[1]}vs{game[2]}\n"
+
+    return output
+                                          
+#game_in_time(20,22)     
+
+#get_teams()
+#get_team_players("583eccfa-fb46-11e1-82cb-f4ce4684ea4c")
+
+##i = get_player_stats("0718c0e1-7804-471a-b4ed-cde778948d4d")
+##print(i)
+
+
+#get_schedule()
 
 #get_teams()
 #get_team_players("583eccfa-fb46-11e1-82cb-f4ce4684ea4c")
