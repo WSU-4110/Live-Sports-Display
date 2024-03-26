@@ -1,3 +1,4 @@
+""" to be updated 
 import cv2
 import glob
 import pytesseract
@@ -53,7 +54,8 @@ def find_name_matches(value):
 
 
 print("ALL: ",find_name_matches(text))
-""" old code below
+"""
+
 #from asyncio.windows_events import NULL #####changing windows specific for heroku deploment
 from PIL import Image
 import pytesseract
@@ -176,4 +178,4 @@ def imageToPlayerNames(path):
 
 #unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\nba-roster-1.png')
 #Example file path being passed
-"""
+
