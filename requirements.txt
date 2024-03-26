@@ -34,3 +34,25 @@ urllib3==2.2.1
 virtualenv==20.25.0
 celery==5.3.6 # for ssh background task
 redis==4.1.4 # for ssh background task
+
+#fortextparsing
+contourpy==1.1.1
+cycler==0.12.1
+fonttools==4.43.1
+kiwisolver==1.4.5
+matplotlib==3.8.0
+# numpy==1.26.0 fortext parsing
+opencv-python==4.9.0.80
+pandas==2.2.1
+# Pillow==10.0.1
+# pipenv==2023.12.1
+pyparsing==3.1.1
+# pytesseract==0.3.10
+python-dateutil==2.8.2
+pytz==2023.3.post1
+scipy==1.11.3
+# setuptools==69.1.1
+six==1.16.0
+tabulate==0.9.0
+# tzdata==2023.3
+# virtualenv==20.25.1
