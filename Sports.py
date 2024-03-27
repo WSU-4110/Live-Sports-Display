@@ -8,32 +8,70 @@
 # [Description of Program Here]
 #  Drives my LED Matrix Panel, Adifruit Display
 #==========================================================
-
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
 from datetime import datetime
+
+from api_calls import GameFacade
+import api_calls
+import http.client
 import time
+import json
+import csv
+
 
 class PlayerStats:
-    def __init__(self, name, team, jnumber):
+    def __init__(self, name, team ,points ,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
         self.name = name
         self.team = team
-        self.jnumber = jnumber
+        self.assists = assists
+        self.points = points
+        self.rebounds = rebounds
+        self.blocks = blocks
+        self.steals = steals
+        self.field_goals_percent = field_goals_percent
+        self.three_pointers_percent = three_pointers_percent
+        self.free_throws_percent = free_throws_percent
+    
+
+    def update_stats(self,name,team,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+        self.name = name
+        self.team = team
+        self.points = points
+        self.assists = assists
+        self.rebounds = rebounds
+        self.blocks = blocks
+        self.steals = steals
+        self.field_goals_percent = field_goals_percent
+        self.three_pointers_percent = three_pointers_percent
+        self.free_throws_percent = free_throws_percent
+
+
 
 class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
         super(RunText, self).__init__(*args, **kwargs)
+        
+        
         self.players = [
-            PlayerStats("Player 1", "Team A", 23),
-            PlayerStats("Player 2", "Team B", 34),
-            PlayerStats("Player 3", "Team C", 45),
-            PlayerStats("Player 4", "Team D", 56),
-            PlayerStats("Player 5", "Team E", 67),
-            PlayerStats("Player 6", "Team F", 78),
-            PlayerStats("Player 7", "Team G", 89),
-            PlayerStats("Player 8", "Team H", 90)
+            PlayerStats("Player 1", "Team A" ,"0" ,"0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 2", "Team B" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 3", "Team C","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 4", "Team D" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 5", "Team E" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 6", "Team F","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 7", "Team G","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 8", "Team H" ,"0" , "0", "0", "0", "0", "0", "0", "0")
         ]
+        
+        
+        #initualise team positions
+        self.team_positions = None
+        
+        #initualizing Players from File
+        #self.loadPlayersFromFile()
+        
         # Loading Font
         self.font = graphics.Font()
         self.font.LoadFont("../../../fonts/4x6.bdf")
@@ -41,12 +79,59 @@ class RunText(SampleBase):
         # Define colors
         self.name_color = graphics.Color(255, 0, 0)
         self.team_color = graphics.Color(0, 255, 0)
+        self.assists = graphics.Color(0, 255, 0)
+        self.rebounds = graphics.Color(0, 255, 0)
+        self.blocks = graphics.Color(0, 255, 0)
+        self.steals = graphics.Color(0, 255, 0)
+
         self.jnumber_color = graphics.Color(0, 0, 255)
+        
         self.datetime_color = graphics.Color(255, 255, 255)
+        self.teamstats = graphics.Color(255,255,0)
+
+        self.field_goals_percent = graphics.Color(0, 255, 0)
+        self.three_pointers_percent = graphics.Color(0, 255, 0)
+        self.free_throws_percent = graphics.Color(0, 255, 0)
         
-        #initualise team positions
-        self.team_positions = None
-        
+    def loadPlayersFromFile(self):
+        self.players = []
+        try:
+            with open('Players.txt','r') as file:
+                line = file.readline()
+                player_names = line.strip().split(',')
+                for name in player_names:
+                    self.players.append(PlayerStats(name, "random", "0", "0", "0", "0", "0", "0%", "0%", "0%"))
+   
+        except IOError as e:
+            print(f"An error occurred while reding the file: {e}")
+            return
+                
+    def populatePlayerStats(self):
+        player_stats_lists = []
+        api = GameFacade()
+       
+        for player in self.players:
+            time.sleep(1)
+            player_stats_lists= api.get_player_stats(player.name, "2024", "03", "25")
+            time.sleep(1)
+       
+    
+            for stats in player_stats_lists:
+                found = False
+                for player in self.players:
+                   
+                    if isinstance(player, PlayerStats) and player.name == stats.name:
+                        player.update_stats(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
+                        found = True
+                        break
+                if not found:
+                    print(f"No matching player found for stats.name = {stats.name} in self.players")
+
+    def set_default_values_for_player(self, player, updated_players):
+        updated_players.append(PlayerStats(
+            player.name, "Data not available", "00", "0", "0", "0", "0", "0%", "0%", "0%"
+        ))
+           
     def displayDateTime(self,offscreen_canvas):
         # Getting Current Time
         now = datetime.now()
@@ -76,11 +161,25 @@ class RunText(SampleBase):
     def clearScreen(self,offscreen_canvas):
         offscreen_canvas.Clear()
         
+        
+    def determinePercentColor(number):
+        
+        if number < 25:
+             return graphics.Color(255,0,0) #RED
+        elif number < 50:
+            return graphics.Color(255,165,0) #ORANGE
+        elif number <75:
+            return graphics.Color(255,255,0) #YELLLO
+        else:
+            return graphics.Color(0,128,0) #GREEn
+                
+            
+        
     def displayPlayerStats(self, offscreen_canvas):
         
         # Player name Lengths
         clearance = 2
-        text_height = 6
+        text_height = 6;
         separation = 5
         
         player_name_lengths = []
@@ -88,36 +187,45 @@ class RunText(SampleBase):
             # Temporarily draw the text offscreen to measure its length
             length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player.name)
             player_name_lengths.append(length)
+
         max_name_length = max(player_name_lengths)
+        
         
 
         for i, player in enumerate(self.players):
+            player_text = f"{player.team} ,Points: {player.points} ,Assists: {player.assists} ,Rebounds: {player.rebounds} ,Blocks: {player.blocks} ,Steals: {player.steals} ,FG%: {player.field_goals_percent} ,3P%: {player.three_pointers_percent} ,FT%: {player.free_throws_percent}"
+            
+            player_text_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player_text)
+            
+        
             vertical_pos =  text_height * (i + 1)
         
-            # Draw the scrolling team name
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos, self.team_color, player.team)
+            # Draw the scrolling team stats
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos,self.teamstats,player_text)
             self.team_positions[i] -= 1
     
             # Reset position if text has scrolled off
-            if self.team_positions[i] < -len(player.team) * 6:  # Off the Screen, adjusted to the length of the team name
+            if self.team_positions[i] + player_text_length < 0 :  # Off the Screen, adjusted to the length of the team name
                 self.team_positions[i] = offscreen_canvas.width
 
-            # Draw black rectangles
+            # Draw black rectangles for names
             self.blackRectangle(offscreen_canvas, 0, vertical_pos - text_height+1, max_name_length + clearance + 1, text_height + clearance)
-            self.blackRectangle(offscreen_canvas, offscreen_canvas.width - 11 - (2 * clearance), vertical_pos-text_height, max_name_length + (2 * clearance), text_height + clearance)
+            #Draw black rectangle for jersey number
+            #self.blackRectangle(offscreen_canvas, offscreen_canvas.width - 11 - (2 * clearance), vertical_pos-text_height, max_name_length + (2 * clearance), text_height + clearance)
     
             # Draw the stationary player name
             graphics.DrawText(offscreen_canvas, self.font, clearance, vertical_pos, self.name_color, player.name)
-    
+    '''
             # Draw the stationary player number with '#'
-            graphics.DrawText(offscreen_canvas, self.font, offscreen_canvas.width - 11 - clearance, vertical_pos, self.name_color, "#" + str(player.jnumber))
-            
+            graphics.DrawText(offscreen_canvas, self.font, offscreen_canvas.width - 11 - clearance, vertical_pos, self.name_color, "#")
+    '''
         
     def run(self):
         if not self.team_positions:
             self.team_positions = [self.matrix.width for _ in self.players]
         
         offscreen_canvas = self.matrix.CreateFrameCanvas()
+
         
         while True:
             # Clear Display
@@ -127,8 +235,7 @@ class RunText(SampleBase):
             # Draw date and time
             self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-            # Time inbetween each screen refresh
-            time.sleep(0.02)
+            time.sleep(0.3)
     
 class LEDDisplayFacade:
     def __init__(self):
@@ -141,8 +248,14 @@ class LEDDisplayFacade:
         self.run_text.run()
 
 if __name__ == "__main__":
+    api = GameFacade()  
+  
+
     facade = LEDDisplayFacade()
+    facade.run_text.loadPlayersFromFile()
+    facade.run_text.populatePlayerStats()
     while True:
         facade.display_info()
     
     
+
