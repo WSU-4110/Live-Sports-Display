@@ -4,9 +4,9 @@
 # Author:     Timothy Kosinski
 # Date:       06MAR2024
 # Description:
-#
-# [Description of Program Here]
 #  Drives my LED Matrix Panel, Adifruit Display
+# Takes In NBA Player Names and Displays Players Stats
+# By using api_calls.py (API) to run display
 #==========================================================
 #!/usr/bin/env python
 from samplebase import SampleBase
