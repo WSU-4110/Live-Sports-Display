@@ -1,6 +1,9 @@
 from asyncio.windows_events import NULL
 from PIL import Image
 import pytesseract
+import csv
+from fuzzywuzzy import fuzz
+
 
 from nba_api.stats.static import players
 
@@ -14,6 +17,27 @@ def OCR_Image(path):
     txt = pytesseract.image_to_string(path)
     return txt
 #Basic function to take a png file on local system and return a string of text
+
+def isCloseMatch(ocr_result, expected_name, threshold=70):
+    similarity_score = fuzz.partial_ratio(ocr_result, expected_name)
+    return similarity_score >= threshold
+#This function takes two strings and scores how similar they are 
+#This can allow close but imperfect matches to be accepted
+
+def anyMatch(s1):
+    with open('Database.csv', mode='r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for row in csv_reader:
+            # Check if the row has enough elements to access the specified column
+            if len(row) > 1:
+                # Access the element in the specified column
+                column_element = row[1]
+                if(isCloseMatch(s1,column_element)):
+                    return column_element;
+    return 0;
+                    
+            
+
 
 def findFullName(s,i):
     spaceCount = 0
@@ -89,7 +113,7 @@ def searchForNames(s1):
         sbuff = findFullName(s1,i)
         lastNameLength = len(getLastNameFromString(sbuff))
         i = findNextStartIndex(s1,i)
-        x = isPlayer(sbuff)
+        x = anyMatch(sbuff)
         if(x!=0):
             arr.append(x)      
     
@@ -97,9 +121,12 @@ def searchForNames(s1):
 #This function takes a cleaned string and searches it for player names
 #It prints any player names it finds
 
+
+
+
 def cleanText(s1):
     s2 = ""
-    s1 = s1.replace("(", "").replace(")", "").replace("/", "")
+    s1 = s1.replace('\n',' ').replace("(", "").replace(")", "").replace("/", "").replace('0','o')
     for ch in s1:
         if(ch.isalpha() or ch==" " or ch=="-"):
             s2 = s2+ch
@@ -108,13 +135,20 @@ def cleanText(s1):
 #This function removed unwanted characters such as parantheses and slashes
 #This prevents regex errors from occuring when passing text into other functions
 
+def removeDups(arr):
+    uniqueStrings = set()
+    after = []
+    for s in arr:
+        # Check if the string is not already in the set of unique strings
+        if s not in uniqueStrings:
+            # Add the string to the set and result list
+            uniqueStrings.add(s)
+            after.append(s)
+
+    after.remove("Full Name")
+    return after
 
 unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\Sample-1.png')
 #Example file path being passed
-
-
-
-
-
 
 

@@ -6,6 +6,7 @@ def imageToPlayerNames(path):
     unprocessedText = TextParsing.OCR_Image(path)
     cleanText = TextParsing.cleanText(unprocessedText)
     arrayOfPlayerNames = TextParsing.searchForNames(cleanText)
+    arrayOfPlayerNames = TextParsing.removeDups(arrayOfPlayerNames)
     return arrayOfPlayerNames
 #Function that takes a file path to an image and returns NBA Player names it could find in said image
 #Relies on functions in TextParsing.py
