@@ -109,7 +109,7 @@ def cleanText(s1):
 #This prevents regex errors from occuring when passing text into other functions
 
 
-unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\nba-roster-1.png')
+unprocessedText = OCR_Image(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\Sample-1.png')
 #Example file path being passed
 
 
