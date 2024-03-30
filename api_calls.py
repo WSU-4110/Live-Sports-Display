@@ -348,19 +348,24 @@ class GameFacade:
         player_team = None
         player_stats = []
         all_player_stats = []
-        
-        with open("2023_nba_roster.csv", "r") as file:
-            reader = csv.reader(file)
-            reader.__next__()
-            for row in reader:
-                if row[2] == player_name:
-                    player_team = row[1]
-                    all_player_stats = api.get_live_game_stats(api.get_game_id(player_team, year, month, day))
-                    
-                    for player in all_player_stats:
-                        if (player.name == player_name):
-                            player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
 
+        try:
+            with open("2023_nba_roster.csv", "r") as file:
+                reader = csv.reader(file)
+                reader.__next__()
+                for row in reader:
+                    if row[2] == player_name:
+                        player_team = row[1]
+                        all_player_stats = api.get_live_game_stats(api.get_game_id(player_team, year, month, day))
+                        
+                        for player in all_player_stats:
+                            if (player.name == player_name):
+                                player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
+        
         return player_stats
     ### End of stats methods ###
 ## End of facade class for the API calls ##
@@ -398,7 +403,7 @@ class SportsAPI():
         return self.game_facade.get_live_game_stats(game_id)
 
     def get_player_stats(self, player_name):
-        return self.game_facade.find_player_stats(player_name)
+        return self.game_facade.get_player_stats(player_name)
 ## End of API class ##
 
 
@@ -415,7 +420,7 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 
-api = GameFacade()
+api = SportsAPI()
 
 player = api.get_player_stats("Patrick Baldwin Jr.")
 
