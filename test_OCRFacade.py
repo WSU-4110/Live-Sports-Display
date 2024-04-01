@@ -6,6 +6,10 @@ def test_cleanText():
     assert testString == "John Smith-Brown ghi";
     testString = AnOCR.cleanText("")
     assert testString == "";
+    testString = AnOCR.cleanText(" ")
+    assert testString == " ";
+    testString = AnOCR.cleanText("A")
+    assert testString == "A";
     testString = AnOCR.cleanText(4536)
     assert testString == -1
     
