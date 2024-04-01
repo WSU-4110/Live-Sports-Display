@@ -20,30 +20,36 @@ class OCR:
     #Private
 
     def cleanText(self, s1):
-        s2 = ""
-        s1 = s1.replace("(", "").replace(")", "").replace("/", "")
-        for ch in s1:
-            if(ch.isalpha() or ch==" " or ch=="-"):
-               s2 = s2+ch
+        if type(s1) is str:
+            s2 = ""
+            s1 = s1.replace("(", "").replace(")", "").replace("/", "")
+            for ch in s1:
+                if(ch.isalpha() or ch==" " or ch=="-"):
+                   s2 = s2+ch
         
-        return s2
+            return s2
+        return -1
     #This function removed unwanted characters such as parantheses and slashes
     #This prevents regex errors from occuring when passing text into other functions
     #Private
 
+   
+
     def findFullName(self, s,i):
-        spaceCount = 0
-        restOfString = s[i:]
-        temp_str = ""
-        while(spaceCount<2):
-            if(len(restOfString)<=len(temp_str)):
-               return temp_str
-            if(s[i]==" "):
-               spaceCount = spaceCount+1
-            if(spaceCount!=2):
-                temp_str = temp_str+s[i]
-                i = i +1
-        return temp_str
+        if type(s) is str and type(i) is int:
+            spaceCount = 0
+            restOfString = s[i:]
+            temp_str = ""
+            while(spaceCount<2):
+                if(len(restOfString)<=len(temp_str)):
+                   return temp_str
+                if(s[i]==" "):
+                   spaceCount = spaceCount+1
+                if(spaceCount!=2):
+                    temp_str = temp_str+s[i]
+                    i = i +1
+            return temp_str
+        return -1
     #Function Starts at an index of a string and moves forward capturing a substring until it encounters two spaces
     #If it starts at a players name it will create a substring of their full name 
     #Private
@@ -137,6 +143,5 @@ MyOCR = OCR()
 #Creating instance of OCR facade class
 #Only one instance needs to be created and utilized for all images
 
-print(MyOCR.imageToPlayerNames(r'C:\Users\Ayman\source\repos\WSU-4110\Live-Sports-Display\nba-roster-1.png'))
-#Utilizing OCR on an image
+
 
