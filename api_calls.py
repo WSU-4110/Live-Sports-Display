@@ -312,7 +312,7 @@ class GameFacade:
 
     ### Stats methods ###
     '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
-    def get_live_game_stats(self, game_id, player_name):
+    def get_live_game_stats(self, game_id):
         players = []
 
         try:
@@ -320,7 +320,7 @@ class GameFacade:
             response = self.connection.getresponse()
             
             if response.status == 404:
-                print(player_name + " is not playing a game today.")
+                print("is not playing a game today.")
                 return players
 
             if response.status != 200 and response.status != 404:
@@ -360,7 +360,7 @@ class GameFacade:
                 for row in reader:
                     if row[2] == player_name:
                         player_team = row[1]
-                        all_player_stats = api.get_live_game_stats(api.get_game_id(player_team,year,month,day),player_name)
+                        all_player_stats = api.get_live_game_stats(api.get_game_id(player_team,year,month,day))
                         
                         if all_player_stats is None:
                             return all_player_stats
@@ -408,8 +408,8 @@ class SportsAPI():
     def download_nba_roster(self):
         self.game_facade.download_nba_roster()
     
-    def get_live_game_stats(self, game_id, player_name):
-        return self.game_facade.get_live_game_stats(game_id,player_name)
+    def get_live_game_stats(self, game_id):
+        return self.game_facade.get_live_game_stats(game_id)
 
     def get_player_stats(self, player_name,year,month,day):
         return self.game_facade.get_player_stats(player_name,year,month,day)
@@ -431,15 +431,8 @@ How to use the main method:
 
 api = SportsAPI()
 
-player_name = ["Mo Bamba", "LeBron James"]
-for name in player_name:
-    player = api.get_player_stats(name, "2024", "03", "25")
-    if player:
-        for stats in player:
-            print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
+stats = api.get_player_stats("LeBron James", "2024", "01", "29")
 
-schedule = api.get_current_schedule()
-for game in schedule:
-    print (game)
+print(stats[0].points)
 
 ### End of main method ###
