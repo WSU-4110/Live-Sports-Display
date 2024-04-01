@@ -55,70 +55,84 @@ class OCR:
     #Private
 
     def findNextStartIndex(self, s,i):
-        spaceCount = 0
-        temp_str = ""
-        restOfString = s[i:]
-        x = 0
-        while(spaceCount<2):
-            if(len(restOfString)<=len(temp_str)):
-                return (len(temp_str)+i)
-            if(s[i]==" "):
-                if(spaceCount==0):
-                   x = i
-                spaceCount = spaceCount+1
-            if(spaceCount!=2):
-                temp_str = temp_str+s[i]
-                i = i +1
-        return (x+1)
+        if type(s) is str and type(i) is int:
+            spaceCount = 0
+            temp_str = ""
+            restOfString = s[i:]
+            x = 0
+            while(spaceCount<2):
+                if(len(restOfString)<=len(temp_str)):
+                    return (len(temp_str)+i)
+                if(s[i]==" "):
+                    if(spaceCount==0):
+                      x = i
+                    spaceCount = spaceCount+1
+                if(spaceCount!=2):
+                    temp_str = temp_str+s[i]
+                    i = i +1
+            return (x+1)
+        return -1
     #Function similar to findFullName however returns the index after the next space to use as next spot to look for a name
     #Private
 
     def getLastNameFromString(self, s1):
-        i = 0
-        while(s1[i]!=" "):
-            i = i +1
-        return s1[(i+1):]
+        if type(s1) is str:
+            i = 0
+            while(s1[i]!=" "):
+                if(i>=(len(s1)-1)):
+                    return -1
+                i = i +1
+            return s1[(i+1):]
+        return -1
     #This functions takes as input a string with text on two sides of a space a returns the text after the space
     #presumably this will be the last name of the player if the string is a players full name
     #Private
 
     def getFirstNameFromString(self, s1):
-        i = 0
-        while(s1[i]!=" "):
-            i = i +1
-        return s1[:i]
+        if type(s1) is str:
+            i = 0
+            while(s1[i]!=" "):
+                if(i>=(len(s1)-1)):
+                    return -1
+                i = i +1
+            return s1[:i]
+        return -1
     #This functions takes as input a string with text on two sides of a space a returns the text before the space 
     #Private
 
     def isPlayer(self, s1):
-        s2 = self.getLastNameFromString(s1)
-        x = players.find_players_by_last_name(s2)
-        if(len(x)>=1):
-           for item in x:
-               if(item['last_name']==s2):
-                   ch = self.getFirstNameFromString(s1)[-1]
-                   if(item['first_name'][0]==ch):
-                       return (item['first_name']+" "+s2)
+        if type(s1) is str:
+            s2 = self.getLastNameFromString(s1)
+            x = players.find_players_by_last_name(s2)
+            if(len(x)>=1):
+               for item in x:
+                   if(item['last_name']==s2):
+                      ch = self.getFirstNameFromString(s1)[0]
+                      if(item['first_name'][0]==ch):
+                           return (item['first_name']+" "+s2)
         
-        return 0
+            return 0
+        return -1
     #This function takes a string with text on two sides of a space and checks if the second part matches any player last name
     #If it does it returns the full name of said player
     #Private
 
     def searchForNames(self,s1):
-        i = 0
-        sbuff = ""
-        arr = []
-        lastNameLength = 0
-        while((i+lastNameLength)<len(s1)):
-           sbuff = self.findFullName(s1,i)
-           lastNameLength = len(self.getLastNameFromString(sbuff))
-           i = self.findNextStartIndex(s1,i)
-           x = self.isPlayer(sbuff)
-           if(x!=0):
-               arr.append(x)      
+        if type(s1) is str:
+            i = 0
+            sbuff = ""
+            arr = []
+            lastNameLength = 0
+            while((i+lastNameLength)<len(s1)):
+               sbuff = self.findFullName(s1,i)
+               lastNameLength = len(self.getLastNameFromString(sbuff))
+               i = self.findNextStartIndex(s1,i)
+               x = self.isPlayer(sbuff)
+               if(x!=0):
+                   arr.append(x)      
     
-        return arr
+            return arr
+        return -1
     #This function takes a cleaned string and searches it for player names
     #It prints any player names it finds
     #Private
@@ -142,6 +156,3 @@ class OCR:
 MyOCR = OCR()
 #Creating instance of OCR facade class
 #Only one instance needs to be created and utilized for all images
-
-
-
