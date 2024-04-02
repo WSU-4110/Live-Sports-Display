@@ -3,6 +3,7 @@ import json
 import datetime
 import time
 import csv
+import unittest
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
 month = datetime.datetime.now().month
@@ -56,6 +57,10 @@ class GameFacade:
         self.api_key = api_key
         self.connection = http.client.HTTPSConnection("api.sportradar.us")
 
+
+
+
+
     ### Download methods ###
     ''' ONLY USE THESE METHODS WHEN INITIALIZING SYSTEM TO DOWNLOAD 
         NEEDED INFORMATION FOR REDUCING AMOUNT OF API CALLS SUCH AS 
@@ -99,6 +104,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return None
     
+
+
     def download_nba_teams(self) -> None:
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/league/hierarchy.json?api_key={api_key}")
@@ -128,6 +135,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return None
     
+
+
     ''' Get the team roster in format of player name, position, and jersey number and player_id'''
     def download_nba_roster(self):
         nba_team_ids = []
@@ -173,6 +182,8 @@ class GameFacade:
     
 
 
+
+
     ### Game methods ###
     def get_league_standings(self):
         year = datetime.datetime.now().year - 1
@@ -206,6 +217,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return standings
     
+
+
     def get_current_schedule(self):
         schedule = []
         try:
@@ -225,6 +238,8 @@ class GameFacade:
     ### End of game methods ###
 
     
+
+
 
     ### ID methods (Not used on website) ###
     '''Get game id from reading pre-generated nba schedule file'''
@@ -288,6 +303,8 @@ class GameFacade:
 
 
 
+
+
     ### Roster method ###
     def get_team_roster_from_id(self,team_id):
         roster = []
@@ -307,6 +324,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return roster
     ### End of roster methods ###
+
+
 
 
 
@@ -347,6 +366,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return players
     
+
+
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
     def get_player_stats(self, player_name,year,month,day):
         player_team = None
@@ -379,6 +400,10 @@ class GameFacade:
     ### End of stats methods ###
 ## End of facade class for the API calls ##
 
+
+
+
+
 ## API class to call the facade class ##
 class SportsAPI():
     def __init__(self):
@@ -389,6 +414,9 @@ class SportsAPI():
 
     def download_nba_teams(self):
         self.game_facade.download_nba_teams()
+
+    def download_nba_roster(self):
+        self.game_facade.download_nba_roster()
     
     def get_league_standings(self):
         self.game_facade.get_league_standings()
@@ -404,17 +432,14 @@ class SportsAPI():
     
     def get_team_roster_from_id(self, team_id):
         self.game_facade.get_team_roster_from_id(team_id)
-
-    def download_nba_roster(self):
-        self.game_facade.download_nba_roster()
-    
+        
     def get_live_game_stats(self, game_id, player_name):
         return self.game_facade.get_live_game_stats(game_id,player_name)
 
     def get_player_stats(self, player_name,year,month,day):
         return self.game_facade.get_player_stats(player_name,year,month,day)
 ## End of API class ##
-
+    
 
 
 ### Main method to call the API class ###
@@ -430,16 +455,5 @@ How to use the main method:
 '''
 
 api = GameFacade()
-
-player_name = ["Mo Bamba", "LeBron James"]
-for name in player_name:
-    player = api.get_player_stats(name, "2024", "03", "25")
-    if player:
-        for stats in player:
-            print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
-
-schedule = api.get_current_schedule()
-for game in schedule:
-    print (game)
 
 ### End of main method ###
