@@ -433,13 +433,13 @@ class SportsAPI():
     def get_team_roster_from_id(self, team_id):
         self.game_facade.get_team_roster_from_id(team_id)
         
-    def get_live_game_stats(self, game_id, player_name):
-        return self.game_facade.get_live_game_stats(game_id,player_name)
+    def get_live_game_stats(self, game_id):
+        return self.game_facade.get_live_game_stats(game_id)
 
     def get_player_stats(self, player_name,year,month,day):
         return self.game_facade.get_player_stats(player_name,year,month,day)
 ## End of API class ##
-    
+
 
 
 ### Main method to call the API class ###
