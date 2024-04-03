@@ -3,6 +3,5 @@ from .SSH import run_stacked_display  # Ensure this import is correct
 
 @shared_task
 def my_background_task():
-    # Your background task logic here
     run_stacked_display()
     return "Completed"
