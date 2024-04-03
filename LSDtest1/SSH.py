@@ -9,11 +9,15 @@
 # Raspberry Pi via SSH and runs a Python script to control an LED matrix display.
 # The user can interrupt the display script by entering '1'.
 #==========================================================
-"""
+
 
 import paramiko
 import time
 def run_stacked_display():
+    print (testing)
+    return "Stacked display command executed"
+    
+    """
     # SSH connection parameters
     hostname = '192.168.1.49'
     username = 'timkosinski'
