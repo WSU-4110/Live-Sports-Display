@@ -4,6 +4,6 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LSDtest1.settings')
 
-app = Celery('LSDtest1')
+app = Celery('LiveStats')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
