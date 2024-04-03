@@ -23,20 +23,14 @@ def run_ssh(request):
 
             if action == "stackedDisplay":
                 # Offload the long-running operation to a background task
-                # response_message = run_stacked_display()  # This needs to be offloaded
-                result = my_background_task.delay()
-                print(result)
-                return JsonResponse({"message": "Task is running in the background"})
+                task_id = my_background_task.delay()  # Start the task
+                return JsonResponse({"message": "Task is running in the background", "task_id": str(task_id)})
             else:
                 return JsonResponse({"error": "Invalid request"}, status=400)
-                # Temporarily, return an immediate response for testing
-               # return JsonResponse({"message": "Stacked display operation initiated"})
-        except json.JSONDecodeError as e:
-            # Handle JSON decoding error (malformed JSON)
+        except json.JSONDecodeError:
             return JsonResponse({"message": "Invalid JSON format"}, status=400)
-
-    # If the request method isn't POST or if the action is not specified or recognized
     return JsonResponse({"message": "Invalid request"}, status=400)
+
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
 def handle_uploaded_file(f, file_name):
