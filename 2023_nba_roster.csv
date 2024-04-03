@@ -108,7 +108,6 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Mamadi Diakite,F,25,c258dbfb-74dc-4222-a07b-f906370e945f
 583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Charlie Brown Jr.,G,4,c64b2514-98dc-4cd9-a920-5b36abb7c252
 583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Josh Hart,G,3,d6fbf8f8-bb4a-43f7-95f6-498a5e042138
-583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Kai Jones,F-C,88,116f036d-9233-462b-80bc-3ede69b97706
 583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Jeff Dowtin Jr.,G,11,2d2017ed-9196-434e-9fb4-9bb904bda4ab
 583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Ricky Council IV,G,16,3c721dcc-8d35-494a-aa85-b696c0ecda48
 583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Robert Covington,F,33,3e512d9e-ff9c-4f23-a4fd-a88128ee3af2
@@ -147,7 +146,6 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Payton Pritchard,G,11,0718c0e1-7804-471a-b4ed-cde778948d4d
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Oshae Brissett,F-G,12,36c27a5d-c5bd-4e81-83b6-c77457103855
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Kristaps Porzingis,F-C,8,3c5901ef-af1d-441d-aeed-8e0a93cead49
-583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jordan Walsh,F,27,59f3c089-7642-4792-99a2-97795c3d7648
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jrue Holiday,G,4,65700e81-3aa0-49a9-8a94-004f2cfb64e5
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,JD Davison,G,20,6e468041-8174-4161-8c1d-8ac620e0cbb0
 583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Neemias Queta,C,88,7cfc1044-54f9-4788-af5f-8d943f992e0d
@@ -172,6 +170,13 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Kelly Olynyk,F-C,41,8e288d6e-50b8-404b-812b-823ae5bab61f
 583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Mouhamadou Gueye,F,16,9f8b7ec7-cec6-4c8a-9a06-ca123df80dae
 583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Ochai Agbaji,G,30,a7466782-6f87-414f-9458-7fea82922e00
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Kobi Simmons,G,8,c494c5a5-3155-40b1-923e-da846c2e232f
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jordan Nwora,F,13,c7a6b9c5-c600-49d9-b7be-e2b12b464e40
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Immanuel Quickley,G,5,cb0b5991-53e4-4dce-bf95-215fd6ecf728
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jakob Poeltl,C,19,e1b3d3d5-b4b1-481a-b5b9-efe4231f48bf
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Garrett Temple,G-F,17,ee2644c1-1260-4bf4-9c70-7c5b0cee4770
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Chris Boucher,F,25,f01d5d8d-f949-437a-a23f-3835c0939ced
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Bruce Brown,G-F,11,fc058e75-1015-4bbe-8fab-925d5f6d83fb
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Lonzo Ball,G,2,0f1de951-5a0e-4bc7-977c-8dafd0fbf121
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Henri Drell,F,77,111cb5fa-fb56-47d5-8618-ce3ab6da67f8
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Andrew Funk,G,30,1d2b0dcb-23f3-4263-8842-30b8acb556ce
@@ -220,15 +225,6 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Troy Brown Jr.,F,7,5350a897-aa31-4510-8feb-e709e1feb844
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Cade Cunningham,G,2,57d55cd4-6ab8-4255-a248-bef800c0cbab
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Tosan Evbuomwan,F,18,68ed2fac-e117-48e1-ac43-314098f600ea
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Chimezie Metu,F-C,5,72a69d30-cf07-4b5f-94ad-9c76832788bc
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Taj Gibson,F,67,9c8dc8ee-6207-48d5-81ee-f362f5e17f9b
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Isaiah Stewart,F-C,28,9d4d6c87-78db-4556-b94a-bb8d566dd004
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Buddy Boeheim,F,35,abceaea3-47b0-43fb-b9f7-75f378e2d409
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Evan Fournier,G-F,31,b736d95c-8474-48b2-9000-24ce926eace3
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Stanley Umude,G,17,c2a8d4de-dee9-4999-944d-5e0797b45480
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Quentin Grimes,G,24,e8486226-53e1-4857-b5f0-8b6fe88bdd8a
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Jaden Ivey,G,23,ec887131-efba-43a0-ad0a-0757ab3f0399
-583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Simone Fontecchio,F,19,fda266ab-06e1-4591-80fa-73f027979b63
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Pat Connaughton,G,24,298852ca-299d-4cb9-a9e5-6ac909582f78
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,TyTy Washington Jr.,G,23,3054d6e1-033b-4b8d-93e5-b807ea122c75
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Danilo Gallinari,F,12,47cd6421-0ce1-431e-9b9c-a8d9bfd0eb04
@@ -314,6 +310,7 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Robert Williams III,C-F,35,c20dfb58-5622-405e-90b1-92b79ee97461
 583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Justin Minaya,F,24,d35f38c6-bcd9-42c4-b93a-71332581353f
 583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Duop Reath,C,26,dc929037-1cbf-4a60-a4d8-59636641ae88
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Shaedon Sharpe,G,17,eb0bd3d9-4bf0-4cc3-bbdf-c79e2255c175
 583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Malcolm Brogdon,G,11,f7134fc8-b298-41fd-933d-d0c4a5d8f6ac
 583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Jabari Walker,F,34,ff065b75-4031-474c-9610-c505db2ca63e
 583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,DeAndre Jordan,C,6,0036a1fa-ff9a-44a5-8061-68b828ee2b1e
@@ -345,6 +342,7 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Jaren Jackson Jr.,F-C,13,3e492a6a-ed3c-499d-b3f5-ff68ca16f6fd
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Derrick Rose,G,23,48341095-ae5a-4d61-bcc8-1b0ceed870b2
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Desmond Bane,G,22,49962b13-0afc-43f5-a3e2-7e37b7736260
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Zavier Simpson,G,9,7a30c43d-a206-476d-b5b2-75b419445ae9
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,John Konchar,G-F,46,906578a8-c01e-4799-a972-2b47e02108b9
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Ja Morant,G,12,9983bed6-e53c-4c65-a90a-51546a0e3352
 583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Maozinha Pereira,F,25,99e42507-9b13-4298-a8e3-a4c986c8c28f
