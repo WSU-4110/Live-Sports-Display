@@ -55,7 +55,6 @@ def test_get_player_stats_valid():
     player_stats = api.get_player_stats(player_name, year, month, day)
 
     points = player_stats[0].points
-    
     time.sleep(1)
 
     assert points == points_expected

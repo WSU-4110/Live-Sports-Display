@@ -278,8 +278,6 @@ class GameFacade:
 
     
 
-
-
     ### ID methods (Not used on website) ###
     '''Get game id from reading pre-generated nba schedule file'''
     def get_game_id(self, team_name, year, month, day) -> int:
@@ -376,13 +374,10 @@ class GameFacade:
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
-<<<<<<< HEAD
             
             if response.status == 404:
                 print("is not playing a game today.")
                 return players
-=======
->>>>>>> 52a7c4bed429d6d864d67399696161bd66325a45
 
             if response.status != 200 and response.status != 404:
                 print("Error: ", response.status, response.reason)
@@ -424,12 +419,17 @@ class GameFacade:
                 for row in reader:
                     if row[2] == player_name:
                         player_team = row[1]
-<<<<<<< HEAD
                         all_player_stats = api.get_live_game_stats(api.get_game_id(player_team,year,month,day))
                         
                         if all_player_stats is None:
                             return all_player_stats
-=======
+
+                        for player in all_player_stats:
+                            if (player.name == player_name):
+                                player_stats.append(PlayerStats(player.name, player.team, player.points, player.assists, player.rebounds, player.blocks, player.steals, player.field_goals_percent, player.three_pointers_percent, player.free_throws_percent))
+        
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
             
             with open("2023_season_schedule.csv", "r") as file:
                 reader = csv.reader(file)
@@ -437,7 +437,6 @@ class GameFacade:
                 for row in reader:
                     if row[1] == player_team or row[2] == player_team and row[3] == f"{year}-{month}-{day}":
                         game_id = row[0]
->>>>>>> 52a7c4bed429d6d864d67399696161bd66325a45
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -465,41 +464,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         
         return player_stats
-    
-
-    def get_live_team_stats(self, game_id):
-        teams = []
-
-        try:
-            self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
-            response = self.connection.getresponse()
-
-            if response.status != 200 and response.status != 404:
-                print("Error: ", response.status, response.reason)
-                return teams
-                
-            data = response.read()
-            json_data = json.loads(data.decode("utf-8"))
-
-            ''' Add the home and away team stats to the teams list '''
-            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
-            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
-        
-        # Catching exceptions #
-        except json.JSONDecodeError as e:
-            print(f"A JSONDecodeError occurred: {str(e)}")
-        except http.client.HTTPException as e:
-            print(f"An exception occurred: {str(e)}")
-        except Exception as e:
-            print(f"An exception occurred: {str(e)}")
-        
-        return teams
     ### End of stats methods ###
 ## End of facade class for the API calls ##
-
-
-
-
 
 ## API class to call the facade class ##
 class SportsAPI():
@@ -511,15 +477,12 @@ class SportsAPI():
 
     def download_nba_teams(self):
         self.game_facade.download_nba_teams()
-
-    def download_nba_roster(self):
-        self.game_facade.download_nba_roster()
     
     def get_league_standings(self):
-        return self.game_facade.get_league_standings()
+        self.game_facade.get_league_standings()
 
     def get_current_schedule(self):
-        return self.game_facade.get_current_schedule()
+        self.game_facade.get_current_schedule()
 
     def get_game_id(self, team_name, year, month, day):
         return self.game_facade.get_game_id(team_name, year, month, day)
@@ -528,27 +491,16 @@ class SportsAPI():
         return self.game_facade.get_team_id(team_name)
     
     def get_team_roster_from_id(self, team_id):
-<<<<<<< HEAD
         self.game_facade.get_team_roster_from_id(team_id)
 
     def download_nba_roster(self):
         self.game_facade.download_nba_roster()
     
-=======
-        return self.game_facade.get_team_roster_from_id(team_id)
-        
->>>>>>> 52a7c4bed429d6d864d67399696161bd66325a45
     def get_live_game_stats(self, game_id):
         return self.game_facade.get_live_game_stats(game_id)
 
     def get_player_stats(self, player_name,year,month,day):
         return self.game_facade.get_player_stats(player_name,year,month,day)
-    
-    def get_live_team_stats(self, game_id):
-        return self.game_facade.get_live_team_stats(game_id)
-    
-    def test(self, id):
-        return self.game_facade.test(id)
 ## End of API class ##
 
 
@@ -567,13 +519,11 @@ How to use the main method:
 
 api = SportsAPI()
 
-<<<<<<< HEAD
 stats = api.get_player_stats("LeBron James", "2024", "01", "29")
 
 print(stats[0].points)
-=======
+
 id = api.get_team_roster_from_id(api.get_team_id("Chicago Bulls"))
->>>>>>> 52a7c4bed429d6d864d67399696161bd66325a45
 
 for player in id:
     print(player)
