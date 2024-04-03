@@ -1,9 +1,8 @@
 from celery import shared_task
-import logging
+from .SSH import run_stacked_display  # Ensure this import is correct
 
-logger = logging.getLogger(__name__)
 @shared_task
 def my_background_task():
-    logger.info('Running the asynchronous task...')
-    result  = 5
-    return result
+    # Your background task logic here
+    run_stacked_display()
+    return "Completed"
