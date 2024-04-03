@@ -9,6 +9,7 @@
 # Raspberry Pi via SSH and runs a Python script to control an LED matrix display.
 # The user can interrupt the display script by entering '1'.
 #==========================================================
+'''
 
 import paramiko
 import time
