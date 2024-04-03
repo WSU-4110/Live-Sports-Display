@@ -1,0 +1,540 @@
+Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Patrick Baldwin Jr.,F,7,003883ca-cd7e-4b58-99d7-6fef54afdfeb
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Jared Butler,G,4,0d9cd878-b94e-4daa-9848-dee6d950f1a5
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Bilal Coulibaly,F-G,0,27db7dbb-6aad-44df-a3f4-7e1c21c2f256
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Jordan Poole,G,13,2ed2f76f-5a2f-4d79-ab7c-e84a8a42dc21
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Deni Avdija,F,8,312f21c9-a061-43e2-9a22-65199131068e
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Corey Kispert,F,24,3358cc38-7331-43ad-af04-ebd34fe328e7
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,RJ Hampton,G,15,36cb0c82-ee54-43f1-96bc-bfc9ba728b50
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Landry Shamet,G,20,467f6843-4a9d-413b-9924-d2188d60e6fe
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Kyle Kuzma,F,33,4fae86e2-4f99-4247-af85-d917b4389d31
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Johnny Davis,G,1,51551f58-fc52-4403-abe5-4f5614804312
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Justin Champagnie,G-F,9,6d117ec5-649d-4151-8d44-88175c603067
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Tristan Vukcevic,C,00,73f8f274-238d-419f-bccb-097362b8354d
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Anthony Gill,F,16,7aa10d1a-ed4e-417d-998d-84ce66c77c9b
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Eugene Omoruyi,F,97,7cb0e40c-85bf-4fb6-905e-37604cabc151
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Jules Bernard,G,14,9c6135c7-fab6-45da-a2a2-8e174bb8acb0
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Isaiah Livers,F,12,c722d438-db08-421e-9484-9e7d2f67c05d
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Tyus Jones,G,5,cbc0a3b2-985e-4484-9cb6-6891337b18b7
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Marvin Bagley III,F-C,35,e86c1439-4ef0-4530-9c41-c3a682962eb3
+583ec8d4-fb46-11e1-82cb-f4ce4684ea4c,Washington Wizards,Richaun Holmes,F,22,e96ef8d2-192f-47a3-a6ad-876603de1907
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Seth Curry,G,30,047d0b63-4142-46e9-8f04-a61622ae2375
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Aleksej Pokusevski,F,17,132799e5-ab45-4b19-aff9-5dd73f85651c
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Marques Bolden,C,3,156c4ce1-b6d7-42f7-86be-cf96d2763043
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Bryce McGowens,G,7,3c4a7fda-fca3-4a68-9886-ea7eec4cc2e3
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Grant Williams,F,2,59209028-6712-47ef-b87c-bdb19f91523b
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Tre Mann,G,23,5b681679-4d8c-4964-bbba-5ed058257745
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Amari Bailey,G,10,615f8557-022f-46ef-9803-3c221ceb1c09
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,JT Thor,F,21,652f9ae3-0dbf-47c4-bad3-6474b6521134
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Vasilije Micic,G,22,6dba15f0-f107-4eb5-bc20-5f67316df9d5
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Cody Martin,G-F,11,6eadcfb0-1d51-4525-add6-17f07ae2ad49
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Brandon Miller,F-G,24,775e4450-cdcd-43a1-b4cd-dc29fba48503
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Nick Richards,C,4,9654c7f1-d16c-428c-88fd-2a6cdb5a8370
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Mark Williams,C,5,a5ec46e9-928f-4609-ab4d-c86ec6434327
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Leaky Black,F,12,a9aaa4a2-9997-49b3-b54e-bcf5ec66efe5
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Miles Bridges,F,0,af8f331b-96a6-416e-8837-b14d5b11c52d
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Nick Smith Jr.,G,8,bcb84104-a049-4263-8574-67b1d786481c
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,LaMelo Ball,G,1,be53f27f-c666-4bd2-8fcd-0713f963aa2b
+583ec97e-fb46-11e1-82cb-f4ce4684ea4c,Charlotte Hornets,Davis Bertans,F,9,c1bb78ed-4ce7-4e8c-b30c-06f8148d550a
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Mouhamed Gueye,F,18,26049bcf-1ff3-4a23-8e4c-ce0b18784738
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Bruno Fernando,F-C,24,2ef47392-9f85-47e7-a844-b5d97cf412c9
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Seth Lundy,F,3,52621886-a235-498d-8d60-f45937cc4e3e
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Onyeka Okongwu,F-C,17,70e50e53-ca3b-425d-ac49-b156d6d1e016
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Wesley Matthews,G,32,795bcca3-0cca-448c-8198-85c664f76c75
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Dejounte Murray,G,5,7d27ec3b-1e31-4b0f-abcf-e12039a0e27b
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Dylan Windler,G-F,20,870310f0-9480-453a-8b33-a62f283c5eda
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Vit Krejci,G,27,8db2a730-bafb-4936-915f-3dd4920a0aa9
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Garrison Mathews,G,25,9866abfb-ec41-451a-9c2a-d1a47ec21a0e
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Kobe Bufkin,G,4,a10a4352-53b3-47b6-a336-201dc9e8401e
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,De'Andre Hunter,F-G,12,a4a75d83-54b5-4dca-913e-44ab04288446
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Bogdan Bogdanovic,G,13,b4282659-dd1a-4042-a075-7df4890858e7
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Clint Capela,C,15,c37dafbb-a269-41f6-813f-bdb4da388203
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Trae Young,G,11,cf418e0c-de9d-438f-a1ac-3be539a56c42
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Trent Forrest,G,2,d1490593-3d95-4ad6-9890-b6e8c97836e0
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Jalen Johnson,F,1,d222539f-fa52-4070-807f-d3aba372f46d
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,Saddiq Bey,G-F,41,d531a451-6377-4942-a26f-3507d60fb36b
+583ecb8f-fb46-11e1-82cb-f4ce4684ea4c,Atlanta Hawks,AJ Griffin,F,14,dff43943-07d4-44b8-b349-b5a0c327ce54
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Thomas Bryant,C-F,31,030424b9-7367-45e1-b9d4-c8dee3a89e53
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Jimmy Butler,F,22,0e163d44-67a7-4107-9421-5333600166bb
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Bam Adebayo,C-F,13,11c303dc-540c-4090-8e0c-76c2fb2c125a
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Duncan Robinson,F,55,18d35316-9f40-408c-abcc-ab49e06ef8e8
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Delon Wright,G,4,1db0df17-b3d5-4ddb-98d0-8f86239347bf
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Jaime Jaquez Jr.,F-G,11,4b7ecb2a-ec19-4984-9472-92edf7e17acb
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Caleb Martin,F,16,566685c7-ff63-439a-8888-5278904835fa
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Alondes Williams,G,15,58c01127-e0de-487d-a2bc-bf88642619c0
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Kevin Love,F-C,42,7d615ccd-db96-42a3-9a6c-7f18ea25634e
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Tyler Herro,G,14,8bd80771-843f-4d7f-a4e7-b4d4f6c4e7c6
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Patty Mills,G,88,9e917c97-5227-4581-9ab5-2dd07a7187ef
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Haywood Highsmith,F,24,a17d9b20-4e2b-4612-aecd-27938c997e94
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Jamal Cain,F,8,a3c4745f-461b-47d4-87db-887ac81fe5e7
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Cole Swider,F,21,cae1e67f-229e-46c8-851a-571d728ae315
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Orlando Robinson,C,25,cbceca06-325c-492c-a995-873ec07bc64e
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Terry Rozier,G,2,d1ee8ac8-f550-4269-ab4f-604b7bba441a
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Nikola Jovic,F,5,d31856fa-e1ff-4617-ab8b-a3ed79bfb27d
+583ecea6-fb46-11e1-82cb-f4ce4684ea4c,Miami Heat,Josh Richardson,G,0,ef11cca9-6605-44e8-943e-193c7b821465
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Anthony Black,G,0,089dc4be-faf1-4d91-9e02-fdb78ed096f3
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Goga Bitadze,C-F,35,0c977083-fdde-45f1-9406-60aef2a78846
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Markelle Fultz,G,20,41edefa9-a2f9-447d-9578-d2ea2a0d783d
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Paolo Banchero,F,5,49d8f5ef-2867-4597-a3ab-5ffc5e651258
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Franz Wagner,F,22,514fd4aa-5384-4bc7-a670-367a426ca235
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Joe Ingles,F-G,7,5b297372-b2af-445e-a4bc-777982dbc1e3
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Gary Harris,G,14,6b5d0264-fa2d-4956-919b-61abfc6bb8d7
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Jalen Suggs,G,4,6dda6e0a-4b74-4486-80cd-5f9a8d93d1ba
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Wendell Carter Jr.,C-F,34,744d5db7-b0be-474a-a58b-6ddf7ae35567
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Jonathan Isaac,F,1,776679a3-c1d8-4463-99b1-61024008a3ed
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Trevelin Queen,G,12,88005562-d747-4995-8bb7-de651d6c5bbc
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Caleb Houstan,G,2,968ecb8b-c8b6-4fe1-a606-346f7a82a7c1
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Kevon Harris,G,8,a9cd8509-6115-4408-bcec-19e88118b016
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Jett Howard,F,13,ad5c19d3-1cce-4124-aeb9-dc15b3d0a851
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Cole Anthony,G,50,b6ba1ad1-c57b-4215-8ded-5eeee7171017
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Admiral Schofield,F,25,ddebd1eb-4298-449d-850a-4dd5f84da05c
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Moritz Wagner,F-C,21,f1f258c2-9bcf-4e33-ba9e-563e95084893
+583ed157-fb46-11e1-82cb-f4ce4684ea4c,Orlando Magic,Chuma Okeke,F,3,f4800b3d-a795-4b22-bfef-83a079b30a89
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Duane Washington Jr.,G,1,08fd692d-bce8-4f56-9add-77efc68637e8
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Julius Randle,F-C,30,24c85a15-686e-4161-934b-40948188fa36
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Miles McBride,G,2,355a6113-d842-40be-9e74-90bb0800aabe
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Isaiah Hartenstein,C-F,55,38745a56-7472-4844-a2dc-f61d3bcd941f
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,DaQuan Jeffries,G-F,21,3a2b38a1-23da-4af8-8c1a-e52694c2416a
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Precious Achiuwa,F,5,3dbbb869-88a8-44f2-ac36-46fd0f5d825c
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Jericho Sims,C,45,56003e58-6b25-4f22-9d97-020b3d1f6616
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Shake Milton,G,13,5722e429-752c-41f7-9b75-e3fc712f14f1
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Alec Burks,G,18,73fcf334-2088-4862-b83b-66eae415cf87
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Bojan Bogdanovic,G-F,44,7ff02e19-e829-4e56-9a34-233a71fce76c
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Jalen Brunson,G,11,8d3edba8-9004-4199-9328-cc2208e8b0d3
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,OG Anunoby,G-F,8,9474fa0a-70dd-44c4-9751-dac5839ae7f3
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Mitchell Robinson,C-F,23,97e25d19-7c5c-49f9-91c0-5cd9b9cebdcb
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Donte DiVincenzo,G,0,9cfad453-b323-43dc-a066-6cd0a21745ad
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Jacob Toppin,F,00,a4f71454-3994-4994-a03d-1279da83989d
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Mamadi Diakite,F,25,c258dbfb-74dc-4222-a07b-f906370e945f
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Charlie Brown Jr.,G,4,c64b2514-98dc-4cd9-a920-5b36abb7c252
+583ec70e-fb46-11e1-82cb-f4ce4684ea4c,New York Knicks,Josh Hart,G,3,d6fbf8f8-bb4a-43f7-95f6-498a5e042138
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Jeff Dowtin Jr.,G,11,2d2017ed-9196-434e-9fb4-9bb904bda4ab
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Ricky Council IV,G,16,3c721dcc-8d35-494a-aa85-b696c0ecda48
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Robert Covington,F,33,3e512d9e-ff9c-4f23-a4fd-a88128ee3af2
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Terquavion Smith,G,23,4426109b-06bf-4b98-b5ba-c1d7c9595cc2
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,KJ Martin,F,1,48394746-ddaa-4e82-ae1a-2c87e3189b73
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,De'Anthony Melton,G,8,5b22ae60-ca29-4cd8-b618-cce7b9766b0e
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Tyrese Maxey,G,0,75fc46eb-71d8-4d1a-984f-3747ccd7a4c9
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Buddy Hield,G,17,795f46f2-c78d-4f1d-9ee2-4331c1cc8184
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Kelly Oubre Jr.,F-G,9,7dfa0971-96be-4705-9811-f9f54758145f
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Tobias Harris,F,12,82f09975-6a8d-42e4-b42c-a52b9349ed50
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Kyle Lowry,G,7,8c090758-6baa-468d-82fd-d47e17d5091b
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,D.J. Wilson,F,20,91ef3b61-97a2-4b07-981a-c4228713fd1f
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Mo Bamba,C,5,a6bf9402-7f41-49a9-ab28-fe0bdffb5060
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Nicolas Batum,G-F,40,a89ac040-715d-4057-8fc0-9d71ad06fa0a
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Joel Embiid,C-F,21,bf9ad0fd-0cb8-4360-8970-5f1b5cf3fa8d
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Paul Reed,F,44,c7c7c72b-7cee-409a-b2b5-256d173ac305
+583ec87d-fb46-11e1-82cb-f4ce4684ea4c,Philadelphia 76ers,Cameron Payne,G,22,fc486ff9-f1d0-4a1e-83ed-4a3aaec950a2
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Dariq Whitehead,G-F,0,169083b9-0653-44c8-ac69-bc5360a468c6
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Day'Ron Sharpe,C,20,1c82e36d-8975-4778-9d49-d872d2f3f1be
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Jaylen Martin,F,16,1cc0577e-a011-4b08-a6a8-216765672f08
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Nic Claxton,C,33,288519dc-eae8-4daf-afa4-c86322b7460e
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Cameron Johnson,F,2,2fe5b749-7bd4-4dbc-acfb-6d675f541e37
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Ben Simmons,G-F,10,318debd7-dab6-4d4e-8849-03c4c701a7c8
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Dorian Finney-Smith,F,28,426357dc-340b-4d89-8e3b-7d6b4022b460
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Jacob Gilyard,G,14,49aaa5a4-1bb3-4651-9249-b1c7ca0c09e2
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Keon Johnson,G,45,4e3d287a-49d4-4f1a-8f88-da3a5abb3e4a
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Jalen Wilson,F,22,73d92041-1258-4f1f-8bd3-55e07407115b
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Mikal Bridges,F,1,83cc5b28-36a7-43ba-ba20-8347bd1de583
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Dennis Smith Jr.,G,4,8bfafad0-c7ac-4eca-8bba-60cf72180545
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Trendon Watford,F,9,9f4181d5-0999-46ba-b466-d90ded24268a
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Dennis Schroder,G,17,a2c6a907-282f-4172-9d60-42d03987da0e
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Keita Bates-Diop,F,13,af3416bc-38fb-46ca-9b03-72a88d7fda35
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Cam Thomas,G,24,c6289b1b-7bb2-4ee6-8111-1a6e96aa9104
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Lonnie Walker IV,G,8,d58cf16b-7bf5-4fed-8b1e-61bad46fa43e
+583ec9d6-fb46-11e1-82cb-f4ce4684ea4c,Brooklyn Nets,Noah Clowney,F-C,21,dbf9e1f5-7573-4c24-992a-04ea080c61e1
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Payton Pritchard,G,11,0718c0e1-7804-471a-b4ed-cde778948d4d
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Oshae Brissett,F-G,12,36c27a5d-c5bd-4e81-83b6-c77457103855
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Kristaps Porzingis,F-C,8,3c5901ef-af1d-441d-aeed-8e0a93cead49
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jrue Holiday,G,4,65700e81-3aa0-49a9-8a94-004f2cfb64e5
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,JD Davison,G,20,6e468041-8174-4161-8c1d-8ac620e0cbb0
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Neemias Queta,C,88,7cfc1044-54f9-4788-af5f-8d943f992e0d
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Drew Peterson,F,13,82c98130-ca75-4fad-be40-59133af1027e
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Svi Mykhailiuk,G-F,50,8c0929ae-ce3d-47e0-a964-bf6b8d3981ab
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jayson Tatum,F-G,0,98136da3-452f-49dc-a794-1ee9c76443f2
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Derrick White,G,9,9bcd5cff-4a1c-4454-89b6-a5899b0c6bcc
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jaden Springer,G,44,9fff97c3-676d-4c27-ab63-8d02540bb008
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Al Horford,C-F,42,cf3a87ec-c2f7-42e8-9698-6f8b2ba916a9
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Sam Hauser,F,30,f5aac467-6bf9-4fa3-b89a-9ef71fe546fa
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Xavier Tillman Sr.,F-C,26,fb60c435-dd40-401e-977b-15bdbb753444
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Luke Kornet,C-F,40,fed6929f-8d92-456c-8a89-9e0c17cf4f7b
+583eccfa-fb46-11e1-82cb-f4ce4684ea4c,Boston Celtics,Jaylen Brown,G-F,7,ffc5579c-783f-4d62-80ab-3c3dcb05a27d
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jontay Porter,C-F,34,0eefc0d4-47bf-4280-aef3-e65b5c88e8be
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Scottie Barnes,G-F,4,1738927f-6ef3-4b23-921d-168b4371f917
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jalen McDaniels,F,2,2e1e9cc8-b30b-490c-bd6a-a718340a371a
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,RJ Barrett,F-G,9,42c5f009-dfd2-4a94-a750-0943791e138e
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,D.J. Carton,G,3,469a1340-4263-4897-b1d5-caabc6340904
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Gradey Dick,G-F,1,59c707c2-fc69-4ed5-aa33-d446709dad9f
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Gary Trent Jr.,G,33,62daf16f-0c4c-46ae-9e54-0d34d6fdef85
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Javon Freeman-Liberty,G,0,6830096d-0ede-42a9-9b55-a1388760f786
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Kelly Olynyk,F-C,41,8e288d6e-50b8-404b-812b-823ae5bab61f
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Mouhamadou Gueye,F,16,9f8b7ec7-cec6-4c8a-9a06-ca123df80dae
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Ochai Agbaji,G,30,a7466782-6f87-414f-9458-7fea82922e00
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Kobi Simmons,G,8,c494c5a5-3155-40b1-923e-da846c2e232f
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jordan Nwora,F,13,c7a6b9c5-c600-49d9-b7be-e2b12b464e40
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Immanuel Quickley,G,5,cb0b5991-53e4-4dce-bf95-215fd6ecf728
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Jakob Poeltl,C,19,e1b3d3d5-b4b1-481a-b5b9-efe4231f48bf
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Garrett Temple,G-F,17,ee2644c1-1260-4bf4-9c70-7c5b0cee4770
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Chris Boucher,F,25,f01d5d8d-f949-437a-a23f-3835c0939ced
+583ecda6-fb46-11e1-82cb-f4ce4684ea4c,Toronto Raptors,Bruce Brown,G-F,11,fc058e75-1015-4bbe-8fab-925d5f6d83fb
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Lonzo Ball,G,2,0f1de951-5a0e-4bc7-977c-8dafd0fbf121
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Henri Drell,F,77,111cb5fa-fb56-47d5-8618-ce3ab6da67f8
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Andrew Funk,G,30,1d2b0dcb-23f3-4263-8842-30b8acb556ce
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Dalen Terry,F,25,39d205a6-5a8e-4656-9565-87a8e95ee411
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Andre Drummond,C,3,440b769d-2b8b-477f-80d7-cb21d83c0d52
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,DeMar DeRozan,G-F,11,5e86a9c3-b4d0-4fe1-a551-acd83e5d60eb
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Patrick Williams,F,44,67f6467e-0acc-48ce-9872-a63225ef295c
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Nikola Vucevic,C,9,7366b2b7-5959-4dd9-9204-760e861b3119
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Adama Sanogo,C,21,73e347c9-dab6-45b2-8774-82d5bdb6f940
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Jevon Carter,G,5,79cd9581-3aaa-484c-a8b1-a349cdc5c34c
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Terry Taylor,F,32,7cd15c04-f7ed-4901-869d-ae4e2133a5bc
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Alex Caruso,G,6,8936c15e-f9d5-4b9a-80b9-8f6b7dcf7a17
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Julian Phillips,F,15,9c1deadf-622c-4326-bd14-3e273b5e1e5a
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Coby White,G,0,a1e46e84-bd9e-454d-9117-a8fa1aab0ce4
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Onuralp Bitim,G-F,17,afd6f073-343c-4e1f-9f77-a187d0c8aff9
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Torrey Craig,F,13,c14eba17-879a-461e-9413-bf71a378de6e
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Zach LaVine,G,8,db72e294-1c54-454a-96b9-0b4fd2f38112
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Ayo Dosunmu,G,12,f8a7e4c7-d60e-4751-9203-30a772dd9272
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Ty Jerome,G-F,2,03cf6eb6-688a-49b1-a4cc-f10c39c21725
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Emoni Bates,F,21,194a9cc3-1dce-4c9a-96dd-a2f2505f5fe8
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Tristan Thompson,F,13,335097c3-7919-49d5-80b0-8062d5d3e89c
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Damian Jones,C,30,44231f84-c69d-440d-9287-e210d4ce1672
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Marcus Morris Sr.,F,24,4d7cb358-0fec-482f-9f57-92c39e8bf214
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Sam Merrill,G,5,6b8ed06d-a33f-46ce-b416-647100736df8
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Craig Porter Jr.,G,9,7458ef96-cab7-433e-a761-4e93537f4b52
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Pete Nance,F,8,8006987e-cd53-4e60-a26e-83cb96fb81ac
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Jarrett Allen,C,31,a3fff5c7-19b6-4dac-bd75-11b944bea505
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Isaiah Mobley,F,15,af4bed90-a355-44e6-a5b7-38c479f4a2b4
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Donovan Mitchell,G,45,b6dde96e-3748-4cbe-86d2-798d5dffb3c0
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Darius Garland,G,10,b79b88e1-35ef-4947-8a61-f6ec631a1e15
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Dean Wade,F-C,32,bbeecf0c-62c6-4211-991d-2afaf2403623
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Caris LeVert,G,3,c34996e5-8be6-4053-a2f2-0acb0155e18c
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Isaac Okoro,F-G,35,d13849d9-a696-44af-84a1-3196132c3ecd
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Evan Mobley,C,4,d64b602e-45f2-4ba9-878b-0a4f7210ec77
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Max Strus,G-F,1,f6aff1dc-15b9-4c89-a2fb-746f4cf78890
+583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Georges Niang,F,20,fae899bc-3fc7-43d9-b2c9-35721d11e438
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Andrew Nembhard,G-F,2,02acc094-76ab-4b3e-b51d-a351a9bab6b9
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Isaiah Jackson,F,22,067d9f05-a6b8-4a4b-854c-3364234e62b1
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,James Johnson,F,16,1f0687ca-c8f2-4c71-8306-8a18cbf6cc60
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Tyrese Haliburton,G,0,254e42d7-df01-4c68-9264-bca06c83c2c1
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Kendall Brown,G,10,298fa611-756c-4b05-8930-b5ff2fec5640
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Myles Turner,C-F,33,323f9ef8-ecdd-41a7-859e-dd3db48ba913
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Ben Sheppard,G,26,3b40df6a-55ba-40a2-b6b8-ab8ae114dfc3
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Pascal Siakam,F,43,3df1db1d-6596-489e-8e26-80f60fd9b1f4
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Bennedict Mathurin,G-F,00,3f98b652-71d4-4a40-949d-41c33dddd15d
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Doug McDermott,F,20,66156be8-6202-40bd-bdc2-014a46bee28f
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Jalen Smith,F-C,25,689cb3b0-a7cc-45b5-860d-007597029c8c
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Jarace Walker,F,5,6fd99205-e159-4ff2-b291-80fb2d067bb3
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Oscar Tshiebwe,F,44,810c84a1-e260-4aa3-9849-1b2ee3657fe3
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Quenton Jackson,G,29,8571e039-8802-453a-aca5-7fdcb3ae1a28
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Aaron Nesmith,G-F,23,90d63a71-e4fe-411c-9773-2e74b5e1cb3b
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,T.J. McConnell,G,9,e3dfa2a2-6272-4f3f-adf0-dd5dadea9481
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Obi Toppin,F,1,ed000754-fb2c-4778-be6d-40cfc2400bd7
+583ec7cd-fb46-11e1-82cb-f4ce4684ea4c,Indiana Pacers,Isaiah Wong,G,21,f789dfff-4658-452f-a3cb-81d9213fe414
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Jalen Duren,C,0,00fb2704-aa25-4ef7-8972-cde454810810
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Jared Rhoden,G,8,09a90226-6869-41b5-9bfe-78a53e75292b
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Ausar Thompson,G-F,9,18c14a3d-2ce0-451c-bceb-b0ce13c16ead
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Malachi Flynn,G,14,22973df1-49a2-4506-bfce-3368737981f8
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Marcus Sasser,G,25,4707d9b8-fca3-4550-ae25-bd4b449e4dbf
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,James Wiseman,C,13,5228b552-2eb0-4476-96c2-f3c9f82a7a35
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Troy Brown Jr.,F,7,5350a897-aa31-4510-8feb-e709e1feb844
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Cade Cunningham,G,2,57d55cd4-6ab8-4255-a248-bef800c0cbab
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Tosan Evbuomwan,F,18,68ed2fac-e117-48e1-ac43-314098f600ea
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Chimezie Metu,F-C,5,72a69d30-cf07-4b5f-94ad-9c76832788bc
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Taj Gibson,F,67,9c8dc8ee-6207-48d5-81ee-f362f5e17f9b
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Isaiah Stewart,F-C,28,9d4d6c87-78db-4556-b94a-bb8d566dd004
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Buddy Boeheim,F,35,abceaea3-47b0-43fb-b9f7-75f378e2d409
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Evan Fournier,G-F,31,b736d95c-8474-48b2-9000-24ce926eace3
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Stanley Umude,G,17,c2a8d4de-dee9-4999-944d-5e0797b45480
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Quentin Grimes,G,24,e8486226-53e1-4857-b5f0-8b6fe88bdd8a
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Jaden Ivey,G,23,ec887131-efba-43a0-ad0a-0757ab3f0399
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Simone Fontecchio,F,19,fda266ab-06e1-4591-80fa-73f027979b63
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Pat Connaughton,G,24,298852ca-299d-4cb9-a9e5-6ac909582f78
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,TyTy Washington Jr.,G,23,3054d6e1-033b-4b8d-93e5-b807ea122c75
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Danilo Gallinari,F,12,47cd6421-0ce1-431e-9b9c-a8d9bfd0eb04
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Khris Middleton,F,22,4c362eee-6474-40ea-b1b4-d8f917f95175
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Damian Lillard,G,0,5382cf43-3a79-4a5a-a7fd-153906fe65dd
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,AJ Green,G,20,616c60bf-f7ce-482d-a9c8-10c6c7fbef97
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Jaylin Galloway,F,00,6331dc61-03d4-4e96-adc3-1079db6da054
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Thanasis Antetokounmpo,F,43,64c0e4e5-8711-4b86-8072-745f6084df73
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Bobby Portis,F,9,68b7aac9-02fd-4bd8-b10c-6702d2c5eb98
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Giannis Antetokounmpo,F,34,6c60282d-165a-4cba-8e5a-4f2d9d4c5905
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Andre Jackson Jr.,G,44,8aaf1808-f7af-4894-9b14-cc7655005313
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Patrick Beverley,G,21,912e7aa3-dd03-4a98-9980-0442e108f287
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Brook Lopez,C,11,c179fb5c-9845-4e37-aef7-6e00d97548eb
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Chris Livingston,F,7,cb3ded6d-8874-4b93-8a89-6a6785f6fac0
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Malik Beasley,G,5,d3392ee6-cbe4-419e-bbd5-1b658d83e10e
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Jae Crowder,F,99,db74c5dd-08bd-41a5-99ba-328e9b18aeb5
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Ryan Rollins,G,55,e8def95a-cdf0-423f-9cac-a3e7e92364db
+583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,MarJon Beauchamp,F,3,fc036630-debc-44bf-9663-03c3fbd3045c
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Kyle Anderson,F,1,2e49c27a-06c5-4c4a-87fd-69840b783947
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,T.J. Warren,F,24,2ec7092d-e988-4576-ab8b-e3197448fa5d
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Rudy Gobert,C,27,37fbc3a5-0d10-4e22-803b-baa2ea0cdb12
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Mike Conley,G,10,460b7264-b98f-483e-b841-59a18c2e4d67
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Monte Morris,G,23,48b05ddf-0a9f-4426-9394-231c54726eaa
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Leonard Miller,F,33,7b526b14-5d50-411e-8bea-0ac7a8d0e8d7
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Naz Reid,C,11,823b2161-0c34-494c-9d7c-b438152f4f4d
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Luka Garza,F,55,8da31ebc-6614-4209-8685-5442bc09887b
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Jaylen Clark,G,0,a34ec970-f4a1-47a3-98a1-51ff5e92a443
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Jaden McDaniels,F,3,aa5536d2-4d75-43fb-8df3-47fbf99d3b7c
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Karl-Anthony Towns,C-F,32,ab532a66-9314-4d57-ade7-bb54a70c65ad
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Jordan McLaughlin,G,6,bde7f42e-7296-453d-bcba-cac6fad2d03f
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Josh Minott,F,8,c4cf8fb6-b7de-45f2-b9f9-9365b8f2f2ed
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Anthony Edwards,G,5,d0c7135a-1aea-40cb-ba20-df656de71749
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Nickeil Alexander-Walker,G,9,d3d0ab55-b939-47b3-af27-77cdf85d7956
+583eca2f-fb46-11e1-82cb-f4ce4684ea4c,Minnesota Timberwolves,Wendell Moore Jr.,G,7,e23521cd-8e92-4701-b9e7-dc4acd21dfec
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Jordan Clarkson,G,00,03d77214-5780-4715-8df2-13de3af5ea2d
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Micah Potter,C,25,06570485-2ec5-40ab-9b50-8e4cfd7f0dc3
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,John Collins,F-C,20,28a2e698-9f33-4d4d-9a5d-9bea66ee42a1
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Keyonte George,G,3,4a4459df-6307-4d10-b4cd-c69e9bf8b11d
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Kris Dunn,G,11,56c796d6-74d3-4881-9166-7f528e2b67f6
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Lauri Markkanen,F-C,23,583d7994-36f9-4a9a-b527-c18704406981
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Johnny Juzang,G,33,5cc6d4d4-e4d5-42b7-b431-cecbc55bf023
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Darius Bazley,F,21,6687bacd-1bd8-4f76-acdd-b4beac0bf402
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Omer Yurtseven,C,77,6cb137da-2848-4c37-a80d-a4ba75ece969
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Kira Lewis Jr.,G,13,6d717396-cfbb-43e0-a129-723839974a15
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Luka Samanic,F,19,714b4b97-6bfe-44ce-8875-a8ee494b32dc
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Kenneth Lofton Jr.,F,34,7a19d2de-a807-4603-a122-b2908d924b6d
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Walker Kessler,C,24,7eccbdf9-58a3-4b96-8b1e-eaa8ea9da836
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Collin Sexton,G,2,80b5cccf-203b-4482-92aa-76d1598216be
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Talen Horton-Tucker,G,5,b0b79700-15f3-4981-8d81-73534bbdd0ab
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Jason Preston,G,10,bfe2a85f-6d49-406e-88a1-2a38a66e8cfb
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Brice Sensabaugh,F,8,e747747c-3053-4ad3-a44d-7ac0b9cbdb4c
+583ece50-fb46-11e1-82cb-f4ce4684ea4c,Utah Jazz,Taylor Hendricks,F,0,fb6e5496-cfa5-42c2-bbfa-f776734a25a8
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Keyontae Johnson,F,18,29d7b4d4-5aaf-4668-820f-4ab9790cc930
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Isaiah Joe,G,11,36d083a5-49ca-42f1-80b7-b78275a8abd9
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Luguentz Dort,G,5,3f7e2350-e208-4791-98c2-684b53bb5a9a
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Jaylin Williams,F,6,4965ef48-7aa9-4eae-a923-5023ff7ab1eb
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Jalen Williams,G-F,8,62c44a90-f280-438a-9c7e-252f4f376283
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Josh Giddey,G,3,66ea876a-1cc9-47ed-ae31-2ed3c8f9350e
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Adam Flagler,G,14,6a45cd75-c6ef-42ac-9a67-dd0fdb21ade7
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Mike Muscala,F-C,50,7c636961-816a-4b44-8991-671df9d91d9c
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Lindy Waters III,F,12,80328aab-9ce6-49c8-b3f2-f5bf73cdf319
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Bismack Biyombo,C,15,8e3cbaa3-e30a-4cf8-aa7a-1b57f15f0f98
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Kenrich Williams,G-F,34,9318b4c1-49d0-40eb-8b76-1098e28133d2
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Ousmane Dieng,F,13,9e0b879c-8be6-445e-a437-a3bf18130b9c
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Gordon Hayward,F,33,a1ddebee-950c-497d-9acd-b5061360b464
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Cason Wallace,G,22,b3db0b36-344f-4035-b315-9fb18933e535
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Aaron Wiggins,G,21,d3b28775-473d-471a-8452-e913f4347f0f
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Shai Gilgeous-Alexander,G,2,d9ea4a8f-ff51-408d-b518-980efc2a35a1
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Chet Holmgren,C-F,7,eb91a4c8-1a8a-46bf-86e6-e16950b67ef6
+583ecfff-fb46-11e1-82cb-f4ce4684ea4c,Oklahoma City Thunder,Olivier Sarr,C,30,fa95eb6b-9008-4d67-8476-3b69e90b8688
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Rayan Rupert,G,72,02d782f9-c33b-4ebb-a7f2-7f19cfafaf89
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Toumani Camara,F,33,06df3766-f654-4fe3-8a37-496d21e7ea23
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Moses Brown,C,10,355308f5-dbd8-4936-82fd-9a3c5c8e4b0d
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Jerami Grant,F,9,5b315e15-6633-4ce2-8200-71b821553314
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Anfernee Simons,G,1,632adcc4-97f1-4e67-a132-e0b79f013c67
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Dalano Banton,F,5,6a93a3fd-d10c-4594-a4b5-873fa13f6d99
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Deandre Ayton,C,2,7ca4beac-bbd6-454f-b820-4e8442a3e1e5
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Ashton Hagans,G,19,8a384680-197e-4fa7-9403-e7a1d8bff8a5
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Matisse Thybulle,G-F,4,8b43c272-c16b-40c7-a4d5-7bbcefeb1816
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Scoot Henderson,G,00,a978acbc-e84b-4cc4-85c9-30595e022847
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Kris Murray,F,8,af5e629a-6b79-46d9-9b58-dc9ec41a0bd0
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Ibou Badji,C,41,be0b897f-a553-4524-a358-eaa3b445c422
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Robert Williams III,C-F,35,c20dfb58-5622-405e-90b1-92b79ee97461
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Justin Minaya,F,24,d35f38c6-bcd9-42c4-b93a-71332581353f
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Duop Reath,C,26,dc929037-1cbf-4a60-a4d8-59636641ae88
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Shaedon Sharpe,G,17,eb0bd3d9-4bf0-4cc3-bbdf-c79e2255c175
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Malcolm Brogdon,G,11,f7134fc8-b298-41fd-933d-d0c4a5d8f6ac
+583ed056-fb46-11e1-82cb-f4ce4684ea4c,Portland Trail Blazers,Jabari Walker,F,34,ff065b75-4031-474c-9610-c505db2ca63e
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,DeAndre Jordan,C,6,0036a1fa-ff9a-44a5-8061-68b828ee2b1e
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Justin Holiday,F-G,9,05dea31d-f1ff-491b-9f17-8be88b26f413
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Jay Huff,C,30,1d1fa699-a455-4082-9df8-f97dbb0ca678
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Aaron Gordon,F,50,20f85838-0bd5-4c1f-ab85-a308bafaf5bc
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Hunter Tyson,F,4,2533c7f2-31e9-4405-8b66-91e1e966d3f0
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Julian Strawther,G,3,39111764-a140-4086-9220-fd4264d9072d
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Michael Porter Jr.,F,1,3a7d6510-00e9-4265-81df-864a1f547269
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Jalen Pickett,G,24,57551d80-b1c9-42a2-a882-e0c06aa6f951
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Zeke Nnaji,F-C,22,5a563d9c-10c4-4005-a884-109f05264b0b
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Collin Gillespie,G,21,60b8026e-e154-4ed7-a247-8e4af1dbf668
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Jamal Murray,G,27,685576ef-ea6c-4ccf-affd-18916baf4e60
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Reggie Jackson,G,7,7b745dde-a011-45a8-98a8-460a9facb3ce
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Vlatko Cancar,F,31,957e63a8-d87d-47d2-89cc-416afa292d80
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Peyton Watson,G,8,abfc35ea-baf0-4aff-b69a-30732ddf2b1b
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Braxton Key,F,11,c22cf6a4-f026-4843-9d05-862e08a30ece
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Christian Braun,G,0,cbc1a455-6cf8-4174-ace6-b0e250936f74
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Kentavious Caldwell-Pope,G,5,cecc054e-b9ec-4c71-8bbb-5ee665a8c3a9
+583ed102-fb46-11e1-82cb-f4ce4684ea4c,Denver Nuggets,Nikola Jokic,C,15,f2625432-3903-4f90-9b0b-2e4f63856bb0
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Lamar Stevens,F,24,09fe0192-07af-4d2e-af28-9a5d08a1fd8c
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Jordan Goodwin,G,4,0b9bab33-66c3-4e01-b91e-df6b8c40ea2b
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Vince Williams Jr.,G-F,5,0e5eb37e-e112-4587-98d8-8a9b46254f28
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Ziaire Williams,G-F,8,1c9a1c2e-3e3b-439e-8d72-0b41b17e4ba9
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Santi Aldama,F,7,266cd359-f378-45c6-957e-6e21378e5219
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,GG Jackson II,F,45,28549c0f-c6e6-4757-a515-dbc2e1b78007
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Wenyen Gabriel,F,32,2bf24df1-604d-4eca-b3f3-f5691f4b99b6
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,DeJon Jarreau,G,77,2ed5daf8-85ff-4f2f-b4a7-c02de13ac69b
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Jaren Jackson Jr.,F-C,13,3e492a6a-ed3c-499d-b3f5-ff68ca16f6fd
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Derrick Rose,G,23,48341095-ae5a-4d61-bcc8-1b0ceed870b2
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Desmond Bane,G,22,49962b13-0afc-43f5-a3e2-7e37b7736260
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Zavier Simpson,G,9,7a30c43d-a206-476d-b5b2-75b419445ae9
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,John Konchar,G-F,46,906578a8-c01e-4799-a972-2b47e02108b9
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Ja Morant,G,12,9983bed6-e53c-4c65-a90a-51546a0e3352
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Maozinha Pereira,F,25,99e42507-9b13-4298-a8e3-a4c986c8c28f
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Luke Kennard,G-F,10,a537047d-c29f-4dfe-99b0-3bac4e258dc7
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Marcus Smart,G,36,af460d21-b1d8-46bb-a228-61ac4fb9ccf9
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Yuta Watanabe,G-F,18,c7900e6e-e5ea-4670-a7bf-cb097f041b25
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Brandon Clarke,F,15,c978afe7-cf22-45fc-8d0f-da8f867eb5ee
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Jake LaRavia,F,3,cbea1c03-1ac9-4afa-8fdc-2d7155ea5583
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Trey Jemison,C,55,da899e36-f338-495b-b6f0-121295baf354
+583eca88-fb46-11e1-82cb-f4ce4684ea4c,Memphis Grizzlies,Scotty Pippen Jr.,G,1,df62b7c5-faaa-4f37-a716-b7e034aa03eb
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jock Landale,C,2,02dc6e18-95a4-4919-b4fc-f8a981ccd359
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jae'Sean Tate,F,8,1c7e3ee9-c6cd-4e1d-9efe-81fb1b2d4b69
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Boban Marjanovic,C,51,24c17409-ac10-4859-be6c-59d6cc6b5810
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jabari Smith Jr.,F,10,293be24b-3a94-40b2-a7a4-a1dd788302e9
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Reggie Bullock,G-F,25,42fa4c2c-6520-4d04-a753-cfe4a5c5e2e1
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Fred VanVleet,G,5,45f17314-918c-49bd-a482-adc171859025
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Alperen Sengun,C,28,47ff78e7-5607-48d6-9c1a-bddb075dbe70
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jermaine Samuels Jr.,F,00,483b2172-e415-49ea-940b-4c4db5e58a52
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Dillon Brooks,G-F,9,72a6489b-ad35-4f06-8a4f-a68ea1052f7b
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Aaron Holiday,G,0,877eb456-2827-475f-b858-2bc00480e24f
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Nate Hinton,G-F,14,9156ab75-7c83-4805-ae0b-7cf137c9c06d
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jalen Green,G,4,9a331092-35db-456c-a44a-d5b80a02ebe9
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Steven Adams,C,12,a208e22a-6b63-45f9-b7c6-bf913a68f3df
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Cam Whitmore,F,7,aeba1657-a0df-427b-ba9a-6db9e9147304
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Nate Williams,G,19,b83048ff-1e71-46fa-b49c-0b04a72cc4a1
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Amen Thompson,F-G,1,b8b323c1-5691-43a4-9c48-707531803d6a
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Jeff Green,F,32,b9155864-4192-4ad7-8652-57a0844c87b3
+583ecb3a-fb46-11e1-82cb-f4ce4684ea4c,Houston Rockets,Tari Eason,F,17,e7373530-b566-4f36-b0de-0510b6d94e0e
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Matt Ryan,F,37,042f45b2-1dda-4dce-a5ba-1e8b923178c1
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Dereon Seabron,G,0,1ad3d938-c2af-4567-b968-95dd79427fa5
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Jordan Hawkins,G,24,1d7e4639-11b4-4358-96cb-028bfb166e64
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Dyson Daniels,G,11,358fb074-ac1b-45a6-bf54-46c30534786e
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Trey Murphy III,G-F,25,51b62fe8-1e5c-4c65-8ad3-2ad06e749b70
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Zion Williamson,F,1,5cc51c05-06f5-4ae4-89a4-1d329fbbcdfb
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Herbert Jones,G-F,5,66b88001-06c2-4f4a-9825-b6e0cc1df6cc
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Jeremiah Robinson-Earl,F,50,709a47f0-270b-46b0-8089-be42c4f9ebc3
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Malcolm Hill,F,33,787f64f8-b127-47da-b05b-6b4324a502a0
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Brandon Ingram,F,14,8082841d-e516-43c6-a81b-7987fa321acd
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Izaiah Brockington,G,21,852e34ff-2735-4d9a-895c-cb45978ae13a
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Jose Alvarado,G,15,8d6caab5-3a9a-4994-bde0-9fe14032efd7
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Naji Marshall,F,8,a15f73b1-f757-4af2-b09a-f0185e09c8bf
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Larry Nance Jr.,F,22,ad389979-d1d5-4f26-ad64-3e516b3373a3
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,CJ McCollum,G,3,bc70a55a-cee0-478f-9a13-cf51c4a4187c
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Jonas Valanciunas,C,17,c8788ad2-89f7-4ec9-a22b-dcaf6190889b
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,E.J. Liddell,F,32,e140d6c7-351e-4937-84cd-66af4b8d617d
+583ecc9a-fb46-11e1-82cb-f4ce4684ea4c,New Orleans Pelicans,Cody Zeller,C,40,e1ce75b8-44ce-4086-b2e1-d2e22efc86ff
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Blake Wesley,G,14,08baba55-bec0-4494-95ce-28778c37a981
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Jamaree Bouyea,G,15,18c4bd7c-e293-4c0a-95d4-5e9983d301b3
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Keldon Johnson,G-F,3,190797ba-a6f4-4286-9d5e-d157ff834829
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Tre Jones,G,33,2d4ce4bc-b03a-40bc-b22c-dab27591a429
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,David Duke Jr.,G,7,2ff9979f-4ca6-44b8-946e-70cbd992410c
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Dominick Barlow,F,26,4589f8d1-66cd-4d57-a5b5-c7d130a0b43d
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Jeremy Sochan,F,10,4d9e0abc-05aa-45de-be32-b0770697416a
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Devonte' Graham,G,4,604571ce-5be8-4938-b8fb-945ff8d15f8d
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,RaiQuan Gray,F,41,6b2a569f-b0ae-4bdf-b7c8-eef466421d9a
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Sidy Cissoko,F,25,7721e264-5db8-4af9-b252-65f2d18c454d
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Victor Wembanyama,F-C,1,98e2cdeb-69dc-499c-a853-84c32c714924
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Zach Collins,F-C,23,b5310b38-a378-464f-b344-928adee0ed00
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Sandro Mamukelashvili,F,54,c910f29a-3f6b-4dba-92e9-20137fbdf2c7
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Cedi Osman,F,16,d8570bcf-9513-47d6-8f21-2f86625e58df
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Charles Bassey,C,28,eb063340-43d5-4f5c-8097-fa6e40b6f5e2
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Malaki Branham,G,22,ecdd201a-e33b-476e-9325-296cad22ba93
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Julian Champagnie,F,30,fa0e2b60-8ee9-4db6-b9bc-d0e23d6b29d2
+583ecd4f-fb46-11e1-82cb-f4ce4684ea4c,San Antonio Spurs,Devin Vassell,G,24,fe215630-2dc5-4573-95cc-c1b14abbbbcd
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Greg Brown III,F,13,03258eec-a666-4b8f-86da-9bed8e91c39f
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Dante Exum,G,0,0d187d04-4cd9-44b3-9a29-408fac5b011e
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Dereck Lively II,C,2,1b31afe2-7fb7-42d1-8eef-003c5eb619c2
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Markieff Morris,F,88,25c4a949-c310-4bd3-af3f-10441215b323
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Tim Hardaway Jr.,G-F,10,35cd1338-c56b-4247-b53c-264585c59883
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Maxi Kleber,F,42,3ef70a50-cd0d-4148-a1ad-ca830a1a9046
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Daniel Gafford,F-C,21,52cd8137-c791-4569-ad70-433e25d34882
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Derrick Jones Jr.,F,55,54cf6e06-9172-44b8-8d3b-ea1b6926553d
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Olivier-Maxence Prosper,F,18,599e6bbf-54a5-431b-b542-1817a0942369
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,A.J. Lawson,G,9,6bc71e02-9a03-40db-aed4-332ab5193336
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,P.J. Washington Jr.,F,25,6d7f4f2f-7ea7-4c56-8082-dfdce67f5487
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Dwight Powell,F-C,7,a465418b-0933-40b4-8f01-253d046872e1
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Jaden Hardy,G,1,a8d25a06-b47e-4a08-a945-7bf0dd945584
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Alex Fudge,F,3,bc3d0653-efe8-4cca-ad54-3f88cd950447
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Josh Green,G,8,bda65c13-f2d4-43ec-b058-b7807bec4867
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Brandon Williams,G,00,c8efed0b-f365-4440-84f7-df8c8078d1c0
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Luka Doncic,F-G,77,d2ee92e9-3e72-45eb-b156-2dc5adc1e6f7
+583ecf50-fb46-11e1-82cb-f4ce4684ea4c,Dallas Mavericks,Kyrie Irving,G,11,dd146010-902b-4ad7-b98c-650d0363a2f0
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Dario Saric,F-C,20,06255060-3d3d-44f6-a776-2aab8e57584a
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Lester Quinones,G,25,09132733-2306-42e8-869e-2172ed2c77e0
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Pat Spencer,G,61,21ed49ae-44cf-4031-9b6f-a48fb8a3e41c
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Usman Garuba,F,12,452f97da-01fb-40be-834b-34fd3a40615e
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Brandin Podziemski,G,2,49be9129-da30-4e74-aa60-b1e87582604b
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Klay Thompson,G,11,4e152a06-673e-4701-b115-aa7e2cd00d2d
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Draymond Green,F,23,5e5099d1-4a58-43f2-8d03-f2ae5dd49337
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Andrew Wiggins,F,22,77c425f0-0fce-4fab-bd1e-c915c8fb5bc7
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Trayce Jackson-Davis,F,32,7df31401-85c4-449f-bc87-f605145ef7ba
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Stephen Curry,G,30,8ec91366-faea-4196-bbfd-b8fab7434795
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Chris Paul,G,3,942c53e3-7268-44e3-b0a9-fdff55a72c03
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Gary Payton II,G,0,955fe0fb-3ca2-49c0-9a19-922d8349f13c
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Moses Moody,G,4,a316cf6a-693d-4c6a-b0d9-ebf80e73e832
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Jonathan Kuminga,F,00,b27687c1-55bb-49e6-9c5b-96a099fda7b7
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Jerome Robinson,G,18,befc2559-ffb9-46ab-b3cb-2a9844c5fe4d
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Kevon Looney,C-F,5,ebb50069-6fdf-4c07-9a21-a63d5c814536
+583ec825-fb46-11e1-82cb-f4ce4684ea4c,Golden State Warriors,Gui Santos,F,15,f5d6fdfd-21f6-48f0-a297-4c13e8fc40cb
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,LeBron James,F,23,0afbe608-940a-4d5d-a1f7-468718c67d91
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Jarred Vanderbilt,F,2,0b79911f-cd24-46d1-9b05-49fe937aa75e
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Gabe Vincent,G,7,1d4905d6-a6b4-4b45-8a90-91ed03440d0f
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Taurean Prince,F,12,4f80cdb1-1b10-4669-9774-045bc8a99c99
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Jaxson Hayes,C-F,11,582db35d-33ae-4913-9bb3-5de4fb763e46
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Rui Hachimura,F,28,5bfc9a4c-deb7-4f37-a784-5d99ada863cb
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Harry Giles III,F-C,20,70ba6b2e-e7c5-4df5-a88a-cd755e43ba97
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Maxwell Lewis,F,21,7c88b4f4-5cf7-4b53-bab8-e332c946481c
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Spencer Dinwiddie,G,26,8426ab40-888d-4f89-976c-cd9e23717653
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Cam Reddish,F-G,5,8f10f30f-cab7-43e1-be6b-736cd8700081
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Skylar Mays,G,4,92a32a2c-8081-4ed1-8c0f-8d19e7a5993b
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Christian Wood,F,35,98100660-988b-4e71-a89e-f35839964483
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Colin Castleton,C,14,a4b52811-c864-4830-a0fe-9d9745814422
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Austin Reaves,G,15,c4981f56-93a2-47b1-8d31-4e8635f45e1d
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Jalen Hood-Schifino,G,0,c8e15c45-76d9-45ad-908e-9bea625782bb
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,D'Angelo Russell,G,1,dbf09e15-1cd8-434e-acda-9527735ef4d6
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Max Christie,G,10,e872cdaf-5d04-45c2-bbfe-d673f3fb26ce
+583ecae2-fb46-11e1-82cb-f4ce4684ea4c,Los Angeles Lakers,Anthony Davis,F-C,3,ea8826b8-1f76-4eab-b61e-ffcb176880f3
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Ivica Zubac,C,40,2da18268-82d4-4b40-a296-7ceddd435d0b
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Brandon Boston Jr.,G,4,3ee94b27-a47b-4fae-bb71-ba68dacef351
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Xavier Moon,G,22,5b6bee70-ade5-4fb1-84b2-4547cddff5d6
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Russell Westbrook,G,0,74a45eed-f2b0-4886-ae71-d04cf7d59528
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Moussa Diabate,F,25,78dc76b4-a810-4e4a-9418-5cf3fa03582f
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Bones Hyland,G,5,7ad01370-ae8e-40ae-b70d-61f6d8dba8d9
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Kobe Brown,F,21,83d5d358-9559-49fb-8cde-833d8d5eb108
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Mason Plumlee,F-C,44,9570a938-324f-40e8-92dd-8a4fcf4a953b
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Jordan Miller,F,11,9f25f9f8-6028-4f4b-8e05-48b43272c167
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,James Harden,G,1,a52b2c84-9c3d-4d6e-8a3b-10e75d11c2bc
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Terance Mann,G-F,14,a6cc820a-8dce-40aa-840c-f0c94cfa9e46
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Joshua Primo,G,12,b9901d15-7253-4654-a4c3-5ab9fea39f7c
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Amir Coffey,G-F,7,b9d4ce1b-94dc-4bec-8d62-70a86d9c523e
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Kawhi Leonard,F,2,c12fb587-fc86-471c-8a84-19caf31325ce
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,P.J. Tucker,F,17,da7d17aa-f245-4710-820c-99d29a7458b4
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Paul George,F,13,db09f372-9a17-4889-add7-bf8a75ab6da6
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Daniel Theis,F-C,10,e18e9d0a-97b9-470d-b0a6-0c401ae0e0a0
+583ecdfb-fb46-11e1-82cb-f4ce4684ea4c,LA Clippers,Norman Powell,G,24,e1e4c26d-ab5c-4bd7-886a-812854466bb8
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Damion Lee,G-F,10,0d9274b1-878c-44e3-8284-2c1f321d148b
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Drew Eubanks,F-C,14,0fbb8fd5-9b9c-48a2-a355-18aba7b5d9d5
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Josh Okogie,G,2,1938fb4b-347a-43fd-ba41-1abdb9540699
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Saben Lee,G,38,2b484dc1-9203-4b23-966c-f72e615e5d94
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Thaddeus Young,F,30,31a50d54-ef46-47a8-863c-6f4d4e5aa184
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Devin Booker,G,1,31baa84f-c759-4f92-8e1f-a92305ade3d6
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Royce O'Neale,F,00,32526c95-bc6e-4d28-a751-c4200904d80b
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,David Roddy,F,21,339eff07-4d8e-42c6-9a47-900e94b13654
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Kevin Durant,F,35,53f2fa48-e61b-49fb-843d-8a3e872257eb
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Udoka Azubuike,C-F,27,597ba5c7-0927-446b-9b4f-bf730a8f65f6
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Bol Bol,C-F,11,6395ff32-c9b6-4ad0-8f0f-dce474274725
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Nassir Little,F-G,25,74eecf7d-f713-49e8-a590-52afa3f717a2
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Ish Wainright,F,12,7fd7fc72-da84-4dfc-875b-daa11228f575
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Jusuf Nurkic,C,20,a8b48aa9-cf98-4a87-8bba-e88eead8cdaa
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Isaiah Thomas,G,4,bda5388e-a657-4e2c-8e12-6ed474518d25
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Eric Gordon,G,23,f8d6c74c-e0bd-41ed-a814-f0b25259fe0a
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Bradley Beal,G,3,ff461754-ad20-4eeb-af02-2b46cc980b24
+583ecfa8-fb46-11e1-82cb-f4ce4684ea4c,Phoenix Suns,Grayson Allen,G,8,ffa9a64f-d624-4033-bd23-59dcfd805175
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Chris Duarte,G,3,1233bcf7-d653-4a86-b10a-86e3da52bdf0
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Domantas Sabonis,C,10,22038780-8c50-4211-a99e-656d983e5207
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Jordan Ford,G,31,2dc2237f-c0ec-402c-b607-11f049a26894
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Alex Len,C,25,2facd6c5-10c6-4481-a20f-a885b3f84460
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Malik Monk,G,0,3214b8de-d3ea-4188-9329-15a92f894f23
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,JaVale McGee,C,00,34ff5b55-42ef-40c0-a2c4-9c28b5476a03
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Davion Mitchell,G,15,38a9b2cc-008e-406b-ad5a-87e0e54f93b7
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Trey Lyles,F,41,55f10af0-4b71-4693-aa82-435e958ab560
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Keon Ellis,G,23,68a8c4ea-1d77-4a42-bea4-dbe9a162332a
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Mason Jones,G,22,68bedb10-a0c6-4595-999c-b30125b514c7
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Sasha Vezenkov,F,7,7160cefa-bef9-4733-8495-7e148c9e5bd9
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Keegan Murray,F,13,7494fbb4-5ac7-43ee-b91a-8859532f548b
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Kevin Huerter,G-F,9,858d255e-9a7b-4c7a-aac4-fc7cf3a5f238
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Colby Jones,G-F,20,b173be95-9411-4fa9-afa3-ff231db0ed4d
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Kessler Edwards,F,17,c2ad9bcf-7920-46ce-a124-dc21e98ca72d
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Harrison Barnes,F,40,ce8d0944-b277-499e-9701-02a5f1828615
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,De'Aaron Fox,G,5,cfc1e41b-74ab-45ee-8132-aaf9ca7f8163
+583ed0ac-fb46-11e1-82cb-f4ce4684ea4c,Sacramento Kings,Jalen Slawson,F,18,eef775a3-9634-47bc-95bf-a438c9d6dce8
