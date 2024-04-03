@@ -13,7 +13,7 @@ year = str(datetime.datetime.now().year)
 
 ## Player class ##
 class PlayerStats:
-    def __init__(self, name, team, points, assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+    def __init__(self, name, team, points, assists, rebounds, blocks, steals, field_goals_pct, three_points_pct, free_throws_pct):
         self.name = name
         self.team = team
         self.points = points
@@ -21,11 +21,27 @@ class PlayerStats:
         self.rebounds = rebounds
         self.blocks = blocks
         self.steals = steals
-        self.field_goals_percent = field_goals_percent
-        self.three_pointers_percent = three_pointers_percent
-        self.free_throws_percent = free_throws_percent
+        self.field_goals_pct = field_goals_pct
+        self.three_points_pct = three_points_pct
+        self.free_throws_pct = free_throws_pct
 ## End of player class ## 
         
+
+
+## Team stats class ##
+class TeamStats:
+    def __init__(self,team_name, team_points, team_assists, team_rebounds, team_blocks, team_steals, team_field_goals_pct, team_three_points_pct, team_free_throws_pct):
+        self.team_name = team_name
+        self.team_points = team_points
+        self.team_assists = team_assists
+        self.team_rebounds = team_rebounds
+        self.team_blocks = team_blocks
+        self.team_steals = team_steals
+        self.team_field_goals_pct = team_field_goals_pct
+        self.team_three_points_pct = team_three_points_pct
+        self.team_free_throws_pct = team_free_throws_pct
+## End of team stats class ##
+
 
 
 ## Team roster class ##
@@ -49,18 +65,7 @@ class TeamStandings:
         
 
 
-## Team stats class ##
-class TeamStats:
-    def __init__(self,team_name, team_points, team_assists, team_rebounds, team_blocks, team_steals, team_field_goals_pct, team_three_points_pct, team_free_throws_pct):
-        self.team_name = team_name
-        self.team_points = team_points
-        self.team_assists = team_assists
-        self.team_rebounds = team_rebounds
-        self.team_blocks = team_blocks
-        self.team_steals = team_steals
-        self.team_field_goals_pct = team_field_goals_pct
-        self.team_three_points_pct = team_three_points_pct
-        self.team_free_throws_pct = team_free_throws_pct
+
 
 
 
@@ -184,6 +189,8 @@ class GameFacade:
                     json_data = json.loads(data.decode("utf-8"))
 
                     for player in json_data['players']:
+                        if 'jersey_number' not in player:
+                            continue
                         writer.writerow([team, json_data['market'] + " " + json_data['name'], player['full_name'], player['position'], player['jersey_number'], player['id']])
                 # Catching exceptions #
                 except json.JSONDecodeError as e:
@@ -197,27 +204,6 @@ class GameFacade:
     
 
 
-    def test(self,id):
-        try:
-                self.connection.request("GET", f"/nba/trial/v8/en/teams/583ec928-fb46-11e1-82cb-f4ce4684ea4c//profile.json?api_key={api_key}")
-                response = self.connection.getresponse()
-                
-                if response.status != 200:
-                    print("Error: ", response.status, response.reason)
-                    return None
-
-                data = response.read()
-                json_data = json.loads(data.decode("utf-8"))
-
-                for player in json_data['players']:
-                    print(player['full_name'], player['position'], player['jersey_number'], player['id'])
-            # Catching exceptions #
-        except json.JSONDecodeError as e:
-            print(f"A JSONDecodeError occurred: {str(e)}")
-        except http.client.HTTPException as e:
-            print(f"An exception occurred: {str(e)}")
-        except Exception as e:
-            print(f"An exception occurred: {str(e)}")
 
 
     ### Game methods ###
@@ -301,6 +287,8 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         return game_id
     
+
+
     '''Get team id from reading pre-generated nba teams file'''
     def get_team_id(self, team_name) -> int:
         team_id = None
@@ -320,6 +308,8 @@ class GameFacade:
         
         return team_id
     
+
+
     '''Get player id from reading the pre-generated nba roster'''
     def get_player_id(self, player_name) -> int:
         player_id = None
@@ -370,10 +360,12 @@ class GameFacade:
 
     ### Stats methods ###
     '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
-    def get_live_game_stats(self, game_id):
+    def get_live_game_stats(self, team_name):
         players = []
 
         try:
+            game_id = api.get_game_id(team_name, year, month, day)
+
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
@@ -404,11 +396,10 @@ class GameFacade:
 
 
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_player_stats(self, player_name,year,month,day):
-        player_team = None
-        game_id = None
+    def get_player_stats(self, player_name):
         player_stats = []
         all_player_stats = []
+        player_team = None
         
         try:
             with open("2023_nba_roster.csv", "r") as file:
@@ -417,14 +408,8 @@ class GameFacade:
                 for row in reader:
                     if row[2] == player_name:
                         player_team = row[1]
-            
-            with open("2023_season_schedule.csv", "r") as file:
-                reader = csv.reader(file)
-                reader.__next__()
-                for row in reader:
-                    if row[1] == player_team or row[2] == player_team and row[3] == f"{year}-{month}-{day}":
-                        game_id = row[0]
 
+            game_id = api.get_game_id(player_team, year,month,day)
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
@@ -440,8 +425,15 @@ class GameFacade:
             json_data = json.loads(data.decode("utf-8"))
 
             for player in json_data['home']['players']:
-                    print(player)  
+                if player['statistics']['minutes'] != "00:00":
+                    all_player_stats.append(PlayerStats(player['full_name'], json_data['home']['market'] + " " + json_data['home']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
+            for player in json_data['away']['players']:
+                if player['statistics']['minutes'] != "00:00":
+                    all_player_stats.append(PlayerStats(player['full_name'], json_data['away']['market'] + " " + json_data['away']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
 
+            for player in all_player_stats:
+                if player.name == player_name:
+                    player_stats = player
 
         except json.JSONDecodeError as e:
             print(f"A JSONDecodeError occurred: {str(e)}")
@@ -453,10 +445,14 @@ class GameFacade:
         return player_stats
     
 
-    def get_live_team_stats(self, game_id):
+
+    def get_live_team_stats(self, team_name):
         teams = []
+        game_id = None
 
         try:
+            game_id = api.get_game_id(team_name, year, month, day)
+
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
@@ -468,8 +464,9 @@ class GameFacade:
             json_data = json.loads(data.decode("utf-8"))
 
             ''' Add the home and away team stats to the teams list '''
-            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
-            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
+            for team in json_data:
+                teams.append(TeamStats(team['home']['market'] + " " + team['home']['name'], team['home']['statistics']['points'], team['home']['statistics']['assists'], team['home']['statistics']['offensive_rebounds']+team['home']['statistics']['defensive_rebounds'], team['home']['statistics']['blocks'], team['home']['statistics']['steals'], team['home']['statistics']['field_goals_pct'], team['home']['statistics']['three_points_pct'], team['home']['statistics']['free_throws_pct']))
+                teams.append(TeamStats(team['away']['market'] + " " + team['away']['name'], team['away']['statistics']['points'], team['away']['statistics']['assists'], team['away']['statistics']['offensive_rebounds']+team['away']['statistics']['defensive_rebounds'], team['away']['statistics']['blocks'], team['away']['statistics']['steals'], team['away']['statistics']['field_goals_pct'], team['away']['statistics']['three_points_pct'], team['away']['statistics']['free_throws_pct']))
         
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -516,17 +513,14 @@ class SportsAPI():
     def get_team_roster_from_id(self, team_id):
         return self.game_facade.get_team_roster_from_id(team_id)
         
-    def get_live_game_stats(self, game_id):
-        return self.game_facade.get_live_game_stats(game_id)
+    def get_live_game_stats(self, team_name):
+        return self.game_facade.get_live_game_stats(team_name)
 
-    def get_player_stats(self, player_name,year,month,day):
-        return self.game_facade.get_player_stats(player_name,year,month,day)
+    def get_player_stats(self, player_name):
+        return self.game_facade.get_player_stats(player_name)
     
-    def get_live_team_stats(self, game_id):
-        return self.game_facade.get_live_team_stats(game_id)
-    
-    def test(self, id):
-        return self.game_facade.test(id)
+    def get_live_team_stats(self, team_name):
+        return self.game_facade.get_live_team_stats(team_name)
 ## End of API class ##
 
 
@@ -545,8 +539,9 @@ How to use the main method:
 
 api = SportsAPI()
 
-id = api.get_team_roster_from_id(api.get_team_id("Chicago Bulls"))
+stats = api.get_live_game_stats("Miami Heat")
 
-for player in id:
-    print(player)
+#live = api.get_live_game_stats(api.get_game_id("Miami Heat", "2024", "04", "02"))
+for stats in stats:
+    print(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_pct, stats.three_points_pct, stats.free_throws_pct)
 ### End of main method ###

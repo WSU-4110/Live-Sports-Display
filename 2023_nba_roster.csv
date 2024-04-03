@@ -180,6 +180,21 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Lonzo Ball,G,2,0f1de951-5a0e-4bc7-977c-8dafd0fbf121
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Henri Drell,F,77,111cb5fa-fb56-47d5-8618-ce3ab6da67f8
 583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Andrew Funk,G,30,1d2b0dcb-23f3-4263-8842-30b8acb556ce
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Dalen Terry,F,25,39d205a6-5a8e-4656-9565-87a8e95ee411
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Andre Drummond,C,3,440b769d-2b8b-477f-80d7-cb21d83c0d52
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,DeMar DeRozan,G-F,11,5e86a9c3-b4d0-4fe1-a551-acd83e5d60eb
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Patrick Williams,F,44,67f6467e-0acc-48ce-9872-a63225ef295c
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Nikola Vucevic,C,9,7366b2b7-5959-4dd9-9204-760e861b3119
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Adama Sanogo,C,21,73e347c9-dab6-45b2-8774-82d5bdb6f940
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Jevon Carter,G,5,79cd9581-3aaa-484c-a8b1-a349cdc5c34c
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Terry Taylor,F,32,7cd15c04-f7ed-4901-869d-ae4e2133a5bc
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Alex Caruso,G,6,8936c15e-f9d5-4b9a-80b9-8f6b7dcf7a17
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Julian Phillips,F,15,9c1deadf-622c-4326-bd14-3e273b5e1e5a
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Coby White,G,0,a1e46e84-bd9e-454d-9117-a8fa1aab0ce4
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Onuralp Bitim,G-F,17,afd6f073-343c-4e1f-9f77-a187d0c8aff9
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Torrey Craig,F,13,c14eba17-879a-461e-9413-bf71a378de6e
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Zach LaVine,G,8,db72e294-1c54-454a-96b9-0b4fd2f38112
+583ec5fd-fb46-11e1-82cb-f4ce4684ea4c,Chicago Bulls,Ayo Dosunmu,G,12,f8a7e4c7-d60e-4751-9203-30a772dd9272
 583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Ty Jerome,G-F,2,03cf6eb6-688a-49b1-a4cc-f10c39c21725
 583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Emoni Bates,F,21,194a9cc3-1dce-4c9a-96dd-a2f2505f5fe8
 583ec773-fb46-11e1-82cb-f4ce4684ea4c,Cleveland Cavaliers,Tristan Thompson,F,13,335097c3-7919-49d5-80b0-8062d5d3e89c
@@ -225,6 +240,15 @@ Team ID,Team Name,Player Name,Position,Jersey Number,Player ID
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Troy Brown Jr.,F,7,5350a897-aa31-4510-8feb-e709e1feb844
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Cade Cunningham,G,2,57d55cd4-6ab8-4255-a248-bef800c0cbab
 583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Tosan Evbuomwan,F,18,68ed2fac-e117-48e1-ac43-314098f600ea
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Chimezie Metu,F-C,5,72a69d30-cf07-4b5f-94ad-9c76832788bc
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Taj Gibson,F,67,9c8dc8ee-6207-48d5-81ee-f362f5e17f9b
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Isaiah Stewart,F-C,28,9d4d6c87-78db-4556-b94a-bb8d566dd004
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Buddy Boeheim,F,35,abceaea3-47b0-43fb-b9f7-75f378e2d409
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Evan Fournier,G-F,31,b736d95c-8474-48b2-9000-24ce926eace3
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Stanley Umude,G,17,c2a8d4de-dee9-4999-944d-5e0797b45480
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Quentin Grimes,G,24,e8486226-53e1-4857-b5f0-8b6fe88bdd8a
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Jaden Ivey,G,23,ec887131-efba-43a0-ad0a-0757ab3f0399
+583ec928-fb46-11e1-82cb-f4ce4684ea4c,Detroit Pistons,Simone Fontecchio,F,19,fda266ab-06e1-4591-80fa-73f027979b63
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Pat Connaughton,G,24,298852ca-299d-4cb9-a9e5-6ac909582f78
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,TyTy Washington Jr.,G,23,3054d6e1-033b-4b8d-93e5-b807ea122c75
 583ecefd-fb46-11e1-82cb-f4ce4684ea4c,Milwaukee Bucks,Danilo Gallinari,F,12,47cd6421-0ce1-431e-9b9c-a8d9bfd0eb04
