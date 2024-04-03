@@ -64,10 +64,7 @@ class TeamStandings:
 ## End of team standings class ##
         
 
-
-
-
-
+  
 
 
 ## Facade class for the API calls ##
@@ -77,10 +74,10 @@ class GameFacade:
         self.api_key = api_key
         self.connection = http.client.HTTPSConnection("api.sportradar.us")
 
-
-
-
-
+        
+        
+        
+        
     ### Download methods ###
     ''' ONLY USE THESE METHODS WHEN INITIALIZING SYSTEM TO DOWNLOAD 
         NEEDED INFORMATION FOR REDUCING AMOUNT OF API CALLS SUCH AS 
@@ -89,7 +86,6 @@ class GameFacade:
     def download_season_schedule(self)-> None:
         nba_year = datetime.datetime.now().year - 1
         nba_year = str(nba_year)
-
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/games/{nba_year}/REG/schedule.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -128,7 +124,8 @@ class GameFacade:
 
     def download_nba_teams(self) -> None:
         try:
-            self.connection.request("GET", f"/nba/trial/v8/en/league/hierarchy.json?api_key={api_key}")
+            ## Request to API for the team id
+            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={self.api_key}")
             response = self.connection.getresponse()
 
             if response.status != 200:
@@ -145,8 +142,8 @@ class GameFacade:
                     for division in conference['divisions']:
                         for team in division['teams']:
                             writer.writerow([team['id'], team['market'] + " " + team['name']])
-
-        # Catching exceptions #
+                            
+        ## Catching exceptions
         except json.JSONDecodeError as e:
             print(f"A JSONDecodeError occurred: {str(e)}")
         except http.client.HTTPException as e:
@@ -372,10 +369,10 @@ class GameFacade:
             if response.status != 200 and response.status != 404:
                 print("Error: ", response.status, response.reason)
                 return players
-            
+
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
-
+            
             ''' Iterate through the home and away teams and add to the players list if the player has played in the game'''
             for player in json_data['home']['players']:
                 if player['statistics']['minutes'] != "00:00":
