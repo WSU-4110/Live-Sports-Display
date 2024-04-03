@@ -600,3 +600,4 @@ api.get_live_game_stats(game_id)
 time.sleep(1)
 print ('\n\n\n')
 api.get_league_standings()
+
