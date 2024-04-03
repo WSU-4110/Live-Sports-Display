@@ -536,5 +536,6 @@ How to use the main method:
 6. Between each method call, there MUST be a time.sleep(1) to prevent the API from being overloaded and blocking a request
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
-api = SportsAPI()
+API = SportsAPI()
+
 ### End of main method ###
