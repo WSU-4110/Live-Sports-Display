@@ -13,10 +13,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Team Stats</h1>
-        <p>Enter the team name to view the stats</p>
-        <input type="text" id="teamName" placeholder="Enter team name">
-        <button onclick="DisplayStats()">View Stats</button>
+        <h1>Team Stats for {{stats.team_name}}</h1>
+        <table>
+            {% for stats in stats %}
+                <center>
+                    <li>{{ stats }}</li>
+                </center>
+            {% endfor %}
+
+        </table>
     </div>
 </body>
 </html>
