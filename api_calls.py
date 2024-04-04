@@ -287,6 +287,7 @@ class GameFacade:
 
 
     '''Get team id from reading pre-generated nba teams file'''
+    ''' NOT USED IN PRODUCTION MAY BE USED IN FUTURE '''
     def get_team_id(self, team_name) -> int:
         team_id = None
         try:
