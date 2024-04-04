@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Stats</title>
+    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+
+    <script>
+        function DisplayStats() {
+            var teamName = document.getElementById("teamName").value;
+            window.location.href = "/team_stats/" + teamName;
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>Enter Team Name</h1>
+        <input type="text" id="teamName" placeholder="Team Name">
+        <br><br>
+        <button onclick="DisplayStats()">Update</button> <!-- Update the onclick function name -->
+    </div>
+</body>
+</html>
