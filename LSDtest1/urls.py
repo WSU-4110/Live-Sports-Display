@@ -13,5 +13,6 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('stats_page/', views.stats_page, name='stats_page'),
     path('league_standings/', views.Get_League_Standings, name='league_standings'),
+    path('game_schedule/', views.Get_Game_Schedule, name='game_schedule'),
     path('run-ssh/', views.run_ssh, name='run_ssh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

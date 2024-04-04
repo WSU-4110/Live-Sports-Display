@@ -86,5 +86,11 @@ def Get_League_Standings(request):
 
     return (request, 'league_standings.html', {'standings': standings})
 
+def Get_Game_Schedule(request):
+    API = SportsAPI()
+    schedule = API.get_current_schedule()
+
+    return (request, 'game_schedule.html', {'schedule': schedule})
+
 def stats_page(request):
     return render(request, 'stats_page.html')
