@@ -19,15 +19,17 @@
             color: #333;
             background-color: #f4f4f4;
         }
+
         main {
-            background-color: #fff; 
-            padding: 20px; 
-            margin: 20px auto; 
-            width: 80%; 
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-            border-radius: 8px; 
-            }
-            .boarder {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .boarder {
             max-width: 1300px;
             margin: auto;
             padding: 20px;
@@ -42,9 +44,19 @@
             padding: 20px;
         }
 
-            .header img {
-                height: 100px;
-            }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            z-index: 1000;
+        }
 
         .nav {
             list-style-type: none;
@@ -74,8 +86,6 @@
         p {
             margin: 10px 0;
         }
-
-
     </style>
 </head>
 <body>
@@ -83,11 +93,11 @@
         <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
         <ul class="nav">
             <!--need to add for game schedule-->
-             <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/upload/">Upload Roster</a></li>
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
     </div>
-    
+
     <main>
         <h1>Upload Your File</h1>
         <form method="post" enctype="multipart/form-data">
@@ -96,10 +106,9 @@
             <button type="submit">Upload and OCR</button>
         </form>
     </main>
-    
+
     <footer>
         <p>Group 3 Live Sports Display</p>
     </footer>
 </body>
 </html>
-
