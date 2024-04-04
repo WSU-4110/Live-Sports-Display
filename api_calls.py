@@ -535,9 +535,4 @@ How to use the main method:
 api = SportsAPI()
 
 
-stats = api.get_live_team_stats("Boston Celtics")
-
-print(stats)
-
-
 ### End of main method ###
