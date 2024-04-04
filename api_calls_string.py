@@ -9,6 +9,7 @@ import csv
 
 api_key = 'ry27AHhE2O4WbIO24c0DE4Zt1KeMvyMx5f31taX1'
 connection = http.client.HTTPSConnection("api.sportradar.us")
+comConnect = http.client.HTTPSConnection("api.sportradar.com")
 
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
@@ -114,7 +115,7 @@ def per(made, att):
 
 
 # gets and returns player stats in a single string
-def get_player_stats_from_id(player_id):
+def get_season_player_stats_from_id(player_id):
     try:
         # Connection and response status
         connection.request("GET", f"/nba/trial/v8/en/players/{player_id}/profile.json?api_key={api_key}")
@@ -287,7 +288,6 @@ def game_in_time(hour_start, hour_end):
 def player_id_list():
     #if player_list exists, exit
     if os.path.isfile(player_list):
-        print('r')
         return None
     else:
         # makes sure teams list is present
@@ -311,7 +311,7 @@ def player_id_list():
         # makes the player list
         players = open(player_list,"w", newline = "")
         writer = csv.writer(players)
-        writer.writerow(["Player_Name", "Player_ID", ])
+        writer.writerow(["Player_Name", "Player_ID", "Team_ID"])
 
 
 
@@ -319,7 +319,7 @@ def player_id_list():
         try:
             for team_id in team_IDs:
 
-                time.sleep(1)
+                time.sleep(5) #This makes it take a while, but it stops the api from complaining about too many calls
                 connection.request("GET", f"/nba/trial/v8/en/teams/{team_id}/profile.json?api_key={api_key}")
                 response = connection.getresponse()
 
@@ -333,7 +333,7 @@ def player_id_list():
 
                
                 for player in json_data['players']:
-                    writer.writerow([player['full_name'],player['id']])
+                    writer.writerow([player['full_name'],player['id'], team_id])
                         
             # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -344,8 +344,81 @@ def player_id_list():
             print(f"An exception occurred: {str(e)}")
         return None
 
+def get_player_stats_from_id(player_id, team_id):
+    try:
+        #Connection & response status
+        comConnect.request("GET", f"/nba/trial/stream/en/statistics/subscribe?api_key={api_key}&players==sd:player:{player_id}")
+
+        response = connection.getresponse()
+        
+        if response.status != 200:
+            print("Error:", response.status, response.reason)
+            return None
+
+        data = response.read()
+        #print(data) #----------------------------------------------------------If the code doesn't work - but the api server isn't idle - could you send the result of this?
+        json_data = json.loads(data.decode("utf-8"))
+
+        # setup of output
+        output = "Name: " + json_data['full_name']
+
+        # gets team name
+        team_name = ""
+        with open(team_id_list, 'r') as file:
+            teams = csv.reader(file)
+            for team in teams:
+                if team_id == team[0]:
+                    team_name = f"{team[2]} {team[1]}"
+
+        output +=" Team: " + team_name
+
+
+        # gets all the relevant stats, and adds it to the output
+        data = json_data['statistics']
+        
+        FGM = data['field_goals_made']
+        FGA = data['field_goals_att']
+        FG = per(FGM,FGA)
+
+        ThreePM = data['three_points_made']
+        ThreePA = data['three_points_att']
+        TP = per(ThreePM,ThreePA)
+
+        FTM = data['free_throws_made']
+        FTA = data['free_throws_att']
+        FT = per(FTM,FTA)
+
+        REB = data['rebounds']
+        AST = data['assists']
+        BLK = data['blocks']
+        STL = data['steals']
+        PTS = data['points']
+
+        output += f" FG: {FG}"
+        output += f" TP: {TP}"
+        output += f" FT: {FT}"
+        output += f" REB: {REB}"
+        output += f" AST: {AST}"
+        output += f" BLK: {BLK}"
+        output += f" STL: {STL}"
+        output += f" PTS: {PTS}"
+
+        return output
+                    
+                    
+                    
+    # Catching exceptions #
+    except json.JSONDecodeError as e:
+        print(f"A JSONDecodeError occurred: {str(e)}")
+    except http.client.HTTPException as e:
+        print(f"A Http exception occurred: {str(e)}")
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
+    return None
+
+
 # gets player stats from name
-def get_player_stats(player_name):
+def get_player_stats(player_name, isLive):
     
     #makes sure player_list exists
     player_id_list()
@@ -359,7 +432,10 @@ def get_player_stats(player_name):
             for player in players:
                 
                 if player[0] == player_name:
-                    return get_player_stats_from_id(player[1])
+                    if isLive: # If getting live stats, get live, else get season
+                        return get_player_stats_from_id(player[1], player[2])
+                    else:
+                        return get_season_player_stats_from_id(player[1])
 
             return "! No player found !" # returns a message if no players found
 
