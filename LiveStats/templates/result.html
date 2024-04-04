@@ -9,7 +9,12 @@
 
     <!-- Display player names as list items -->
     <p>Extracted Text:</p>
-    <textarea rows="10" cols="50">{{ text }}</textarea>
+    <ul>
+        {% for item in PlayerArray %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <textarea rows="10" cols="50">{{ PlayerArray }}</textarea>
 
 </body>
 </html>
