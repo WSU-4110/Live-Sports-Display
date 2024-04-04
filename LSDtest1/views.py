@@ -11,6 +11,7 @@ from .SSH import run_stacked_display
 from django.views.decorators.http import require_http_methods
 import json
 from .tasks import my_background_task
+from api_calls import SportsAPI as SportsAPI
 
 
 
@@ -87,3 +88,16 @@ def OCR_Image(path):
     image = Image.open(path)
     text = pytesseract.image_to_string(image)
     return text
+
+
+## API calls ##
+def Get_League_Standings(request):
+    if request.method == 'POST':
+        API = SportsAPI()
+        standings = API.get_league_standings()
+
+        return render(request, 'league_standings.html', {'standings': standings})
+    
+def stats_page(request):
+    return render(request, 'stats_page.html')
+

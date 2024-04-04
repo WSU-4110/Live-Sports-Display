@@ -78,6 +78,8 @@ def OCR_Image(path):
     text = pytesseract.image_to_string(image)
     return text
 
+
+## API calls ##
 def Get_League_Standings(request):
     if request.method == 'POST':
         API = SportsAPI()
@@ -85,4 +87,5 @@ def Get_League_Standings(request):
 
         return render(request, 'league_standings.html', {'standings': standings})
 
-
+def stats_page(request):
+    return render(request, 'stats_page.html')
