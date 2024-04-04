@@ -8,6 +8,7 @@ import TextParsing
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
+from api_calls import SportsAPI as SportsAPI
 
 @csrf_exempt
 def run_ssh(request):
@@ -76,3 +77,11 @@ def OCR_Image(path):
     image = Image.open(path)
     text = pytesseract.image_to_string(image)
     return text
+
+def Get_League_Standings(request):
+    if request.method == 'POST':
+        API = SportsAPI()
+        standings = API.get_league_standings()
+
+        return JsonResponse(standings)
+    return JsonResponse({"message": "Invalid request"}, status=400)
