@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{% static 'first.css' %}">
+
     <link rel="icon" type="image/png" href="MMM_Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_sheet.css">
     <title>Upload and OCR</title>
     <style>
         body {
@@ -55,7 +56,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 20px;
             z-index: 1000;
         }
 
@@ -99,6 +100,7 @@
         <ul class="nav">
             <!--need to add for game schedule-->
             <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/home/">Home</a></li>
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
     </div>
