@@ -14,7 +14,12 @@
                 <th>Wins</th>
                 <th>Losses</th>
                 <th>Points</th>
+
+            </tr>
+            {% for standing in standings %}
+                <li>{{ standing }}</li>
             {% endfor %}
+
         </table>
     </div>
 </body>
