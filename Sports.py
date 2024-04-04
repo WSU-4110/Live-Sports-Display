@@ -12,6 +12,7 @@
 from samplebase import SampleBase
 from rgbmatrix import graphics
 from datetime import datetime
+from PIL import Image, ImageOps, ImageEnhance 
 
 from api_calls import GameFacade
 import api_calls
@@ -46,12 +47,18 @@ class PlayerStats:
         self.field_goals_percent = field_goals_percent
         self.three_pointers_percent = three_pointers_percent
         self.free_throws_percent = free_throws_percent
-
+## End of player class ## 
 
 
 class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
         super(RunText, self).__init__(*args, **kwargs)
+        
+        try:
+            self.resample_filter = Image.LANCZOS  # Newer version of Pillow
+        except AttributeError:
+            self.resample_filter = Image.ANTIALIAS  # Older version of Pillow
+        
         
         
         self.players = [
@@ -87,12 +94,28 @@ class RunText(SampleBase):
         self.jnumber_color = graphics.Color(0, 0, 255)
         
         self.datetime_color = graphics.Color(255, 255, 255)
-        self.teamstats = graphics.Color(255,255,0)
+        self.teamstats = graphics.Color(255,0,0) 
 
         self.field_goals_percent = graphics.Color(0, 255, 0)
         self.three_pointers_percent = graphics.Color(0, 255, 0)
         self.free_throws_percent = graphics.Color(0, 255, 0)
         
+    def display_image(self, offscreen_canvas, image_path):
+        # Open the image using PIL
+        image = Image.open(image_path)
+        # Resize the image to fit display
+        image = image.resize((128, 64), self.resample_filter)
+        
+        # Convert the image to RGB format
+        image = image.convert('RGB')
+        
+        # Display the image on the LED matrix
+        for x in range(128):
+            for y in range(64):
+                r, g, b = image.getpixel((x, y))
+                offscreen_canvas.SetPixel(x, y, r, g, b)
+
+                
     def loadPlayersFromFile(self):
         self.players = []
         try:
@@ -126,6 +149,42 @@ class RunText(SampleBase):
                         break
                 if not found:
                     print(f"No matching player found for stats.name = {stats.name} in self.players")
+    '''
+        for stats in player:
+            try:
+                time.sleep(1)
+                print(player)
+                player_stats_list = api.get_player_stats(player)
+                time.sleep(1)
+                
+
+              
+             
+                if player_stats_list:
+                    player_stats = player_stats_list[i]
+
+                    )
+                
+                else:
+                    # Handle case where stats are not found
+                    updated_player = PlayerStats(
+                        player, "Data not available", "", "", "", "", 
+                        "", "", "", ""
+                    )
+                     
+                    
+            except Exception as e:
+                print(f"Error fetching stats for : {e}")
+                # Handle exceptions by using default or previous values
+                updated_player = PlayerStats(
+                  #  name, "Error fetching data", "", "", "", "", "", "", "", ""
+                )
+              
+        
+        updated_player.append(updated_player)
+
+        self.players = updated_players
+    '''
 
     def set_default_values_for_player(self, player, updated_players):
         updated_players.append(PlayerStats(
@@ -221,12 +280,19 @@ class RunText(SampleBase):
     '''
         
     def run(self):
+        offscreen_canvas = self.matrix.CreateFrameCanvas()
         if not self.team_positions:
             self.team_positions = [self.matrix.width for _ in self.players]
         
-        offscreen_canvas = self.matrix.CreateFrameCanvas()
-
+        #Displays Logo For 10 Seconds Before Changing screens
+        self.clearScreen(offscreen_canvas)
+        # Display an image
+        self.display_image(offscreen_canvas, 'Logo3.png')
+        offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+        time.sleep(10)
         
+
+        #Displays Player Info from Fantasy Roster 
         while True:
             # Clear Display
             self.clearScreen(offscreen_canvas)
@@ -235,7 +301,7 @@ class RunText(SampleBase):
             # Draw date and time
             self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-            time.sleep(0.3)
+            time.sleep(0.05)
     
 class LEDDisplayFacade:
     def __init__(self):
@@ -248,8 +314,9 @@ class LEDDisplayFacade:
         self.run_text.run()
 
 if __name__ == "__main__":
-    api = GameFacade()  
-  
+    api = GameFacade()  # or SportsAPI(), if that's the class you're working with
+    
+    # Call the methods to download the data you need
 
     facade = LEDDisplayFacade()
     facade.run_text.loadPlayersFromFile()
@@ -258,4 +325,3 @@ if __name__ == "__main__":
         facade.display_info()
     
     
-
