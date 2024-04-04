@@ -6,9 +6,12 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('LiveStats/', include('LiveStats.urls')),
   #  path("__debug__/", include("debug_toolbar.urls")),
     path('upload/', views.upload_and_ocr, name='upload'),
     path('', include('LSDtest1.urls')),
+    path('league_standings/', views.Get_League_Standings, name='league_standings'),
+    path('game_schedule/', views.Get_Game_Schedule, name='game_schedule'),
+#    path('run-ssh/', views.run_ssh, name='run_ssh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -14,7 +14,7 @@ from pathlib import Path
 #from jordan
 import os
 
-
+print ("LSDtest1")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,8 +28,28 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-l-bv0-ty@p0gwk
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://:p63b5491fe55772d47f3ca46afef7e6fef54361a4806fe5a092a9f996704eb238@ec2-3-215-140-221.compute-1.amazonaws.com:28649') 
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://:p63b5491fe55772d47f3ca46afef7e6fef54361a4806fe5a092a9f996704eb238@ec2-3-215-140-221.compute-1.amazonaws.com:28649')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'celery': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')   #heroku

@@ -29,7 +29,12 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-l-bv0-ty@p0gwk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CELERY_BROKER_URL = os.environ.get('REDIS_TLS_URL', 'rediss://default')
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_TLS_URL', 'rediss://default')
 
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')   #heroku
@@ -213,39 +218,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-]
-
-ROOT_URLCONF = 'LSDtest1.urls'
-
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
-WSGI_APPLICATION = 'LSDtest1.wsgi.application'
-
 
 
 

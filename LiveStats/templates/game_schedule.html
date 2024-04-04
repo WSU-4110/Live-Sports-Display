@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Schedule</title>
+    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+</head>
+<body>   
+    <div class="container">
+        <h1>Game schedules today</h1>
+        <table>
+            {% for schedule in schedule %}
+                <center>
+                    <li>{{ schedule }}</li>
+                </center>
+            {% endfor %}
+
+        </table>
+    </div>
+</body>
+</html>

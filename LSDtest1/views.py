@@ -5,6 +5,33 @@ import pytesseract
 from django.conf import settings
 import os
 import TextParsing
+from django.http import JsonResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
+from .SSH import run_stacked_display
+from django.views.decorators.http import require_http_methods
+import json
+from .tasks import my_background_task
+from api_calls import SportsAPI as SportsAPI
+
+
+
+@csrf_exempt
+def run_ssh(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode('utf-8'))  # Parse the JSON data
+            action = data.get("action")
+
+            if action == "stackedDisplay":
+                # Offload the long-running operation to a background task
+                task_id = my_background_task.delay()  # Start the task
+                return JsonResponse({"message": "Task is running in the background", "task_id": str(task_id)})
+            else:
+                return JsonResponse({"error": "Invalid request"}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({"message": "Invalid JSON format"}, status=400)
+    return JsonResponse({"message": "Invalid request"}, status=400)
+
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
 def handle_uploaded_file(f, file_name):
@@ -61,3 +88,21 @@ def OCR_Image(path):
     image = Image.open(path)
     text = pytesseract.image_to_string(image)
     return text
+
+
+## API calls ##
+def Get_League_Standings(request):
+    API = SportsAPI()
+    standings = API.get_league_standings()
+
+    return render(request, 'league_standings.html', {'standings': standings})
+
+def Get_Game_Schedule(request):
+    API = SportsAPI()
+    schedule = API.get_current_schedule()
+
+    return render(request, 'game_schedule.html', {'schedule': schedule})
+    
+def stats_page(request):
+    return render(request, 'stats_page.html')
+

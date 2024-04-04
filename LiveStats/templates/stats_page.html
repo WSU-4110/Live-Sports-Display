@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'first.css' %}">
+        <link rel="icon" type="image/png" href="MMM_Logo.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Upload and OCR</title>
+        <style>
+            body {
+                background-image: url("{% static 'images/1pX9.gif' %}");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                line-height: 1.6;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+            main {
+                background-color: #fff; 
+                padding: 20px; 
+                margin: 20px auto; 
+                width: 80%; 
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+                border-radius: 8px; 
+                }
+                .boarder {
+                max-width: 1300px;
+                margin: auto;
+                padding: 20px;
+            }
+    
+            .header {
+                background-color: #000;
+                color: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+    
+                .header img {
+                    height: 100px;
+                }
+    
+            .nav {
+                list-style-type: none;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+    
+                .nav li {
+                    margin: 0 20px;
+                }
+    
+                .nav a {
+                    color: white;
+                    text-decoration: none;
+                    font-size: 20px;
+                }
+    
+                    .nav a:hover {
+                        text-decoration: line-through Red 4px;
+                    }
+    
+            h2 {
+                color: #000;
+            }
+    
+            p {
+                margin: 10px 0;
+            }
+
+            .button {
+                background-color: #021480; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                list-style-type: none; /* Removed the left side bullet point */
+            }
+    
+    
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+            <ul class="nav">
+                <!--need to add for game schedule-->
+                <li><a href="/upload/">Upload Roster</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="/stats_page/">Statistics Page</a></li>
+            </ul>
+        </div>
+
+
+        <main>
+            <h2>Statistics Page</h2>
+            <p>Here you can view the statistics of the games that have been played.</p>
+            <ul>
+                <center>
+                    <li><a href="/league_standings/" class="button">League Standings</a></li>
+                    <li><a href="/game_schedule/" class="button">Game Schedule</a></li>
+                    <li><a href="/team_roster/" class="button">Team Roster Selection</a></li>
+                </center>
+                
+            </ul>
+        </main>
+    </body>
+
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>League Standings</title>
+    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+</head>
+<body>   
+    <div class="container">
+        <h1>League Standings</h1>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Points</th>
+
+            </tr>
+            {% for standing in standings %}
+                <center>
+                    <li>{{ standing.team_name }} --- Wins:{{ standing.wins}} --- Losses:{{ standing.losses }}</li>
+                </center>
+            {% endfor %}
+
+        </table>
+    </div>
+</body>
+</html>
