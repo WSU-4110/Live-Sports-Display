@@ -67,12 +67,13 @@
             </ul>
         </div>
         <p>Extracted Text:</p>
+        <p>Debug: {{ player_names }}</p>
         <ul>
             {% for name in player_names %}
             <li>{{ name }}</li>
             {% endfor %}
         </ul>
-        
+
         <button id="singleDisplayBtn">Single Display</button>
         <button id="stackedDisplayBtn">Stacked Display</button>
         <div id="confirmationStatus"></div>
