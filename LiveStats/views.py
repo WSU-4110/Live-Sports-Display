@@ -83,5 +83,6 @@ def Get_League_Standings(request):
         API = SportsAPI()
         standings = API.get_league_standings()
 
-        return JsonResponse(standings)
-    return JsonResponse({"message": "Invalid request"}, status=400)
+        return render(request, 'league_standings.html', {'standings': standings})
+
+
