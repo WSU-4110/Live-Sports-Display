@@ -92,11 +92,10 @@ def OCR_Image(path):
 
 ## API calls ##
 def Get_League_Standings(request):
-    if request.method == 'POST':
-        API = SportsAPI()
-        standings = API.get_league_standings()
+    API = SportsAPI()
+    standings = API.get_league_standings()
 
-        return render(request, 'league_standings.html', {'standings': standings})
+    return render(request, 'league_standings.html', {'standings': standings})
     
 def stats_page(request):
     return render(request, 'stats_page.html')
