@@ -15,7 +15,7 @@ import paramiko
 import time
 def run_stacked_display():
     print (testing)
-    return "Stacked display command executed"
+   # return "Stacked display command executed"
     
 
 #    # SSH connection parameters
