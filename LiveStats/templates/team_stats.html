@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Stats</title>
+    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Team Stats for {{ team_name }}</h1>
+        {% for stats in stats %}
+            <li>{{ stats.team_name }}</li>
+            <li>{{ stats.team_points }}</li>
+            <li>{{ stats.team_rebounds }}</li>
+            <li>{{ stats.team_assists }}</li>
+    </div>
+</body>
+</html>
