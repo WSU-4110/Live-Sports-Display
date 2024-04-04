@@ -97,7 +97,7 @@ def Get_Team_Stats(request, team_name):
     API = SportsAPI()
     stats = API.get_live_team_stats(team_name)
 
-    return (request, 'team_stats.html', {'stats': stats})
+    return (request, 'team_stats.html', {'stats': stats}, {'team_name': team_name})
 
 def stats_page(request):
     return render(request, 'stats_page.html')
