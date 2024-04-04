@@ -314,10 +314,7 @@ class LEDDisplayFacade:
         self.run_text.run()
 
 if __name__ == "__main__":
-    api = GameFacade()  # or SportsAPI(), if that's the class you're working with
-    
-    # Call the methods to download the data you need
-
+    api = GameFacade() 
     facade = LEDDisplayFacade()
     facade.run_text.loadPlayersFromFile()
     facade.run_text.populatePlayerStats()
