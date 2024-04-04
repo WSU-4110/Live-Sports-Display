@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Team Stats for {{ team_name }}</h1>
+        <h1>Team Stats for {{ stats[0].team_name }} and {{ stats[1].team_name }}</h1>
         {% for stats in stats %}
             <li>{{ stats.team_name }}</li>
             <li>{{ stats.team_points }}</li>
