@@ -14,14 +14,14 @@
 <body>
     <div class="container">
         <h1>Team Stats for {{stats.team_name}}</h1>
+        {% if stats %}
         <table>
-            {% for stats in stats %}
-                <center>
-                    <li>{{ stats }}</li>
-                </center>
-            {% endfor %}
-
+            <h2>Team Name: {{stats.team_name}}</h2>
+            <h2>Points: {{stats.team_points}}</h2>
         </table>
+        {% else %}
+            <h2>Team is currently not playing.</h2>
+        {% endif %}
     </div>
 </body>
 </html>
