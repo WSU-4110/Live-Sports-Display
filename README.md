@@ -1,5 +1,7 @@
 # Live-Sports-Display
-# Our Website
+
+## Our Website
+Our website can be accessed here:
 https://livesportsdisplay-78ab65502a20.herokuapp.com/
 
 ## Our Purpose:
