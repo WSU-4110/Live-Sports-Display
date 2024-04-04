@@ -103,7 +103,7 @@ def Get_Game_Schedule(request):
 
     return render(request, 'game_schedule.html', {'schedule': schedule})
 
-def Get_Team_Stats(request,team_name):
+def Get_Team_Stats(request):
     team_name = request.GET.get('team_name')
     API = SportsAPI()
     stats = API.get_live_team_stats(team_name)
