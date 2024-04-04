@@ -12,5 +12,6 @@ urlpatterns = [
     path('upload/', views.upload_and_ocr, name='upload'),
     path('', views.home_view, name='home'),
     path('stats_page/', views.stats_page, name='stats_page'),
+    path('league_standings/', views.Get_League_Standings, name='league_standings'),
     path('run-ssh/', views.run_ssh, name='run_ssh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
