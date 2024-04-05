@@ -1,5 +1,7 @@
 # Live-Sports-Display
 
+![alt text](https://github.com/WSU-4110/Live-Sports-Display/blob/main/Logo/MMM_Logo.png)
+
 ## Purpose:
 This project aims to display live Scores on an LED Matrix Panel.
 
