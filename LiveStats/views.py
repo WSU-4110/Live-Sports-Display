@@ -51,6 +51,7 @@ def upload_and_ocr(request):
             arrayOfPlayerNames = TextParsing.imageToPlayerNames(file_path)
             # For demonstration, join names into a string to display. Adjust as necessary.
             playerNamesText = ', '.join(arrayOfPlayerNames)
+            arrayOfPlayerNames = ["name1","name2","name3","name4"]
             return render(request, 'result.html', {'array': arrayOfPlayerNames})
     else:
         form = UploadFileForm()
