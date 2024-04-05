@@ -49,8 +49,11 @@ def upload_and_ocr(request):
                     destination.write(chunk)
             # Use TextParsing to process the image and extract player names
             arrayOfPlayerNames = TextParsing.imageToPlayerNames(file_path)
-            arrayOfPlayerNames = list(arrayOfPlayerNames)
-            return render(request, 'result.html', {'PlayerArray': ["Name One","Name two", "Name Three"]})
+
+            context = {
+        'PlayerArray': arrayOfPlayerNames,
+    }
+            return render(request, 'result.html', context)
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
