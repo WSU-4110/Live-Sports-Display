@@ -8,11 +8,15 @@
 # Takes In NBA Player Names and Displays Players Stats
 # By using api_calls.py (API) to run display
 #==========================================================
+
+
+
+
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
 from datetime import datetime
-from PIL import Image, ImageOps, ImageEnhance 
+from PIL import Image, ImageOps, ImageEnhance # Make sure to import Resampling
 
 from api_calls import GameFacade
 import api_calls
@@ -49,18 +53,44 @@ class PlayerStats:
         self.free_throws_percent = free_throws_percent
 ## End of player class ## 
 
+class TeamStats:
+    def __init__(self, team ,points ,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+        self.team = team
+        self.assists = assists
+        self.points = points
+        self.rebounds = rebounds
+        self.blocks = blocks
+        self.steals = steals
+        self.field_goals_percent = field_goals_percent
+        self.three_pointers_percent = three_pointers_percent
+        self.free_throws_percent = free_throws_percent
+    
+
+    def update_stats(self,team,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+        self.team = team
+        self.points = points
+        self.assists = assists
+        self.rebounds = rebounds
+        self.blocks = blocks
+        self.steals = steals
+        self.field_goals_percent = field_goals_percent
+        self.three_pointers_percent = three_pointers_percent
+        self.free_throws_percent = free_throws_percent
+## End of Team Stats class ## 
+
+
 
 class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
         super(RunText, self).__init__(*args, **kwargs)
         
         try:
-            self.resample_filter = Image.LANCZOS  # Newer version of Pillow
+            self.resample_filter = Image.LANCZOS  # Newer versions of Pillow
         except AttributeError:
-            self.resample_filter = Image.ANTIALIAS  # Older version of Pillow
+            self.resample_filter = Image.ANTIALIAS  # Older versions of Pillow
         
-        
-        
+        # Individual Stats
+        # Playername, Team, Points, Assists, Rebounds, Blocks, Steals, Field Goal Percent, Three Points Percent, Free Throws Percent
         self.players = [
             PlayerStats("Player 1", "Team A" ,"0" ,"0", "0", "0", "0", "0", "0", "0"),
             PlayerStats("Player 2", "Team B" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
@@ -72,6 +102,19 @@ class RunText(SampleBase):
             PlayerStats("Player 8", "Team H" ,"0" , "0", "0", "0", "0", "0", "0", "0")
         ]
         
+        # Total Team Stats
+        # Team, Points, Assists, Rebounds, Blocks, Steals, Field Goal Percent, Three Points Percent, Free Throws Percent
+        self.teams = [
+            TeamStats("TeamName 1","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 2","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 3","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 4","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 5","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 6","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 7","0" , "0", "0", "0", "0", "0", "0", "0"),
+            TeamStats("TeamName 8","0" , "0", "0", "0", "0", "0", "0", "0"),
+            
+        ]
         
         #initualise team positions
         self.team_positions = None
@@ -83,22 +126,23 @@ class RunText(SampleBase):
         self.font = graphics.Font()
         self.font.LoadFont("../../../fonts/4x6.bdf")
         
-        # Define colors
-        self.name_color = graphics.Color(255, 0, 0)
-        self.team_color = graphics.Color(0, 255, 0)
-        self.assists = graphics.Color(0, 255, 0)
-        self.rebounds = graphics.Color(0, 255, 0)
-        self.blocks = graphics.Color(0, 255, 0)
-        self.steals = graphics.Color(0, 255, 0)
+        #Define Colors        
+        self.name_color = graphics.Color(255, 165, 0) # Orange (Slightly brighter than original)
+        self.team_color = graphics.Color(0, 255, 0) # Green (Sharp and Clean)
+        self.assists_color = graphics.Color(0, 255, 255) # Cyan (For clarity and communication)
+        self.rebounds_color = graphics.Color(0, 0, 255) # Blue (Reliability, strength)
+        self.blocks_color = graphics.Color(128, 0, 128) # Purple (Wisdom, bravery)
+        self.steals_color = graphics.Color(255, 0, 0) # Red (Alertness, speed)
+        self.points_color = graphics.Color(255, 255, 0) # Yellow (Bright, attention-grabbin)
+        self.field_goals_percent_color = graphics.Color(0, 128, 128) # Teal (for steadiness and efficiency)
+        self.three_pointers_percent_color = graphics.Color(255, 165, 0) # Orange (for energy and impact)
+        self.free_throws_percent_color = graphics.Color(173, 216, 230) # Light Blue (for precision and calm)
 
-        self.jnumber_color = graphics.Color(0, 0, 255)
-        
-        self.datetime_color = graphics.Color(255, 255, 255)
-        self.teamstats = graphics.Color(255,0,0) 
 
-        self.field_goals_percent = graphics.Color(0, 255, 0)
-        self.three_pointers_percent = graphics.Color(0, 255, 0)
-        self.free_throws_percent = graphics.Color(0, 255, 0)
+        self.datetime_color = graphics.Color(255, 255, 255) # WHITE (clarity)
+        self.teamstats = graphics.Color(0, 255, 255)# CYAN -- still working on it.
+
+
         
     def display_image(self, offscreen_canvas, image_path):
         # Open the image using PIL
@@ -230,7 +274,8 @@ class RunText(SampleBase):
         elif number <75:
             return graphics.Color(255,255,0) #YELLLO
         else:
-            return graphics.Color(0,128,0) #GREEn
+            return graphics.Color(0,128,0) #GREEN
+    
                 
             
         
@@ -238,8 +283,9 @@ class RunText(SampleBase):
         
         # Player name Lengths
         clearance = 2
-        text_height = 6;
-        separation = 5
+        text_height = 6
+        separation = 3
+        
         
         player_name_lengths = []
         for player in self.players:
@@ -256,13 +302,74 @@ class RunText(SampleBase):
             
             player_text_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player_text)
             
-        
             vertical_pos =  text_height * (i + 1)
         
             # Draw the scrolling team stats
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos,self.teamstats,player_text)
-            self.team_positions[i] -= 1
+           # graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos,self.teamstats,player_text)
+            #self.team_positions[i] -= 1
+        
+
+            #Total Length
+            tempLength = separation;
+            
+            # Draw player team
+            team_text = f" {player.team}"
+            team_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.team_color, team_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i], vertical_pos, self.team_color, team_text)
+            tempLength += team_length + separation
+
+                        
+            # Draw player points
+            points_text = f" Points: {player.points}"
+            points_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, points_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.points_color, points_text)
+            tempLength += points_length + separation
+
+            # Draw player assists
+            assists_text = f" Assists: {player.assists}"
+            assists_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, assists_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.assists_color, assists_text)
+            tempLength += assists_length + separation
+
+            # Draw player rebounds
+            rebounds_text = f" Rebounds: {player.rebounds}"
+            rebounds_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, rebounds_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.rebounds_color, rebounds_text)
+            tempLength += rebounds_length + separation
+
+            # Draw player blocks
+            blocks_text = f" Blocks: {player.blocks}"
+            blocks_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, blocks_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.blocks_color, blocks_text)
+            tempLength += blocks_length + separation
+
+            # Draw player steals
+            steals_text = f" Steals: {player.steals}"
+            steals_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, steals_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.steals_color, steals_text)
+            tempLength += steals_length + separation
+            
+            #Draw player Feild Goal Percent
+            field_goals_percent_text = f" FG%: {player.field_goals_percent}"
+            field_goals_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.field_goals_percent_color, field_goals_percent_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.field_goals_percent_color,field_goals_percent_text)
+            tempLength += field_goals_percent_length + separation
+            
+            #Draw player three pointers percent
+            three_pointers_percent_text = f" 3P%: {player.three_pointers_percent}"
+            three_pointers_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.three_pointers_percent_color, three_pointers_percent_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.three_pointers_percent_color,three_pointers_percent_text)
+            tempLength += three_pointers_percent_length+ separation
+            
+            #Draw player free throws percent
+            free_throws_percent_text = f" FT%: {player.free_throws_percent}"
+            free_throws_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.three_pointers_percent_color, free_throws_percent_text)
+            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.free_throws_percent_color,free_throws_percent_text)
+            tempLength += free_throws_percent_length+ separation
     
+    
+    
+            self.team_positions[i] -= 1
             # Reset position if text has scrolled off
             if self.team_positions[i] + player_text_length < 0 :  # Off the Screen, adjusted to the length of the team name
                 self.team_positions[i] = offscreen_canvas.width
@@ -291,6 +398,9 @@ class RunText(SampleBase):
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(10)
         
+        
+        
+        
 
         #Displays Player Info from Fantasy Roster 
         while True:
@@ -302,7 +412,8 @@ class RunText(SampleBase):
             self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
             time.sleep(0.05)
-    
+ 
+ 
 class LEDDisplayFacade:
     def __init__(self):
         self.run_text = RunText()
@@ -314,10 +425,7 @@ class LEDDisplayFacade:
         self.run_text.run()
 
 if __name__ == "__main__":
-    api = GameFacade()  # or SportsAPI(), if that's the class you're working with
-    
-    # Call the methods to download the data you need
-
+    api = GameFacade()
     facade = LEDDisplayFacade()
     facade.run_text.loadPlayersFromFile()
     facade.run_text.populatePlayerStats()
@@ -325,3 +433,4 @@ if __name__ == "__main__":
         facade.display_info()
     
     
+
