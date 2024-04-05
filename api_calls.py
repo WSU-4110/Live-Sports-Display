@@ -462,9 +462,8 @@ class GameFacade:
             json_data = json.loads(data.decode("utf-8"))
 
             ''' Add the home and away team stats to the teams list '''
-            for team in json_data:
-                teams.append(TeamStats(team['home']['market'] + " " + team['home']['name'], team['home']['statistics']['points'], team['home']['statistics']['assists'], team['home']['statistics']['offensive_rebounds']+team['home']['statistics']['defensive_rebounds'], team['home']['statistics']['blocks'], team['home']['statistics']['steals'], team['home']['statistics']['field_goals_pct'], team['home']['statistics']['three_points_pct'], team['home']['statistics']['free_throws_pct']))
-                teams.append(TeamStats(team['away']['market'] + " " + team['away']['name'], team['away']['statistics']['points'], team['away']['statistics']['assists'], team['away']['statistics']['offensive_rebounds']+team['away']['statistics']['defensive_rebounds'], team['away']['statistics']['blocks'], team['away']['statistics']['steals'], team['away']['statistics']['field_goals_pct'], team['away']['statistics']['three_points_pct'], team['away']['statistics']['free_throws_pct']))
+            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
+            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
         
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -535,4 +534,5 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
+
 ### End of main method ###
