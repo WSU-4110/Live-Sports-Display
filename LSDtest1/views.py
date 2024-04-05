@@ -59,7 +59,7 @@ def upload_and_ocr(request):
                 for chunk in file.chunks():
                     destination.write(chunk)
             # Use TextParsing to process the image and extract player names
-            arrayOfPlayerNames = TextParsing.imageToPlayerNames(file_path)
+            arrayOfPlayerNames = ['item1', 'item2', 'item3'] #TextParsing.imageToPlayerNames(file_path)
             # For demonstration, join names into a string to display. Adjust as necessary.
             playerNamesText = ', '.join(arrayOfPlayerNames)
             return render(request, 'result.html', {'text': playerNamesText})
