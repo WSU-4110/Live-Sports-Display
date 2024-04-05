@@ -9,6 +9,15 @@
 
     <p>Extracted Text:</p>
     <textarea rows="10" cols="50">{{ text }}</textarea>
+    <p>Extracted Text:</p>
+    <textarea rows="10" cols="50">{{ Array }}</textarea>
+
+    <h1>Contents of My Array</h1>
+    <ul>
+        {% for item in Array %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
