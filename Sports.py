@@ -12,6 +12,8 @@
 
 
 
+
+
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
@@ -66,7 +68,7 @@ class TeamStats:
         self.free_throws_percent = free_throws_percent
     
 
-    def update_stats(self,team,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+    def update_stats(self,name,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
         self.team = team
         self.points = points
         self.assists = assists
@@ -92,14 +94,14 @@ class RunText(SampleBase):
         # Individual Stats
         # Playername, Team, Points, Assists, Rebounds, Blocks, Steals, Field Goal Percent, Three Points Percent, Free Throws Percent
         self.players = [
-            PlayerStats("Player 1", "Team A" ,"0" ,"0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 2", "Team B" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 3", "Team C","0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 4", "Team D" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 5", "Team E" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 6", "Team F","0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 7", "Team G","0" , "0", "0", "0", "0", "0", "0", "0"),
-            PlayerStats("Player 8", "Team H" ,"0" , "0", "0", "0", "0", "0", "0", "0")
+            PlayerStats("Player 1234567890ABC", "Team A" ,"0" ,"0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team B" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team C","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team D" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team E" ,"0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team F","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team G","0" , "0", "0", "0", "0", "0", "0", "0"),
+            PlayerStats("Player 1234567890ABC", "Team H" ,"0" , "0", "0", "0", "0", "0", "0", "0")
         ]
         
         # Total Team Stats
@@ -148,14 +150,14 @@ class RunText(SampleBase):
         # Open the image using PIL
         image = Image.open(image_path)
         # Resize the image to fit display
-        image = image.resize((128, 64), self.resample_filter)
+        image = image.resize((128, 58), self.resample_filter)
         
         # Convert the image to RGB format
         image = image.convert('RGB')
         
         # Display the image on the LED matrix
         for x in range(128):
-            for y in range(64):
+            for y in range(58):
                 r, g, b = image.getpixel((x, y))
                 offscreen_canvas.SetPixel(x, y, r, g, b)
 
@@ -174,61 +176,69 @@ class RunText(SampleBase):
             return
                 
     def populatePlayerStats(self):
-        player_stats_lists = []
         api = GameFacade()
+        text_height = 6
+        x_pos = 2
+        vertical_pos = 64
+      
+     
+        
+        # Prepare the offscreen canvas
+        offscreen_canvas = self.matrix.CreateFrameCanvas()
+
+        # Clear the screen
+        self.clearScreen(offscreen_canvas)
+
+        # Display the image for a certain period
+        self.display_image(offscreen_canvas, 'Logo3.png')
+        offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+       
+
        
         for player in self.players:
             time.sleep(1)
-            player_stats_lists= api.get_player_stats(player.name, "2024", "03", "25")
-            time.sleep(1)
-       
-    
-            for stats in player_stats_lists:
-                found = False
-                for player in self.players:
-                   
-                    if isinstance(player, PlayerStats) and player.name == stats.name:
-                        player.update_stats(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
-                        found = True
-                        break
-                if not found:
-                    print(f"No matching player found for stats.name = {stats.name} in self.players")
-    '''
-        for stats in player:
+            
             try:
+                player_stats_list = api.get_player_stats(player.name, "2024", "04", "02")
                 time.sleep(1)
-                print(player)
-                player_stats_list = api.get_player_stats(player)
-                time.sleep(1)
-                
-
-              
-             
-                if player_stats_list:
-                    player_stats = player_stats_list[i]
-
-                    )
-                
-                else:
-                    # Handle case where stats are not found
-                    updated_player = PlayerStats(
-                        player, "Data not available", "", "", "", "", 
-                        "", "", "", ""
-                    )
-                     
-                    
             except Exception as e:
-                print(f"Error fetching stats for : {e}")
-                # Handle exceptions by using default or previous values
-                updated_player = PlayerStats(
-                  #  name, "Error fetching data", "", "", "", "", "", "", "", ""
-                )
-              
-        
-        updated_player.append(updated_player)
+                print(f"Error fetching stats for {player.name}: {e}")
+                continue  # Skip to next player if an error occurs
 
-        self.players = updated_players
-    '''
+            if not player_stats_list:
+                print(f"No stats found for {player.name}")
+                continue  # Skip to next player if no stats were returned
+
+            found = False  # Flag to check if matching stats were found
+
+            for stats in player_stats_list:
+                
+                if player.name == stats.name:
+                    vertical_pos -=  text_height 
+
+                    print(f"Updating stats for: {stats.name}")
+                    stats_update= f"Loading...{stats.name}"
+                    self.clearScreen(offscreen_canvas)
+                    self.display_image(offscreen_canvas, 'Logo3.png')
+                    stats_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.team_color, stats_update)
+    
+                    graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos+6, self.team_color, stats_update)
+                    vertical_pos += text_height
+                    # Update player stats here
+                    player.update_stats(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
+                    found = True
+                    break  # Exit loop after updating
+
+            if not found:
+                print(f"No matching player found for {player.name} in the stats.")
+                
+
+            self.matrix.SwapOnVSync(offscreen_canvas)
+            
+        #Used for trasiton from Loading Players to Live Stats
+        self.clearScreen(offscreen_canvas)
+        self.display_image(offscreen_canvas, 'Logo3.png')
+        time.sleep(1)
 
     def set_default_values_for_player(self, player, updated_players):
         updated_players.append(PlayerStats(
@@ -310,7 +320,7 @@ class RunText(SampleBase):
         
 
             #Total Length
-            tempLength = separation
+            tempLength = separation;
             
             # Draw player team
             team_text = f" {player.team}"
@@ -388,21 +398,13 @@ class RunText(SampleBase):
         
     def run(self):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
+        
         if not self.team_positions:
             self.team_positions = [self.matrix.width for _ in self.players]
         
-        #Displays Logo For 10 Seconds Before Changing screens
-        self.clearScreen(offscreen_canvas)
-        # Display an image
-        self.display_image(offscreen_canvas, 'Logo3.png')
-        offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-        time.sleep(10)
         
-        
-        
-        
-
         #Displays Player Info from Fantasy Roster 
+        self.populatePlayerStats()
         while True:
             # Clear Display
             self.clearScreen(offscreen_canvas)
@@ -416,9 +418,13 @@ class RunText(SampleBase):
  
 class LEDDisplayFacade:
     def __init__(self):
+
         self.run_text = RunText()
+        
+     
     
     def display_info(self):
+       
         if not self.run_text.process():
             print("Failed to run Matrix")
             return
@@ -428,9 +434,7 @@ if __name__ == "__main__":
     api = GameFacade()
     facade = LEDDisplayFacade()
     facade.run_text.loadPlayersFromFile()
-    facade.run_text.populatePlayerStats()
     while True:
         facade.display_info()
     
     
-
