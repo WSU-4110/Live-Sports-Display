@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h1>Team Stats</h1>
-        {% if stats %}
+        {if team_name}
             <h2> {{ team_name }}</h2>
             <ul>
                 <li>Points: {{ team_points }}</li>
@@ -20,8 +20,21 @@
                 <li>Free Throw Percentage: {{ team_free_throws_pct }}</li>
             </ul>
         {% else %}
-            <h2> {{ inputted_team_name }} is not playing.</h2>
-        {% endif %}
+            <h2> Team is not playing.</h2>
+        {% endif %
+        {% for stats in stats %}
+            <h2> {{ stats.team_name }}</h2>
+            <ul>
+                <li>Points: {{ stats.team_points }}</li>
+                <li>Assists: {{ stats.team_assists }}</li>
+                <li>Rebounds: {{ stats.team_rebounds }}</li>
+                <li>Blocks: {{ stats.team_blocks }} </li>
+                <li>Steals: {{ stats.team_steals }}</li>
+                <li>Field Goal Percentage: {{ stats.team_field_goals_pct }}</li>
+                <li>Three Point Percentage: {{ stats.team_three_points_pct }}</li>
+                <li>Free Throw Percentage: {{ stats.team_free_throws_pct }}</li>
+            </ul>
+        {% endfor %}
 
     </div>
 </body>
