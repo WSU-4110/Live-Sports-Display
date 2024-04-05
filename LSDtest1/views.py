@@ -125,7 +125,7 @@ def Get_Live_Stats(request):
         'inputted_team_name': inputted_team_name
     }
 
-    return (request, 'live_stats_players.html', context)
+    return (request, 'live_stats_players.html', stats)
     
 def stats_page(request):
     return render(request, 'stats_page.html')
