@@ -97,10 +97,6 @@ def Get_Team_Stats(request):
     API = SportsAPI()
     stats = API.get_live_team_stats(inputted_team_name)
 
-    context = {
-        'stats': stats,
-        'inputted_team_name': inputted_team_name
-    }
     return (request, 'team_stats.html', stats)
 
 def Get_Live_Stats(request):
@@ -108,10 +104,6 @@ def Get_Live_Stats(request):
     API = SportsAPI()
     stats = API.get_live_team_stats(inputted_team_name)
 
-    context = {
-        'stats': stats,
-        'inputted_team_name': inputted_team_name
-    }
     return (request, 'live_stats_players.html', stats)
 
 def stats_page(request):
