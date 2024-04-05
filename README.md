@@ -1,5 +1,8 @@
 # Live-Sports-Display
 
+![alt text](https://github.com/WSU-4110/Live-Sports-Display/blob/main/Logo/MMM_Logo.png)
+
+
 ## Our Website
 Our website can be accessed here:
 https://livesportsdisplay-78ab65502a20.herokuapp.com/

@@ -112,7 +112,12 @@
                 <center>
                     <li><a href="/league_standings/" class="button">League Standings</a></li>
                     <li><a href="/game_schedule/" class="button">Game Schedule</a></li>
-                    <li><a href="/team_roster/" class="button">Team Roster Selection</a></li>
+                    <li>
+                        <form action="/team_stats/" method="get">
+                            <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                            <input type="submit" value="Get Team Stats">
+                        </form>
+                    </li>
                 </center>
                 
             </ul>

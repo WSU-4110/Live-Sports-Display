@@ -64,10 +64,7 @@ class TeamStandings:
 ## End of team standings class ##
         
 
-
-
-
-
+  
 
 
 ## Facade class for the API calls ##
@@ -77,10 +74,10 @@ class GameFacade:
         self.api_key = api_key
         self.connection = http.client.HTTPSConnection("api.sportradar.us")
 
-
-
-
-
+        
+        
+        
+        
     ### Download methods ###
     ''' ONLY USE THESE METHODS WHEN INITIALIZING SYSTEM TO DOWNLOAD 
         NEEDED INFORMATION FOR REDUCING AMOUNT OF API CALLS SUCH AS 
@@ -89,7 +86,6 @@ class GameFacade:
     def download_season_schedule(self)-> None:
         nba_year = datetime.datetime.now().year - 1
         nba_year = str(nba_year)
-
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/games/{nba_year}/REG/schedule.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -128,7 +124,8 @@ class GameFacade:
 
     def download_nba_teams(self) -> None:
         try:
-            self.connection.request("GET", f"/nba/trial/v8/en/league/hierarchy.json?api_key={api_key}")
+            ## Request to API for the team id
+            self.connection.request("GET", f"/nba/trial/v8/en/games/{year}/{month}/{day}/schedule.json?api_key={self.api_key}")
             response = self.connection.getresponse()
 
             if response.status != 200:
@@ -145,8 +142,8 @@ class GameFacade:
                     for division in conference['divisions']:
                         for team in division['teams']:
                             writer.writerow([team['id'], team['market'] + " " + team['name']])
-
-        # Catching exceptions #
+                            
+        ## Catching exceptions
         except json.JSONDecodeError as e:
             print(f"A JSONDecodeError occurred: {str(e)}")
         except http.client.HTTPException as e:
@@ -373,10 +370,10 @@ class GameFacade:
             if response.status != 200 and response.status != 404:
                 print("Error: ", response.status, response.reason)
                 return players
-            
+
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
-
+            
             ''' Iterate through the home and away teams and add to the players list if the player has played in the game'''
             for player in json_data['home']['players']:
                 if player['statistics']['minutes'] != "00:00":
@@ -452,7 +449,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, year, month, day)
+            game_id = api.get_game_id(team_name, "2024", "04", "04")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -465,9 +462,8 @@ class GameFacade:
             json_data = json.loads(data.decode("utf-8"))
 
             ''' Add the home and away team stats to the teams list '''
-            for team in json_data:
-                teams.append(TeamStats(team['home']['market'] + " " + team['home']['name'], team['home']['statistics']['points'], team['home']['statistics']['assists'], team['home']['statistics']['offensive_rebounds']+team['home']['statistics']['defensive_rebounds'], team['home']['statistics']['blocks'], team['home']['statistics']['steals'], team['home']['statistics']['field_goals_pct'], team['home']['statistics']['three_points_pct'], team['home']['statistics']['free_throws_pct']))
-                teams.append(TeamStats(team['away']['market'] + " " + team['away']['name'], team['away']['statistics']['points'], team['away']['statistics']['assists'], team['away']['statistics']['offensive_rebounds']+team['away']['statistics']['defensive_rebounds'], team['away']['statistics']['blocks'], team['away']['statistics']['steals'], team['away']['statistics']['field_goals_pct'], team['away']['statistics']['three_points_pct'], team['away']['statistics']['free_throws_pct']))
+            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
+            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
         
         # Catching exceptions #
         except json.JSONDecodeError as e:

@@ -67,22 +67,6 @@ def upload_and_ocr(request):
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
 
-""" #old function 
-def upload_and_ocr(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = request.FILES['file']
-            file_path = os.path.join(settings.MEDIA_ROOT, file.name)
-            with open(file_path, 'wb+') as destination:
-                for chunk in file.chunks():
-                    destination.write(chunk)
-            text = OCR_Image(file_path)
-            return render(request, 'result.html', {'text': text})
-    else:
-        form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
-"""
 
 def OCR_Image(path):
     image = Image.open(path)
@@ -102,6 +86,20 @@ def Get_Game_Schedule(request):
     schedule = API.get_current_schedule()
 
     return render(request, 'game_schedule.html', {'schedule': schedule})
+
+def Get_Team_Stats(request):
+    inputted_team_name = request.GET.get('inputted_team_name')
+    API = SportsAPI()
+    stats = API.get_live_team_stats(inputted_team_name)
+
+    return render(request, 'team_stats.html', {'stats': stats})
+
+def Get_Live_Stats(request):
+    inputted_team_name = request.GET.get('inputted_team_name')
+    API = SportsAPI()
+    stats = API.get_live_team_stats(inputted_team_name)
+
+    return (request, 'live_stats_players.html', stats)
     
 def stats_page(request):
     return render(request, 'stats_page.html')
