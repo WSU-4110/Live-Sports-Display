@@ -535,4 +535,7 @@ How to use the main method:
 '''
 api = SportsAPI()
 
+stats = api.get_live_team_stats("Denver Nuggets")
+
+print(stats)
 ### End of main method ###
