@@ -108,14 +108,24 @@ def Get_Team_Stats(request):
     API = SportsAPI()
     stats = API.get_live_team_stats(inputted_team_name)
 
-    return render(request, 'team_stats.html', {'stats': stats}, {'inputted_team_name': inputted_team_name})
+    context = {
+        'stats': stats,
+        'inputted_team_name': inputted_team_name
+    }
+
+    return render(request, 'team_stats.html', context)
 
 def Get_Live_Stats(request):
     inputted_team_name = request.GET.get('inputted_team_name')
     API = SportsAPI()
     stats = API.get_live_team_stats(inputted_team_name)
 
-    return (request, 'live_stats_players.html', {'stats': stats}, {'inputted_team_name': inputted_team_name})
+    context = {
+        'stats': stats,
+        'inputted_team_name': inputted_team_name
+    }
+
+    return (request, 'live_stats_players.html', context)
     
 def stats_page(request):
     return render(request, 'stats_page.html')
