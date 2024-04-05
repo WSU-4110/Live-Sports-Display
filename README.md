@@ -14,7 +14,6 @@ This project aims to display live Scores on an LED Matrix Panel.
 
 https://livesportsdisplay-78ab65502a20.herokuapp.com/
 
->>>>>>> main
 ## How it works:
 Our project has four main code sections:
 - The Webserver connection
