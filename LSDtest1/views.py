@@ -113,7 +113,7 @@ def Get_Team_Stats(request):
         'inputted_team_name': inputted_team_name
     }
 
-    return render(request, 'team_stats.html', context)
+    return render(request, 'team_stats.html', stats)
 
 def Get_Live_Stats(request):
     inputted_team_name = request.GET.get('inputted_team_name')
