@@ -7,8 +7,13 @@
 <body>
     <div class="container">
         <h1>Team Stats</h1>
-        <h1> {{ stats }}</h1>
-
+        {% for team in stats %}
+            <tr>
+                <td>{{ team.team_name }}</td>
+                <td>{{ team.team_points }}</td>
+                <td>{{ team.team_assists }}</td>
+            </tr>
+        {% endfor %}
     </div>
 </body>
 </html>
