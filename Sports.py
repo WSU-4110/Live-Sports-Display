@@ -310,7 +310,7 @@ class RunText(SampleBase):
         
 
             #Total Length
-            tempLength = separation;
+            tempLength = separation
             
             # Draw player team
             team_text = f" {player.team}"
