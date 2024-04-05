@@ -8,6 +8,11 @@
     <div class="container">
         <h1>Game schedules today</h1>
         <table>
+            {% if schedule == [] %}
+                <center>
+                    <li>No games scheduled today</li>
+                </center>
+            {% endif %}
             {% for schedule in schedule %}
                 <center>
                     <li>{{ schedule }}</li>
