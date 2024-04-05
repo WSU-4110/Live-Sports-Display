@@ -449,7 +449,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, "2024", "04", "03")
+            game_id = api.get_game_id(team_name, year, month, day)
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -533,6 +533,10 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
+stats = api.get_live_team_stats("Miami Heat")
 
+for team in stats:
+    print(team.team_name)
+    print(team.team_points)
 
 ### End of main method ###
