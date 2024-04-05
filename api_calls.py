@@ -449,7 +449,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, "2024", "04", "04")
+            game_id = api.get_game_id(team_name, year, month, day)
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -461,8 +461,9 @@ class GameFacade:
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
 
-            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], (json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds']), json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
-            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], (json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds']), json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
+            ''' Add the home and away team stats to the teams list '''
+            teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
+            teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
         
         # Catching exceptions #
         except json.JSONDecodeError as e:
