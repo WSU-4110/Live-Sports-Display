@@ -2,24 +2,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Player Names</title>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <link rel="icon" type="image/png" href="MMM_Logo.png">
+    <style>
+        body {
+            background-image: url("{% static 'images/1pX9.gif' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        #confirmationStatus {
+            font-size: 18px;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+            .header img {
+                height: 100px;
+            }
+
+        .nav {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+            .nav li {
+                margin: 0 20px;
+            }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+                .nav a:hover {
+                    text-decoration: line-through Red 4px;
+                }
+    </style>
 </head>
 <body>
-    <h1>Player Names</h1>
-    <!-- Debugging statements to check the contents of Array -->
-    <p>{{ array }}</p> <!-- Check if the array is printed -->
-    <p>{{ array|length }}</p> <!-- Check the length of the array diff-->
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/home/">Home</a></li>
+            <li><a href="#game-schedule">Game Schedule</a></li>
+        </ul>
+    </div>
     <p>Extracted Text:</p>
-    <textarea rows="10" cols="50">{{ array }}</textarea>
-    <p>Extracted Text:</p>
-    <textarea rows="10" cols="50">{{ array }}</textarea>
+    <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
 
-    <h1>Contents of My Array</h1>
-    <ul>
-        {% for item in array %}
-        <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+    <script>
+        function getText() {
+            // Get the textarea element by its id
+            let textarea = document.getElementById('names');
 
+            // Get the value (text content) of the textarea
+            let text = textarea.value;
+
+            // Display the text in the console (for debugging)
+            console.log('Text from textarea:', text);
+
+        }
+    </script>
+
+    <button id="singleDisplayBtn">Single Display</button>
+    <button id="stackedDisplayBtn">Stacked Display</button>
+    <div id="confirmationStatus"></div>
+    <script>
+        document.getElementById("singleDisplayBtn").onclick = function () {
+            document.getElementById("confirmationStatus").innerText = "Single display mode selected. Sending to display...";
+        };
+
+        document.getElementById("stackedDisplayBtn").onclick = function () {
+            fetch('/run-ssh/', { // URL to Django view
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                },
+                body: JSON.stringify({ action: 'stackedDisplay' }) // Data you want to send
+            }).then(response => response.json())
+                .then(data => {
+                    document.getElementById("confirmationStatus").innerText = data.message;
+                });
+        };
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
 </body>
 </html>
