@@ -61,28 +61,12 @@ def upload_and_ocr(request):
             # Use TextParsing to process the image and extract player names
             arrayOfPlayerNames = TextParsing.imageToPlayerNames(file_path)
             # For demonstration, join names into a string to display. Adjust as necessary.
-            #playerNamesText = ', '.join(arrayOfPlayerNames)
-            return render(request, 'result.html', {'text': arrayOfPlayerNames})
+            playerNamesText = ', '.join(arrayOfPlayerNames)
+            return render(request, 'result.html', {'text': playerNamesText})
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
 
-""" #old function 
-def upload_and_ocr(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = request.FILES['file']
-            file_path = os.path.join(settings.MEDIA_ROOT, file.name)
-            with open(file_path, 'wb+') as destination:
-                for chunk in file.chunks():
-                    destination.write(chunk)
-            text = OCR_Image(file_path)
-            return render(request, 'result.html', {'text': text})
-    else:
-        form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
-"""
 
 def OCR_Image(path):
     image = Image.open(path)
