@@ -81,6 +81,9 @@
             // Display the text in the console (for debugging)
             console.log('Text from textarea:', text);
 
+            // Display the text in the HTML document
+            let displayDiv = document.getElementById('displayText');
+            displayDiv.textContent = 'Text from textarea: ' + text;
         }
     </script>
 
