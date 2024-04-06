@@ -3,13 +3,18 @@ import json
 import datetime
 import time
 import csv
+import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-month = datetime.datetime.now().month
+#make month automatically be converted into eastern time
+eastern_tz = pytz.timezone('US/Eastern')
+current_time = datetime.datetime.now(eastern_tz)
+time = datetime.datetime.now()
+month = current_time.month
 month = str(month).zfill(2)
-day = datetime.datetime.now().day
+day = current_time.day
 day = str(day).zfill(2)
-year = str(datetime.datetime.now().year)
+year = str(current_time.year)
 
 ## Player class ##
 class PlayerStats:
@@ -535,7 +540,5 @@ How to use the main method:
 '''
 api = SportsAPI()
 
-stats = api.get_live_team_stats("Denver Nuggets")
 
-print(stats)
 ### End of main method ###
