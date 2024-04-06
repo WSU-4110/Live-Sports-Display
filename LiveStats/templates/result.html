@@ -75,6 +75,9 @@
             border-radius: 50%; /* Rounded border for a circular button */
             padding: 5px; /* Padding around the button content */
         }
+        #names {
+            display: none; /* Hide the textarea */
+        }
     </style>
 </head>
 <body>
@@ -86,7 +89,6 @@
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
     </div>
-    <p>Extracted Text:</p>
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
     <div id="displayText"></div>
 
