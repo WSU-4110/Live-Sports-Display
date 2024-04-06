@@ -9,12 +9,6 @@
 # By using api_calls.py (API) to run display
 #==========================================================
 
-
-
-
-
-
-
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
@@ -69,7 +63,7 @@ class TeamStats:
         self.free_throws_percent = free_throws_percent
     
 
-    def update_stats(self,name,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
+    def update_stats(self,team,points,assists, rebounds, blocks, steals, field_goals_percent, three_pointers_percent, free_throws_percent):
         self.team = team
         self.points = points
         self.assists = assists
@@ -87,6 +81,7 @@ class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
         super(RunText, self).__init__(*args, **kwargs)
         
+        #Had issues from Previous Library... So included both incase of an Unexpected Error!
         try:
             self.resample_filter = Image.LANCZOS  # Newer versions of Pillow
         except AttributeError:
@@ -121,9 +116,6 @@ class RunText(SampleBase):
         
         #initualise team positions
         self.team_positions = None
-        
-        #initualizing Players from File
-        #self.loadPlayersFromFile()
         
         # Loading Font
         self.font = graphics.Font()
@@ -211,9 +203,8 @@ class RunText(SampleBase):
                 stats_Error= f"Error...{player.name}"
                 self.clearScreen(offscreen_canvas)
                 self.display_image(offscreen_canvas, 'Logo3.png')
-             
-                graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.error_color, stats_Error)
-                time.sleep(2)
+                graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos-1, self.error_color, stats_Error)
+                time.sleep(1)
                 continue  # Skip to next player if an error occurs
 
             if not player_stats_list:
@@ -221,9 +212,7 @@ class RunText(SampleBase):
                 no_stats= f"No Stats...{player.name}"
                 self.clearScreen(offscreen_canvas)
                 self.display_image(offscreen_canvas, 'Logo3.png')
-               
-                graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.no_stats_color, no_stats)
-                
+                graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos-1, self.no_stats_color, no_stats)
                 time.sleep(1)
                 continue  # Skip to next player if no stats were returned
 
@@ -237,7 +226,7 @@ class RunText(SampleBase):
                     stats_update= f"Loading...{stats.name}"
                     self.clearScreen(offscreen_canvas)
                     self.display_image(offscreen_canvas, 'Logo3.png')
-                    graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.updating_stats_color, stats_update)
+                    graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos-1, self.updating_stats_color, stats_update)
                    
                     # Update player stats here
                     player.update_stats(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
@@ -325,13 +314,15 @@ class RunText(SampleBase):
             #Total Length
             tempLength = separation
             if player.team == "random":
-                
                 continue
                 
             vertical_pos =  text_height * (i + 1)
-            player_text = f"{player.team} ,Points: {player.points} ,Assists: {player.assists} ,Rebounds: {player.rebounds} ,Blocks: {player.blocks} ,Steals: {player.steals} ,FG%: {player.field_goals_percent} ,3P%: {player.three_pointers_percent} ,FT%: {player.free_throws_percent}"
+            player_text = f"{player.team} ,Points: {player.points} Assists: {player.assists} ,Rebounds: {player.rebounds} ,Blocks: {player.blocks} ,Steals: {player.steals} ,FG%: {player.field_goals_percent} ,3P%: {player.three_pointers_percent} ,FT%: {player.free_throws_percent}"
             player_text_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player_text)
             
+                        
+            if self.team_positions[i] + player_text_length < max_name_length + clearance + clearance:
+                self.team_positions[i] = offscreen_canvas.width
      
             
             # Draw player team
@@ -388,19 +379,13 @@ class RunText(SampleBase):
             free_throws_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.three_pointers_percent_color, free_throws_percent_text)
             graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.free_throws_percent_color,free_throws_percent_text)
             tempLength += free_throws_percent_length+ separation
-    
-    
-    
+            
+            # Moving Player stats from right to left
             self.team_positions[i] -= 1
-            # Reset position if text has scrolled off
-            if self.team_positions[i] + player_text_length < 0 :  # Off the Screen, adjusted to the length of the team name
-                self.team_positions[i] = offscreen_canvas.width
-
+ 
             # Draw black rectangles for names
             self.blackRectangle(offscreen_canvas, 0, vertical_pos - text_height+1, max_name_length + clearance + 1, text_height + clearance)
-            #Draw black rectangle for jersey number
-            #self.blackRectangle(offscreen_canvas, offscreen_canvas.width - 11 - (2 * clearance), vertical_pos-text_height, max_name_length + (2 * clearance), text_height + clearance)
-    
+            
             # Draw the stationary player name
             graphics.DrawText(offscreen_canvas, self.font, clearance, vertical_pos, self.name_color, player.name)
             
@@ -425,6 +410,7 @@ class RunText(SampleBase):
             # Draw date and time
             self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+            # Refresh rate for moving text... so the bigger the nubmer. the slower the text
             time.sleep(0.08)
  
  
@@ -449,4 +435,4 @@ if __name__ == "__main__":
     while True:
         facade.display_info()
     
-    
+     
