@@ -6,43 +6,39 @@
 </head>
 <body>
     <div class="container">
-        <h1>Team Stats</h1>
-        <table>
+        {% if not stats %}
             <tr>
-                <th>Team</th>
-                <th>Points</th>
-                <th>Assists</th>
-                <th>Rebounds</th>
-                <th>Blocks</th>
-                <th>Steals</th>
-                <th>Field Goal Percentage</th>
-                <th>Three Point Percentage</th>
-                <th>Free Throw Percentage</th>
+                <td colspan="4">{{ inputted_team_name }} is not playing.</td>
             </tr>
-            {% if not stats %}
+        {% else %}
+        <table>
+            <h1>Team Stats</h1>
+        <tr>
+            <th>Team</th>
+            <th>Points</th>
+            <th>Assists</th>
+            <th>Rebounds</th>
+            <th>Blocks</th>
+            <th>Steals</th>
+            <th>Field Goal Percentage</th>
+            <th>Three Point Percentage</th>
+            <th>Free Throw Percentage</th>
+        </tr>
+            {% for team in stats %}
                 <tr>
-                    <td colspan="4">{{ inputted_team_name }} is not playing.</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.team_points }}</td>
+                    <td>{{ team.team_assists }}</td>
+                    <td>{{ team.team_rebounds }}</td>
+                    <td>{{ team.team_blocks }}</td>
+                    <td>{{ team.team_steals }}</td>
+                    <td>{{ team.team_field_goals_pct }}</td>
+                    <td>{{ team.team_three_points_pct }}</td>
+                    <td>{{ team.team_free_throws_pct }}</td>
                 </tr>
-            {% else %}
-                {% for team in stats %}
-                    <tr>
-                        <td>{{ team.team_name }}</td>
-                        <td>{{ team.team_points }}</td>
-                        <td>{{ team.team_assists }}</td>
-                        <td>{{ team.team_rebounds }}</td>
-                        <td>{{ team.team_blocks }}</td>
-                        <td>{{ team.team_steals }}</td>
-                        <td>{{ team.team_field_goals_pct }}</td>
-                        <td>{{ team.team_three_points_pct }}</td>
-                        <td>{{ team.team_free_throws_pct }}</td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-            
-
-            <h1> {{ stats.0.team_name }} </h1>
-
+            {% endfor %}
         </table>
+        {% endif %}
     </div>
 </body>
 </html>
