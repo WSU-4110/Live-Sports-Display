@@ -127,9 +127,12 @@
             if (newName !== '') {
                 playerArray.push(newName); // Add the new name to the array
 
-                let buttonContainer = document.getElementById('buttonContainer');
-                let newButton = document.createElement('button');
-                newButton.textContent = newName;
+                let container = document.createElement('div'); // Container for button and "x"
+                container.classList.add('item-container');
+
+                let button = document.createElement('button');
+                button.textContent = newName;
+                container.appendChild(button);
 
                 let closeButton = document.createElement('span');
                 closeButton.textContent = 'x';
@@ -138,14 +141,12 @@
                     let index = playerArray.indexOf(newName);
                     if (index !== -1) {
                         playerArray.splice(index, 1); // Remove item from array
-                        let container = closeButton.parentElement;
                         container.remove(); // Remove the container (button + "x")
                     }
                 });
+                container.appendChild(closeButton);
 
-                newButton.appendChild(closeButton);
-
-                buttonContainer.appendChild(newButton);
+                buttonContainer.appendChild(container);
                 newNameInput.value = ''; // Clear the input field after adding the name
             }
         }
