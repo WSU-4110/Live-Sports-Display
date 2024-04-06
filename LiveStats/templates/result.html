@@ -69,8 +69,8 @@
             cursor: default;
         }
             .custom-button:hover {
-                color: inherit; /* Use the same color as the default state */
-                background-color: inherit; /* Use the same background color as the default state */
+                color: #fff; /* Use the same color as the default state */
+                background-color: #333; /* Use the same background color as the default state */
                 opacity: 1;
                 /* Add other styles as needed */
             }
@@ -135,6 +135,8 @@
     <button onclick="addNewName()" class="add-button">Click to Confirm Name</button>
 
     <div id="buttonContainer"></div>
+
+    <button onclick="sendPlayers()">Click to confirm Players</button>
 
     <script>
 
@@ -218,7 +220,10 @@
                 newNameInput.value = ''; // Clear the input field after adding the name
             }
         }
-
+        function sendPlayers() {
+            let playerString = playerArray.join(', ');
+            alert('Sending players: ' + playerString); // Example function code
+        }
     </script>
     <div id="buttonContainer"></div>
 
