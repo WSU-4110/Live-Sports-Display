@@ -10,9 +10,14 @@
         <table>
             <tr>
                 <th>Team</th>
-                <th>Wins</th>
-                <th>Losses</th>
                 <th>Points</th>
+                <th>Assists</th>
+                <th>Rebounds</th>
+                <th>Blocks</th>
+                <th>Steals</th>
+                <th>Field Goal Percentage</th>
+                <th>Three Point Percentage</th>
+                <th>Free Throw Percentage</th>
             </tr>
             {% if not stats %}
                 <tr>
@@ -22,9 +27,14 @@
                 {% for team in stats %}
                     <tr>
                         <td>{{ team.team_name }}</td>
-                        <td>{{ team.wins }}</td>
-                        <td>{{ team.losses }}</td>
                         <td>{{ team.points }}</td>
+                        <td>{{ team.assists }}</td>
+                        <td>{{ team.rebounds }}</td>
+                        <td>{{ team.blocks }}</td>
+                        <td>{{ team.steals }}</td>
+                        <td>{{ team.team_field_goals_pct }}</td>
+                        <td>{{ team.team_three_points_pct }}</td>
+                        <td>{{ team.team_free_throws_pct }}</td>
                     </tr>
                 {% endfor %}
             {% endif %}
