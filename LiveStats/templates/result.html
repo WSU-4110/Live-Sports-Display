@@ -67,6 +67,17 @@
             cursor: pointer; /* Show pointer cursor on hover */
             width: 700px;
         }
+        .add-button {
+            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+            font-weight: bold; /* Optionally set font weight */
+            font-size: 16px; /* Optionally set font size */
+            color: #fff; /* Text color */
+            background-color: #333; /* Button background color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer; /* Show pointer cursor on hover */
+            width: 400px;
+        }
         .close-button {
             color: #8B0000; /* Text color */
             cursor: pointer; /* Cursor style */
@@ -105,7 +116,7 @@
     </div>
 
     <input type="text" id="newNameInput">
-    <button onclick="addNewName()">Add Name</button>
+    <button onclick="addNewName()" class="add-button">Click to Confirm Name</button>
 
     <div id="buttonContainer"></div>
 
