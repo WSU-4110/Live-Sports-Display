@@ -70,6 +70,8 @@
     <p>Extracted Text:</p>
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
     <div id="displayText"></div>
+
+    <div id="buttonContainer"></div>
     <script>
         function getText() {
             // Get the textarea element by its id
@@ -78,16 +80,27 @@
             // Get the value (text content) of the textarea
             let text = textarea.value;
 
+            let playerArray = text.split(', ');
+
             // Display the text in the console (for debugging)
             console.log('Text from textarea:', text);
 
             // Display the text in the HTML document
             let displayDiv = document.getElementById('displayText');
             displayDiv.textContent = 'Text from textarea: ' + text;
+
+            let buttonContainer = document.getElementById('buttonContainer');
+
+            // Loop through the array and create a button for each item
+            playerArray.forEach(function (item) {
+                let button = document.createElement('button');
+                button.textContent = item;
+                buttonContainer.appendChild(button);
+            });
         }
         getText()
     </script>
-
+    <div id="buttonContainer"></div>
     <div id="displayText"></div>
 
     <button id="singleDisplayBtn">Single Display</button>
