@@ -1,5 +1,7 @@
 # Live-Sports-Display
 
+![alt text](https://github.com/WSU-4110/Live-Sports-Display/blob/main/Logo/MMM_Logo.png)
+
 ## Purpose:
 This project aims to display live Scores on an LED Matrix Panel.
 
@@ -12,11 +14,8 @@ This project aims to display live Scores on an LED Matrix Panel.
 - Mitchel Brown
 - Rory Jolliff
 
-<<<<<<< HEAD
-=======
 https://livesportsdisplay-78ab65502a20.herokuapp.com/
 
->>>>>>> main
 ## How it works:
 Our project has four main code sections:
 - The Webserver connection
