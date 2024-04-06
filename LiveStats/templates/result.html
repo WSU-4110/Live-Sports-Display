@@ -56,6 +56,15 @@
                 .nav a:hover {
                     text-decoration: line-through Red 4px;
                 }
+        .custom-button {
+            background-color: blue; /* Change the background color */
+            color: white; /* Change the text color */
+            /* Add more styling properties as needed */
+        }
+        .close-button {
+            color: red; /* Example: change color of the "x" */
+            cursor: pointer; /* Example: change cursor to pointer for the "x" */
+        }
     </style>
 </head>
 <body>
@@ -103,6 +112,7 @@
 
             let button = document.createElement('button');
             button.textContent = item;
+            button.classList.add('custom-button');
             container.appendChild(button);
 
             let closeButton = document.createElement('span');
@@ -132,6 +142,7 @@
 
                 let button = document.createElement('button');
                 button.textContent = newName;
+                button.classList.add('custom-button');
                 container.appendChild(button);
 
                 let closeButton = document.createElement('span');
