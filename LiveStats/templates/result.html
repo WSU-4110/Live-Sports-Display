@@ -130,16 +130,19 @@
                 let buttonContainer = document.getElementById('buttonContainer');
                 let newButton = document.createElement('button');
                 newButton.textContent = newName;
+
                 let closeButton = document.createElement('span');
                 closeButton.textContent = 'x';
                 closeButton.classList.add('close-button');
                 closeButton.addEventListener('click', function () {
-                    let index = playerArray.indexOf(item);
+                    let index = playerArray.indexOf(newName);
                     if (index !== -1) {
                         playerArray.splice(index, 1); // Remove item from array
+                        let container = closeButton.parentElement;
                         container.remove(); // Remove the container (button + "x")
                     }
                 });
+
                 newButton.appendChild(closeButton);
 
                 buttonContainer.appendChild(newButton);
