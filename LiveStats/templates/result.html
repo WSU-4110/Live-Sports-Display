@@ -77,7 +77,7 @@
 
     <div id="buttonContainer"></div>
     <script>
-
+        document.addEventListener('DOMContentLoaded', function () {
             // Get the textarea element by its id
             let textarea = document.getElementById('names');
 
@@ -95,52 +95,52 @@
 
             let buttonContainer = document.getElementById('buttonContainer');
 
-            // Loop through the array and create a button for each item
+            // Function to create a container with button and "x" for an item
+            function createItemContainer(item) {
+                let container = document.createElement('div'); // Container for button and "x"
+                container.classList.add('item-container');
 
-        playerArray.forEach(function (item) {
-            let container = document.createElement('div'); // Container for button and "x"
-            container.classList.add('item-container');
+                let button = document.createElement('button');
+                button.textContent = item;
+                container.appendChild(button);
 
-            let button = document.createElement('button');
-            button.textContent = item;
-            container.appendChild(button);
-
-            let closeButton = document.createElement('span');
-            closeButton.textContent = 'x';
-            closeButton.classList.add('close-button');
-            closeButton.addEventListener('click', function () {
-                let index = playerArray.indexOf(item);
-                if (index !== -1) {
-                    playerArray.splice(index, 1); // Remove item from array
-                    container.remove(); // Remove the container (button + "x")
-                }
-            });
-            container.appendChild(closeButton);
-
-            buttonContainer.appendChild(container);
-        });
-        
-        function addNewName() {
-            let newNameInput = document.getElementById('newNameInput');
-            let newName = newNameInput.value.trim();
-
-            if (newName !== '') {
-                playerArray.push(newName); // Add the new name to the array
-
-                let buttonContainer = document.getElementById('buttonContainer');
-                let newButton = document.createElement('button');
-                newButton.textContent = newName;
-                newButton.addEventListener('click', function () {
-                    let index = playerArray.indexOf(newName);
+                let closeButton = document.createElement('span');
+                closeButton.textContent = 'x';
+                closeButton.classList.add('close-button');
+                closeButton.addEventListener('click', function () {
+                    let index = playerArray.indexOf(item);
                     if (index !== -1) {
                         playerArray.splice(index, 1); // Remove item from array
-                        newButton.style.display = 'none'; // Hide the button
+                        container.remove(); // Remove the container (button + "x")
                     }
                 });
-                buttonContainer.appendChild(newButton);
-                newNameInput.value = ''; // Clear the input field after adding the name
+                container.appendChild(closeButton);
+
+                return container;
             }
-        }
+
+            // Loop through the array and create containers for existing items
+            playerArray.forEach(function (item) {
+                buttonContainer.appendChild(createItemContainer(item));
+            });
+
+            // Function to add a new name to the array and create a container for it
+            function addNewName() {
+                let newNameInput = document.getElementById('newNameInput');
+                let newName = newNameInput.value.trim();
+
+                if (newName !== '') {
+                    playerArray.push(newName); // Add the new name to the array
+
+                    let container = createItemContainer(newName);
+                    buttonContainer.appendChild(container);
+                    newNameInput.value = ''; // Clear the input field after adding the name
+                }
+            }
+
+            // Add event listener to the "Add" button
+            document.getElementById('addButton').addEventListener('click', addNewName);
+        });
     </script>
     <div id="buttonContainer"></div>
     <div id="displayText"></div>
