@@ -71,9 +71,13 @@
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
     <div id="displayText"></div>
 
+    <p>Enter Player Name:</p>
+    <input type="text" id="newNameInput">
+    <button onclick="addNewName()">Add Name</button>
+
     <div id="buttonContainer"></div>
     <script>
-        function getText() {
+
             // Get the textarea element by its id
             let textarea = document.getElementById('names');
 
@@ -92,7 +96,7 @@
             let buttonContainer = document.getElementById('buttonContainer');
 
             // Loop through the array and create a button for each item
-            
+
             playerArray.forEach(function (item) {
                 let button = document.createElement('button');
                 button.textContent = item;
@@ -105,8 +109,28 @@
                 });
                 buttonContainer.appendChild(button); // Move this line inside the forEach loop
             });
+        
+        function addNewName() {
+            let newNameInput = document.getElementById('newNameInput');
+            let newName = newNameInput.value.trim();
+
+            if (newName !== '') {
+                playerArray.push(newName); // Add the new name to the array
+
+                let buttonContainer = document.getElementById('buttonContainer');
+                let newButton = document.createElement('button');
+                newButton.textContent = newName;
+                newButton.addEventListener('click', function () {
+                    let index = playerArray.indexOf(newName);
+                    if (index !== -1) {
+                        playerArray.splice(index, 1); // Remove item from array
+                        newButton.style.display = 'none'; // Hide the button
+                    }
+                });
+                buttonContainer.appendChild(newButton);
+                newNameInput.value = ''; // Clear the input field after adding the name
+            }
         }
-        getText()
     </script>
     <div id="buttonContainer"></div>
     <div id="displayText"></div>
