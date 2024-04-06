@@ -1,27 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'first.css' %}">
-        <link rel="icon" type="image/png" href="MMM_Logo.png">
-        <style>
-            body {
-                background-image: url("{% static 'images/1pX9.gif' %}");
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                line-height: 1.6;
-                color: #333;
-                background-color: #f4f4f4;
-            }
-            #confirmationStatus {
-                font-size: 18px;
-                color: #ffffff;
-                margin-top: 20px;
-            }
-            .header {
+<head>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <link rel="icon" type="image/png" href="MMM_Logo.png">
+    <style>
+        body {
+            background-image: url("{% static 'images/1pX9.gif' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        #confirmationStatus {
+            font-size: 18px;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .header {
             background-color: #000;
             color: #fff;
             display: flex;
@@ -55,8 +57,53 @@
                     text-decoration: line-through Red 4px;
                 }
 
-        </style>
-    </head>
+        .custom-button {
+            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+            font-weight: bold; /* Optionally set font weight */
+            font-size: 16px; /* Optionally set font size */
+            color: #fff; /* Text color */
+            background-color: #333; /* Button background color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer; /* Show pointer cursor on hover */
+            width: 700px;
+        }
+
+        .add-button {
+            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+            font-weight: bold; /* Optionally set font weight */
+            font-size: 16px; /* Optionally set font size */
+            color: #fff; /* Text color */
+            background-color: #333; /* Button background color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer; /* Show pointer cursor on hover */
+            width: 400px;
+        }
+
+        .close-button {
+            color: #8B0000; /* Text color */
+            cursor: pointer; /* Cursor style */
+            background-color: #333; /* Background color */
+            border: 3px solid #8B0000; /* Border style */
+            border-radius: 50%; /* Rounded border for a circular button */
+            padding: 5px; /* Padding around the button content */
+        }
+
+        #names {
+            display: none; /* Hide the textarea */
+        }
+
+        .message {
+            font-size: 17px;
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
 <body>
     <div class="header">
         <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
@@ -66,18 +113,100 @@
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
     </div>
-    <p>Extracted Text:</p>
-    <textarea rows="10" cols="50">{{ text }}</textarea>
+    <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
+
+    <div class="message">
+        <p> Enter the name of any player who is missing and/or remove any unwanted players</p>
+    </div>
+
+    <input type="text" id="newNameInput">
+    <button onclick="addNewName()" class="add-button">Click to Confirm Name</button>
+
+    <div id="buttonContainer"></div>
+
+    <script>
+
+        // Get the textarea element by its id
+        let textarea = document.getElementById('names');
+
+        // Get the value (text content) of the textarea
+        let text = textarea.value;
+
+        let playerArray = text.split(', ');
+        // Display the text in the HTML document
+        let buttonContainer = document.getElementById('buttonContainer');
+
+        // Loop through the array and create a button for each item
+
+        playerArray.forEach(function (item) {
+            let container = document.createElement('div'); // Container for button and "x"
+            container.classList.add('item-container');
+
+            let button = document.createElement('button');
+            button.textContent = item;
+            button.classList.add('custom-button');
+            container.appendChild(button);
+
+            let closeButton = document.createElement('span');
+            closeButton.textContent = 'x';
+            closeButton.classList.add('close-button');
+            closeButton.addEventListener('click', function () {
+                let index = playerArray.indexOf(item);
+                if (index !== -1) {
+                    playerArray.splice(index, 1); // Remove item from array
+                    container.remove(); // Remove the container (button + "x")
+                }
+            });
+            container.appendChild(closeButton);
+
+            buttonContainer.appendChild(container);
+        });
+
+        function addNewName() {
+            let newNameInput = document.getElementById('newNameInput');
+            let newName = newNameInput.value.trim();
+
+            if (newName !== '') {
+                playerArray.push(newName); // Add the new name to the array
+
+                let container = document.createElement('div'); // Container for button and "x"
+                container.classList.add('item-container');
+
+                let button = document.createElement('button');
+                button.textContent = newName;
+                button.classList.add('custom-button');
+                container.appendChild(button);
+
+                let closeButton = document.createElement('span');
+                closeButton.textContent = 'x';
+                closeButton.classList.add('close-button');
+                closeButton.addEventListener('click', function () {
+                    let index = playerArray.indexOf(newName);
+                    if (index !== -1) {
+                        playerArray.splice(index, 1); // Remove item from array
+                        container.remove(); // Remove the container (button + "x")
+                    }
+                });
+                container.appendChild(closeButton);
+
+                buttonContainer.appendChild(container);
+                newNameInput.value = ''; // Clear the input field after adding the name
+            }
+        }
+
+    </script>
+    <div id="buttonContainer"></div>
+
 
     <button id="singleDisplayBtn">Single Display</button>
     <button id="stackedDisplayBtn">Stacked Display</button>
     <div id="confirmationStatus"></div>
     <script>
-        document.getElementById("singleDisplayBtn").onclick = function() {
+        document.getElementById("singleDisplayBtn").onclick = function () {
             document.getElementById("confirmationStatus").innerText = "Single display mode selected. Sending to display...";
         };
-        
-        document.getElementById("stackedDisplayBtn").onclick = function() {
+
+        document.getElementById("stackedDisplayBtn").onclick = function () {
             fetch('/run-ssh/', { // URL to Django view
                 method: 'POST',
                 headers: {
@@ -86,9 +215,9 @@
                 },
                 body: JSON.stringify({ action: 'stackedDisplay' }) // Data you want to send
             }).then(response => response.json())
-              .then(data => {
-                document.getElementById("confirmationStatus").innerText = data.message;
-              });
+                .then(data => {
+                    document.getElementById("confirmationStatus").innerText = data.message;
+                });
         };
 
         function getCookie(name) {
@@ -105,8 +234,6 @@
             }
             return cookieValue;
         }
-    </script>  
+    </script>
 </body>
 </html>
-
-
