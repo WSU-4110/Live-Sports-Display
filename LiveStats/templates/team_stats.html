@@ -5,11 +5,26 @@
     <link rel="stylesheet" type="text/css" href="style_sheet.css">
 </head>
 <body>
-    <p id="demo"></p>
-
-    <script>
-    var d = new Date();
-    document.getElementById("demo").innerHTML = d;
-    </script>
+    <div class="container">
+        <h1>Team Stats</h1>
+        <table>
+            <tr>
+                <th>Team</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Points</th>
+            </tr>
+            {% for team in stats %}
+                <center>
+                    <li>{{ team.team_name }} --- Wins:{{ team.points }} --- Losses:{{ team.assists }}</li>
+                </center>
+            {% endfor}
+            {% if not stats %}
+                <center>
+                    <li>{{ inputted_team_name }} is not playing.</li>
+                </center>
+            {% endif %
+        </table>
+    </div>
 </body>
 </html>
