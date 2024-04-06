@@ -92,10 +92,18 @@
             let buttonContainer = document.getElementById('buttonContainer');
 
             // Loop through the array and create a button for each item
+            
             playerArray.forEach(function (item) {
                 let button = document.createElement('button');
                 button.textContent = item;
-                buttonContainer.appendChild(button);
+                button.addEventListener('click', function () {
+                    let index = playerArray.indexOf(item);
+                    if (index !== -1) {
+                        playerArray.splice(index, 1); // Remove item from array
+                        button.style.display = 'none'; // Hide the button
+                    }
+                });
+                buttonContainer.appendChild(button); // Move this line inside the forEach loop
             });
         }
         getText()
