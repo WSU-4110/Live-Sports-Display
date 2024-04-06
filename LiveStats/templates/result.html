@@ -69,7 +69,7 @@
     </div>
     <p>Extracted Text:</p>
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
-
+    <div id="displayText"></div>
     <script>
         function getText() {
             // Get the textarea element by its id
@@ -85,7 +85,10 @@
             let displayDiv = document.getElementById('displayText');
             displayDiv.textContent = 'Text from textarea: ' + text;
         }
+        getText()
     </script>
+
+    <div id="displayText"></div>
 
     <button id="singleDisplayBtn">Single Display</button>
     <button id="stackedDisplayBtn">Stacked Display</button>
