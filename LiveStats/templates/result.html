@@ -97,18 +97,28 @@
 
             // Loop through the array and create a button for each item
 
-            playerArray.forEach(function (item) {
-                let button = document.createElement('button');
-                button.textContent = item;
-                button.addEventListener('click', function () {
-                    let index = playerArray.indexOf(item);
-                    if (index !== -1) {
-                        playerArray.splice(index, 1); // Remove item from array
-                        button.style.display = 'none'; // Hide the button
-                    }
-                });
-                buttonContainer.appendChild(button); // Move this line inside the forEach loop
+        playerArray.forEach(function (item) {
+            let container = document.createElement('div'); // Container for button and "x"
+            container.classList.add('item-container');
+
+            let button = document.createElement('button');
+            button.textContent = item;
+            container.appendChild(button);
+
+            let closeButton = document.createElement('span');
+            closeButton.textContent = 'x';
+            closeButton.classList.add('close-button');
+            closeButton.addEventListener('click', function () {
+                let index = playerArray.indexOf(item);
+                if (index !== -1) {
+                    playerArray.splice(index, 1); // Remove item from array
+                    container.remove(); // Remove the container (button + "x")
+                }
             });
+            container.appendChild(closeButton);
+
+            buttonContainer.appendChild(container);
+        });
         
         function addNewName() {
             let newNameInput = document.getElementById('newNameInput');
