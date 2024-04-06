@@ -3,13 +3,18 @@ import json
 import datetime
 import time
 import csv
+import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-month = datetime.datetime.now().month
+#make month automatically be converted into eastern time
+eastern_tz = pytz.timezone('US/Eastern')
+current_time = datetime.datetime.now(eastern_tz)
+time = datetime.datetime.now()
+month = current_time.month
 month = str(month).zfill(2)
-day = datetime.datetime.now().day
+day = current_time.day
 day = str(day).zfill(2)
-year = str(datetime.datetime.now().year)
+year = str(current_time.year)
 
 ## Player class ##
 class PlayerStats:
@@ -474,7 +479,6 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         
         return teams
-
     ### End of stats methods ###
 ## End of facade class for the API calls ##
 
@@ -535,5 +539,4 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
-
 ### End of main method ###
