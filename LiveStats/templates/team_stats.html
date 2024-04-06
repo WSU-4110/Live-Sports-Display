@@ -27,11 +27,11 @@
                 {% for team in stats %}
                     <tr>
                         <td>{{ team.team_name }}</td>
-                        <td>{{ team.points }}</td>
-                        <td>{{ team.assists }}</td>
-                        <td>{{ team.rebounds }}</td>
-                        <td>{{ team.blocks }}</td>
-                        <td>{{ team.steals }}</td>
+                        <td>{{ team.team_points }}</td>
+                        <td>{{ team.team_assists }}</td>
+                        <td>{{ team.team_rebounds }}</td>
+                        <td>{{ team.team_blocks }}</td>
+                        <td>{{ team.team_steals }}</td>
                         <td>{{ team.team_field_goals_pct }}</td>
                         <td>{{ team.team_three_points_pct }}</td>
                         <td>{{ team.team_free_throws_pct }}</td>
@@ -39,6 +39,9 @@
                 {% endfor %}
             {% endif %}
             
+
+            <h1> {{ stats.0.team_name }} </h1>
+
         </table>
     </div>
 </body>
