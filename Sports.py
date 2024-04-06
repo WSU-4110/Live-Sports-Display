@@ -14,6 +14,7 @@
 
 
 
+
 #!/usr/bin/env python
 from samplebase import SampleBase
 from rgbmatrix import graphics
@@ -139,6 +140,10 @@ class RunText(SampleBase):
         self.field_goals_percent_color = graphics.Color(0, 128, 128) # Teal (for steadiness and efficiency)
         self.three_pointers_percent_color = graphics.Color(255, 165, 0) # Orange (for energy and impact)
         self.free_throws_percent_color = graphics.Color(173, 216, 230) # Light Blue (for precision and calm)
+        
+        self.error_color = graphics.Color(255, 0, 0) # Red 
+        self.no_stats_color = graphics.Color(255, 255, 0) # Yellow
+        self.updating_stats_color =graphics.Color(0, 255, 0) #Green
 
 
         self.datetime_color = graphics.Color(255, 255, 255) # WHITE (clarity)
@@ -169,7 +174,7 @@ class RunText(SampleBase):
                 line = file.readline()
                 player_names = line.strip().split(',')
                 for name in player_names:
-                    self.players.append(PlayerStats(name, "random", "0", "0", "0", "0", "0", "0%", "0%", "0%"))
+                   self.players.append(PlayerStats(name, "random", "0", "0", "0", "0", "0", "0%", "0%", "0%"))
    
         except IOError as e:
             print(f"An error occurred while reding the file: {e}")
@@ -199,14 +204,27 @@ class RunText(SampleBase):
             time.sleep(1)
             
             try:
-                player_stats_list = api.get_player_stats(player.name, "2024", "04", "02")
+                player_stats_list = api.get_player_stats(player.name, "2024", "04", "05")
                 time.sleep(1)
             except Exception as e:
                 print(f"Error fetching stats for {player.name}: {e}")
+                stats_Error= f"Error...{player.name}"
+                self.clearScreen(offscreen_canvas)
+                self.display_image(offscreen_canvas, 'Logo3.png')
+             
+                graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.error_color, stats_Error)
+                time.sleep(2)
                 continue  # Skip to next player if an error occurs
 
             if not player_stats_list:
                 print(f"No stats found for {player.name}")
+                no_stats= f"No Stats...{player.name}"
+                self.clearScreen(offscreen_canvas)
+                self.display_image(offscreen_canvas, 'Logo3.png')
+               
+                graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.no_stats_color, no_stats)
+                
+                time.sleep(1)
                 continue  # Skip to next player if no stats were returned
 
             found = False  # Flag to check if matching stats were found
@@ -214,31 +232,25 @@ class RunText(SampleBase):
             for stats in player_stats_list:
                 
                 if player.name == stats.name:
-                    vertical_pos -=  text_height 
-
+                    
                     print(f"Updating stats for: {stats.name}")
                     stats_update= f"Loading...{stats.name}"
                     self.clearScreen(offscreen_canvas)
                     self.display_image(offscreen_canvas, 'Logo3.png')
-                    stats_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.team_color, stats_update)
-    
-                    graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos+6, self.team_color, stats_update)
-                    vertical_pos += text_height
+                    graphics.DrawText(offscreen_canvas, self.font,x_pos, 63, self.updating_stats_color, stats_update)
+                   
                     # Update player stats here
                     player.update_stats(stats.name, stats.team, stats.points, stats.assists, stats.rebounds, stats.blocks, stats.steals, stats.field_goals_percent, stats.three_pointers_percent, stats.free_throws_percent)
                     found = True
+                    time.sleep(1)
                     break  # Exit loop after updating
 
             if not found:
                 print(f"No matching player found for {player.name} in the stats.")
                 
-
+            time.sleep(1)
             self.matrix.SwapOnVSync(offscreen_canvas)
-            
-        #Used for trasiton from Loading Players to Live Stats
-        self.clearScreen(offscreen_canvas)
-        self.display_image(offscreen_canvas, 'Logo3.png')
-        time.sleep(1)
+
 
     def set_default_values_for_player(self, player, updated_players):
         updated_players.append(PlayerStats(
@@ -296,31 +308,31 @@ class RunText(SampleBase):
         text_height = 6
         separation = 3
         
-        
+        non_random_players = [player for player in self.players if player.team != "random"]
         player_name_lengths = []
-        for player in self.players:
+        
+        for player in non_random_players :
             # Temporarily draw the text offscreen to measure its length
             length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player.name)
             player_name_lengths.append(length)
 
-        max_name_length = max(player_name_lengths)
+        max_name_length = max(player_name_lengths) if player_name_lengths else 0
+        
+ 
         
         
-
-        for i, player in enumerate(self.players):
+        for i, player in enumerate(non_random_players):
+            #Total Length
+            tempLength = separation
+            if player.team == "random":
+                
+                continue
+                
+            vertical_pos =  text_height * (i + 1)
             player_text = f"{player.team} ,Points: {player.points} ,Assists: {player.assists} ,Rebounds: {player.rebounds} ,Blocks: {player.blocks} ,Steals: {player.steals} ,FG%: {player.field_goals_percent} ,3P%: {player.three_pointers_percent} ,FT%: {player.free_throws_percent}"
-            
             player_text_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player_text)
             
-            vertical_pos =  text_height * (i + 1)
-        
-            # Draw the scrolling team stats
-           # graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + separation, vertical_pos,self.teamstats,player_text)
-            #self.team_positions[i] -= 1
-        
-
-            #Total Length
-            tempLength = separation;
+     
             
             # Draw player team
             team_text = f" {player.team}"
@@ -391,10 +403,10 @@ class RunText(SampleBase):
     
             # Draw the stationary player name
             graphics.DrawText(offscreen_canvas, self.font, clearance, vertical_pos, self.name_color, player.name)
-    '''
-            # Draw the stationary player number with '#'
-            graphics.DrawText(offscreen_canvas, self.font, offscreen_canvas.width - 11 - clearance, vertical_pos, self.name_color, "#")
-    '''
+            
+          
+            
+
         
     def run(self):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
@@ -413,7 +425,7 @@ class RunText(SampleBase):
             # Draw date and time
             self.displayDateTime(offscreen_canvas)
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-            time.sleep(0.05)
+            time.sleep(0.08)
  
  
 class LEDDisplayFacade:
