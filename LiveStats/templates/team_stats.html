@@ -14,16 +14,21 @@
                 <th>Losses</th>
                 <th>Points</th>
             </tr>
-            {% for team in stats %}
-                <center>
-                    <li>{{ team.team_name }} --- Wins:{{ team.points }} --- Losses:{{ team.assists }}</li>
-                </center>
-            {% endfor}
             {% if not stats %}
-                <center>
-                    <li>{{ inputted_team_name }} is not playing.</li>
-                </center>
-            {% endif %
+                <tr>
+                    <td colspan="4">{{ inputted_team_name }} is not playing.</td>
+                </tr>
+            {% else %}
+                {% for team in stats %}
+                    <tr>
+                        <td>{{ team.team_name }}</td>
+                        <td>{{ team.wins }}</td>
+                        <td>{{ team.losses }}</td>
+                        <td>{{ team.points }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            
         </table>
     </div>
 </body>
