@@ -78,6 +78,15 @@
         #names {
             display: none; /* Hide the textarea */
         }
+        .message {
+            font-size: 34px;
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
     </style>
 </head>
 <body>
@@ -90,13 +99,14 @@
         </ul>
     </div>
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
-    <div id="displayText"></div>
 
-    <p>Enter Player Name:</p>
+    <div class="message">
+        <p> Enter the name of any player who is missing and/or remove any unwanted players</p>
+    </div>
+    
     <input type="text" id="newNameInput">
     <button onclick="addNewName()">Add Name</button>
 
-    <div id="buttonContainer"></div>
     <script>
 
         // Get the textarea element by its id
@@ -106,14 +116,7 @@
         let text = textarea.value;
 
         let playerArray = text.split(', ');
-
-        // Display the text in the console (for debugging)
-        console.log('Text from textarea:', text);
-
         // Display the text in the HTML document
-        let displayDiv = document.getElementById('displayText');
-        displayDiv.textContent = 'Text from textarea: ' + text;
-
         let buttonContainer = document.getElementById('buttonContainer');
 
         // Loop through the array and create a button for each item
@@ -175,7 +178,7 @@
         }
     </script>
     <div id="buttonContainer"></div>
-    <div id="displayText"></div>
+
 
     <button id="singleDisplayBtn">Single Display</button>
     <button id="stackedDisplayBtn">Stacked Display</button>
