@@ -13,7 +13,7 @@
 from samplebase import SampleBase
 from rgbmatrix import graphics
 from datetime import datetime
-from PIL import Image, ImageOps, ImageEnhance # Make sure to import Resampling
+from PIL import Image, ImageOps, ImageEnhance 
 
 from api_calls import GameFacade
 import api_calls
@@ -122,25 +122,26 @@ class RunText(SampleBase):
         self.font.LoadFont("../../../fonts/4x6.bdf")
         
         #Define Colors        
-        self.name_color = graphics.Color(255, 165, 0) # Orange (Slightly brighter than original)
-        self.team_color = graphics.Color(0, 255, 0) # Green (Sharp and Clean)
-        self.assists_color = graphics.Color(0, 255, 255) # Cyan (For clarity and communication)
-        self.rebounds_color = graphics.Color(0, 0, 255) # Blue (Reliability, strength)
-        self.blocks_color = graphics.Color(128, 0, 128) # Purple (Wisdom, bravery)
-        self.steals_color = graphics.Color(255, 0, 0) # Red (Alertness, speed)
-        self.points_color = graphics.Color(255, 255, 0) # Yellow (Bright, attention-grabbin)
-        self.field_goals_percent_color = graphics.Color(0, 128, 128) # Teal (for steadiness and efficiency)
-        self.three_pointers_percent_color = graphics.Color(255, 165, 0) # Orange (for energy and impact)
-        self.free_throws_percent_color = graphics.Color(173, 216, 230) # Light Blue (for precision and calm)
+        self.name_color = graphics.Color(255, 165, 0) # Orange 
+        self.team_color = graphics.Color(0, 255, 0) # Green
+        self.assists_color = graphics.Color(0, 255, 255) # Cyan 
+        self.rebounds_color = graphics.Color(0, 0, 255) # Blue 
+        self.blocks_color = graphics.Color(128, 0, 128) # Purple 
+        self.steals_color = graphics.Color(255, 0, 0) # Red 
+        self.points_color = graphics.Color(255, 255, 0) # Yellow 
+        self.field_goals_percent_color = graphics.Color(0, 128, 128) # Teal 
+        self.three_pointers_percent_color = graphics.Color(255, 165, 0) # Orange 
+        self.free_throws_percent_color = graphics.Color(173, 216, 230) # Light Blue 
         
         self.error_color = graphics.Color(255, 0, 0) # Red 
         self.no_stats_color = graphics.Color(255, 255, 0) # Yellow
         self.updating_stats_color =graphics.Color(0, 255, 0) #Green
 
 
-        self.datetime_color = graphics.Color(255, 255, 255) # WHITE (clarity)
+        self.datetime_color = graphics.Color(255, 255, 255) # WHITE 
         self.teamstats = graphics.Color(0, 255, 255)# CYAN -- still working on it.
-
+        
+    
 
         
     def display_image(self, offscreen_canvas, image_path):
@@ -253,7 +254,7 @@ class RunText(SampleBase):
         datetime_str = now.strftime( "%H:%M:%S") #format HOUR:MINUTES:SECONDS
         
         #local Variables
-        x_position = 0;
+        x_position = 0
         y_position = offscreen_canvas.height
         text_height = 6
         
@@ -286,10 +287,16 @@ class RunText(SampleBase):
             return graphics.Color(255,255,0) #YELLLO
         else:
             return graphics.Color(0,128,0) #GREEN
-    
-                
-            
+
+    #Used to cut down on repetitive code used in "displayPlayerStats"
+    def draw_stat_text(self, canvas, font, x_position, y_position, color, category, value):
+
+        stat_text = f" {category}: {value}"
+        stat_length = graphics.DrawText(canvas, font, -canvas.width, -canvas.height, color, stat_text)
+        graphics.DrawText(canvas, font, x_position, y_position, color, stat_text)
+        return stat_length             
         
+    #Displayer player stats and player names
     def displayPlayerStats(self, offscreen_canvas):
         
         # Player name Lengths
@@ -331,54 +338,30 @@ class RunText(SampleBase):
             graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i], vertical_pos, self.team_color, team_text)
             tempLength += team_length + separation
 
-                        
-            # Draw player points
-            points_text = f" Points: {player.points}"
-            points_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, points_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.points_color, points_text)
-            tempLength += points_length + separation
-
-            # Draw player assists
-            assists_text = f" Assists: {player.assists}"
-            assists_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, assists_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.assists_color, assists_text)
-            tempLength += assists_length + separation
-
-            # Draw player rebounds
-            rebounds_text = f" Rebounds: {player.rebounds}"
-            rebounds_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, rebounds_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.rebounds_color, rebounds_text)
-            tempLength += rebounds_length + separation
-
-            # Draw player blocks
-            blocks_text = f" Blocks: {player.blocks}"
-            blocks_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, blocks_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.blocks_color, blocks_text)
-            tempLength += blocks_length + separation
-
-            # Draw player steals
-            steals_text = f" Steals: {player.steals}"
-            steals_length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, steals_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.steals_color, steals_text)
-            tempLength += steals_length + separation
+            # Draw player Points
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.points_color, 'Points', player.points) + separation
             
-            #Draw player Feild Goal Percent
-            field_goals_percent_text = f" FG%: {player.field_goals_percent}"
-            field_goals_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.field_goals_percent_color, field_goals_percent_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.field_goals_percent_color,field_goals_percent_text)
-            tempLength += field_goals_percent_length + separation
+            # Draw player Assists
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.assists_color, 'Assists', player.assists) + separation
             
-            #Draw player three pointers percent
-            three_pointers_percent_text = f" 3P%: {player.three_pointers_percent}"
-            three_pointers_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.three_pointers_percent_color, three_pointers_percent_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.three_pointers_percent_color,three_pointers_percent_text)
-            tempLength += three_pointers_percent_length+ separation
+            # Draw player Rebounds
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.rebounds_color, 'Rebounds', player.rebounds) + separation
             
-            #Draw player free throws percent
-            free_throws_percent_text = f" FT%: {player.free_throws_percent}"
-            free_throws_percent_length =graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.three_pointers_percent_color, free_throws_percent_text)
-            graphics.DrawText(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.free_throws_percent_color,free_throws_percent_text)
-            tempLength += free_throws_percent_length+ separation
+            # Draw player Blocks
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.blocks_color, 'Blocks', player.blocks) + separation
+            
+            # Draw player Steals
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.steals_color, 'Steals', player.steals) + separation
+            
+            # Draw player Feild Goal Percent
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.field_goals_percent_color, 'FG%', player.field_goals_percent) + separation
+            
+            # Draw player Three Throws Percent
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.three_pointers_percent_color, '3P%', player.three_pointers_percent) + separation
+            
+            #Draw player Free Throws Percent
+            tempLength += self.draw_stat_text(offscreen_canvas, self.font, self.team_positions[i] + tempLength, vertical_pos, self.free_throws_percent_color, '3P%', player.free_throws_percent) + separation
+
             
             # Moving Player stats from right to left
             self.team_positions[i] -= 1
