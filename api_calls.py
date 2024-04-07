@@ -442,7 +442,7 @@ class GameFacade:
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         
-        return all_player_stats
+        return player_stats
     
 
 
