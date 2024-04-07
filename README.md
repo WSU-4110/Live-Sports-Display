@@ -2,10 +2,15 @@
 
 ![alt text](https://github.com/WSU-4110/Live-Sports-Display/blob/main/Logo/MMM_Logo.png)
 
-## Purpose:
+
+## Our Website
+Our website can be accessed here:
+https://livesportsdisplay-78ab65502a20.herokuapp.com/
+
+## Our Purpose:
 This project aims to display live Scores on an LED Matrix Panel.
 
-## Team members:
+## Our Team members:
 
 - Timothy Kosinski 
 - Najib Mohammad
@@ -13,8 +18,6 @@ This project aims to display live Scores on an LED Matrix Panel.
 - Ayman Elfayoumi
 - Mitchel Brown
 - Rory Jolliff
-
-https://livesportsdisplay-78ab65502a20.herokuapp.com/
 
 ## How it works:
 Our project has four main code sections:
