@@ -11,7 +11,7 @@ from .SSH import run_stacked_display
 from django.views.decorators.http import require_http_methods
 import json
 from .tasks import my_background_task
-from api_calls import SportsAPI as SportsAPI
+from api_calls import SportsAPI
 
 
 
