@@ -69,7 +69,13 @@ class TeamStandings:
 ## End of team standings class ##
         
 
-  
+## Schedule class ##
+class Schedule:
+    def __init__(self, home_team, away_team, date, time):
+        self.home_team = home_team
+        self.away_team = away_team
+        self.date = date
+        self.time = time
 
 
 ## Facade class for the API calls ##
@@ -253,7 +259,7 @@ class GameFacade:
 
                 for row in reader:
                     if row[date_col] == f"{year}-{month}-{day}":
-                        schedule.append(f"{row[1]} vs {row[2]} on {row[3]} at {row[4]}")
+                        schedule.append(Schedule(row[1], row[2] , row[3] , row[4]))
 
         
         
@@ -540,5 +546,5 @@ How to use the main method:
 '''
 api = SportsAPI()
 
-
+print(api.get_current_schedule())
 ### End of main method ###
