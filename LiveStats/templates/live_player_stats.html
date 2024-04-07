@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Stats</title>
+    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+</head>
+<body>
+    <div class="container">
+        {% if not stats %}
+            <tr>
+                <td colspan="4">{{ inputted_player_name }} is not playing.</td>
+            </tr>
+        {% else %}
+        <table>
+            <h1>Player Stats</h1>
+        <tr>
+            <th>Team</th>
+            <th>Points</th>
+            <th>Assists</th>
+            <th>Rebounds</th>
+            <th>Blocks</th>
+            <th>Steals</th>
+            <th>Field Goal Percentage</th>
+            <th>Three Point Percentage</th>
+            <th>Free Throw Percentage</th>
+        </tr>
+            {% for player in stats %}
+                <tr>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.team }}</td>
+                    <td>{{ player.points }}</td>
+                    <td>{{ player.assists }}</td>
+                    <td>{{ player.rebounds }}</td>
+                    <td>{{ player.blocks }}</td>
+                    <td>{{ player.steals }}</td>
+                    <td>{{ player.field_goals_pct }}</td>
+                    <td>{{ player.three_points_pct }}</td>
+                    <td>{{ player.free_throws_pct }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
