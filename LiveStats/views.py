@@ -8,7 +8,7 @@ import TextParsing
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
-from api_calls import SportsAPI as SportsAPI
+from api_calls import SportsAPI
 
 @csrf_exempt
 def run_ssh(request):

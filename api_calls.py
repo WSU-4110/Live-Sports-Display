@@ -6,7 +6,6 @@ import csv
 import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-#make month automatically be converted into eastern time
 eastern_tz = pytz.timezone('US/Eastern')
 current_time = datetime.datetime.now(eastern_tz)
 time = datetime.datetime.now()
@@ -30,8 +29,6 @@ class PlayerStats:
         self.three_points_pct = three_points_pct
         self.free_throws_pct = free_throws_pct
 ## End of player class ## 
-        
-
 
 ## Team stats class ##
 class TeamStats:
@@ -47,8 +44,6 @@ class TeamStats:
         self.team_free_throws_pct = team_free_throws_pct
 ## End of team stats class ##
 
-
-
 ## Team roster class ##
 class TeamRoster:
     def __init__(self, full_name, position, jersey_number):
@@ -56,8 +51,6 @@ class TeamRoster:
         self.position = position
         self.jersey_number = jersey_number
 ## End of team roster class ##
-        
-
 
 ## Team standings class ##
 class TeamStandings:
@@ -405,10 +398,10 @@ class GameFacade:
 
 
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_player_stats(self, player_name):
-        player_stats = []
+    def get_live_player_stats(self, player_name):
         all_player_stats = []
         player_team = None
+        player_stats = None
         
         try:
             with open("2023_nba_roster.csv", "r") as file:
@@ -423,11 +416,9 @@ class GameFacade:
             response = self.connection.getresponse()
 
             if response.status == 404:
-                print(player_name + " is not currently playing.")
                 return player_stats
 
             elif response.status != 200:
-                print("Error: ", response.status, response.reason)
                 return player_stats
             
             data = response.read()
@@ -451,7 +442,7 @@ class GameFacade:
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
         
-        return player_stats
+        return all_player_stats
     
 
 
@@ -496,7 +487,7 @@ class GameFacade:
 class SportsAPI():
     def __init__(self):
         self.game_facade = GameFacade()
-
+    
     def download_season_schedule(self):
         self.game_facade.download_season_schedule()
 
@@ -524,8 +515,8 @@ class SportsAPI():
     def get_live_game_stats(self, team_name):
         return self.game_facade.get_live_game_stats(team_name)
 
-    def get_player_stats(self, player_name):
-        return self.game_facade.get_player_stats(player_name)
+    def get_live_player_stats(self, player_name):
+        return self.game_facade.get_live_player_stats(player_name)
     
     def get_live_team_stats(self, team_name):
         return self.game_facade.get_live_team_stats(team_name)
