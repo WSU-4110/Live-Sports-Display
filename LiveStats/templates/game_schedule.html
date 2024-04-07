@@ -10,7 +10,7 @@
         <table>
             {% for schedule in schedule %}
                 <center>
-                    <li>{{ schedule }}</li>
+                    <li>{{ schedule.home_team }} vs {{ schedule.away_team }} on {{ schedule.date }} at {{ schedule.time }}</li>
                 </center>
             {% endfor %}
 
