@@ -24,17 +24,18 @@
             <th>Three Point Percentage</th>
             <th>Free Throw Percentage</th>
         </tr>
-            {% for team in stats %}
+            {% for player in stats %}
                 <tr>
-                    <td>{{ team.team_name }}</td>
-                    <td>{{ team.team_points }}</td>
-                    <td>{{ team.team_assists }}</td>
-                    <td>{{ team.team_rebounds }}</td>
-                    <td>{{ team.team_blocks }}</td>
-                    <td>{{ team.team_steals }}</td>
-                    <td>{{ team.team_field_goals_pct }}</td>
-                    <td>{{ team.team_three_points_pct }}</td>
-                    <td>{{ team.team_free_throws_pct }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.team }}</td>
+                    <td>{{ player.points }}</td>
+                    <td>{{ player.assists }}</td>
+                    <td>{{ player.rebounds }}</td>
+                    <td>{{ player.blocks }}</td>
+                    <td>{{ player.steals }}</td>
+                    <td>{{ player.field_goals_pct }}</td>
+                    <td>{{ player.three_points_pct }}</td>
+                    <td>{{ player.free_throws_pct }}</td>
                 </tr>
             {% endfor %}
         </table>
