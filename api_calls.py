@@ -3,13 +3,17 @@ import json
 import datetime
 import time
 import csv
+import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-month = datetime.datetime.now().month
+eastern_tz = pytz.timezone('US/Eastern')
+current_time = datetime.datetime.now(eastern_tz)
+time = datetime.datetime.now()
+month = current_time.month
 month = str(month).zfill(2)
-day = datetime.datetime.now().day
+day = current_time.day
 day = str(day).zfill(2)
-year = str(datetime.datetime.now().year)
+year = str(current_time.year)
 
 ## Player class ##
 class PlayerStats:
@@ -25,8 +29,6 @@ class PlayerStats:
         self.three_points_pct = three_points_pct
         self.free_throws_pct = free_throws_pct
 ## End of player class ## 
-        
-
 
 ## Team stats class ##
 class TeamStats:
@@ -42,8 +44,6 @@ class TeamStats:
         self.team_free_throws_pct = team_free_throws_pct
 ## End of team stats class ##
 
-
-
 ## Team roster class ##
 class TeamRoster:
     def __init__(self, full_name, position, jersey_number):
@@ -51,8 +51,6 @@ class TeamRoster:
         self.position = position
         self.jersey_number = jersey_number
 ## End of team roster class ##
-        
-
 
 ## Team standings class ##
 class TeamStandings:
@@ -64,7 +62,13 @@ class TeamStandings:
 ## End of team standings class ##
         
 
-  
+## Schedule class ##
+class Schedule:
+    def __init__(self, home_team, away_team, date, time):
+        self.home_team = home_team
+        self.away_team = away_team
+        self.date = date
+        self.time = time
 
 
 ## Facade class for the API calls ##
@@ -248,7 +252,7 @@ class GameFacade:
 
                 for row in reader:
                     if row[date_col] == f"{year}-{month}-{day}":
-                        schedule.append(f"{row[1]} vs {row[2]} on {row[3]} at {row[4]}")
+                        schedule.append(Schedule(row[1], row[2] , row[3] , row[4]))
 
         
         
@@ -394,10 +398,10 @@ class GameFacade:
 
 
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_player_stats(self, player_name):
-        player_stats = []
+    def get_live_player_stats(self, player_name):
         all_player_stats = []
         player_team = None
+        player_stats = None
         
         try:
             with open("2023_nba_roster.csv", "r") as file:
@@ -412,11 +416,9 @@ class GameFacade:
             response = self.connection.getresponse()
 
             if response.status == 404:
-                print(player_name + " is not currently playing.")
                 return player_stats
 
             elif response.status != 200:
-                print("Error: ", response.status, response.reason)
                 return player_stats
             
             data = response.read()
@@ -449,7 +451,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, "2024", "04", "04")
+            game_id = api.get_game_id(team_name, year, month, day)
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -485,7 +487,7 @@ class GameFacade:
 class SportsAPI():
     def __init__(self):
         self.game_facade = GameFacade()
-
+    
     def download_season_schedule(self):
         self.game_facade.download_season_schedule()
 
@@ -513,8 +515,8 @@ class SportsAPI():
     def get_live_game_stats(self, team_name):
         return self.game_facade.get_live_game_stats(team_name)
 
-    def get_player_stats(self, player_name):
-        return self.game_facade.get_player_stats(player_name)
+    def get_live_player_stats(self, player_name):
+        return self.game_facade.get_live_player_stats(player_name)
     
     def get_live_team_stats(self, team_name):
         return self.game_facade.get_live_team_stats(team_name)
@@ -534,5 +536,4 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
-
 ### End of main method ###

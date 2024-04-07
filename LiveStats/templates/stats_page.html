@@ -76,7 +76,7 @@
             }
 
             .button {
-                background-color: #021480; /* Green */
+                background-color: #021480;
                 border: none;
                 color: white;
                 padding: 15px 32px;
@@ -86,10 +86,51 @@
                 font-size: 16px;
                 margin: 4px 2px;
                 cursor: pointer;
-                list-style-type: none; /* Removed the left side bullet point */
+                list-style-type: none;
+            }
+            
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                border: 1px solid #ccc;
+                padding: 10px; 
+                border-radius: 4px;
+            }
+
+            input[type="submit"] {
+                background-color: #021480;
+                color: white;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                height: 60px;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                border-radius: 4px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #0259d4;
+                transform: translateY(4px);
+            }
+
+            input[type="text"] {
+                display: none;
+                border: none;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 4px;
+            }
+
+            input[type="submit"]:hover + input[type="text"] {
+                display: inline-block;
+                position: absolute;
+                top: -40px;
             }
     
-    
+
         </style>
     </head>
 
@@ -113,13 +154,23 @@
                     <li><a href="/league_standings/" class="button">League Standings</a></li>
                     <li><a href="/game_schedule/" class="button">Game Schedule</a></li>
                     <li>
-                        <form action="/team_stats/" method="get">
+                        <form action="/live_team_stats/" method="get">
                             <input type="text" name="inputted_team_name" placeholder="Enter team name">
-                            <input type="submit" value="Get Team Stats">
+                            <input type="submit" value="Get Live Team Stats">
                         </form>
                     </li>
+                    <li>
+                        <form action="/live_game_stats/" method="get">
+                            <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                            <input type="submit" value="Get Live Game Stats">
+                        </form>
+                    </li>
+                    <li>
+                        <form action="/live_player_stats/" method="get">
+                            <input type="text" name="inputted_player_name" placeholder="Enter player name">
+                            <input type="submit" value="Get Live Player Stats">
+                        </form>
                 </center>
-                
             </ul>
         </main>
     </body>

@@ -8,7 +8,7 @@ import TextParsing
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
-from api_calls import SportsAPI as SportsAPI
+from api_calls import SportsAPI
 
 @csrf_exempt
 def run_ssh(request):
@@ -92,19 +92,38 @@ def Get_Game_Schedule(request):
 
     return render(request, 'game_schedule.html', {'schedule': schedule})
 
-def Get_Team_Stats(request):
+def Get_Live_Team_Stats(request):
     inputted_team_name = request.GET.get('inputted_team_name', '')
     API = SportsAPI()
     stats = API.get_live_team_stats(inputted_team_name)
 
-    return render(request, 'team_stats.html', {'stats': stats})
+    context = {
+        'stats': stats,
+        'inputted_team_name': inputted_team_name
+    }
+    return render(request, 'live_team_stats.html', context)
 
-def Get_Live_Stats(request):
-    inputted_team_name = request.GET.get('inputted_team_name')
+def Get_Live_Game_Stats(request):
+    inputted_team_name = request.GET.get('inputted_team_name', '')
     API = SportsAPI()
-    stats = API.get_live_team_stats(inputted_team_name)
+    stats = API.get_live_game_stats(inputted_team_name)
 
-    return (request, 'live_stats_players.html', stats)
+    context = {
+        'stats': stats,
+        'inputted_team_name': inputted_team_name
+    }
+    return render(request, 'live_game_stats.html', context)
+
+def Get_Live_Player_Stats(request):
+    inputted_player_name = request.GET.get('inputted_player_name', '')
+    API = SportsAPI()
+    stats = API.get_live_player_stats(inputted_player_name)
+
+    context = {
+        'stats': stats,
+        'inputted_player_name': inputted_player_name
+    }
+    return render(request, 'live_player_stats.html', context)
 
 def stats_page(request):
     return render(request, 'stats_page.html')
