@@ -88,7 +88,32 @@
                 cursor: pointer;
                 list-style-type: none; /* Removed the left side bullet point */
             }
-    
+            
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            input[type="text"],
+            input[type="submit"] {
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                margin-right: 10px;
+            }
+
+            input[type="submit"] {
+                background-color: #021480;
+                color: white;
+                cursor: pointer;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #0147a8;
+            }
     
         </style>
     </head>
