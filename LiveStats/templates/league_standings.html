@@ -39,7 +39,7 @@
         <table>
             {% for standing in standings %}
                 <center>
-                    <tr><h2 calss="team-name"">{{ standing.team_name }}</h2> Wins:<h2 class= "team-entry">{{ standing.wins}}</h2> Losses:<h2 class="team-entry">{{ standing.losses }}</h2></tr>
+                    <tr class = "team-entry"><h2 class="team-name"">{{ standing.team_name }}</h2> Wins:<h2 class= "wins-losses">{{ standing.wins}}</h2> Losses:<h2 class="wins-losses">{{ standing.losses }}</h2></tr>
                 </center>
             {% endfor %}
 
