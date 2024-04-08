@@ -546,6 +546,4 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
-
-api.
 ### End of main method ###
