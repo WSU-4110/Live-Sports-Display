@@ -349,7 +349,7 @@ def get_player_stats_from_id(player_id, team_id):
         #Connection & response status
         comConnect.request("GET", f"/nba/trial/stream/en/statistics/subscribe?api_key={api_key}&players==sd:player:{player_id}")
 
-        response = connection.getresponse()
+        response = comConnect.getresponse()
         
         if response.status != 200:
             print("Error:", response.status, response.reason)
