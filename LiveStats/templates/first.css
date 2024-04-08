@@ -154,3 +154,46 @@ p {
     cursor: pointer;
     list-style-type: none;
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px; 
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #021480;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 60px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0259d4;
+    transform: translateY(4px);
+}
+
+input[type="text"] {
+    display: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover + input[type="text"] {
+    display: inline-block;
+    position: absolute;
+    top: -40px;
+}
+
+
