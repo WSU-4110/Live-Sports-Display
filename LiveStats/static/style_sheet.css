@@ -61,20 +61,20 @@ body {
                 flex-wrap: wrap;
                 justify-content: space-around;
                 margin: 0 auto;
-                max-width: 1200px; /* Adjust based on your layout */
+                max-width: 1200px; 
             }
             
             .team-member {
-                flex: 0 1 calc(33.333% - 20px); /* Three items per row with a little space for margin */
-                margin: 10px; /* Adjust spacing between team members */
+                flex: 0 1 calc(33.333% - 20px); 
+                margin: 10px; 
                 text-align: center;
             }
             
             .team-member img {
-                width: 150px; /* Fixed size for images */
-                height: 150px; /* Fixed size for images */
-                border-radius: 50%; /* Makes images circular */
-                object-fit: cover; /* Ensures images cover the area without distortion */
+                width: 150px; 
+                height: 150px; 
+                border-radius: 50%; 
+                object-fit: cover; 
                 margin-bottom: 15px;
             }
             
