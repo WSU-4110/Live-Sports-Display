@@ -10,7 +10,7 @@ urlpatterns = [
     path('LiveStats/', include('LiveStats.urls')),
   #  path("__debug__/", include("debug_toolbar.urls")),
     path('upload/', views.upload_and_ocr, name='upload'),
-    path('home/', views.home_view, name='home'),
+    path('', views.home_view, name='home'),
     path('stats_page/', views.stats_page, name='stats_page'),
     path('league_standings/', views.Get_League_Standings, name='league_standings'),
     path('game_schedule/', views.Get_Game_Schedule, name='game_schedule'),
