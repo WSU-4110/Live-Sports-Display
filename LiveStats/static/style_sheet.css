@@ -1,6 +1,7 @@
 body {
             background-image: url('1pX9.gif');
-            background-repeat: repeat;
+            background-repeat: no-repeat;
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
@@ -109,4 +110,3 @@ body {
             border: 2px solid #f0f0f0;
         }
 }
-<!-- This was made by Tim, moved to style sheet for ease of use for other web pages-->
