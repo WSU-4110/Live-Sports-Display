@@ -4,19 +4,13 @@
 <style>
     .container {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-    }
-
-    .team-entry {
-        width: 200px;
-        height: 100px;
-        margin: 10px;
-        padding: 10px;
-        background-color: #f2f2f2;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        border: 20px solid #2e2e2e;
+        border-radius: 30px;
+        opacity: 0.35;
+        word-spacing: 80px;
         text-align: center;
+        line-height: 5;
     }
 
     .team-name {
@@ -33,13 +27,13 @@
     <title>League Standings</title>
     <link rel="stylesheet" type="text/css" href="style_sheet.css">
 </head>
+<h1>League Standings</h1>
 <body>   
     <div class="container">
-        <h1>League Standings</h1>
         <table>
             {% for standing in standings %}
                 <center>
-                    <tr class = "team-entry"><h2 class="team-name"">{{ standing.team_name }}</h2> Wins:<h2 class= "wins-losses">{{ standing.wins}}</h2> Losses:<h2 class="wins-losses">{{ standing.losses }}</h2></tr>
+                    <tr class = "team-entry"><h2>{{ standing.team_name }} Wins:{{ standing.wins}} Losses:{{ standing.losses }}</h2></tr>
                 </center>
             {% endfor %}
 
