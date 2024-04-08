@@ -6,7 +6,6 @@ import csv
 import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-#make month automatically be converted into eastern time
 eastern_tz = pytz.timezone('US/Eastern')
 current_time = datetime.datetime.now(eastern_tz)
 time = datetime.datetime.now()
@@ -30,8 +29,6 @@ class PlayerStats:
         self.three_points_pct = three_points_pct
         self.free_throws_pct = free_throws_pct
 ## End of player class ## 
-        
-
 
 ## Team stats class ##
 class TeamStats:
@@ -47,8 +44,6 @@ class TeamStats:
         self.team_free_throws_pct = team_free_throws_pct
 ## End of team stats class ##
 
-
-
 ## Team roster class ##
 class TeamRoster:
     def __init__(self, full_name, position, jersey_number):
@@ -56,8 +51,6 @@ class TeamRoster:
         self.position = position
         self.jersey_number = jersey_number
 ## End of team roster class ##
-        
-
 
 ## Team standings class ##
 class TeamStandings:
@@ -238,6 +231,8 @@ class GameFacade:
                     for team in division['teams']:
                         standings.append(TeamStandings(team['market'] + " " + team['name'], team['wins'], team['losses'], team['id']))
 
+
+            
         # Catching exceptions #
         except json.JSONDecodeError as e:
             print(f"A JSONDecodeError occurred: {str(e)}")
@@ -245,7 +240,7 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
-        return standings
+        return sorted(standings, key=lambda x: x.wins, reverse=True)
     
 
 
@@ -258,9 +253,8 @@ class GameFacade:
                 reader = csv.reader(file)
 
                 for row in reader:
-                    if row[date_col] == f"{year}-{month}-{day}":
+                    if row[date_col] == f"{year}-{month}-07":
                         schedule.append(Schedule(row[1], row[2] , row[3] , row[4]))
-
         
         
         # Catching exceptions #
@@ -372,10 +366,12 @@ class GameFacade:
     ### Stats methods ###
     '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
     def get_live_game_stats(self, team_name):
+        home = []
+        away = []
         players = []
 
         try:
-            game_id = api.get_game_id(team_name, year, month, day)
+            game_id = api.get_game_id(team_name, year, month, "07")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -386,14 +382,18 @@ class GameFacade:
 
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
-            
+
             ''' Iterate through the home and away teams and add to the players list if the player has played in the game'''
             for player in json_data['home']['players']:
                 if player['statistics']['minutes'] != "00:00":
-                    players.append(PlayerStats(player['full_name'], json_data['home']['market'] + " " + json_data['home']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
+                    home.append(PlayerStats(player['full_name'], json_data['home']['market'] + " " + json_data['home']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
             for player in json_data['away']['players']:
                 if player['statistics']['minutes'] != "00:00":
-                    players.append(PlayerStats(player['full_name'], json_data['away']['market'] + " " + json_data['away']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
+                    away.append(PlayerStats(player['full_name'], json_data['away']['market'] + " " + json_data['away']['name'], player['statistics']['points'], player['statistics']['assists'], player['statistics']['rebounds'], player['statistics']['blocks'], player['statistics']['steals'], player['statistics']['field_goals_pct'], player['statistics']['three_points_pct'], player['statistics']['free_throws_pct']))
+
+            home = sorted(home, key=lambda x: x.points, reverse=True)
+            away = sorted(away, key=lambda x: x.points, reverse=True)
+            players = [home, away]
 
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -407,10 +407,10 @@ class GameFacade:
 
 
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_player_stats(self, player_name):
-        player_stats = []
+    def get_live_player_stats(self, player_name):
         all_player_stats = []
         player_team = None
+        player_stats = None
         
         try:
             with open("2023_nba_roster.csv", "r") as file:
@@ -420,16 +420,14 @@ class GameFacade:
                     if row[2] == player_name:
                         player_team = row[1]
 
-            game_id = api.get_game_id(player_team, year,month,day)
+            game_id = api.get_game_id(player_team, year,month,"07")
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
             if response.status == 404:
-                print(player_name + " is not currently playing.")
                 return player_stats
 
             elif response.status != 200:
-                print("Error: ", response.status, response.reason)
                 return player_stats
             
             data = response.read()
@@ -462,7 +460,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, year, month, day)
+            game_id = api.get_game_id(team_name, year, month, "07")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -474,6 +472,7 @@ class GameFacade:
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
 
+            print(json_data)
             ''' Add the home and away team stats to the teams list '''
             teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
             teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
@@ -498,7 +497,7 @@ class GameFacade:
 class SportsAPI():
     def __init__(self):
         self.game_facade = GameFacade()
-
+    
     def download_season_schedule(self):
         self.game_facade.download_season_schedule()
 
@@ -526,8 +525,8 @@ class SportsAPI():
     def get_live_game_stats(self, team_name):
         return self.game_facade.get_live_game_stats(team_name)
 
-    def get_player_stats(self, player_name):
-        return self.game_facade.get_player_stats(player_name)
+    def get_live_player_stats(self, player_name):
+        return self.game_facade.get_live_player_stats(player_name)
     
     def get_live_team_stats(self, team_name):
         return self.game_facade.get_live_team_stats(team_name)
@@ -548,7 +547,5 @@ How to use the main method:
 '''
 api = SportsAPI()
 
-
-
-print(api.get_current_schedule())
+api.
 ### End of main method ###
