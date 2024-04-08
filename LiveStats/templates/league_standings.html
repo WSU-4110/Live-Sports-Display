@@ -2,7 +2,7 @@
 <html>
 
 <style>
-    .container {
+    .tr {
         display: flex;
         justify-content: center;
         border: 20px solid #2e2e2e;
@@ -33,7 +33,7 @@
         <table>
             {% for standing in standings %}
                 <center>
-                    <tr class = "team-entry"><h2>{{ standing.team_name }} Wins:{{ standing.wins}} Losses:{{ standing.losses }}</h2></tr>
+                    <tr><h2>{{ standing.team_name }} Wins:{{ standing.wins}} Losses:{{ standing.losses }}</h2></tr>
                 </center>
             {% endfor %}
 
