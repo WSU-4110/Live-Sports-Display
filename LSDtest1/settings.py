@@ -156,7 +156,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # New line to define the directory where collectstatic will collect static files for deployment. Heroku
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # New line to use whitenoise to serve compressed static files Heroku
 STATICFILES_DIRS = [
-    BASE_DIR BASE_DIR / 'LiveStats' / 'static'
+    BASE_DIR BASE_DIR / 'LiveStats' / 'static',
 ]
 
 
