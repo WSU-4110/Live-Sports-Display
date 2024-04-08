@@ -264,6 +264,8 @@ class GameFacade:
         
         
         # Catching exceptions #
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
 
@@ -545,6 +547,8 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
+
+
 
 print(api.get_current_schedule())
 ### End of main method ###
