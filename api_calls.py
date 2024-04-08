@@ -257,6 +257,8 @@ class GameFacade:
         
         
         # Catching exceptions #
+        except csv.Error as e:
+            print(f"A CSV error occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
 
