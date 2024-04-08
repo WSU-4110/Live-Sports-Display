@@ -11,6 +11,7 @@ urlpatterns = [
   #  path("__debug__/", include("debug_toolbar.urls")),
     path('upload/', views.upload_and_ocr, name='upload'),
     path('', include('LSDtest1.urls')),
+    path('home/', views.home_view, name='home'),
     path('league_standings/', views.Get_League_Standings, name='league_standings'),
     path('game_schedule/', views.Get_Game_Schedule, name='game_schedule'),
     path('live_team_stats/', views.Get_Live_Team_Stats, name='live_team_stats'),
