@@ -103,8 +103,12 @@ def Get_Live_Game_Stats(request):
     API = SportsAPI()
     stats = API.get_live_game_stats(inputted_team_name)
 
+    home_team = stats[0]
+    away_team = stats[1]
+
     context = {
-        'stats': stats,
+        'home_team': home_team,
+        'away_team': away_team,
         'inputted_team_name': inputted_team_name
     }
     return render(request, 'live_game_stats.html', context)
