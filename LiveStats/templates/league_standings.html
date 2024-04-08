@@ -8,17 +8,9 @@
     <div class="container">
         <h1>League Standings</h1>
         <table>
-            <tr>
-                <th>Rank</th>
-                <th>Team</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Points</th>
-
-            </tr>
             {% for standing in standings %}
                 <center>
-                    <li>{{ standing.team_name }} --- Wins:{{ standing.wins}} --- Losses:{{ standing.losses }}</li>
+                    <h2><h2>{{ standing.team_name }}            Wins:{{ standing.wins}}             Losses:{{ standing.losses }}</h2></tr>
                 </center>
             {% endfor %}
 
