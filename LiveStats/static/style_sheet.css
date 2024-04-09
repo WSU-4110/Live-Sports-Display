@@ -111,45 +111,38 @@ textarea {
     border: 2px solid #f0f0f0;
 }
 /* Gallery styles */
-.gallery-container {
+.galleries-container {
   display: flex;
-  justify-content: space-around;
-  max-width: 1200px; 
-  margin: 20px auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery {
+  flex: 1;
+  max-width: 50%; 
 }
 
 .image-box {
   border: 2px solid black;
-  display: inline-block;
-  margin: 5px;
+  text-align: center;
 }
 
 .image-box img {
-  width: 100%; 
-  height: auto;
-  display: block; 
-}
-
-#galleryImage {
-  width: 100%;
   max-width: 100%;
   height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 .gallery-buttons {
-  text-align: center;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
 
+
 .gallery-buttons button {
-  padding: 10px 20px;
+  min-width: auto;
+  padding: 5px 10px;
   margin: 0 5px;
-  background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
 
 /* Button Styles */
