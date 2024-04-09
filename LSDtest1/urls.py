@@ -18,5 +18,6 @@ urlpatterns = [
     path('live_game_stats/', views.Get_Live_Game_Stats, name='live_game_stats'),
     path('live_player_stats/', views.Get_Live_Player_Stats, name='live_player_stats'),
     path('run-single-display/', views.run_single_display, name='run_single_display'),
+    path('OCRStats/', views.Get_Live_OCR_Roster_Stats, name='OCRStats'),
     path('run-stacked-display/', views.run_stacked_display, name='run_stacked_display'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

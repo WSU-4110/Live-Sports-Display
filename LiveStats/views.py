@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .SSH import run_stacked_display
 from api_calls import SportsAPI
+import time
 
 @csrf_exempt
 def run_ssh(request):
@@ -133,6 +134,7 @@ def Get_Live_OCR_Roster_Stats(request):
     for name in OCR_Names:
         stat = API.get_live_player_stats(name)
         StatsArray.append(stat)
+        time.sleep(2)
         
     context = {
         'NamesArray': OCR_Names,
