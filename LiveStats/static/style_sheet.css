@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Ethnocentric';
-    src: url('path-to-your-font-files/ethnocentric.woff2') format('woff2'),
-         url('path-to-your-font-files/ethnocentric.woff') format('woff');
+    src: url('../fonts/ethnocentric.woff2') format('woff2'),
+         url('../fonts/ethnocentric.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
