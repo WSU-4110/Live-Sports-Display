@@ -1,15 +1,10 @@
-@font-face {
-    font-family: 'Ethnocentric';
-    src: url('../fonts/ethnocentric.woff2') format('woff2'),
-         url('../fonts/ethnocentric.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.cdnfonts.com/css/ethnocentric');
+
 body {
     background-image: url('1pX9.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Ethnocentric', sans-serif;
+    font-family: 'Ethnocentric Rg', sans-serif;
     font-size: 1rem;
     margin: 0;
     line-height: 1.6;
