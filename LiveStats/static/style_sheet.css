@@ -1,7 +1,7 @@
 <style>
     /* Base */
     body {
-        background-image: url("{% static '1pX9.gif' %}");
+        background-image: url('1pX9.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
