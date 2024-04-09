@@ -18,13 +18,14 @@ import time
 @csrf_exempt
 def run_stacked_display(request):
     if request.method == "POST":
+        data = json.loads(request.body.decode('utf-8'))
+        player_names = data.get('players', '')  # Default to empty string if not provided, player names from upload.html
+        
         hostname = 'us2.pitunnel.com'  
         username = 'timkosinski'  
         password = '20010972'  
         port = 60735  #Will change every bootup!
 
-        player_names = "Deandre Ayton,Jabari Walker,Random"
-        
         execute_command = (
             f"echo '{player_names}' > /home/timkosinski/rpi-rgb-led-matrix/bindings/python/samples/Players.txt "
         )
@@ -55,14 +56,16 @@ def run_stacked_display(request):
 @csrf_exempt
 def run_single_display(request):
     if request.method == "POST":
+        data = json.loads(request.body.decode('utf-8'))
+        player_names = data.get('players', '')  # Default to empty string if not provided, player names from upload.html
+
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
         port = 41315
-
-        player_names = "Deandre Ayton,Jabari Walker,Random"
         
         execute_command = (
+            f"echo '{player_names}' > /home/Jordan/env1/pyscripts/Players.txt "
             "sudo -S bash -c '"
             "python3 -m venv /env1; "
             "source /env1/bin/activate; "
