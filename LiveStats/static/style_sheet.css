@@ -65,12 +65,12 @@ textarea, input[type="text"] {
 }
 
 input[type="text"] {
-    width: calc(100% - 22px); /* Adjust width to account for padding and border */
+    width: calc(100% - 22px); 
 }
 
 textarea {
     width: calc(100% - 22px);
-    height: 100px; /* Adjust based on your preference */
+    height: 100px; 
 }
 
 
@@ -150,4 +150,44 @@ textarea {
 .close-button:hover {
     color: red;
     border: 3px solid red;
+}
+
+form {
+    max-width: 500px; 
+    margin: 20px auto; 
+    background: #ffffff; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+form p {
+    color: #333; 
+}
+
+input[type="file"] {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: 2px solid #ccc; 
+    border-radius: 4px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+input[type="submit"] {
+    font-size: 16px;
+    color: #fff;
+    background-color:
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color: #555; 
 }
