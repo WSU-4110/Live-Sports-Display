@@ -49,20 +49,21 @@
             <p>Our latest update features improved OCR accuracy, faster data retrieval from Sportradar's API, and a more intuitive user interface for uploading fantasy basketball screenshots.</p>
             <p>Take a look at our newest cases that houses our Raspberry Pi's and display components!</p>
         
-            <!-- Image Gallery -->
+            <!-- Image Gallery 1 -->
             <div class="gallery-container">
                 <div class="image-box">
-                    <img src="{% static 'images/Display1.jpg' %}" alt="Image 1">
+                    <img id="galleryImage1" src="{% static 'images/gallery1/Display1.jpg' %}" alt="Image 1">
                 </div>
-                <div class="image-box">
-                    <img src="{% static 'images/Display1.jpg' %}" alt="Image 2">
+                <div class="gallery-buttons">
+                    <button onclick="changeImage(1, -1)">Prev</button>
+                    <button onclick="changeImage(1, 1)">Next</button>
                 </div>
             </div>
         
-            <!-- Gallery Buttons -->
+            <!-- Image Gallery 2 -->
             <div class="gallery-container">
                 <div class="image-box">
-                    <img id="galleryImage2" src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                    <img id="galleryImage2" src="{% static 'images/gallery2/Display1.jpg' %}" alt="Image 2">
                 </div>
                 <div class="gallery-buttons">
                     <button onclick="changeImage(2, -1)">Prev</button>
@@ -73,7 +74,7 @@
         
         <script>
         // Array of images Stacked Display
-        var images1 = [
+        var gallery1Images = [
           "{% static 'images/Display1.jpg' %}",
           "{% static 'images/Display2.jpg' %}",
           "{% static 'images/Display3.jpg' %}"
@@ -81,7 +82,7 @@
         ];
 
         // Array of images Long Display
-        var images2 = [
+        var gallery2Images = [
           "{% static 'images/Display1.jpg' %}",
           "{% static 'images/Display2.jpg' %}",
           "{% static 'images/Display3.jpg' %}"
@@ -91,23 +92,14 @@
         var currentIndex1 = 0; // Starting index
         var currentIndex2 = 0; // Starting index
         
+        // Function to change the image for a specified gallery
         function changeImage(galleryNumber, step) {
           if (galleryNumber === 1) {
-            currentIndex1 += step;
-            if (currentIndex1 >= images1.length) {
-              currentIndex1 = 0;
-            } else if (currentIndex1 < 0) {
-              currentIndex1 = images1.length - 1;
-            }
-            document.getElementById('galleryImage1').src = images1[currentIndex1];
+            currentIndex1 = (currentIndex1 + step + gallery1Images.length) % gallery1Images.length;
+            document.getElementById('galleryImage1').src = gallery1Images[currentIndex1];
           } else if (galleryNumber === 2) {
-            currentIndex2 += step;
-            if (currentIndex2 >= images2.length) {
-              currentIndex2 = 0;
-            } else if (currentIndex2 < 0) {
-              currentIndex2 = images2.length - 1;
-            }
-            document.getElementById('galleryImage2').src = images2[currentIndex2];
+            currentIndex2 = (currentIndex2 + step + gallery2Images.length) % gallery2Images.length;
+            document.getElementById('galleryImage2').src = gallery2Images[currentIndex2];
           }
         }
         </script>
