@@ -115,6 +115,23 @@
         function sendPlayers() {
             let playerString = playerArray.join(', ');
             alert('Sending players: ' + playerString); // Example function code
+
+            let form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', '/player_list/'); // Replace '/player_list/' with your Django view URL
+
+            // Create a hidden input field for each player name
+            playerArray.forEach(player => {
+                let input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', 'players[]'); // Use 'players[]' to send as an array
+                input.setAttribute('value', player); // Set the player name as the input value
+                form.appendChild(input); // Append the input field to the form
+            });
+
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 

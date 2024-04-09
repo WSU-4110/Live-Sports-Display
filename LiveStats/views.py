@@ -125,5 +125,20 @@ def Get_Live_Player_Stats(request):
     }
     return render(request, 'live_player_stats.html', context)
 
+def Get_Live_OCR_Roster_Stats(request):
+    OCR_Names = request.POST.getlist('players[]')
+    API = SportsAPI()
+    StatsArray = []
+    
+    for name in OCR_Names:
+        stat = API.get_live_player_stats(name)
+        StatsArray.append(stat)
+        
+    context = {
+        'NamesArray': OCR_Names,
+        'StatsArray': StatsArray
+        }
+    return render(request, 'OCRStats.html',context)
+
 def stats_page(request):
     return render(request, 'stats_page.html')
