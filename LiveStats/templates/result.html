@@ -125,7 +125,17 @@
     <div id="confirmationStatus"></div>
     <script>
         document.getElementById("singleDisplayBtn").onclick = function () {
-            document.getElementById("confirmationStatus").innerText = "Single display mode selected. Sending to display...";
+            fetch('/run-single-display/', { // Updated URL to Django view for single display
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                },
+                body: JSON.stringify({ action: 'singleDisplay' }) // Optional: Send data if needed
+            }).then(response => response.json())
+                .then(data => {
+                    document.getElementById("confirmationStatus").innerText = data.message;
+                }).catch(error => console.error('Error:', error));
         };
 
         document.getElementById("stackedDisplayBtn").onclick = function () {
