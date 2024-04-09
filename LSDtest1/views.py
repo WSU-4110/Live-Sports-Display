@@ -18,7 +18,7 @@ import time
 @csrf_exempt
 def run_stacked_display(request):
     if request.method == "POST":
-        hostname = 'us2.pitunnel.com'  ]
+        hostname = 'us2.pitunnel.com'  
         username = 'timkosinski'  
         password = '20010972'  
         port = 60735  #Will change every bootup!
