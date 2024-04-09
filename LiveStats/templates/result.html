@@ -125,32 +125,33 @@
     <div id="confirmationStatus"></div>
     <script>
         document.getElementById("singleDisplayBtn").onclick = function () {
-            fetch('/run-single-display/', { // Updated URL to Django view for single display
+            fetch('/run-single-display/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                    'X-CSRFToken': getCookie('csrftoken') 
                 },
-                body: JSON.stringify({ action: 'singleDisplay' }) // Optional: Send data if needed
+                body: JSON.stringify({ action: 'singleDisplay' }) 
             }).then(response => response.json())
                 .then(data => {
                     document.getElementById("confirmationStatus").innerText = data.message;
                 }).catch(error => console.error('Error:', error));
         };
-
+        
         document.getElementById("stackedDisplayBtn").onclick = function () {
-            fetch('/run-ssh/', { // URL to Django view
+            fetch('/run-stacked-display/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                    'X-CSRFToken': getCookie('csrftoken') 
                 },
-                body: JSON.stringify({ action: 'stackedDisplay' }) // Data you want to send
+                body: JSON.stringify({ action: 'stackedDisplay' }) 
             }).then(response => response.json())
                 .then(data => {
                     document.getElementById("confirmationStatus").innerText = data.message;
-                });
+                }).catch(error => console.error('Error:', error));
         };
+        
 
         function getCookie(name) {
             let cookieValue = null;
