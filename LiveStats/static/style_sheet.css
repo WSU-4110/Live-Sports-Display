@@ -1,10 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
+@font-face {
+    font-family: 'Ethnocentric';
+    src: url('path-to-your-font-files/ethnocentric.woff2') format('woff2'),
+         url('path-to-your-font-files/ethnocentric.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     background-image: url('1pX9.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ethnocentric', sans-serif;
     font-size: 1rem;
     margin: 0;
     line-height: 1.6;
@@ -113,7 +118,7 @@ textarea {
 .section {
     background: #fff;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1500px;
     padding: 0 1rem;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
     border-radius: 18px;
