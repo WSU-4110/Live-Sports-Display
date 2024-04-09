@@ -12,27 +12,6 @@ from django.views.decorators.http import require_http_methods
 import json
 from .tasks import my_background_task
 from api_calls import SportsAPI
-
-
-
-@csrf_exempt
-def run_ssh(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body.decode('utf-8'))  # Parse the JSON data
-            action = data.get("action")
-
-            if action == "stackedDisplay":
-                # Offload the long-running operation to a background task
-                task_id = my_background_task.delay()  # Start the task
-                return JsonResponse({"message": "Task is running in the background", "task_id": str(task_id)})
-            else:
-                return JsonResponse({"error": "Invalid request"}, status=400)
-        except json.JSONDecodeError:
-            return JsonResponse({"message": "Invalid JSON format"}, status=400)
-    return JsonResponse({"message": "Invalid request"}, status=400)
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 import paramiko
 import time
 
