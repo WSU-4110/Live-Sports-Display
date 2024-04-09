@@ -7,11 +7,24 @@
 }
 
 .standing-entry {
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }
 
 .standing-attribute {
-    margin-right: 30px;
+    margin-right: 100px;
+}
+.team_name {
+    font-size: 20px;
+}
+
+.container {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+
 }
 </style>
 
@@ -20,12 +33,12 @@
     <title>League Standings</title>
     <link rel="stylesheet" type="text/css" href="first.css">
 </head>
-<h1>League Standings</h1>
+<h1><center>NBA League Standings</center></h1>
 <body>   
     <div class="container">
         {% for standing in standings %}
         <div class="standing-entry center">
-            <span class="standing-attribute">{{ standing.team_name }}</span>
+            <span class="standing-attribute team_name">{{ standing.team_name }}</span>
             <span class="standing-attribute">Wins: {{ standing.wins }}</span>
             <span class="standing-attribute">Losses: {{ standing.losses }}</span>
         </div>
