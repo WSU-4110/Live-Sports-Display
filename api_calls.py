@@ -3,17 +3,12 @@ import json
 import datetime
 import time
 import csv
-import pytz
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-eastern_tz = pytz.timezone('US/Eastern')
-current_time = datetime.datetime.now(eastern_tz)
 time = datetime.datetime.now()
-month = current_time.month
-month = str(month).zfill(2)
-day = current_time.day
-day = str(day).zfill(2)
-year = str(current_time.year)
+month = str(time.month).zfill(2)
+day = str(time.day).zfill(2)
+year = str(time.year)
 
 ## Player class ##
 class PlayerStats:
@@ -159,7 +154,7 @@ class GameFacade:
 
 
     ''' Get the team roster in format of player name, position, and jersey number and player_id'''
-    def download_nba_roster(self):
+    def download_nba_roster(self) -> None:
         nba_team_ids = []
         nba_year = datetime.datetime.now().year - 1
         nba_year = str(nba_year)
@@ -208,7 +203,7 @@ class GameFacade:
 
 
     ### Game methods ###
-    def get_league_standings(self):
+    def get_league_standings(self) -> list:
         year = datetime.datetime.now().year - 1
         year = str(year)
 
@@ -244,7 +239,7 @@ class GameFacade:
     
 
 
-    def get_current_schedule(self):
+    def get_current_schedule(self) -> list:
         schedule = []
         try:
             date_col = 3
@@ -340,7 +335,7 @@ class GameFacade:
 
 
     ### Roster method ###
-    def get_team_roster_from_id(self,team_id):
+    def get_team_roster_from_name(self,team_name) -> list:
         roster = []
 
         try:
@@ -348,7 +343,7 @@ class GameFacade:
                 reader = csv.reader(file)
 
                 for row in reader:
-                    if row[0] == team_id:
+                    if row[1] == team_name:
                         roster.append(TeamRoster(row[2], row[3], row[4]))
             
         # Catching exceptions #
@@ -365,7 +360,7 @@ class GameFacade:
 
     ### Stats methods ###
     '''Live game stats for the whole team that has requirements minutes > 0 and will append each player with their respective stats to a list of objects'''
-    def get_live_game_stats(self, team_name):
+    def get_live_game_stats(self, team_name) -> list:
         home = []
         away = []
         players = []
@@ -407,7 +402,7 @@ class GameFacade:
 
 
     '''Obtains live stats for a specific player that is inputted into the function that will be obtain via website.'''
-    def get_live_player_stats(self, player_name):
+    def get_live_player_stats(self, player_name) -> PlayerStats:
         all_player_stats = []
         player_team = None
         player_stats = None
@@ -455,7 +450,7 @@ class GameFacade:
     
 
 
-    def get_live_team_stats(self, team_name):
+    def get_live_team_stats(self, team_name) -> list:
         teams = []
         game_id = None
 
@@ -519,8 +514,8 @@ class SportsAPI():
     def get_team_id(self, team_name):  
         return self.game_facade.get_team_id(team_name)
     
-    def get_team_roster_from_id(self, team_id):
-        return self.game_facade.get_team_roster_from_id(team_id)
+    def get_team_roster_from_name(self, team_name):
+        return self.game_facade.get_team_roster_from_name(team_name)
         
     def get_live_game_stats(self, team_name):
         return self.game_facade.get_live_game_stats(team_name)
