@@ -65,7 +65,7 @@ def run_single_display(request):
         port = 41315
         
         execute_command = (
-            f"echo '{player_names}' > /home/Jordan/env1/pyscripts/Players.txt "
+            f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt "
             "sudo -S bash -c '"
             "python3 -m venv /env1; "
             "source /env1/bin/activate; "
