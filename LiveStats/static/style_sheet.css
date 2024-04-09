@@ -63,7 +63,7 @@ h2 {
 }
 
 p {
-    font-family: 'BrixtonBook', sans-serif;
+    font-family: 'Brixton', sans-serif;
     text-align: justify;
     margin-bottom: 1em;
     font-size: 1rem;
@@ -111,7 +111,7 @@ textarea {
 .social-links a {
     display: inline-block;
     margin: 5px;
-    /* Style your links */
+    font-family: 'Brixton', sans-serif;
 }
 
 .section {
@@ -226,7 +226,7 @@ form p {
 }
 
 input[type="file"] {
-    font-family: Arial, sans-serif;
+    font-family: 'Brixton', sans-serif;
     padding: 10px;
     margin-bottom: 20px; 
     border: 2px solid #ccc; 
