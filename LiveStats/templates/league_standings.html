@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+    .tr {
+        display: flex;
+        justify-content: center;
+        border: 20px solid #2e2e2e;
+        border-radius: 30px;
+        opacity: 0.35;
+        word-spacing: 80px;
+        text-align: center;
+        line-height: 5;
+    }
+
+    .team-name {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .wins-losses {
+        font-size: 16px;
+    }
+</style>
+
 <head>
     <title>League Standings</title>
     <link rel="stylesheet" type="text/css" href="style_sheet.css">
 </head>
+<h1>League Standings</h1>
 <body>   
     <div class="container">
-        <h1>League Standings</h1>
         <table>
-            <tr>
-                <th>Rank</th>
-                <th>Team</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Points</th>
-
-            </tr>
             {% for standing in standings %}
                 <center>
-                    <li>{{ standing.team_name }} --- Wins:{{ standing.wins}} --- Losses:{{ standing.losses }}</li>
+                    <tr><h2>{{ standing.team_name }} Wins:{{ standing.wins}} Losses:{{ standing.losses }}</h2></tr>
                 </center>
             {% endfor %}
 

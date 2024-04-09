@@ -3,9 +3,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="{% static 'first.css' %}">
     <link rel="icon" type="image/png" href="MMM_Logo.png">
-    
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
 </head>
 
 <body>
@@ -126,22 +125,33 @@
     <div id="confirmationStatus"></div>
     <script>
         document.getElementById("singleDisplayBtn").onclick = function () {
-            document.getElementById("confirmationStatus").innerText = "Single display mode selected. Sending to display...";
-        };
-
-        document.getElementById("stackedDisplayBtn").onclick = function () {
-            fetch('/run-ssh/', { // URL to Django view
+            fetch('/run-single-display/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') // CSRF token for Django
+                    'X-CSRFToken': getCookie('csrftoken') 
                 },
-                body: JSON.stringify({ action: 'stackedDisplay' }) // Data you want to send
+                body: JSON.stringify({ action: 'singleDisplay' }) 
             }).then(response => response.json())
                 .then(data => {
                     document.getElementById("confirmationStatus").innerText = data.message;
-                });
+                }).catch(error => console.error('Error:', error));
         };
+        
+        document.getElementById("stackedDisplayBtn").onclick = function () {
+            fetch('/run-stacked-display/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') 
+                },
+                body: JSON.stringify({ action: 'stackedDisplay' }) 
+            }).then(response => response.json())
+                .then(data => {
+                    document.getElementById("confirmationStatus").innerText = data.message;
+                }).catch(error => console.error('Error:', error));
+        };
+        
 
         function getCookie(name) {
             let cookieValue = null;

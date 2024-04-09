@@ -11,16 +11,18 @@
         {% else %}
         <h1>Team Stats for {{ inputted_team_name }} </h1>
             <ul>
-                {% for player in stats %}
-                    <li>Player Name: {{ player.name }}</li>
-                    <li>Points: {{ player.points }}</li>
-                    <li>Assists: {{ player.assists }}</li>
-                    <li>Rebounds: {{ player.rebounds }}</li>
-                    <li>Blocks: {{ player.blocks }} </li>
-                    <li>Steals: {{ player.steals }}</li>
-                    <li>Field Goal Percentage: {{ player.field_goals_pct }}</li>
-                    <li>Three Point Percentage: {{ player.three_points_pct }}</li>
-                    <li>Free Throw Percentage: {{ player.free_throws_pct }}</li>
+                {% for team in stats %}
+                    {% for player in team %}
+                        <li>Player Name: {{ player.name }}</li>
+                        <li>Points: {{ player.points }}</li>
+                        <li>Assists: {{ player.assists }}</li>
+                        <li>Rebounds: {{ player.rebounds }}</li>
+                        <li>Blocks: {{ player.blocks }} </li>
+                        <li>Steals: {{ player.steals }}</li>
+                        <li>Field Goal Percentage: {{ player.field_goals_pct }}</li>
+                        <li>Three Point Percentage: {{ player.three_points_pct }}</li>
+                        <li>Free Throw Percentage: {{ player.free_throws_pct }}</li>
+                    {% endfor %}
                 {% endfor %}
             </ul>
         {% endif %}

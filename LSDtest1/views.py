@@ -12,25 +12,81 @@ from django.views.decorators.http import require_http_methods
 import json
 from .tasks import my_background_task
 from api_calls import SportsAPI
+import paramiko
+import time
 
+@csrf_exempt
+def run_stacked_display(request):
+    if request.method == "POST":
+        hostname = 'us2.pitunnel.com'  ]
+        username = 'timkosinski'  
+        password = '20010972'  
+        port = 60735  #Will change every bootup!
+
+        player_names = "Deandre Ayton,Jabari Walker,Random"
+        
+        execute_command = (
+            f"echo '{player_names}' > /home/timkosinski/rpi-rgb-led-matrix/bindings/python/samples/Players.txt "
+        )
+
+
+        try:
+            # Initialize the SSH client with settings for PiTunnel access
+            client = paramiko.SSHClient()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            client.connect(hostname, port=port, username=username, password=password)
+        
+            # Execute the Python script with TTY
+            stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
+        
+            # Read the output and error if needed
+            output = stdout.read().decode()
+            errors = stderr.read().decode()
+            print(output)
+            print(errors)
+        finally:
+            client.close()
+        
+        return JsonResponse({"message": "Stacked display command executed successfully."})
+    else:
+        return JsonResponse({"error": "Invalid request method."}, status=405)
 
 
 @csrf_exempt
-def run_ssh(request):
+def run_single_display(request):
     if request.method == "POST":
-        try:
-            data = json.loads(request.body.decode('utf-8'))  # Parse the JSON data
-            action = data.get("action")
+        hostname = 'us2.pitunnel.com'
+        username = 'jordan'
+        password = 'CSC4110LSD'
+        port = 54795
+        execute_command = (
+            "sudo -S bash -c '"
+            "python3 -m venv /env1; "
+            "source /env1/bin/activate; "
+            "/home/jordan/env1/pyscripts/strandtest.py'"
+        )
 
-            if action == "stackedDisplay":
-                # Offload the long-running operation to a background task
-                task_id = my_background_task.delay()  # Start the task
-                return JsonResponse({"message": "Task is running in the background", "task_id": str(task_id)})
-            else:
-                return JsonResponse({"error": "Invalid request"}, status=400)
-        except json.JSONDecodeError:
-            return JsonResponse({"message": "Invalid JSON format"}, status=400)
-    return JsonResponse({"message": "Invalid request"}, status=400)
+
+        try:
+            # Initialize the SSH client with settings for PiTunnel access
+            client = paramiko.SSHClient()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            client.connect(hostname, port=port, username=username, password=password)
+        
+            # Execute the Python script with TTY
+            stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
+        
+            # Read the output and error if needed
+            output = stdout.read().decode()
+            errors = stderr.read().decode()
+            print(output)
+            print(errors)
+        finally:
+            client.close()
+        
+        return JsonResponse({"message": "Single display command executed successfully."})
+    else:
+        return JsonResponse({"error": "Invalid request method."}, status=405)
 
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path

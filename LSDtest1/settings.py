@@ -28,11 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-l-bv0-ty@p0gwk
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://:p63b5491fe55772d47f3ca46afef7e6fef54361a4806fe5a092a9f996704eb238@ec2-3-215-140-221.compute-1.amazonaws.com:28649') 
-CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://:p63b5491fe55772d47f3ca46afef7e6fef54361a4806fe5a092a9f996704eb238@ec2-3-215-140-221.compute-1.amazonaws.com:28649')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+
 
 LOGGING = {
     'version': 1,
@@ -159,6 +155,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # New line to define the directory where collectstatic will collect static files for deployment. Heroku
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # New line to use whitenoise to serve compressed static files Heroku
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATICFILES_DIRS = [
+    BASE_DIR / 'LiveStats' / 'static',
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

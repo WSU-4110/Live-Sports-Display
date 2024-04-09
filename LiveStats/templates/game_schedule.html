@@ -8,11 +8,17 @@
     <div class="container">
         <h1>Game schedules today</h1>
         <table>
-            {% for schedule in schedule %}
-                <center>
-                    <li>{{ schedule.home_team }} vs {{ schedule.away_team }} on {{ schedule.date }} at {{ schedule.time }}</li>
-                </center>
-            {% endfor %}
+            {% if schedule %}
+                {% for game in schedule %}
+                    <tr>
+                        <td>{{ game.home_team }} vs {{ game.away_team }} on {{ game.date }} at {{ game.time }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>No games scheduled today</td>
+                </tr>
+            {% endif %}
         </table>
     </div>
 </body>
