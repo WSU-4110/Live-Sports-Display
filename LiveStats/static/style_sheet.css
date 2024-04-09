@@ -110,6 +110,33 @@ textarea {
     border-radius: 18px;
     border: 2px solid #f0f0f0;
 }
+/* Gallery styles */
+.gallery-container {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#galleryImage {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.gallery-buttons button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
 /* Button Styles */
 .custom-button, .add-button {
