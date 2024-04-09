@@ -37,6 +37,43 @@ import paramiko
 import time
 
 @csrf_exempt
+def run_stacked_display(request):
+    if request.method == "POST":
+        hostname = 'us2.pitunnel.com'  # Updated to the PiTunnel domain
+        username = 'timkosinski'  # Raspberry Pi username remains the same
+        password = '20010972'  # Raspberry Pi password remains the same
+        port = 38455  # Updated to the custom tunnel port provided by PiTunnel
+
+        player_names = "Deandre Ayton,Jabari Walker,Random"
+        
+        execute_command = (
+            f"echo '{player_names}' > /home/timkosinski/rpi-rgb-led-matrix/bindings/python/samples/Players.txt "
+        )
+
+
+        try:
+            # Initialize the SSH client with settings for PiTunnel access
+            client = paramiko.SSHClient()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            client.connect(hostname, port=port, username=username, password=password)
+        
+            # Execute the Python script with TTY
+            stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
+        
+            # Read the output and error if needed
+            output = stdout.read().decode()
+            errors = stderr.read().decode()
+            print(output)
+            print(errors)
+        finally:
+            client.close()
+        
+        return JsonResponse({"message": "Single display command executed successfully."})
+    else:
+        return JsonResponse({"error": "Invalid request method."}, status=405)
+
+
+@csrf_exempt
 def run_single_display(request):
     if request.method == "POST":
         hostname = 'us2.pitunnel.com'
