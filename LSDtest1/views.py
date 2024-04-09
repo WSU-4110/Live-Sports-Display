@@ -57,31 +57,36 @@ def run_stacked_display(request):
 def run_single_display(request):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
-        player_names = data.get('players', '')  # Default to empty string if not provided, player names from upload.html
+        player_names = data.get('players', '')  # Default to empty string if not provided
 
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
         port = 41315
-        
-        execute_command = (
-            f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt "
-            "sudo -S bash -c '"
-            "python3 -m venv /env1; "
-            "source /env1/bin/activate; "
-            "/home/jordan/env1/pyscripts/strandtest.py'"
-        )
-
 
         try:
             # Initialize the SSH client with settings for PiTunnel access
             client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname, port=port, username=username, password=password)
-        
-            # Execute the Python script with TTY
+            
+            # Clear the content of the file before adding new names
+            clear_command = "truncate -s 0 /home/jordan/env1/pyscripts/Players.txt"
+            client.exec_command(clear_command)
+            
+            # Write new player names to the file
+            write_command = f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt"
+            client.exec_command(write_command)
+            
+            # Run other commands
+            execute_command = (
+                "sudo -S bash -c '"
+                "python3 -m venv /env1; "
+                "source /env1/bin/activate; "
+                "/home/jordan/env1/pyscripts/strandtest.py'"
+            )
             stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
-        
+            
             # Read the output and error if needed
             output = stdout.read().decode()
             errors = stderr.read().decode()
@@ -93,6 +98,7 @@ def run_single_display(request):
         return JsonResponse({"message": "Single display command executed successfully."})
     else:
         return JsonResponse({"error": "Invalid request method."}, status=405)
+
 
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
