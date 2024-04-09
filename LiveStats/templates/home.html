@@ -72,25 +72,43 @@
         </div>
         
         <script>
-        // Array of images
-        var images = [
+        // Array of images Stacked Display
+        var images1 = [
+          "{% static 'images/Display1.jpg' %}",
+          "{% static 'images/Display2.jpg' %}",
+          "{% static 'images/Display3.jpg' %}"
+          
+        ];
+
+        // Array of images Long Display
+        var images2 = [
           "{% static 'images/Display1.jpg' %}",
           "{% static 'images/Display2.jpg' %}",
           "{% static 'images/Display3.jpg' %}"
           
         ];
         
-        var currentIndex = 0; // Starting index
+        var currentIndex1 = 0; // Starting index
+        var currentIndex2 = 0; // Starting index
         
-        // Function to change image
-        function changeImage(step) {
-          currentIndex += step;
-          if (currentIndex >= images.length) {
-            currentIndex = 0;
-          } else if (currentIndex < 0) {
-            currentIndex = images.length - 1;
+        function changeImage(galleryNumber, step) {
+          if (galleryNumber === 1) {
+            currentIndex1 += step;
+            if (currentIndex1 >= images1.length) {
+              currentIndex1 = 0;
+            } else if (currentIndex1 < 0) {
+              currentIndex1 = images1.length - 1;
+            }
+            document.getElementById('galleryImage1').src = images1[currentIndex1];
+          } else if (galleryNumber === 2) {
+            currentIndex2 += step;
+            if (currentIndex2 >= images2.length) {
+              currentIndex2 = 0;
+            } else if (currentIndex2 < 0) {
+              currentIndex2 = images2.length - 1;
+            }
+            document.getElementById('galleryImage2').src = images2[currentIndex2];
           }
-          document.getElementById('galleryImage').src = images[currentIndex];
         }
         </script>
         
