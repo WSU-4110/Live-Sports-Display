@@ -42,7 +42,7 @@ def run_single_display(request):
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 39405
+        port = 54795
         execute_command = (
             "sudo -S bash -c '"
             "python3 -m venv /env1; "
