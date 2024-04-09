@@ -117,21 +117,23 @@
             alert('Sending players: ' + playerString); // Example function code
         }
     </script>
+
+    
     <div id="buttonContainer"></div>
-
-
     <button id="singleDisplayBtn">Single Display</button>
     <button id="stackedDisplayBtn">Stacked Display</button>
     <div id="confirmationStatus"></div>
     <script>
         document.getElementById("singleDisplayBtn").onclick = function () {
+            let playerString = playerArray.join(', ');
+        
             fetch('/run-single-display/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') 
+                    'X-CSRFToken': getCookie('csrftoken')
                 },
-                body: JSON.stringify({ action: 'singleDisplay' }) 
+                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
             }).then(response => response.json())
                 .then(data => {
                     document.getElementById("confirmationStatus").innerText = data.message;
@@ -139,18 +141,21 @@
         };
         
         document.getElementById("stackedDisplayBtn").onclick = function () {
+            let playerString = playerArray.join(', ');
+        
             fetch('/run-stacked-display/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') 
+                    'X-CSRFToken': getCookie('csrftoken')
                 },
-                body: JSON.stringify({ action: 'stackedDisplay' }) 
+                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
             }).then(response => response.json())
                 .then(data => {
                     document.getElementById("confirmationStatus").innerText = data.message;
                 }).catch(error => console.error('Error:', error));
         };
+
         
 
         function getCookie(name) {
