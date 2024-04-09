@@ -50,14 +50,24 @@
             <p>Take a look at our newest cases that houses our Raspberry Pi's and display components!</p>
         
             <!-- Image Gallery -->
-            <div id="imageGallery" class="gallery-container">
-              <img id="galleryImage" src="{% static 'images/image1.jpg' %}" alt="Gallery Image">
+            <div class="gallery-container">
+                <div class="image-box">
+                    <img src="{% static 'images/Display1.jpg' %}" alt="Image 1">
+                </div>
+                <div class="image-box">
+                    <img src="{% static 'images/Display1.jpg' %}" alt="Image 2">
+                </div>
             </div>
         
             <!-- Gallery Buttons -->
-            <div class="gallery-buttons">
-              <button onclick="changeImage(-1)">Previous</button>
-              <button onclick="changeImage(1)">Next</button>
+            <div class="gallery-container">
+                <div class="image-box">
+                    <img id="galleryImage2" src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                </div>
+                <div class="gallery-buttons">
+                    <button onclick="changeImage(2, -1)">Prev</button>
+                    <button onclick="changeImage(2, 1)">Next</button>
+                </div>
             </div>
         </div>
         
@@ -67,7 +77,7 @@
           "{% static 'images/Display1.jpg' %}",
           "{% static 'images/Display2.jpg' %}",
           "{% static 'images/Display3.jpg' %}"
-          // Add more image paths as needed
+          
         ];
         
         var currentIndex = 0; // Starting index
