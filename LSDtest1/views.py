@@ -59,6 +59,9 @@ def run_single_display(request):
         username = 'jordan'
         password = 'CSC4110LSD'
         port = 54795
+
+        player_names = "Deandre Ayton,Jabari Walker,Random"
+        
         execute_command = (
             "sudo -S bash -c '"
             "python3 -m venv /env1; "
