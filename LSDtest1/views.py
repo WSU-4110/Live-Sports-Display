@@ -68,7 +68,7 @@ def run_stacked_display(request):
         finally:
             client.close()
         
-        return JsonResponse({"message": "Single display command executed successfully."})
+        return JsonResponse({"message": "Stacked display command executed successfully."})
     else:
         return JsonResponse({"error": "Invalid request method."}, status=405)
 
