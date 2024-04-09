@@ -42,7 +42,7 @@ def run_stacked_display(request):
         hostname = 'us2.pitunnel.com'  # Updated to the PiTunnel domain
         username = 'timkosinski'  # Raspberry Pi username remains the same
         password = '20010972'  # Raspberry Pi password remains the same
-        port = 38455  # Updated to the custom tunnel port provided by PiTunnel
+        port = 56353  # Updated to the custom tunnel port provided by PiTunnel
 
         player_names = "Deandre Ayton,Jabari Walker,Random"
         
