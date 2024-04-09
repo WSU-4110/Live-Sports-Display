@@ -47,14 +47,20 @@ def run_single_display(request):
             "sudo -S bash -c '"
             "python3 -m venv /env1; "
             "source /env1/bin/activate; "
-            "/home/jordan/env1/pyscripts/singleSSH.py'"
+            "/home/jordan/env1/pyscripts/strandtest.py'"
         )
 
+
         try:
+            # Initialize the SSH client with settings for PiTunnel access
             client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname, port=port, username=username, password=password)
+        
+            # Execute the Python script with TTY
             stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
+        
+            # Read the output and error if needed
             output = stdout.read().decode()
             errors = stderr.read().decode()
             print(output)
