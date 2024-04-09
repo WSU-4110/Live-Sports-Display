@@ -17,6 +17,6 @@ urlpatterns = [
     path('live_team_stats/', views.Get_Live_Team_Stats, name='live_team_stats'),
     path('live_game_stats/', views.Get_Live_Game_Stats, name='live_game_stats'),
     path('live_player_stats/', views.Get_Live_Player_Stats, name='live_player_stats'),
-    path('OCRStats/', views.views.Get_Live_OCR_Roster_Stats, name='OCRStats')
+    path('OCRStats/', views.Get_Live_OCR_Roster_Stats, name='OCRStats')
 #    path('run-ssh/', views.run_ssh, name='run_ssh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
