@@ -56,6 +56,23 @@ h2 {
 p {
     margin: 10px 0;
 }
+textarea, input[type="text"] {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px); /* Adjust width to account for padding and border */
+}
+
+textarea {
+    width: calc(100% - 22px);
+    height: 100px; /* Adjust based on your preference */
+}
+
 
 .team-container {
     display: flex;
