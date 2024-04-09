@@ -58,7 +58,7 @@ def run_single_display(request):
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 54795
+        port = 38577
 
         player_names = "Deandre Ayton,Jabari Walker,Random"
         
