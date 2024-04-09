@@ -112,8 +112,22 @@ textarea {
 }
 /* Gallery styles */
 .gallery-container {
-  max-width: 600px;
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px; 
   margin: 20px auto;
+}
+
+.image-box {
+  border: 2px solid black;
+  display: inline-block;
+  margin: 5px;
+}
+
+.image-box img {
+  width: 100%; 
+  height: auto;
+  display: block; 
 }
 
 #galleryImage {
