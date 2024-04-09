@@ -19,4 +19,5 @@ urlpatterns = [
     path('live_player_stats/', views.Get_Live_Player_Stats, name='live_player_stats'),
     path('run-ssh/', views.run_ssh, name='run_ssh'),
     path('run-single-display/', views.run_single_display, name='run_single_display'),
+    path('run-stacked-display/', views.run_stacked_display, name='run_stacked_display'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
