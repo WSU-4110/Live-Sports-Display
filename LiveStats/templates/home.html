@@ -48,7 +48,41 @@
             <h2>Current Version</h2>
             <p>Our latest update features improved OCR accuracy, faster data retrieval from Sportradar's API, and a more intuitive user interface for uploading fantasy basketball screenshots.</p>
             <p>Take a look at our newest cases that houses our Raspberry Pi's and display components!</p>
+        
+            <!-- Image Gallery -->
+            <div id="imageGallery" class="gallery-container">
+              <img id="galleryImage" src="{% static 'images/image1.jpg' %}" alt="Gallery Image">
+            </div>
+        
+            <!-- Gallery Buttons -->
+            <div class="gallery-buttons">
+              <button onclick="changeImage(-1)">Previous</button>
+              <button onclick="changeImage(1)">Next</button>
+            </div>
         </div>
+        
+        <script>
+        // Array of images
+        var images = [
+          "{% static 'images/Display1.jpg' %}",
+          "{% static 'images/Display2.jpg' %}",
+          "{% static 'images/Display3.jpg' %}"
+          // Add more image paths as needed
+        ];
+        
+        var currentIndex = 0; // Starting index
+        
+        // Function to change image
+        function changeImage(step) {
+          currentIndex += step;
+          if (currentIndex >= images.length) {
+            currentIndex = 0;
+          } else if (currentIndex < 0) {
+            currentIndex = images.length - 1;
+          }
+          document.getElementById('galleryImage').src = images[currentIndex];
+        }
+        </script>
         
         <div id="About the team" class="section">
             <h2>About the Team</h2>
