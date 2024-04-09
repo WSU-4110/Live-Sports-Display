@@ -31,6 +31,40 @@ def run_ssh(request):
         except json.JSONDecodeError:
             return JsonResponse({"message": "Invalid JSON format"}, status=400)
     return JsonResponse({"message": "Invalid request"}, status=400)
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import paramiko
+import time
+
+@csrf_exempt
+def run_single_display(request):
+    if request.method == "POST":
+        hostname = 'us2.pitunnel.com'
+        username = 'jordan'
+        password = 'CSC4110LSD'
+        port = 39405
+        execute_command = (
+            "sudo -S bash -c '"
+            "python3 -m venv /env1; "
+            "source /env1/bin/activate; "
+            "/home/jordan/env1/pyscripts/singleSSH.py'"
+        )
+
+        try:
+            client = paramiko.SSHClient()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            client.connect(hostname, port=port, username=username, password=password)
+            stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
+            output = stdout.read().decode()
+            errors = stderr.read().decode()
+            print(output)
+            print(errors)
+        finally:
+            client.close()
+        
+        return JsonResponse({"message": "Single display command executed successfully."})
+    else:
+        return JsonResponse({"error": "Invalid request method."}, status=405)
 
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe" #requires local path
