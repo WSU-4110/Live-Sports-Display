@@ -9,6 +9,19 @@ body {
     color: #333;
     background-color: #f4f4f4;
 }
+
+.gallery-container {
+  max-width: 600px;
+  margin: 20px auto; 
+}
+
+#galleryImage {
+  width: 100%;
+  max-width: 100%;
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
 main {
     background-color: #fff; 
     padding: 20px; 
