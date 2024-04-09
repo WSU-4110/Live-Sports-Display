@@ -335,7 +335,7 @@ class GameFacade:
 
 
     ### Roster method ###
-    def get_team_roster_from_id(self,team_name) -> list:
+    def get_team_roster_from_name(self,team_name) -> list:
         roster = []
 
         try:
@@ -514,8 +514,8 @@ class SportsAPI():
     def get_team_id(self, team_name):  
         return self.game_facade.get_team_id(team_name)
     
-    def get_team_roster_from_id(self, team_id):
-        return self.game_facade.get_team_roster_from_id(team_id)
+    def get_team_roster_from_name(self, team_name):
+        return self.game_facade.get_team_roster_from_name(team_name)
         
     def get_live_game_stats(self, team_name):
         return self.game_facade.get_live_game_stats(team_name)
