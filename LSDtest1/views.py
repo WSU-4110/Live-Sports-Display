@@ -18,10 +18,10 @@ import time
 @csrf_exempt
 def run_stacked_display(request):
     if request.method == "POST":
-        hostname = 'us2.pitunnel.com'  # Updated to the PiTunnel domain
-        username = 'timkosinski'  # Raspberry Pi username remains the same
-        password = '20010972'  # Raspberry Pi password remains the same
-        port = 56353  # Updated to the custom tunnel port provided by PiTunnel
+        hostname = 'us2.pitunnel.com'  ]
+        username = 'timkosinski'  
+        password = '20010972'  
+        port = 60735  #Will change every bootup!
 
         player_names = "Deandre Ayton,Jabari Walker,Random"
         
