@@ -98,6 +98,9 @@ textarea {
     flex: 0 1 calc(33.333% - 20px); 
     margin: 10px; 
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .team-member img {
