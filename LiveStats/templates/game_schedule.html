@@ -4,23 +4,67 @@
 <head>
     <title>Game Schedule</title>
     <link rel="stylesheet" type="text/css" href="style_sheet.css">
+
+    <style>
+        .title {
+            display: flex;
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 40px;
+            background-color: #dbdbdb;
+            display: block;
+            margin-left: 25%;
+            margin-right: 25%;
+    }
+    
+        .schedule {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            padding: 0;
+            margin: auto;
+    }
+    
+        .game {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 10px;
+            font-size: 20px;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 40px;
+            background-color: #dbdbdb;
+            display: inline-block;
+    }
+        
+        .team, .time {
+            flex: 0.8;
+            text-align: center;
+            font-weight: bold;
+        }
+        </style>
 </head>
+
+
+
 <body>   
-    <div class="container">
-        <h1>Game schedules today</h1>
-        <table>
-            {% if schedule %}
-                {% for game in schedule %}
-                    <tr>
-                        <td>{{ game.home_team }} vs {{ game.away_team }} on {{ game.date }} at {{ game.time }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td>No games scheduled today</td>
-                </tr>
-            {% endif %}
-        </table>
-    </div>
+    <div class="title">Daily Game Schedule</div>
+    {% if not schedule %}
+    <div class="title">No games scheduled today</div>
+
+    {% else %}
+    <div class="schedule">
+        {% for game in schedule %}
+        <div class="game">
+            <div class="team">{{ game.home_team }} vs {{ game.away_team }}</div>
+            <div class="time">on {{ game.date }} at {{ game.time }}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
