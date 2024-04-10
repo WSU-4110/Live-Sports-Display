@@ -104,10 +104,10 @@
         
         // Function to change the image for a specified gallery
         function changeImage(galleryNumber, step) {
-          if (galleryNumber === 1) {
+          if (galleryNumber === 0) {
             currentIndex1 = (currentIndex1 + step + gallery1Images.length) % gallery1Images.length;
             document.getElementById('galleryImage1').src = gallery1Images[currentIndex1];
-          } else if (galleryNumber === 2) {
+          } else if (galleryNumber === 1) {
             currentIndex2 = (currentIndex2 + step + gallery2Images.length) % gallery2Images.length;
             document.getElementById('galleryImage2').src = gallery2Images[currentIndex2];
           }
