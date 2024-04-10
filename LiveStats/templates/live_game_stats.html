@@ -7,30 +7,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stats All Players</title>
      <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+
+     <style>
+        .body {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            
+        }
+        .team-stats-line {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-left: 15%;
+            margin-right: 15%;
+            font-weight: bold;
+        }
+        .player-stats-line {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+        .player-name {
+            font-weight: bold;
+        }
+        .title {
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
+
+
 <body>
-    <div class="container">
-        {% if not stats %}
+    {% if not stats %}
             <h2> {{ inputted_team_name }} is not playing.</h2>
         {% else %}
-        <h1>Team Stats for {{ inputted_team_name }} </h1>
-            <ul>
-                {% for team in stats %}
-                    {% for player in team %}
-                        <li>Player Name: {{ player.name }}</li>
-                        <li>Points: {{ player.points }}</li>
-                        <li>Assists: {{ player.assists }}</li>
-                        <li>Rebounds: {{ player.rebounds }}</li>
-                        <li>Blocks: {{ player.blocks }} </li>
-                        <li>Steals: {{ player.steals }}</li>
-                        <li>Field Goal Percentage: {{ player.field_goals_pct }}</li>
-                        <li>Three Point Percentage: {{ player.three_points_pct }}</li>
-                        <li>Free Throw Percentage: {{ player.free_throws_pct }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        {% endif %}
+        <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
 
-    </div>
+        <div class="team-stats-line">
+                <span class="team-line">Chicago Bulls</span>
+                <span>PTS</span>
+                <span>AST</span>
+                <span>REB</span>
+                <span>BLK</span>
+                <span>STL</span>
+                <span>FG%</span>
+                <span>3P%</span>
+                <span>FT%</span>
+            </div>
+        </div>
+
+        <div class="player-stats-line">
+            {% for team in stats %}
+                {% for player in team %}
+                    <span class="player-name">{{ player.name }}</span>
+                    <span>{{ player.points }}</span>
+                    <span>{{ player.assists }}</span>
+                    <span>{{ player.rebounds }}</span>
+                    <span>{{ player.blocks }} </span>
+                    <span>{{ player.steals }}</span>
+                    <span>{{ player.field_goals_pct }}</span>
+                    <span>{{ player.three_points_pct }}</span>
+                    <span>{{ player.free_throws_pct }}</span>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
 </body>
 </html>
