@@ -96,13 +96,13 @@ textarea {
 }
 
 .team-member {
-    flex: 0 1 calc(25% - 10px);
+    flex: 0 1 calc(33% - 20px);
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
     text-align: center;
-    margin: 5px;
+    margin: 10px;
 }
 
 .team-member img {
@@ -120,8 +120,7 @@ textarea {
     overflow: hidden; 
     text-overflow: ellipsis; 
     max-width: 90%; 
-    font-size: 3rem;
-
+    font-size: 2rem;
 }
 
 .social-links a {
@@ -131,7 +130,7 @@ textarea {
     font-family: 'Brixton', sans-serif;
 }
 .team-member h3, .team-member p { 
-    font-size: 4rem; 
+    font-size: 2rem; 
 }
 .section {
     background: #fff;
