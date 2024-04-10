@@ -58,14 +58,14 @@ h2 {
     font-family: 'Brixton', sans-serif;
     font-weight: 700
     margin-bottom: 0.5em
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 p {
     font-family: 'Brixton', sans-serif;
     text-align: justify;
     margin-bottom: 1em;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 textarea, input[type="text"] {
     font-family: Arial, sans-serif;
@@ -121,6 +121,7 @@ textarea {
 .section {
     background: #fff;
     margin: 0 auto;
+    font-size: 2rem;
     max-width: 80%;
     padding: 0 1rem;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
