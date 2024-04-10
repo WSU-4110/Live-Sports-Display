@@ -14,7 +14,14 @@
             margin: 0;
             padding: 0;
             align-items: center;
-            
+        }
+        .team-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .team-stats-line {
             display: grid;
@@ -52,12 +59,40 @@
 
 <body>
     {% if not stats %}
-            <h2> {{ inputted_team_name }} is not playing.</h2>
+            <h1 class="title">{{ inputted_team_name}} is not currently playing</h1>
         {% else %}
         <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
+        <div class="team-box">
+            <div class="team-stats-line">
+                    <span>{{ stats.0.1.team }}</span>
+                    <span>PTS</span>
+                    <span>AST</span>
+                    <span>REB</span>
+                    <span>BLK</span>
+                    <span>STL</span>
+                    <span>FG%</span>
+                    <span>3P%</span>
+                    <span>FT%</span>
+            </div>
+            {% for player in stats.0 %}
+            <div class="player-stats-line">
+                <span class="player-name">{{ player.name }}</span>
+                <span>{{ player.points }}</span>
+                <span>{{ player.assists }}</span>
+                <span>{{ player.rebounds }}</span>
+                <span>{{ player.blocks }} </span>
+                <span>{{ player.steals }}</span>
+                <span>{{ player.field_goals_pct }}</span>
+                <span>{{ player.three_points_pct }}</span>
+                <span>{{ player.free_throws_pct }}</span>
+            </div>
+        {% endfor %}
+        </div>
+        <br><br><br>
 
-        <div class="team-stats-line">
-                <span>{{ stats.0.1.team }}</span>
+        <div class="team-box">
+            <div class="team-stats-line">
+                <span>{{ stats.1.1.team }}</span>
                 <span>PTS</span>
                 <span>AST</span>
                 <span>REB</span>
@@ -66,48 +101,22 @@
                 <span>FG%</span>
                 <span>3P%</span>
                 <span>FT%</span>
-        </div>
-        {% for player in stats.0 %}
-        <div class="player-stats-line">
-            <span class="player-name">{{ player.name }}</span>
-            <span>{{ player.points }}</span>
-            <span>{{ player.assists }}</span>
-            <span>{{ player.rebounds }}</span>
-            <span>{{ player.blocks }} </span>
-            <span>{{ player.steals }}</span>
-            <span>{{ player.field_goals_pct }}</span>
-            <span>{{ player.three_points_pct }}</span>
-            <span>{{ player.free_throws_pct }}</span>
-        </div>
-        {% endfor %}
+            </div>
 
-        <br><br><br>
-
-        <div class="team-stats-line">
-            <span>{{ stats.1.1.team }}</span>
-            <span>PTS</span>
-            <span>AST</span>
-            <span>REB</span>
-            <span>BLK</span>
-            <span>STL</span>
-            <span>FG%</span>
-            <span>3P%</span>
-            <span>FT%</span>
+            {% for player in stats.1 %}
+            <div class="player-stats-line">
+                <span class="player-name">{{ player.name }}</span>
+                <span>{{ player.points }}</span>
+                <span>{{ player.assists }}</span>
+                <span>{{ player.rebounds }}</span>
+                <span>{{ player.blocks }} </span>
+                <span>{{ player.steals }}</span>
+                <span>{{ player.field_goals_pct }}</span>
+                <span>{{ player.three_points_pct }}</span>
+                <span>{{ player.free_throws_pct }}</span>
+            </div>
+            {% endfor %}
         </div>
-
-        {% for player in stats.1 %}
-        <div class="player-stats-line">
-            <span class="player-name">{{ player.name }}</span>
-            <span>{{ player.points }}</span>
-            <span>{{ player.assists }}</span>
-            <span>{{ player.rebounds }}</span>
-            <span>{{ player.blocks }} </span>
-            <span>{{ player.steals }}</span>
-            <span>{{ player.field_goals_pct }}</span>
-            <span>{{ player.three_points_pct }}</span>
-            <span>{{ player.free_throws_pct }}</span>
-        </div>
-        {% endfor %}
         {% endif %}
 </body>
 </html>
