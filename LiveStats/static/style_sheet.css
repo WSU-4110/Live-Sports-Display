@@ -219,8 +219,8 @@ input[type="submit"]:hover {
 .team_name {
     font-size: 20px;
 }
-.team_name h3{
-	font-size: 40px;
+.team_member h3{
+     font-size: 40px;
 }
 
 .container {
