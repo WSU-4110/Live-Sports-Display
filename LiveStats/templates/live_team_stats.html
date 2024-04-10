@@ -4,41 +4,97 @@
 <head>
     <title>Team Stats</title>
     <link rel="stylesheet" type="text/css" href="style_sheet.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .game-title
+        {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        .game-title, .stat-line {
+            display: grid;
+            grid-template-columns: 1fr 0fr 1fr;
+            justify-items: center;
+            align-items: center;
+            gap: 0px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .team, .vs, .stat-type {
+            font-weight: bold;
+        }
+        .team
+        {
+            font-size: 30px;
+            text-decoration: underline;
+        }
+        .game{
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            background-color: rgba(227, 227, 227, 0.5);
+        }
+    </style>
 </head>
+
+
+
 <body>
-    <div class="container">
-        {% if not stats %}
-            <tr>
-                <td colspan="4">{{ inputted_team_name }} is not playing.</td>
-            </tr>
+    {% if not stats %}
+    <h1 class="team">{{ inputted_team_name}} is not currently playing</h1>
+    <div class="game">
         {% else %}
-        <table>
-            <h1>Team Stats</h1>
-        <tr>
-            <th>Team</th>
-            <th>Points</th>
-            <th>Assists</th>
-            <th>Rebounds</th>
-            <th>Blocks</th>
-            <th>Steals</th>
-            <th>Field Goal Percentage</th>
-            <th>Three Point Percentage</th>
-            <th>Free Throw Percentage</th>
-        </tr>
-            {% for team in stats %}
-                <tr>
-                    <td>{{ team.team_name }}</td>
-                    <td>{{ team.team_points }}</td>
-                    <td>{{ team.team_assists }}</td>
-                    <td>{{ team.team_rebounds }}</td>
-                    <td>{{ team.team_blocks }}</td>
-                    <td>{{ team.team_steals }}</td>
-                    <td>{{ team.team_field_goals_pct }}</td>
-                    <td>{{ team.team_three_points_pct }}</td>
-                    <td>{{ team.team_free_throws_pct }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+        {% for stats in stats %}
+        <div class="game-title">
+            <span class="team">{{ stats.0team_name }}</span>
+            <span class="vs">vs</span>
+            <span class="team">{{ stats.1.team_name }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_points }}</span>
+            <span class="stat-type">PTS</span>
+            <span class="stat-line">{{ stats.1.team_points }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_assists }}</span>
+            <span class="stat-type">AST</span>
+            <span class="stat-line">{{ stats.1.team_assists }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_rebounds }}</span>
+            <span class="stat-type">REB</span>
+            <span class="stat-line">{{ stats.1.team_rebounds }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_steals }}</span>
+            <span class="stat-type">STL</span>
+            <span class="stat-line">{{ stats.1.team_steals }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_blocks }}</span>
+            <span class="stat-type">BLK</span>
+            <span class="stat-line">{{ stats.1.team_blocks }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_field_goals_pct }}</span>
+            <span class="stat-type">FG%</span>
+            <span class="stat-line">{{ stats.1.team_field_goals_pct }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_three_points_pct }}</span>
+            <span class="stat-type">3P%</span>
+            <span class="stat-line">{{ stats.1.team_three_points_pct }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_free_throws_pct }}</span>
+            <span class="stat-type">FT%</span>
+            <span class="stat-line">{{ stats.1.team_free_throws_pct }}</span>
+        </div>
         {% endif %}
     </div>
 </body>
