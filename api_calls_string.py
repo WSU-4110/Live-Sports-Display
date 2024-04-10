@@ -500,7 +500,7 @@ def get_player_stats(player_name, isLive):
                     if result != None:
                         return result
                     else:
-                        return "! No player found !"
+                        return "! Player not playing !"
             
             return "! No player found !" # returns a message if no players found
 
