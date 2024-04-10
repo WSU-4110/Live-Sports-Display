@@ -274,10 +274,35 @@ input[type="submit"]:hover {
 }
 
 .gallery {
+    flex: 1;
     margin: 20px;
     text-align: center;
 }
-/
+.image-box {
+  border: 4px solid black;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center; 
+}
+.image-title {
+  margin-bottom: 10px; 
+  font-family: 'Brixton', sans-serif; 
+
+}
+
 .gallery img {
     width: 100%; /* Makes images responsive */
     max-width: 300px; /* Adjust based on your preference */
