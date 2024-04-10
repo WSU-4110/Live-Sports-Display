@@ -1,17 +1,5 @@
 <link href="https://fonts.cdnfonts.com/css/brixton?styles=40848,40844" rel="stylesheet">
 
-#demoFont {
-font-family: "Arial Black", Gadget, sans-serif;
-font-size: 30px;
-letter-spacing: -3px;
-word-spacing: 1.8px;
-color: #000000;
-font-weight: normal;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: capitalize;
-}
 
 body {
     background-image: url('1pX9.gif');
@@ -78,7 +66,7 @@ h2 {
 }
 
 p {
-    font-family: 'Brixton', sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
     text-align: justify;
     margin-bottom: 1em;
     font-size: 2rem;
