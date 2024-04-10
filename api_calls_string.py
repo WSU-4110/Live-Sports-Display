@@ -234,7 +234,7 @@ def get_schedule():
                 gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
                 est_time = gmt_time - datetime.timedelta(hours=4)
                 est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
-                writer.writerow([est_time_str,game['home']['name'],game['away']['name'],game['id']])
+                writer.writerow([est_time_str,game['home']['name'],game['away']['name'],game['home']['id'],game['away']['id'],game["id"]])
                         
                     
     # Catching exceptions #
