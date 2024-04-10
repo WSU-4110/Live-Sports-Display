@@ -18,9 +18,11 @@
         }
         .team-stats-line {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             justify-items: center;
             align-items: center;
+            font-size: 30px;
+            margin-top: 20px;
             margin-bottom: 20px;
             margin-left: 10%;
             margin-right: 10%;
@@ -28,7 +30,7 @@
         }
         .player-stats-line {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             justify-items: center;
             align-items: center;
             margin-bottom: 20px;
@@ -77,6 +79,8 @@
             <span>{{ player.free_throws_pct }}</span>
         </div>
         {% endfor %}
+        
+        <br><br><br>
 
         <div class="team-stats-line">
             <span>{{ stats.1.1.team }}</span>
