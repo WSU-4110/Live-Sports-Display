@@ -130,8 +130,8 @@ textarea {
 
 .social-links a {
     display: flex;
-    justify-content: center;
-    margin: 5px;
+    justify-content: flex-start;
+    margin: 8px;
     font-family: 'Brixton', sans-serif;
 }
 .team-member h3 { 
