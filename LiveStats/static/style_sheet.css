@@ -241,7 +241,7 @@ input[type="submit"]:hover {
 
 .gallery {
     flex: 1;
-    margin: 20px;
+    margin: 15px;
     text-align: center;
 }
 .image-box {
@@ -270,10 +270,10 @@ input[type="submit"]:hover {
 }
 
 .gallery img {
-    width: 100%; /* Makes images responsive */
-    max-width: 300px; /* Adjust based on your preference */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: adds rounded corners */
+    width: 100%; 
+    max-width: 350px;
+    height: auto; 
+    border-radius: 10px; 
 }
 
 .gallery-buttons button {
