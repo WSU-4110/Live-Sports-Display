@@ -129,8 +129,12 @@ textarea {
     margin: 5px;
     font-family: 'Brixton', sans-serif;
 }
-.team-member h3, .team-member p { 
-    font-size: 2rem; 
+.team-member h3 { 
+    font-size: 2.25rem; 
+}
+
+.team-member p { 
+    font-size: 1.75rem; 
 }
 .section {
     background: #fff;
