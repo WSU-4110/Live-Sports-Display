@@ -1,6 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/brixton?styles=40846,40847');
 
-}
 body {
     background-image: url('1pX9.gif');
     background-repeat: no-repeat;
@@ -15,7 +14,7 @@ body {
 }
 
 .border {
-    max-width: 1300px;
+    max-width: 80%;
     margin: auto;
     padding: 20px;
 }
@@ -89,19 +88,18 @@ textarea {
 .team-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    align-items: center;
-    max-width: 1200px; 
+    justify-content: space-around; 
+    align-items: stretch; 
+    max-width: 100%; 
+    margin: 0 auto; 
+    padding: 20px; 
 }
 
 .team-member {
-    flex: 0 1 calc(33.333% - 20px); 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    margin: 0 auto;
+    flex:  1;
+    max-width: calc(80%/3); 
     text-align: center;
+    margin: 10px;
 
 }
 
@@ -123,7 +121,7 @@ textarea {
 .section {
     background: #fff;
     margin: 0 auto;
-    max-width: 1500px;
+    max-width: 80%;
     padding: 0 1rem;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
     border-radius: 18px;
