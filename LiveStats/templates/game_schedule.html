@@ -3,9 +3,15 @@
 <html>
 <head>
     <title>Game Schedule</title>
-    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
 
     <style>
+        .body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
         .title {
             display: flex;
             text-align: center;
@@ -52,7 +58,7 @@
 
 
 
-<body>   
+<body class="body">   
     <div class="header">
         <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
         <ul class="nav">
