@@ -47,10 +47,10 @@
 <body>
     {% if not stats %}
     <h1 class="team">{{ inputted_team_name}} is not currently playing</h1>
+    {% else %}
     <div class="game">
-        {% else %}
         <div class="game-title">
-            <span class="team">{{ stats.0team_name }}</span>
+            <span class="team">{{ stats.0.team_name }}</span>
             <span class="vs">vs</span>
             <span class="team">{{ stats.1.team_name }}</span>
         </div>
