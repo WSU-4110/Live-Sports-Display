@@ -213,3 +213,36 @@ input[type="submit"]:hover {
     width: 80%;
 
 }
+
+.galleries-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.gallery {
+    margin: 20px;
+    text-align: center;
+}
+/
+.gallery img {
+    width: 100%; /* Makes images responsive */
+    max-width: 300px; /* Adjust based on your preference */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.gallery-buttons button {
+    margin: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.gallery-buttons button:hover {
+    background-color: #555;
+}
