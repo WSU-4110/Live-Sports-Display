@@ -22,12 +22,12 @@
 
 
         <main>
-            <h2>Statistics Page</h2>
-            <p>Here you can view the statistics of the games that have been played.</p>
+            <center>
+                <h2>Statistics Page</h2>
+                <p>Here you can view the statistics of the games that have been played.</p>
             <ul>
-                <center>
-                    <li><a href="/league_standings/" class="button">League Standings</a></li>
-                    <li><a href="/game_schedule/" class="button">Game Schedule</a></li>
+                    <li><a href="/league_standings/" class="custom.button">League Standings</a></li>
+                    <li><a href="/game_schedule/" class="custom.button">Game Schedule</a></li>
                     <li>
                         <form action="/live_team_stats/" method="get">
                             <input type="text" name="inputted_team_name" placeholder="Enter team name">
@@ -45,8 +45,8 @@
                             <input type="text" name="inputted_player_name" placeholder="Enter player name">
                             <input type="submit" value="Get Live Player Stats">
                         </form>
-                </center>
             </ul>
+        </center>
         </main>
     </body>
 
