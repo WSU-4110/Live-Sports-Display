@@ -66,19 +66,17 @@
         </div>
 
         <div class="player-stats-line">
-            {% for team in stats.0 %}
-                <span class="team-name">{{ stats.0.1.team }}</span>
-                {% for player in team %}
-                    <span class="player-name">{{ player.name }}</span>
-                    <span>{{ player.points }}</span>
-                    <span>{{ player.assists }}</span>
-                    <span>{{ player.rebounds }}</span>
-                    <span>{{ player.blocks }} </span>
-                    <span>{{ player.steals }}</span>
-                    <span>{{ player.field_goals_pct }}</span>
-                    <span>{{ player.three_points_pct }}</span>
-                    <span>{{ player.free_throws_pct }}</span>
-                {% endfor %}
+            <span class="team-name">{{ stats.0.1.team }}</span>
+            {% for player in stats.0 %}
+                <span class="player-name">{{ player.name }}</span>
+                <span>{{ player.points }}</span>
+                <span>{{ player.assists }}</span>
+                <span>{{ player.rebounds }}</span>
+                <span>{{ player.blocks }} </span>
+                <span>{{ player.steals }}</span>
+                <span>{{ player.field_goals_pct }}</span>
+                <span>{{ player.three_points_pct }}</span>
+                <span>{{ player.free_throws_pct }}</span>
             {% endfor %}
             <br><br><br>
 
@@ -95,19 +93,17 @@
         </div>
 
         <div class="player-stats-line">
-            {% for team in stats.1 %}
-                <span class="team-name">{{ stats.1.1.team }}</span>
-                {% for player in team %}
-                    <span class="player-name">{{ player.name }}</span>
-                    <span>{{ player.points }}</span>
-                    <span>{{ player.assists }}</span>
-                    <span>{{ player.rebounds }}</span>
-                    <span>{{ player.blocks }} </span>
-                    <span>{{ player.steals }}</span>
-                    <span>{{ player.field_goals_pct }}</span>
-                    <span>{{ player.three_points_pct }}</span>
-                    <span>{{ player.free_throws_pct }}</span>
-                {% endfor %}
+            <span class="team-name">{{ stats.1.1.team }}</span>
+            {% for player in stats.1 %}
+                <span class="player-name">{{ player.name }}</span>
+                <span>{{ player.points }}</span>
+                <span>{{ player.assists }}</span>
+                <span>{{ player.rebounds }}</span>
+                <span>{{ player.blocks }} </span>
+                <span>{{ player.steals }}</span>
+                <span>{{ player.field_goals_pct }}</span>
+                <span>{{ player.three_points_pct }}</span>
+                <span>{{ player.free_throws_pct }}</span>
             {% endfor %}
         </div>
         {% endif %}
