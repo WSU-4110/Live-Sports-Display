@@ -54,7 +54,7 @@
         <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
 
         <div class="team-stats-line">
-                <span class="team-line">Team Name</span>
+                <span>{{ stats.0.1.team }}</span>
                 <span>PTS</span>
                 <span>AST</span>
                 <span>REB</span>
@@ -66,7 +66,6 @@
         </div>
 
         <div class="player-stats-line">
-            <span class="team-name">{{ stats.0.1.team }}</span>
             {% for player in stats.0 %}
                 <span class="player-name">{{ player.name }}</span>
                 <span>{{ player.points }}</span>
@@ -78,10 +77,10 @@
                 <span>{{ player.three_points_pct }}</span>
                 <span>{{ player.free_throws_pct }}</span>
             {% endfor %}
-            <br><br><br>
+
 
         <div class="team-stats-line">
-            <span class="team-line">Team Name</span>
+            <span>{{ stats.0.1.team }}</span>
             <span>PTS</span>
             <span>AST</span>
             <span>REB</span>
@@ -93,7 +92,6 @@
         </div>
 
         <div class="player-stats-line">
-            <span class="team-name">{{ stats.1.1.team }}</span>
             {% for player in stats.1 %}
                 <span class="player-name">{{ player.name }}</span>
                 <span>{{ player.points }}</span>
