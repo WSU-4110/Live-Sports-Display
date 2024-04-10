@@ -141,11 +141,12 @@ textarea {
 .custom-button {
     width: 700px;
     cursor: default;
+    padding-bottom: 20px;
 }
 
 .custom-button:hover, .add-button:hover {
     color: #fff;
-    background-color: #333;
+    background-color: #555;
     opacity: 1;
 }
 
