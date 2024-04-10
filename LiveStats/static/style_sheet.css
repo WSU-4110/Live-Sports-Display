@@ -1,23 +1,16 @@
-{% load static %}
-
-<link href="https://fonts.cdnfonts.com/css/brixton?styles=40848,40844" rel="stylesheet">
-
-
 body {
-    background-image:url("{% static 'images/1pX9.gif' %}");
+    background-image: url('1pX9.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 500; 
-    font-size: 1rem;
+    font-family: Arial, sans-serif;
     margin: 0;
     line-height: 1.6;
     color: #333;
-    /*background-color: #f4f4f4;*/
+    background-color: #f4f4f4;
 }
 
 .border {
-    max-width: 80%;
+    max-width: 1300px;
     margin: auto;
     padding: 20px;
 }
@@ -28,13 +21,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.5rem;
-    padding: 40px;
-    font-family: Archivo, sans-serif;
+    padding: 20px;
 }
 
 .header img {
-    height: 200px;
+    height: 100px;
 }
 
 .nav {
@@ -46,13 +37,12 @@ body {
 
 .nav li {
     margin: 0 20px;
-    font-size: 2rem;
 }
 
 .nav a {
     color: white;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .nav a:hover {
@@ -61,20 +51,13 @@ body {
 
 h2 {
     color: #000;
-    font-family: "Arial Black", Gadget, sans-serif;
-    font-weight: 700;
-    margin-bottom: 1em;
-    font-size: 3rem;
 }
 
 p {
-    font-family: Tahoma, Geneva, sans-serif;
-    text-align: justify;
-    margin-bottom: 1em;
-    font-size: 2rem;
+    margin: 10px 0;
 }
 textarea, input[type="text"] {
-    font-family: Archivo, sans-serif;
+    font-family: Arial, sans-serif;
     padding: 10px;
     border: 2px solid #333;
     border-radius: 4px;
@@ -94,122 +77,38 @@ textarea {
 .team-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; 
-    align-items: flex-start; 
-    max-width: 100%; 
-    margin: 0 auto; 
-    padding: 5px; 
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px; 
 }
 
 .team-member {
-    flex: 0 1 calc(33% - 20px);
-    display: flex; 
-    position: relative;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: flex-start; 
+    flex: 0 1 calc(33.333% - 20px); 
+    margin: 10px; 
     text-align: center;
-    margin: 5px;
-    padding-top: 220px; 
 }
 
 .team-member img {
-    position: absolute; 
-    top: 0;
-    width: 200px; 
-    height: 200px; 
+    width: 150px; 
+    height: 150px; 
     border-radius: 50%; 
     object-fit: cover; 
-    margin: auto;
-    display: block;
-    margin-bottom: 10px;
-    
-}
-.team-member p {
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    max-width: 90%; 
-    font-size: 1.75rem;
-    margin-bottom: 3px;
+    margin-bottom: 15px;
 }
 
 .social-links a {
-    display: flex;
-    justify-content: flex-start;
-    margin: 8px;
-    font-family: 'Brixton', sans-serif;
+    display: inline-block;
+    margin: 5px;
+    /* Style your links */
 }
-.team-member h3 { 
-    font-size: 2.30rem;
-    margin-bottom: 3px;
-}
-
 
 .section {
     background: #fff;
-    margin: 0 auto;
-    font-size: 2rem;
-    max-width: 80%;
-    padding: 0 1rem;
+    margin: 20px 0;
+    padding: 20px;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
     border-radius: 18px;
     border: 2px solid #f0f0f0;
-}
-/* Gallery styles */
-.galleries-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.gallery {
-  flex: 1;
-  max-width: 50%; 
-}
-
-.image-box {
-  border: 4px solid black;
-  text-align: center;
-  padding: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1em;
-}
-
-.image-box img {
-  max-width: 100%;
-  height: auto;
-}
-
-.gallery-buttons {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
-.image-title {
-  margin-bottom: 10px; 
-  font-family: 'Brixton', sans-serif; 
-  
-}
-
-
-
-.gallery-buttons button {
-  background-color: #333; 
-  color: #fff; /* White */
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em; 
-  border-radius: 5px; /* Round button */
-  transition: background-color 0.3s ease; /* for hover effect */
-  margin: 0 5px;
-  margin-bottom: 10px; 
-}
-.gallery-buttons button:hover {
-  background-color: #555; 
-}
-.gallery-buttons {
-  text-align: center; 
 }
 
 /* Button Styles */
@@ -267,7 +166,7 @@ form p {
 }
 
 input[type="file"] {
-    font-family: 'Brixton', sans-serif;
+    font-family: Arial, sans-serif;
     padding: 10px;
     margin-bottom: 20px; 
     border: 2px solid #ccc; 
@@ -279,7 +178,7 @@ input[type="file"] {
 input[type="submit"] {
     font-size: 16px;
     color: #fff;
-    background-color: #008000;
+    background-color:
     border: none;
     padding: 12px 20px;
     cursor: pointer;
