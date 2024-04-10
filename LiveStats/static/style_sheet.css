@@ -42,6 +42,7 @@ body {
 
 .nav li {
     margin: 0 20px;
+    font-size: 1.5rem;
 }
 
 .nav a {
@@ -197,6 +198,7 @@ textarea {
   font-size: 1em; 
   border-radius: 5px; /* Round button */
   transition: background-color 0.3s ease; /* for hover effect */
+  margin: 0 5px;
 }
 .gallery-buttons button:hover {
   background-color: #555; 
