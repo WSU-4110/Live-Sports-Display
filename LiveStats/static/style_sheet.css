@@ -6,7 +6,7 @@ body {
     background-size: cover;
     font-family: 'Brixton', sans-serif;
     font-weight: 500; 
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 0;
     line-height: 1.6;
     color: #333;
@@ -25,11 +25,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    font-size: 1.5rem;
+    padding: 40px;
 }
 
 .header img {
-    height: 100px;
+    height: 200px;
 }
 
 .nav {
