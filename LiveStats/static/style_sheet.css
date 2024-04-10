@@ -10,7 +10,7 @@ font-weight: normal;
 text-decoration: none;
 font-style: normal;
 font-variant: normal;
-text-transform: none;
+text-transform: capitalize;
 }
 
 body {
