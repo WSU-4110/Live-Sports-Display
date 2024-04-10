@@ -102,6 +102,14 @@ textarea {
     text-align: center;
 }
 
+.team-member h3 {
+    flex: 0 1 calc(33.333% - 20px); 
+    margin: 10px; 
+    text-align: center;
+    font-size: 30px;
+}
+
+
 .team-member img {
     width: 150px; 
     height: 150px; 
@@ -218,9 +226,6 @@ input[type="submit"]:hover {
 }
 .team_name {
     font-size: 20px;
-}
-.team_member h3{
-     font-size: 40px;
 }
 
 .container {
