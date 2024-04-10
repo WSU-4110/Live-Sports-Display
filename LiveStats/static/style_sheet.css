@@ -277,7 +277,7 @@ input[type="file"] {
 input[type="submit"] {
     font-size: 16px;
     color: #fff;
-    background-color:
+    background-color: #008000;
     border: none;
     padding: 12px 20px;
     cursor: pointer;
