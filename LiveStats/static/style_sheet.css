@@ -159,6 +159,12 @@ textarea {
   justify-content: center;
   padding: 10px 0;
 }
+.image-title {
+  margin-bottom: 10px; 
+  font-family: 'Brixton', sans-serif; 
+  
+}
+
 
 
 .gallery-buttons button {
