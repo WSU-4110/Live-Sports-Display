@@ -106,13 +106,13 @@ textarea {
 }
 
 .team-member img {
-    width: 300px; 
-    height: 300px; 
+    width: 200px; 
+    height: 200px; 
     border-radius: 50%; 
     object-fit: cover; 
     margin: auto;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     
 }
 .team-member p {
@@ -130,7 +130,7 @@ textarea {
     font-family: 'Brixton', sans-serif;
 }
 .team-member h3, .team-member p { 
-    font-size: 2rem; 
+    font-size: 3rem; 
 }
 .section {
     background: #fff;
