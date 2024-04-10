@@ -2,7 +2,7 @@ body {
     background-image: url('1pX9.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Archivo', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     line-height: 1.6;
     color: #333;
@@ -22,7 +22,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    font-family: Archivo, sans-serif;
 }
 
 .header img {
@@ -52,15 +51,13 @@ body {
 
 h2 {
     color: #000;
-    font-family: "Arial Black", Gadget, sans-serif;
 }
 
 p {
     margin: 10px 0;
-    font-family: Tahoma, Geneva, sans-serif;
 }
 textarea, input[type="text"] {
-    font-family: Archivo, sans-serif;
+    font-family: Arial, sans-serif;
     padding: 10px;
     border: 2px solid #333;
     border-radius: 4px;
@@ -102,8 +99,7 @@ textarea {
 .social-links a {
     display: inline-block;
     margin: 5px;
-    font-family: 'Brixton', sans-serif;
-    justify-content: flex-start;
+    /* Style your links */
 }
 
 .section {
@@ -114,6 +110,8 @@ textarea {
     border-radius: 18px;
     border: 2px solid #f0f0f0;
 }
+
+/* Button Styles */
 .custom-button, .add-button {
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;
@@ -230,10 +228,10 @@ input[type="submit"]:hover {
 }
 /
 .gallery img {
-    width: 100%; 
-    max-width: 300px; 
-    height: auto; 
-    border-radius: 10px;
+    width: 100%; /* Makes images responsive */
+    max-width: 300px; /* Adjust based on your preference */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners */
 }
 
 .gallery-buttons button {
