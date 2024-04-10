@@ -49,7 +49,6 @@
     <h1 class="team">{{ inputted_team_name}} is not currently playing</h1>
     <div class="game">
         {% else %}
-        {% for stats in stats %}
         <div class="game-title">
             <span class="team">{{ stats.0team_name }}</span>
             <span class="vs">vs</span>
@@ -95,7 +94,6 @@
             <span class="stat-type">FT%</span>
             <span class="stat-line">{{ stats.1.team_free_throws_pct }}</span>
         </div>
-        {% endfor %}
         {% endif %}
     </div>
 </body>
