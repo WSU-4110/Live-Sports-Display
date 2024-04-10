@@ -92,7 +92,7 @@ textarea {
     align-items: stretch; 
     max-width: 100%; 
     margin: 0 auto; 
-    padding: 20px; 
+    padding: 5px; 
 }
 
 .team-member {
@@ -106,8 +106,8 @@ textarea {
 }
 
 .team-member img {
-    width: 150px; 
-    height: 150px; 
+    width: 300px; 
+    height: 300px; 
     border-radius: 50%; 
     object-fit: cover; 
     margin: auto;
@@ -120,7 +120,7 @@ textarea {
     overflow: hidden; 
     text-overflow: ellipsis; 
     max-width: 90%; 
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .social-links a {
