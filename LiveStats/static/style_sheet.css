@@ -124,7 +124,8 @@ textarea {
     overflow: hidden; 
     text-overflow: ellipsis; 
     max-width: 90%; 
-    font-size: 3rem;
+    font-size: 1.75rem;
+    margin-bottom: 3px;
 }
 
 .social-links a {
@@ -134,12 +135,11 @@ textarea {
     font-family: 'Brixton', sans-serif;
 }
 .team-member h3 { 
-    font-size: 2.30rem; 
+    font-size: 2.30rem;
+    margin-bottom: 3px;
 }
 
-.team-member p { 
-    font-size: 1.75rem; 
-}
+
 .section {
     background: #fff;
     margin: 0 auto;
