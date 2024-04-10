@@ -111,6 +111,57 @@ textarea {
     border: 2px solid #f0f0f0;
 }
 
+/* Gallery styles */
+.galleries-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery {
+  flex: 1;
+  max-width: 50%; 
+}
+
+.image-box {
+  border: 4px solid black;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center; 
+}
+.image-title {
+  margin-bottom: 10px; 
+  font-family: 'Brixton', sans-serif; 
+
+}
+.gallery-buttons button {
+  background-color: #333; 
+  color: #fff; /* White */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em; 
+  border-radius: 5px; /* Round button */
+  transition: background-color 0.3s ease; /* for hover effect */
+  margin: 0 5px;
+  margin-bottom: 10px; 
+}
+.gallery-buttons button:hover {
+  background-color: #555; 
+}
+
 /* Button Styles */
 .custom-button, .add-button {
     font-family: 'Bebas Neue', sans-serif;
