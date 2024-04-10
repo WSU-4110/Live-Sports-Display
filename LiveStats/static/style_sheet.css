@@ -96,8 +96,7 @@ textarea {
 }
 
 .team-member {
-    flex: 1;
-    max-width: calc(80%/3);
+    flex: 0 1 calc(33% - 20px);
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -116,13 +115,11 @@ textarea {
     margin-bottom: 15px;
     
 }
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+.team-member p {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 90%; 
 }
 
 .social-links a {
@@ -131,7 +128,9 @@ textarea {
     margin: 5px;
     font-family: 'Brixton', sans-serif;
 }
-
+.team-member h3, .team-member p { 
+    font-size: 1rem; 
+}
 .section {
     background: #fff;
     margin: 0 auto;
