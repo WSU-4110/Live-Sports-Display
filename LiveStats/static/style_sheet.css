@@ -123,7 +123,7 @@ textarea {
 .section {
     background: #fff;
     margin: 0 auto;
-    max-width: 1500px;
+    max-width: 80%;
     padding: 0 1rem;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
     border-radius: 18px;
