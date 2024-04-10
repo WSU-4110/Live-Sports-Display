@@ -22,8 +22,8 @@
             justify-items: center;
             align-items: center;
             margin-bottom: 20px;
-            margin-left: 15%;
-            margin-right: 15%;
+            margin-left: 10%;
+            margin-right: 10%;
             font-weight: bold;
         }
         .player-stats-line {
@@ -32,8 +32,8 @@
             justify-items: center;
             align-items: center;
             margin-bottom: 20px;
-            margin-left: 15%;
-            margin-right: 15%;
+            margin-left: 10%;
+            margin-right: 10%;
         }
         .player-name {
             font-weight: bold;
@@ -63,12 +63,40 @@
                 <span>FG%</span>
                 <span>3P%</span>
                 <span>FT%</span>
-            </div>
         </div>
 
         <div class="player-stats-line">
-            {% for team in stats %}
-                <span class="team-name">{{ player.team }}</span>
+            {% for team in stats.0 %}
+                <span class="team-name">{{ stats.0.1.team }}</span>
+                {% for player in team %}
+                    <span class="player-name">{{ player.name }}</span>
+                    <span>{{ player.points }}</span>
+                    <span>{{ player.assists }}</span>
+                    <span>{{ player.rebounds }}</span>
+                    <span>{{ player.blocks }} </span>
+                    <span>{{ player.steals }}</span>
+                    <span>{{ player.field_goals_pct }}</span>
+                    <span>{{ player.three_points_pct }}</span>
+                    <span>{{ player.free_throws_pct }}</span>
+                {% endfor %}
+            {% endfor %}
+            <br><br><br>
+
+        <div class="team-stats-line">
+            <span class="team-line">Team Name</span>
+            <span>PTS</span>
+            <span>AST</span>
+            <span>REB</span>
+            <span>BLK</span>
+            <span>STL</span>
+            <span>FG%</span>
+            <span>3P%</span>
+            <span>FT%</span>
+        </div>
+
+        <div class="player-stats-line">
+            {% for team in stats.1 %}
+                <span class="team-name">{{ stats.1.1.team }}</span>
                 {% for player in team %}
                     <span class="player-name">{{ player.name }}</span>
                     <span>{{ player.points }}</span>
