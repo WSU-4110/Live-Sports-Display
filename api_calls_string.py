@@ -14,6 +14,7 @@ comConnect = http.client.HTTPSConnection("api.sportradar.com")
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
 year = datetime.datetime.now().year
+hour = datetime.datetime.now().hour
 
 season_year = 2023
 season_type = "REG"
@@ -111,6 +112,8 @@ def get_team_players(team_id):
 
 #Percentage (turns numbers into a percentage)
 def per(made, att):
+    if att == 0:
+        return 0
     return 100 * made // att
 
 
@@ -246,6 +249,43 @@ def get_schedule():
         print(f"An exception occurred: {str(e)}")
     return None
 
+# returns an array of ids in a game ( array of home_id, away_id, game_id)
+def team_playingQ(hour_start, hour_end, dayOf):
+    get_schedule() # makes sure there's a schedule
+    idArrays = []
+    
+    with open(schedule_file, 'r') as file:
+        games = csv.reader(file)
+        first = True
+        for game in games: 
+            if first: # gets past first inputs
+                first = False
+            else:
+                time = game[0]
+                game_year = int(time[0:4])
+                game_month = int(time[5:7])
+                game_day = int(time[8:10])
+                #check year, month, day
+                if game_year == year:
+                    
+                    if game_month == month:
+                        
+                        if game_day == dayOf:
+                            
+                            game_hour = int(time[11:13])
+
+                            if (game_hour >= hour_start) and (game_hour <= hour_end):
+                                # game found
+                                idArray = []
+                                idArray.append(game[3])
+                                idArray.append(game[4])
+                                idArray.append(game[5])
+                                idArrays.append(idArray)                           
+       
+    return idArrays
+
+
+
 # checks if there's any games between hours (est military time)
 #   and returns all
 def game_in_time(hour_start, hour_end, dayOf):
@@ -359,11 +399,29 @@ def player_id_list():
         return None
 
 def get_player_stats_from_id(player_id, team_id):
+    # check if team is playing
+    idArrays = team_playingQ(hour-2, 23, day)
+    found = False
+    game_id = ""
+    search = ""
+    for idArray in idArrays:
+        if idArray[0] == team_id or idArray[1] == team_id:
+            # if team found
+            found = True
+            game_id = idArray[2]
+            if idArray[0] == team_id: #if the team_id is the home team
+                search = "home"
+            else: # if the team_id is the away team
+                search = "away"
+
+    if not(found):
+        return None
+        
+    
     try:
         #Connection & response status
-        comConnect.request("GET", f"/nba/trial/stream/en/statistics/subscribe?api_key={api_key}&players==sd:player:{player_id}")
-
-        response = comConnect.getresponse()
+        connection.request("GET",  f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
+        response = connection.getresponse()
         
         if response.status != 200:
             print("Error:", response.status, response.reason)
@@ -373,52 +431,40 @@ def get_player_stats_from_id(player_id, team_id):
         #print(data) #----------------------------------------------------------If the code doesn't work - but the api server isn't idle - could you send the result of this?
         json_data = json.loads(data.decode("utf-8"))
 
-        # setup of output
-        output = "Name: " + json_data['full_name']
+        for player in json_data[search]["players"]:
+            if player['id'] == player_id:
+                output = "Name: " + player['full_name']
 
-        # gets team name
-        team_name = ""
-        with open(team_id_list, 'r') as file:
-            teams = csv.reader(file)
-            for team in teams:
-                if team_id == team[0]:
-                    team_name = f"{team[2]} {team[1]}"
+                data = player['statistics']
+                
+                FGM = data['field_goals_made']
+                FGA = data['field_goals_att']
+                FG = per(FGM,FGA)
 
-        output +=" Team: " + team_name
+                ThreePM = data['three_points_made']
+                ThreePA = data['three_points_att']
+                TP = per(ThreePM,ThreePA)
 
+                FTM = data['free_throws_made']
+                FTA = data['free_throws_att']
+                FT = per(FTM,FTA)
 
-        # gets all the relevant stats, and adds it to the output
-        data = json_data['statistics']
-        
-        FGM = data['field_goals_made']
-        FGA = data['field_goals_att']
-        FG = per(FGM,FGA)
+                REB = data['rebounds']
+                AST = data['assists']
+                BLK = data['blocks']
+                STL = data['steals']
+                PTS = data['points']
 
-        ThreePM = data['three_points_made']
-        ThreePA = data['three_points_att']
-        TP = per(ThreePM,ThreePA)
+                output += f" FG: {FG}"
+                output += f" TP: {TP}"
+                output += f" FT: {FT}"
+                output += f" REB: {REB}"
+                output += f" AST: {AST}"
+                output += f" BLK: {BLK}"
+                output += f" STL: {STL}"
+                output += f" PTS: {PTS}"
 
-        FTM = data['free_throws_made']
-        FTA = data['free_throws_att']
-        FT = per(FTM,FTA)
-
-        REB = data['rebounds']
-        AST = data['assists']
-        BLK = data['blocks']
-        STL = data['steals']
-        PTS = data['points']
-
-        output += f" FG: {FG}"
-        output += f" TP: {TP}"
-        output += f" FT: {FT}"
-        output += f" REB: {REB}"
-        output += f" AST: {AST}"
-        output += f" BLK: {BLK}"
-        output += f" STL: {STL}"
-        output += f" PTS: {PTS}"
-
-        return output
-                    
+                return output
                     
                     
     # Catching exceptions #
@@ -441,16 +487,21 @@ def get_player_stats(player_name, isLive):
     with open(player_list, 'r') as file:
             players = csv.reader(file)
 
-
+            result = None
             # goes through each player until an name matches
             for player in players:
                 
                 if player[0] == player_name:
                     if isLive: # If getting live stats, get live, else get season
-                        return get_player_stats_from_id(player[1], player[2])
+                        result = get_player_stats_from_id(player[1], player[2])
                     else:
-                        return get_season_player_stats_from_id(player[1])
+                        result = get_season_player_stats_from_id(player[1])
 
+                    if result != None:
+                        return result
+                    else:
+                        return "! No player found !"
+            
             return "! No player found !" # returns a message if no players found
 
 
