@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stats All Players</title>
-     <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+     <!--- <link rel="stylesheet" href="{% static 'style_sheet.css' %}"> --->
 
      <style>
         .body {
@@ -54,7 +54,7 @@
         <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
 
         <div class="team-stats-line">
-                <span class="team-line">Chicago Bulls</span>
+                <span class="team-line">Team Name</span>
                 <span>PTS</span>
                 <span>AST</span>
                 <span>REB</span>
@@ -68,6 +68,7 @@
 
         <div class="player-stats-line">
             {% for team in stats %}
+                <span class="team-name">{{ player.team }}</span>
                 {% for player in team %}
                     <span class="player-name">{{ player.name }}</span>
                     <span>{{ player.points }}</span>
