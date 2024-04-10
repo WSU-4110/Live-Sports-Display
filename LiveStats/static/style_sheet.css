@@ -4,7 +4,7 @@ body {
     background-image: url('1pX9.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Brixton', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: 500; 
     font-size: 1rem;
     margin: 0;
@@ -57,7 +57,7 @@ body {
 
 h2 {
     color: #000;
-    font-family: 'Brixton', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: 700
     margin-bottom: 0.5em
     font-size: 4rem;
@@ -70,7 +70,7 @@ p {
     font-size: 2rem;
 }
 textarea, input[type="text"] {
-    font-family: Arial, sans-serif;
+    font-family: Archivo, sans-serif;
     padding: 10px;
     border: 2px solid #333;
     border-radius: 4px;
