@@ -228,13 +228,13 @@ def get_schedule():
         # create file, write times and teams of games
         with open(schedule_file,"w", newline = "") as games:
             writer = csv.writer(games)
-            writer.writerow(["Time", "Home", "Away"])
+            writer.writerow(["Time", "Home", "Away", "Game_id"])
             for game in json_data['games']:
                 #Time conversion
                 gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
                 est_time = gmt_time - datetime.timedelta(hours=4)
                 est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
-                writer.writerow([est_time_str,game['home']['name'],game['away']['name']])
+                writer.writerow([est_time_str,game['home']['name'],game['away']['name'],game['id']])
                         
                     
     # Catching exceptions #
@@ -248,15 +248,16 @@ def get_schedule():
 
 # checks if there's any games between hours (est military time)
 #   and returns all
-def game_in_time(hour_start, hour_end):
+def game_in_time(hour_start, hour_end, dayOf):
     # makes sure there's a schedule to read from
     get_schedule()
 
     #opens the schedule file
-    output = ""
+    gamestring = ""
     with open(schedule_file, 'r') as file:
         games = csv.reader(file)
         first = True
+        num = 0
         for game in games:
             if first: # gets past the first line
                 first = False
@@ -271,17 +272,30 @@ def game_in_time(hour_start, hour_end):
                     
                     if game_month == month:
                         
-                        if game_day == day:
+                        if game_day == dayOf:
                             # checks the time
                             game_hour = int(time[11:13])
 
                             if (game_hour >= hour_start) and (game_hour <= hour_end):  # game found
-                                output += f"{game[1]}vs{game[2]}\n"
-                        #if we've gone past the current date, stop checking
-                        elif game_day > day:
-                            return output
-                            
+                                num += 1
+                                if game_hour <= 12: 
+                                    whatM = "AM"
+                                    
+                                else:
+                                    whatM = "PM"
+                                    game_hour -= 12
 
+                                game_min = time[13:16]
+                                gamestring += f"{game[1]} vs {game[2]} : {game_hour}{game_min}{whatM} | "
+                        
+                            
+    output = str(num)
+    if num == 1:
+        output += " game | "
+    else:
+        output += " games | "
+    output += gamestring
+    return output
     return output # just in case there are no more games in the season
 
 # Makes a csv file containing player names and ID                       
