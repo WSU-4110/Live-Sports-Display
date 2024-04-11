@@ -253,7 +253,6 @@ input[type="submit"]:hover {
     text-align: center;
 }
 .image-box {
-  border: 4px solid black;
   background-color: #2d2d30;
   text-align: center;
   padding: 5px;
