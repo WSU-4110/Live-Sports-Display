@@ -10,7 +10,7 @@
         
     </head>
 
-    <body>
+    <body class="body">
         <div class="header">
             <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
             <ul class="nav">
@@ -21,36 +21,33 @@
             </ul>
         </div>
 
-
-        <main>
-            <center>
-                <h2>Statistics Page</h2>
-                <p>Here you can view the statistics of the games that have been played.</p>
-            <ul>
-                    <li><a href="/league_standings/" class="custom-button">League Standings</a></li>
-                    <br>
-                    <li><a href="/game_schedule/" class="custom-button">Game Schedule</a></li>
-                    <br>
-                    <li>
-                        <form action="/live_team_stats/" method="get">
-                            <input type="text" name="inputted_team_name" placeholder="Enter team name">
-                            <input type="submit" value="Get Live Team Stats">
-                        </form>
-                    </li>
-                    <li>
-                        <form action="/live_game_stats/" method="get">
-                            <input type="text" name="inputted_team_name" placeholder="Enter team name">
-                            <input type="submit" value="Get Live Game Stats">
-                        </form>
-                    </li>
-                    <li>
-                        <form action="/live_player_stats/" method="get">
-                            <input type="text" name="inputted_player_name" placeholder="Enter player name">
-                            <input type="submit" value="Get Live Player Stats">
-                        </form>
-            </ul>
-        </center>
-        </main>
+        <center>
+            <h2>Statistics Page</h2>
+            <p>Here you can view the statistics of the games that have been played.</p>
+        <ul>
+                <li><a href="/league_standings/" class="stats-button">League Standings</a></li>
+                <br>
+                <li><a href="/game_schedule/" class="stats-button">Game Schedule</a></li>
+                <br>
+                <li>
+                    <form action="/live_team_stats/" method="get">
+                        <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                        <input type="submit" value="Get Live Team Stats">
+                    </form>
+                </li>
+                <li>
+                    <form action="/live_game_stats/" method="get">
+                        <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                        <input type="submit" value="Get Live Game Stats">
+                    </form>
+                </li>
+                <li>
+                    <form action="/live_player_stats/" method="get">
+                        <input type="text" name="inputted_player_name" placeholder="Enter player name">
+                        <input type="submit" value="Get Live Player Stats">
+                    </form>
+        </ul>
+    </center>
     </body>
 
 
