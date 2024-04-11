@@ -224,21 +224,23 @@ input[type="file"] {
 }
 
 input[type="submit"] {
-    font-family: 'Brixton', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    background-color:
-    border: none;
     padding: 12px 20px;
     cursor: pointer;
     display: block;
     width: 100%;
     margin-top: 0;
-    box-sizing: border-box;
+    background-color: #2d2d30; 
+    color: #fff; 
+    border: none;
+    border-radius: 20px; 
+    font-size: 16px;
+    font-weight: bold; 
+    transition: background-color 0.3s;
+
 }
 
 input[type="submit"]:hover {
-    background-color: #555; 
+    background-color: #1c1c1e; 
 }
 
 .standing-entry {
