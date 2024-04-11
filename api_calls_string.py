@@ -114,7 +114,7 @@ def get_team_players(team_id):
 def per(made, att):
     if att == 0:
         return 0
-    return 100 * made // att
+    return 1000 * made // att / 10
 
 
 # gets and returns player stats in a single string
