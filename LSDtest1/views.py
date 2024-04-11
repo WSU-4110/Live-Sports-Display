@@ -62,7 +62,7 @@ def run_single_display(request):
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 45421
+        port = 44777
 
         try:
             # Initialize the SSH client with settings for PiTunnel access
