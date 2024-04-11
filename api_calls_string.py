@@ -434,7 +434,10 @@ def get_player_stats_from_id(player_id, team_id):
         for player in json_data[search]["players"]:
             if player['id'] == player_id:
                 output = "Name: " + player['full_name']
-
+                
+                team = get_team_name(team_id)
+                output += " Team: " + team
+                
                 data = player['statistics']
                 
                 FGM = data['field_goals_made']
@@ -476,6 +479,19 @@ def get_player_stats_from_id(player_id, team_id):
         print(f"An exception occurred: {str(e)}")
     return None
 
+
+# returns the team name
+def get_team_name(team_id):
+    get_teams()
+    
+    with open(teams_file) as file:
+        teams = csv.reader(file)
+        for team in teams:
+            if team[0] == team_id:
+                return f"{team[2]} {team[1]}"
+
+
+    return "No Team"
 
 # gets player stats from name
 def get_player_stats(player_name, isLive):
