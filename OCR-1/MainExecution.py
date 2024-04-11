@@ -38,7 +38,7 @@ def extract_possible_shortened_names(value):
     return possible_shortened_names
 
 def extract_possible_full_names(value):
-    possible_full_names = re.findall(r'|\b[A-Z][a-z]+\b\s?[A-Z][a-z]+|[A-Z][a-z]+[A-Z][a-z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b', value)
+    possible_full_names = re.findall(r'|\b[A-Z][a-z]+\b\s?[A-Z][a-z]+|[A-Z][a-z]+[A-Z][a-z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b|\b[-A-Z][-a-zA-Z]+\b\s?[A-Z][a-z]+\b', value)
     return possible_full_names
 
 def find_name_matches(value):
