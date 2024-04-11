@@ -256,6 +256,7 @@ input[type="submit"]:hover {
     flex: 1;
     margin: 15px;
     text-align: center;
+    margin-left:0px;
 }
 .image-box {
   background-color: #2d2d30;
