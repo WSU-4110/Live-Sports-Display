@@ -222,7 +222,28 @@ input[type="file"] {
     width: 100%; 
     box-sizing: border-box; 
 }
+/*Upload and OCR*/
+button[type="submit"] {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    background-color: #2d2d30; 
+    color: #fff; 
+    border: none;
+    border-radius: 20px; 
+    font-size: 16px;
+    font-weight: bold; 
+    transition: background-color 0.3s;
 
+}
+
+button[type="submit"]:hover {
+    background-color: #1c1c1e; 
+}
+
+/*For Looking At team stats button*/
 input[type="submit"] {
     padding: 12px 20px;
     cursor: pointer;
