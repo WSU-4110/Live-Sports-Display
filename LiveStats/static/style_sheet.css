@@ -254,11 +254,12 @@ input[type="submit"]:hover {
 }
 .image-box {
   border: 4px solid black;
-  background-color: black;
+  background-color: #2d2d30;
   text-align: center;
   padding: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 1em;
+  border-radius: 10px; 
 }
 
 .image-box img {
@@ -274,7 +275,8 @@ input[type="submit"]:hover {
 }
 .image-title {
   margin-bottom: 10px; 
-  font-family: 'Brixton', sans-serif; 
+  font-family: 'Brixton', sans-serif;
+  color: #fff;
 
 }
 
