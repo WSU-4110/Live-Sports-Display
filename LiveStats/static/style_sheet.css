@@ -130,11 +130,12 @@ textarea {
 
 .section {
     background: #fff;
-    margin: 50px 0;
+    margin: 20px 0;
     padding: 20px;
     box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
     border-radius: 18px;
     border: 2px solid #f0f0f0;
+    padding-left: 50px;
 }
 
 /* Button Styles */
