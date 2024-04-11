@@ -62,8 +62,7 @@ def run_single_display(request):
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 44777
-
+        port = 36471
         try:
             # Initialize the SSH client with settings for PiTunnel access
             client = paramiko.SSHClient()
