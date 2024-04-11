@@ -289,13 +289,20 @@ input[type="submit"]:hover {
 
 .gallery-buttons button {
     margin: 10px;
-    padding: 5px 10px;
-    background-color: #333;
-    color: #fff;
+    padding: 10px 20px; 
+    background-color: #2d2d30; 
+    color: #fff; 
     border: none;
+    border-radius: 20px; 
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s; 
 }
 
+
+
 .gallery-buttons button:hover {
-    background-color: #555;
+    background-color: #1c1c1e;
 }
