@@ -127,6 +127,13 @@
                 form.appendChild(input); // Append the input field to the form
             });
 
+            let csrfInput = document.createElement('input');
+            csrfInput.setAttribute('type', 'hidden');
+            csrfInput.setAttribute('name', 'csrfmiddlewaretoken');
+            csrfInput.setAttribute('value', '{{ csrf_token }}'); // Use Django template tag to get CSRF token value
+            form.appendChild(csrfInput); // Append the CSRF token input field to the form
+
+
             // Append the form to the document body and submit it
             document.body.appendChild(form);
             form.submit();
