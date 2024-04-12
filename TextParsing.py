@@ -1,21 +1,23 @@
-import cv2
+#import cv2
 import pytesseract
 import re
+
+from PIL import Image
 from nba_api.stats.static import players
 
 #The following Libraries are needed:
 #OpenCV: pip install opencv-python
+#Pillow: pip install pillow
 #pytesseract: pip install pytesseract
 #re: Usually comes with Python.
 #nba_api: pip install nba_api
 
-
+"""
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
 image_path= "Pictures/Sample-6.jpg"
 load_image=cv2.imread(image_path)
 text=pytesseract.image_to_string(load_image)
-
-#This function stores full names from the nba_api library into a list.
+"""
 def fullnames():
     full_names = []
     all_players = players.get_players()
@@ -60,10 +62,21 @@ def find_name_matches(value):
     all_names=extracted_full_names+complete_names
     return all_names
 
-#Program Execution starts here.
-names=find_name_matches(text)
-print(names)
+def OCR_Image(path):
+    image = Image.open(path)
+    txt = pytesseract.image_to_string(path)
+    return txt
 
+def imageToPlayerNames(path):
+    unprocessedText = OCR_Image(path)
+    arrayOfPlayerNames = find_name_matches(unprocessedText)
+    return arrayOfPlayerNames
+
+"""
+Program Execution begins here.
+players=imageToPlayerNames(image_path)
+print(players)
+"""
 
 
 
