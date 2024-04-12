@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Custom Roster Stats</title>
-    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+    <title>Custom Roster Live Stats</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <!--need to add for game schedule-->
+            <li><a href="/">Home</a></li>
+            <li><a href="/stats_page/">Stats Page</a></li>
+
+        </ul>
+    </div>
     <div class="container">
         <h1>OCR Stats</h1>
-        
+
         <h2>Player Stats</h2>
         <ul>
             {% for name in NamesArray %}
