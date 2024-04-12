@@ -1,22 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Custom Roster Stats</title>
-    <link rel="stylesheet" type="text/css" href="style_sheet.css">
+    <title>Custom Roster Live Stats</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <!--need to add for game schedule-->
+            <li><a href="/">Home</a></li>
+            <li><a href="/stats_page/">Stats Page</a></li>
+
+        </ul>
+    </div>
     <div class="container">
         <h1>OCR Stats</h1>
 
         <h2>Player Stats</h2>
         <ul>
-            {% for name, stats in zip(NamesArray, StatsArray) %}
+            {% for name in NamesArray %}
             <li>
-                {% if not stats %}
-                <h2> {{ name }} is not playing.</h2>
-                {% else %}
+
                 <strong>{{ name }}</strong>:
                 <ul>
+
+                    {% for stats in StatsArray %}
+                    {% if  name  ==  stats.name  %}
                     <li>Player Name: {{ stats.name }}</li>
                     <li>Points: {{ stats.points }}</li>
                     <li>Assists: {{ stats.assists }}</li>
@@ -26,7 +41,12 @@
                     <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
                     <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
                     <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
+                    {% else %}
+                    <li>Player Name: {{ stats.name }} is currently not playing</li>
+                    {% endif %}
+                    {% endfor %}
                 </ul>
+
             </li>
             {% endfor %}
         </ul>

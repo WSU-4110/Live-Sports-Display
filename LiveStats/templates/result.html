@@ -11,7 +11,7 @@
     <div class="header">
         <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
         <ul class="nav">
-            <li><a href="/home/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/upload/">Upload Roster</a></li>
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
@@ -127,6 +127,13 @@
                 form.appendChild(input); // Append the input field to the form
             });
 
+            let csrfInput = document.createElement('input');
+            csrfInput.setAttribute('type', 'hidden');
+            csrfInput.setAttribute('name', 'csrfmiddlewaretoken');
+            csrfInput.setAttribute('value', '{{ csrf_token }}'); // Use Django template tag to get CSRF token value
+            form.appendChild(csrfInput); // Append the CSRF token input field to the form
+
+
             // Append the form to the document body and submit it
             document.body.appendChild(form);
             form.submit();
@@ -134,7 +141,7 @@
     
 
         function confirmPlayers() {
-            let playerString = playerArray.join(', '); //NEEDED FOR SSH CALL PLS DONT DELETE
+            let playerString = playerArray.join(','); //NEEDED FOR SSH CALL PLS DONT DELETE
             alert('Sending players: ' + playerString); // ^^^^^^
             }
     </script>
@@ -160,7 +167,7 @@
         };
         
         document.getElementById("stackedDisplayBtn").onclick = function () {
-            let playerString = playerArray.join(', ');
+            let playerString = playerArray.join(',');
         
             fetch('/run-stacked-display/', {
                 method: 'POST',
