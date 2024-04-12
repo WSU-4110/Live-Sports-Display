@@ -11,7 +11,7 @@ from nba_api.stats.static import players
 
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
-image_path= "Pictures/Sample-6.jpg"
+image_path= "Pictures/Sample-2.png"
 load_image=cv2.imread(image_path)
 text=pytesseract.image_to_string(load_image)
 
@@ -32,7 +32,24 @@ def abbreviatednames():
         abbreviated_names.append(player['first_name'][:1] + '. ' + player['last_name'])
     return abbreviated_names
 
-#This function extracts possible abbreviated names from the string.
+
+#This function extracts possible abbreviated names from the string with regex patterns. Each pattern set is seperated by '|'.
+#First Pattern: \b[A-Z]\.\s?[A-Z][a-z]+[-A-Z][-a-zA-Z]+\b
+#This is for a letter followed by a dot, then a space, and then a word with multiple uppercase and lowercase letters.
+#Example: S. Gilgeous-Alexander, or C. LeVert
+
+#Second Pattern: \b[A-Z]\.\s?[A-Z][a-z]+\b
+#This is for a letter followed by a dot, then a space, that has one uppercase letter followed by multiple lowercase letters.
+#Example: K. Irving.
+
+#Third Pattern: \b[A-Z]\.\s?[A-Z][a-z]+[A-Z][a-z]+\b
+#This is for a SOME cases, in which a letter followed by a dot, then a space, and then a word with multiple uppercase and lowercase letters.
+#Example: C. LeVert
+
+#Fourth Pattern: \b[A-Z]\.\s?[A-Z][a-z]+\b
+#This is for a letter followed by a dot, no space, followed by a word that has one uppercase letter followed by multiple lowercase letters
+#Example: J.Redick
+
 def extract_possible_shortened_names(value):
     formatted_possible_shortened_names = re.findall(r'\b[A-Z]\.\s?[A-Z][a-z]+[-A-Z][-a-zA-Z]+\b|\b[A-Z]\.\s?[A-Z][a-z]+\b|\b[A-Z]\.\s?[A-Z][a-z]+[A-Z][a-z]+\b', value)
     unformatted_possible_shortened_names= re.findall(r'\b[A-Z]\.\s?[A-Z][a-z]+\b', value)
@@ -41,9 +58,30 @@ def extract_possible_shortened_names(value):
     possible_shortened_names=formatted_possible_shortened_names+clear_possible_shortened_names
     return possible_shortened_names
 
-#This function extracts possible full names from the string.
+
+#This function extracts possible full names from the string with regex patterns. Each pattern set is seperated by '|'.
+
+#First Pattern: \b[A-Z][a-z]+\b\s?[A-Z][a-z]
+#This is for SOME words seperated by a space that have one uppercase letter followed by multiple lowercase letters.
+#Example: Kawhi Leonard
+
+#Second Pattern: [A-Z][a-z]+[A-Z][a-z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b
+#This is for words seperated by a space that has both uppercase and lowercase.
+#Example: DeMar DeRozan.
+
+#Third Pattern: \b[-A-Z][-a-zA-Z]+\b\s?[A-Z][a-z]+\b
+#This is for words that have a hyphen in the first word.
+#Example: Karl-Anthony Towns
+
+#Fourth Pattern: [A-Z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b
+#This is for words with only two letters in the first word, and multiple upper and lowercase letters for the second word.
+#Example: CJ McCollum
+
+#Fifth Pattern: [A-Z][a-z]\'+[A-Z][a-z]+\b\s?[A-Z][a-z]+\b
+#This is for words in which the first word contains an apostrophe, followed by a second word with one uppercase letter followed by multiple lowercase letters.
+
 def extract_possible_full_names(value):
-    possible_full_names = re.findall(r'|\b[A-Z][a-z]+\b\s?[A-Z][a-z]+|[A-Z][a-z]+[A-Z][a-z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b|\b[-A-Z][-a-zA-Z]+\b\s?[A-Z][a-z]+\b', value)
+    possible_full_names = re.findall(r'\b[A-Z][a-z]+\b\s?[A-Z][a-z]+|[A-Z][a-z]+[A-Z][a-z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b|\b[-A-Z][-a-zA-Z]+\b\s?[A-Z][a-z]+\b|[A-Z]+\b\s?[A-Z][a-z]+[A-Z][a-z]+\b|[A-Z][a-z]\'+[A-Z][a-z]+\b\s?[A-Z][a-z]+\b', value)
     return possible_full_names
 
 #This function searches the string for names that match with the nba_api library.
@@ -63,3 +101,4 @@ def find_name_matches(value):
 #Program Execution starts here.
 names=find_name_matches(text)
 print(names)
+
