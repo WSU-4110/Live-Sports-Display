@@ -79,7 +79,7 @@ def run_single_display(request):
             
             # Run other commands
             execute_command = (
-                "sudo -S bash -c '"
+                "sudo su '"
                 "python3 -m venv /env1; "
                 "source /env1/bin/activate; "
                 "/home/jordan/env1/pyscripts/strandtest.py'"
