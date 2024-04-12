@@ -10,22 +10,27 @@
         
         <h2>Player Stats</h2>
         <ul>
-            {% for index in NamesArray|length_is:StatsArray|length %}
+            {% for name in NamesArray %}
             <li>
-                {% with stats=StatsArray|get_item:index %}
-                <strong>{{ NamesArray|get_item:index }}</strong>:
-                <ul>
-                    <li>Player Name: {{ stats.name }}</li>
-                    <li>Points: {{ stats.points }}</li>
-                    <li>Assists: {{ stats.assists }}</li>
-                    <li>Rebounds: {{ stats.rebounds }}</li>
-                    <li>Blocks: {{ stats.blocks }} </li>
-                    <li>Steals: {{ stats.steals }}</li>
-                    <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
-                    <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
-                    <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
 
+                <strong>{{ name }}</strong>:
+                <ul>
+
+                    {% for stats in StatsArray %}
+                        {% if  name  ==  stats.name  %}
+                        <li>Player Name: {{ stats.name }}</li>
+                        <li>Points: {{ stats.points }}</li>
+                        <li>Assists: {{ stats.assists }}</li>
+                        <li>Rebounds: {{ stats.rebounds }}</li>
+                        <li>Blocks: {{ stats.blocks }} </li>
+                        <li>Steals: {{ stats.steals }}</li>
+                        <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
+                        <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
+                        <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
+
             </li>
             {% endfor %}
         </ul>
