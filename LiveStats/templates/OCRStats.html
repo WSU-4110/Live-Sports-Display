@@ -17,17 +17,19 @@
                 <ul>
 
                     {% for stats in StatsArray %}
-                        {% if  name  ==  stats.name  %}
-                        <li>Player Name: {{ stats.name }}</li>
-                        <li>Points: {{ stats.points }}</li>
-                        <li>Assists: {{ stats.assists }}</li>
-                        <li>Rebounds: {{ stats.rebounds }}</li>
-                        <li>Blocks: {{ stats.blocks }} </li>
-                        <li>Steals: {{ stats.steals }}</li>
-                        <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
-                        <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
-                        <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
-                        {% endif %}
+                    {% if  name  ==  stats.name  %}
+                    <li>Player Name: {{ stats.name }}</li>
+                    <li>Points: {{ stats.points }}</li>
+                    <li>Assists: {{ stats.assists }}</li>
+                    <li>Rebounds: {{ stats.rebounds }}</li>
+                    <li>Blocks: {{ stats.blocks }} </li>
+                    <li>Steals: {{ stats.steals }}</li>
+                    <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
+                    <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
+                    <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
+                    {% else %}
+                    <li>Player Name: {{ stats.name }} is currently not playing</li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
 
