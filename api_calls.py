@@ -366,7 +366,7 @@ class GameFacade:
         players = []
 
         try:
-            game_id = api.get_game_id(team_name, year, month, day)
+            game_id = api.get_game_id(team_name, year, month, "07")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -415,7 +415,7 @@ class GameFacade:
                     if row[2] == player_name:
                         player_team = row[1]
 
-            game_id = api.get_game_id(player_team, year,month,day)
+            game_id = api.get_game_id(player_team, year,month,"07")
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
@@ -455,7 +455,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, year, month, day)
+            game_id = api.get_game_id(team_name, year, month, "07")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
