@@ -12,10 +12,11 @@ from nba_api.stats.static import players
 #nba_api: pip install nba_api
 
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
-image_path= "Pictures/Sample-2.png"
-load_image=cv2.imread(image_path)
-text=pytesseract.image_to_string(load_image)
+#pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
+#image_path= "Pictures/Sample-2.png"
+#load_image=cv2.imread(image_path)
+#text=pytesseract.image_to_string(load_image)
+
 
 #This function stores full names from the nba_api library into a list.
 def fullnames():
