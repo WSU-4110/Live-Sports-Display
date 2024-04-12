@@ -10,9 +10,10 @@
         
         <h2>Player Stats</h2>
         <ul>
-            {% for name, stats in NamesArray|zip:StatsArray %}
+            {% for index in NamesArray|length_is:StatsArray|length %}
             <li>
-                <strong>{{ name }}</strong>:
+                {% with stats=StatsArray|get_item:index %}
+                <strong>{{ NamesArray|get_item:index }}</strong>:
                 <ul>
                     <li>Player Name: {{ stats.name }}</li>
                     <li>Points: {{ stats.points }}</li>
