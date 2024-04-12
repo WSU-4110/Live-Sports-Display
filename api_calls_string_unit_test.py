@@ -1,6 +1,5 @@
 from api_calls_string import *
 import pytest
-import os
 
 
 
@@ -125,8 +124,80 @@ def test_teams_playingQ():
     actual = team_playingQ(hour_start, hour_end, dayOf)
     assert expected == actual
     
+# ----------------Unit test 4-------------------------------------------------
+# Tests for game_in_time(hour_start, hour_end, dayOf)
 
+# Again - will not be valid after April: the games on the 12th will change,
+# and the only way to write a unit test to check that would be to
+# rewrite the function
+
+# This one is also shorter - as it relies on an identical framework to the previous,
+# and will therefore be guaranteed to function
+def test_game_in_time():
+
+    # middle game
+    hour_start = 21
+    hour_end = 21
+    dayOf = 9
+    expected = "1 game | Utah Jazz vs Denver Nuggets : 9:00PM | "
+    actual = game_in_time(hour_start, hour_end, dayOf)
+    assert expected == actual
+
+    # no games
+    hour_start = 0
+    hour_end = 18
+    dayOf = 12
+    expected = "0 games | "
+    actual = game_in_time(hour_start, hour_end, dayOf)
+    assert expected == actual
+    
+
+# ----------------Unit test 5-------------------------------------------------
+# Tests for get_player_stats_from_id(player_id, team_id)
+
+# Will only work on 'the 10th' - due to the design of the function.
+# The date and time should have been made stationary in 'api_calls_string' -
+# as in order to create a unit test that would work on any given day,
+# it would require recreating the function in the unit test:
+# making it pointless
+
+def test_live_stats():
 
     
-#percent_test_parts()
-#test_season_stats()
+    # 'is' playing
+    player_id = "b6dde96e-3748-4cbe-86d2-798d5dffb3c0"
+    team_id = "583ec773-fb46-11e1-82cb-f4ce4684ea4c"
+    expected = "Name: Donovan Mitchell Team: Cleveland Cavaliers"
+    actual = get_player_stats_from_id(player_id, team_id)
+    assert expected == actual[0:len(expected)]
+
+    # invalid result / not playing
+    player_id = "Mr Nobody"
+    team_id = "abcdefghijklmnopqrstuvwxys"
+    expected = None
+    actual = get_player_stats_from_id(player_id, team_id)
+    assert expected == actual
+
+    
+
+
+
+# ----------------Unit test 6-------------------------------------------------
+# Tests for get_team_name(team_id)
+
+def test_id_to_name():
+
+    #no team
+    team_id = "Not a team"
+    expected = "No Team"
+    actual = get_team_name(team_id)
+    assert expected == actual
+
+
+    # team
+
+    team_id = "583ec8d4-fb46-11e1-82cb-f4ce4684ea4c"
+    expected = "Washington Wizards"
+    actual = get_team_name(team_id)
+    assert expected == actual
+
