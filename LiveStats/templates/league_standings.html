@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+    <title>League Standings</title>
+
+    <style>
+        .team-standings-header, .team-standings-line {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            margin-left: 15%;
+            margin-right: 15%;
+            font-weight: bold;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .team-standings-header {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .team-standings-line {
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: rgba(227, 227, 227, 0.15);
+        }
+        .team-name {
+            font-weight: bold;
+        }
+        .title {
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+
+
+<body class="body">
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+             <li><a href='/'>Home</a></li>
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/stats_page/">Statistics Page</a></li>
+        </ul>
+    </div>
+
+    <h1 class="title">NBA League Standings</h1> 
+    <div class="team-standings-header">
+        <span class="team-name">Team Name</span>
+        <span>Wins</span>
+        <span>Losses</span>
+    </div>
+
+        {% for standing in standings %}
+        <div class="section">
+            <span class="team-name">{{ standing.team_name }}</span>
+            <span>{{ standing.wins }}</span>
+            <span>{{ standing.losses }}</span>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/brixton?styles=40846,40847" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sybarite:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/jql2yqw.css">
+
+    <title>Motion Matrix Media</title>    
+</head>
+<body>
+
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <!--need to add for game schedule-->
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/stats_page/">Statistics Page</a></li>
+        </ul>
+    </div>
+
+    <div class="border">
+        <div id="About-us" class="section">
+            <h2>About Us</h2>
+            <p>We are a team of six students leveraging the scrum methodology to bring a unique project to life—Motion Matrix Media. Our platform bridges the gap between fantasy basketball and real-time sports analytics. By using OCR technology, we've developed a system where users can upload screenshots of their fantasy basketball rosters. Our website processes these images to identify player names and uses Raspberry Pi devices to gather live player statistics from Sportradar's API. The live stats are then displayed on LED boards, creating an interactive and immersive experience for fantasy basketball enthusiasts. This project is not just a testament to our passion for sports and technology but also an ongoing learning journey in software development and teamwork.</p>
+        </div>
+
+
+        <div id="How-To" class="section">
+            <h2>How To</h2>
+            <p>1. Navigate to the 'Upload Roster' page to submit your fantasy basketball team screenshot.</p>
+            <p>2. Upload your screenshot. Our OCR technology processes the image to extract player names.</p>
+            <p>3. Review that the names are correct and select the ones you want sent to your display </p>
+            <p>4. Player stats are retrieved in real-time from Sportradar's API and displayed on our LED displays.</p>
+            <br>
+            <p> Still confused? consult this short video on how to use and trouble shooting techniques.</p>
+        </div>
+
+        <div id="History" class="section">
+            <h2>History</h2>
+            <p>Founded by a team of Wayne State Universities computer science students, Motion Matrix Media started with the vision of enhancing live sports viewing. Our journey from conceptualizing to creating interactive LED displays showcases our commitment to innovation.</p>
+            <p>Take a look at our design process, meeting minutes, early versions and more in this gallery!</p>
+        </div>
+
+        <div id="Current-version" class="section">
+            <h2>Current Version</h2>
+            <p>Our latest update features improved OCR accuracy, faster data retrieval from Sportradar's API, and a more intuitive user interface for uploading fantasy basketball screenshots.</p>
+            <p>Take a look at our newest cases that houses our Raspberry Pi's and display components!</p>
+        
+      
+            <div class="galleries-container">
+                
+                <!-- Image Gallery 1 -->
+                <div class="gallery">
+                    <div class="image-box">
+                        <h3 class="image-title">Single Display</h3>
+                        <img id="galleryImage1" src="{% static 'images/Display1.jpg' %}" alt="Image 1">
+                    </div>
+                    <div class="gallery-buttons">
+                        <button onclick="changeImage(1, -1)">Prev</button>
+                        <button onclick="changeImage(1, 1)">Next</button>
+                    </div>
+                </div>
+        
+                <!-- Image Gallery 2 -->
+                <div class="gallery">
+                    <div class="image-box">
+                        <h3 class="image-title">Stacked Display</h3>
+                        <img id="galleryImage2" src="{% static 'images/Display1.jpg' %}" alt="Image 2">
+                    </div>
+                    <div class="gallery-buttons">
+                        <button onclick="changeImage(2, -1)">Prev</button>
+                        <button onclick="changeImage(2, 1)">Next</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script>
+        // Array of images Stacked Display
+        var gallery1Images = [
+          "{% static 'images/Display1.jpg' %}",
+          "{% static 'images/Display2.jpg' %}",
+          "{% static 'images/Display3.jpg' %}",
+           "{% static 'images/Display4.jpg' %}"
+        ];
+
+        // Array of images Long Display
+        var gallery2Images = [
+          "{% static 'images/Display1.jpg' %}",
+          "{% static 'images/Display2.jpg' %}",
+          "{% static 'images/Display3.jpg' %}",
+          "{% static 'images/Display4.jpg' %}"
+          
+        ];
+        
+        var currentIndex1 = 0; // Starting index
+        var currentIndex2 = 0; // Starting index
+        
+        // Function to change the image for a specified gallery
+        function changeImage(galleryNumber, step) {
+          if (galleryNumber === 1) {
+            currentIndex1 = (currentIndex1 + step + gallery1Images.length) % gallery1Images.length;
+            document.getElementById('galleryImage1').src = gallery1Images[currentIndex1];
+          } else if (galleryNumber === 2) {
+            currentIndex2 = (currentIndex2 + step + gallery2Images.length) % gallery2Images.length;
+            document.getElementById('galleryImage2').src = gallery2Images[currentIndex2];
+          }
+        }
+        </script>
+        
+        <div id="About the team" class="section">
+            <h2>About the Team</h2>
+            <div class="team-container">
+            <div class="team-member">
+                <img src="{% static 'images/m_brown.jpg' %}" alt="Mitchell Brown">
+                <h3>Mitchell Brown</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science</p>
+                <p>Software Engineering/Data Engineering</p>
+                <p>API Team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/mitchell-brown-7a36191bb/">LinkedIn</a>
+                <a href="https://github.com/MitchellBrownNE">GitHub</a>
+            </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/UPW_WSU-ENG-PORTRAIT_136.jpg' %}" alt="Jordan Grewe">
+                <h3>Jordan Grewe</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science</p>
+                <p>Embedded Systems/Software Engineering</p>
+                <p>Team Lead/Hardware Team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/jordan-grewe-856622252/">LinkedIn</a>
+                <a href="https://grewestr.github.io/">Portfolio</a>
+            </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/t_kos.jpg' %}" alt="Timothy Kosinski">
+                <h3>Timothy Kosinski</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science</p>
+                <p>Embedded Systems</p>
+                <p>Hardware Team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/timothy-kosinski/">LinkedIn</a>
+                <a href="https://github.com/TKosinski24">GitHub</a>
+            </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/r_jol.jpg' %}" alt="Rory Jolliff">
+                <h3>Rory Jolliff</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science & in Physics</p>
+                <p>Advanced physics</p>
+                <p>API team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/roryjolliff/ ">LinkedIn</a>
+            </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/n_moh.jpg' %}" alt="Najib Mohammed">
+                <h3>Najib Mohammed</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science</p>
+                <p>Cyber Security/Software Engineering</p>
+                <p>OCR team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/najib-mohammed-2617b0294">LinkedIn</a>
+            </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/A_elf.jpg' %}" alt="Ayman Elfayoumi">
+                <h3>Ayman Elfayoumi</h3>
+                <p>Wayne State University</p>
+                <p>B.S. in Computer Science</p>
+                <p>Full-Stack Software Engineer</p>
+                <p>OCR team</p>
+                <div class="social-links">
+                <a href="https://www.linkedin.com/in/ayman-elfayoumi-377937245/">LinkedIn</a>
+            </div>
+            </div>
+            </div>
+            </div>
+    </div>
+
+</body>
+</html>

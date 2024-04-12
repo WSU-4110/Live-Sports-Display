@@ -1,0 +1,212 @@
+body {
+    background-image:url("{% static 'images/1pX9.gif' %}"); background-repeat:repeat; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;        
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.gallery-container {
+  max-width: 600px;
+  margin: 20px auto; 
+}
+
+#galleryImage {
+  width: 100%;
+  max-width: 100%;
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+main {
+    background-color: #fff; 
+    padding: 20px; 
+    margin: 20px auto; 
+    width: 80%; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+}
+#confirmationStatus {
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+
+.border {
+    max-width: 1300px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+    .header img {
+        height: 100px;
+    }
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+    .nav li {
+        margin: 0 20px;
+    }
+
+    .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+        .nav a:hover {
+            text-decoration: line-through Red 4px;
+        }
+
+h2 {
+    color: #000;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.section {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    -webkit-box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
+    -moz-box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
+    box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
+    border-radius: 18px 18px 18px 18px;
+    -moz-border-radius: 18px 18px 18px 18px;
+    -webkit-border-radius: 18px 18px 18px 18px;
+    border: 2px solid #f0f0f0;
+}
+
+.custom-button {
+    font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+    font-weight: bold; /* Optionally set font weight */
+    font-size: 16px; /* Optionally set font size */
+    color: #fff; /* Text color */
+    background-color: #333; /* Button background color */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    width: 700px;
+    cursor: default;
+}
+    .custom-button:hover {
+        color: #fff; /* Use the same color as the default state */
+        background-color: #333; /* Use the same background color as the default state */
+        opacity: 1;
+        /* Add other styles as needed */
+    }
+
+.add-button {
+    font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+    font-weight: bold; /* Optionally set font weight */
+    font-size: 16px; /* Optionally set font size */
+    color: #fff; /* Text color */
+    background-color: #333; /* Button background color */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    cursor: pointer; /* Show pointer cursor on hover */
+    width: 400px;
+}
+
+.close-button {
+    color: #fff; /* Text color */
+    cursor: pointer; /* Cursor style */
+    background-color: #333; /* Background color */
+    border: 3px solid #fff; /* Border style */
+    border-radius: 50%; /* Rounded border for a circular button */
+    padding: 5px; /* Padding around the button content */
+}
+    .close-button:hover {
+        color: red; /* Change text color on hover */
+        border: 3px solid red;
+        cursor: pointer; /* Show pointer cursor on hover */
+    }
+
+#names {
+    display: none; /* Hide the textarea */
+}
+
+.message {
+    font-size: 17px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.button {
+    background-color: #021480;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px; 
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #021480;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 60px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0259d4;
+    transform: translateY(4px);
+}
+
+input[type="text"] {
+    display: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover + input[type="text"] {
+    display: inline-block;
+    position: absolute;
+    top: -40px;
+}
+
+

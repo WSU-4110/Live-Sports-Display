@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+        <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stats Page</title>
+        
+    </head>
+
+    <body class="body">
+        <div class="header">
+            <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+            <ul class="nav">
+                <li><a href='/'>Home</a></li>
+                <li><a href="/upload/">Upload Roster</a></li>
+
+            
+            </ul>
+        </div>
+
+        <center>
+            <h2>Statistics Page</h2>
+            <p>Here you can view the statistics of the games that have been played.</p>
+        <ul>
+                <li><a href="/league_standings/" class="stats-button">League Standings</a></li>
+                <br>
+                <li><a href="/game_schedule/" class="stats-button">Game Schedule</a></li>
+                <br>
+                <li>
+                    <form action="/live_team_stats/" method="get">
+                        <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                        <input type="submit" value="Get Live Team Stats">
+                    </form>
+                </li>
+                <li>
+                    <form action="/live_game_stats/" method="get">
+                        <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                        <input type="submit" value="Get Live Game Stats">
+                    </form>
+                </li>
+                <li>
+                    <form action="/live_player_stats/" method="get">
+                        <input type="text" name="inputted_player_name" placeholder="Enter player name">
+                        <input type="submit" value="Get Live Player Stats">
+                    </form>
+        </ul>
+    </center>
+    </body>
+
+
+</html>
