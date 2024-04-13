@@ -67,8 +67,9 @@
                     <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
                     <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
                     <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
-                    {% empty %}
-                    <li> {{ name }} is not playing.</li>
+                    {% if stats is None %}
+                    <li>{{ name }} is not playing.</li>
+                    {% endif %}
                     {% endif %}
                     {% endfor %}
                 </ul>
