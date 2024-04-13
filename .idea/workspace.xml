@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f441c43-ce7e-4277-a24f-90039a71a4b6" name="Changes" comment="" />
+    <list default="true" id="6f441c43-ce7e-4277-a24f-90039a71a4b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/LiveStats/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/LiveStats/templates/upload.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
