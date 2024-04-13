@@ -53,12 +53,11 @@ h1 {
     padding: 0;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .nav li {
     margin: 0 20px;
+	
     flex: 1;
 }
 
