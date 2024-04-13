@@ -167,13 +167,13 @@ textarea {
     padding: 10px 20px;
     cursor: pointer;
     text-align: center;
+    margin: 20px auto;
 }
 
 .custom-button {
     width: 700px;
     cursor: default;
     text-align: center;
-    margin: 0 auto 10px;
     border-radius: 20px;
 }
 
