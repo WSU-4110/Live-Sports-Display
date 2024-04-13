@@ -20,9 +20,10 @@
             grid-template-columns: 1fr 0fr 1fr;
             justify-items: center;
             align-items: center;
-            gap: 0px;
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
+            margin-left: 25%;
+            margin-right: 25%;
         }
         .team, .vs, .stat-type {
             font-weight: bold;
@@ -31,10 +32,6 @@
         {
             font-size: 30px;
             text-decoration: underline;
-        }
-        .game{
-            padding: 20px;
-            margin: 20px;
         }
     </style>
 </head>
@@ -55,7 +52,7 @@
     {% if not stats %}
     <h1 class="team">{{ inputted_team_name}} is not currently playing</h1>
     {% else %}
-    <div class="game">
+    <div class="section">
         <div class="game-title">
             <span class="team">{{ stats.0.team_name }}</span>
             <span class="vs">vs</span>
