@@ -158,16 +158,17 @@ textarea {
 
 /* Button Styles */
 .custom-button, .add-button {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;
-    font-size: 16px;
-    color: #333;
-    background-color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+    font-size: 18px;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 .custom-button {
