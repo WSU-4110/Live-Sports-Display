@@ -352,3 +352,16 @@ input[type="submit"]:hover {
 .gallery-buttons button:hover {
     background-color: #1c1c1e;
 }
+
+/*For results.html*/
+#names {
+    display: none;
+}
+
+.message {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
