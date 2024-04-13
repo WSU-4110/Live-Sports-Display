@@ -364,10 +364,12 @@ input[type="submit"]:hover {
     background-color: white;
     color: black;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
-    font-family: Arial, sans-serif; 
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
     font-size: 18px;
     text-align: center;
+    margin: 0 auto;
 }
