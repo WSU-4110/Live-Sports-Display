@@ -57,6 +57,7 @@ h1 {
 
 .nav li {
     margin: 0 20px;
+	
     flex: 1;
 }
 
