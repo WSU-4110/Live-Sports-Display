@@ -248,7 +248,7 @@ class GameFacade:
                 reader = csv.reader(file)
 
                 for row in reader:
-                    if row[date_col] == f"{year}-{month}-07":
+                    if row[date_col] == f"{year}-{month}-{day}":
                         schedule.append(Schedule(row[1], row[2] , row[3] , row[4]))
         
         

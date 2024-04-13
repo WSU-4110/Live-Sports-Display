@@ -14,11 +14,8 @@
             flex-direction: column;
             align-items: center;
             margin: 0 auto;
-            border : 1px solid black;
             padding: 20px;
-            border-radius: 10px;
             width: 400px;
-            background-color: rgba(227, 227, 227, 0.15);
         }
         .player-title
         {
@@ -53,7 +50,7 @@
     </div>
 
 
-    <div class="player">
+    <div class="section, player">
         {% if not stats %}
             <h2> {{ inputted_player_name }} is not playing.</h2>
         {% else %}
