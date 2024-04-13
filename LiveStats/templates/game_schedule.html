@@ -9,19 +9,15 @@
     <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
 
     <style>
-        .schedule_border {
-            margin-left: 15%;
-            margin-right: 15%;
-        }
-        .title {
+        .no-game {
             display: flex;
             text-align: center;
             font-size: 30px;
             margin-bottom: 20px;
             padding: 10px;
             display: block;
-            margin-left: 25%;
-            margin-right: 25%;
+            margin-left: 50%;
+            margin-top: 50%;
     }
     
         .schedule {
@@ -32,6 +28,8 @@
             align-items: center;
             padding: 0;
             margin: auto;
+            margin-left: 15%;
+            margin-right: 15%;
     }
     
         .game {
@@ -51,7 +49,6 @@
 </head>
 
 
-
 <body class="body">   
     <div class="header">
         <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
@@ -62,10 +59,9 @@
         </ul>
     </div>
 
-
-    <div class="schedule_border">
+    <div class="section">
         {% if not schedule %}
-        <div class="title">No games scheduled today</div>
+        <div class="no-game">No games scheduled today</div>
         {% else %}
         <div class="schedule">
             {% for game in schedule %}
