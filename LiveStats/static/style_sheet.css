@@ -161,8 +161,8 @@ textarea {
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;
     font-size: 16px;
-    color: #fff;
-    background-color: #333;
+    color: #333;
+    background-color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
