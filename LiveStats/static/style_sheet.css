@@ -66,7 +66,7 @@ h1 {
     font-size: 20px;
     font-family: "Arial Black", Gadget, sans-serif;
     text-align: center;
-
+    display: inline-block;
         border: 5px solid black;
         padding: 10px;
 	margin: 10px;
