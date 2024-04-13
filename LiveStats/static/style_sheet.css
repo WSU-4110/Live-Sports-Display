@@ -173,9 +173,9 @@ textarea {
 .custom-button {
     width: 700px;
     cursor: default;
-    padding-bottom: 20px;
     text-align: center;
-    margin: 0 auto;
+    margin: 0 auto 10px;
+    border-radius: 20px;
 }
 
 .custom-button:hover, .add-button:hover {
@@ -364,12 +364,21 @@ input[type="submit"]:hover {
     background-color: white;
     color: black;
     padding: 20px;
-    border-radius: 30px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;
     font-size: 18px;
     text-align: center;
+    margin: 0 auto;
+}
+
+#newNameInput {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
     margin: 0 auto;
 }
