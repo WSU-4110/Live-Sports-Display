@@ -58,7 +58,7 @@
                     {% for stats in StatsArray %}
 
                     {% if  name  ==  stats.name  %}
-                    <li>Player Name: {{ stats.name }}</li>
+                    <li><strong>{{ stats.name }}</strong> </li>
                     <li>Points: {{ stats.points }}</li>
                     <li>Assists: {{ stats.assists }}</li>
                     <li>Rebounds: {{ stats.rebounds }}</li>
@@ -67,9 +67,8 @@
                     <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
                     <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
                     <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
-                    {% if not stats %}
+                    {% empty %}
                     <li> {{ name }} is not playing.</li>
-                    {% endif %}
                     {% endif %}
                     {% endfor %}
                 </ul>
