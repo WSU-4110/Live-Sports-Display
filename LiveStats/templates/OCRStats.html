@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div class="container">
-        <h1>OCR Stats</h1>
+        <h1>Live Stats</h1>
 
         <h2>Player Stats</h2>
         <ul>
@@ -31,6 +31,7 @@
                 <ul>
 
                     {% for stats in StatsArray %}
+
                     {% if  name  ==  stats.name  %}
                     <li>Player Name: {{ stats.name }}</li>
                     <li>Points: {{ stats.points }}</li>
@@ -41,8 +42,9 @@
                     <li>Field Goal Percentage: {{ stats.field_goals_pct }}</li>
                     <li>Three Point Percentage: {{ stats.three_points_pct }}</li>
                     <li>Free Throw Percentage: {{ stats.free_throws_pct }}</li>
-                    {% else %}
-                    <li>Player Name: {{ stats.name }} is currently not playing</li>
+                    {% if not stats %}
+                    <li> {{ name }} is not playing.</li>
+                    {% endif %}
                     {% endif %}
                     {% endfor %}
                 </ul>
