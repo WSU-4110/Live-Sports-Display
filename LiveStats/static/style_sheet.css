@@ -168,12 +168,16 @@ textarea {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .custom-button {
     width: 700px;
     cursor: default;
     padding-bottom: 20px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .custom-button:hover, .add-button:hover {
@@ -362,6 +366,10 @@ input[type="submit"]:hover {
     background-color: white;
     color: black;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    font-family: Arial, sans-serif; 
+    font-size: 18px;
+    text-align: center;
 }
