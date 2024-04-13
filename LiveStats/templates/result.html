@@ -17,6 +17,12 @@
             width: 100%; /* Define a width for the container */
             margin: 20px auto; /* Center the container horizontally */
         }
+        .container2 {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
     </style>
 </head>
 
@@ -35,7 +41,7 @@
         <p> Enter the name of any player who is missing and/or remove any unwanted players</p>
     </div>
     <div id="errorMessage" style="color: red; display: none;">Duplicate names are not allowed!</div>
-    <div class="container1">
+    <div class="container2">
         <input type="text" id="newNameInput">
     </div>
     
