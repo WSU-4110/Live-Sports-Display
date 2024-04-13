@@ -24,6 +24,7 @@
             font-weight: bold;
             padding: 10px;
             font-size: 20px;
+            color: white;
         }
         .team-name {
             font-weight: bold;
@@ -43,12 +44,11 @@
         </ul>
     </div>
 
-    <div class="team-standings-header">
-        <h1>NBA League Standings</h1>
-        <span>Team Name</span>
-        <span>Wins</span>
-        <span>Losses</span>
-    </div>
+    <h1>NBA League Standings</h1>
+    <div class="team-standings-header"></div>
+    <span>Team Name</span>
+    <span>Wins</span>
+    <span>Losses</span>
 
         {% for standing in standings %}
         <div class="section team-standings-line">
