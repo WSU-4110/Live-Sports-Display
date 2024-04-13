@@ -49,14 +49,14 @@
         <span>Wins</span>
         <span>Losses</span>
     </div>
-    
 
-        {% for standing in standings %}
-        <div class="section team-standings-line">
-            <span class="team-name">{{ standing.team_name }}</span>
-            <span>{{ standing.wins }}</span>
-            <span>{{ standing.losses }}</span>
-        </div>
+    
+    {% for standing in standings %}
+    <div class="section team-standings-line">
+        <span class="team-name">{{ standing.team_name }}</span>
+        <span>{{ standing.wins }}</span>
+        <span>{{ standing.losses }}</span>
+    </div>
     {% endfor %}
     </div>
 </body>
