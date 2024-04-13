@@ -58,9 +58,7 @@
     </div>
 
 
-    {% if not stats %}
-    <h1 class="title">{{ inputted_team_name}} is not currently playing</h1>
-    {% else %}
+    {% if stats %}
     <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
     <div class="team-box">
         <div class="team-stats-line">
@@ -74,20 +72,20 @@
                 <span>3P%</span>
                 <span>FT%</span>
         </div>
-    {% for player in stats.0 %}
-    <div class="player-stats-line">
-        <span class="player-name">{{ player.name }}</span>
-        <span>{{ player.points }}</span>
-        <span>{{ player.assists }}</span>
-        <span>{{ player.rebounds }}</span>
-        <span>{{ player.blocks }} </span>
-        <span>{{ player.steals }}</span>
-        <span>{{ player.field_goals_pct }}</span>
-        <span>{{ player.three_points_pct }}</span>
-        <span>{{ player.free_throws_pct }}</span>
-    </div>
+        {% for player in stats.0 %}
+        <div class="player-stats-line">
+            <span class="player-name">{{ player.name }}</span>
+            <span>{{ player.points }}</span>
+            <span>{{ player.assists }}</span>
+            <span>{{ player.rebounds }}</span>
+            <span>{{ player.blocks }} </span>
+            <span>{{ player.steals }}</span>
+            <span>{{ player.field_goals_pct }}</span>
+            <span>{{ player.three_points_pct }}</span>
+            <span>{{ player.free_throws_pct }}</span>
+        </div>
+    </div> 
     {% endfor %}
-    </div>
     <br><br><br>
 
     <div class="section">
@@ -116,6 +114,9 @@
         <span>{{ player.free_throws_pct }}</span>
     </div>
     {% endfor %}
+    </div>
+    {% else %}
+    <h1 class="team">{{ inputted_team_name}} is not currently playing</h1>
     {% endif %}
 </body>
 </html>
