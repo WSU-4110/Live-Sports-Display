@@ -185,6 +185,10 @@ textarea {
 
 .add-button {
     width: 400px;
+    cursor: default;
+    text-align: center;
+    margin: 0 auto 10px;
+    border-radius: 20px;
 }
 
 .close-button {
