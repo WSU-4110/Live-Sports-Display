@@ -24,6 +24,9 @@
             font-weight: bold;
             padding: 10px;
             font-size: 20px;
+        }
+        .team-standings-header {
+            text-decoration: underline;
             color: white;
         }
         .team-name {
@@ -45,17 +48,19 @@
     </div>
 
     <h1>NBA League Standings</h1>
-    <div class="team-standings-header"></div>
-    <span>Team Name</span>
-    <span>Wins</span>
-    <span>Losses</span>
+    <div class="team-standings-header   ">
+        <span>Team Name</span>
+        <span>Wins</span>
+        <span>Losses</span>
+    </div>
 
-        {% for standing in standings %}
-        <div class="section team-standings-line">
-            <span class="team-name">{{ standing.team_name }}</span>
-            <span>{{ standing.wins }}</span>
-            <span>{{ standing.losses }}</span>
-        </div>
+
+    {% for standing in standings %}
+    <div class="section team-standings-line">
+        <span class="team-name">{{ standing.team_name }}</span>
+        <span>{{ standing.wins }}</span>
+        <span>{{ standing.losses }}</span>
+    </div>
     {% endfor %}
     </div>
 </body>

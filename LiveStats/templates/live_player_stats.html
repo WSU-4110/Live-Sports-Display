@@ -50,14 +50,12 @@
     </div>
 
 
-    <div class="section, player">
+    <div class="player">
         {% if not stats %}
-            <h2> {{ inputted_player_name }} is not playing.</h2>
+        <h2> {{ inputted_player_name }} is not playing.</h2>
         {% else %}
 
-        <div class="player-title">
-            {{ stats.name }}
-        </div>
+        <div class="player-title">{{ stats.name }}</div>
         <div class="stat-line">
             <span class="stat-type">Points:</span>
             <span class="stat">{{ stats.points }}</span>
