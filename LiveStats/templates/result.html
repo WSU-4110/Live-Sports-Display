@@ -44,15 +44,16 @@
     <div class="container2">
         <input type="text" id="newNameInput">
     </div>
-    
+
     <button onclick="addNewName()" class="add-button">Click to Confirm Name</button>
 
-    <div id="buttonContainer"></div>
+    <div class="container2">
+        <div id="buttonContainer"></div>
+        </div>
+        <button onclick="sendPlayers()">Click to confirm and send players</button>
+        <button onclick="confirmPlayers()">Click to confirm players to be sent to the display</button>
 
-    <button onclick="sendPlayers()">Click to confirm and send players</button>
-    <button onclick="confirmPlayers()">Click to confirm players to be sent to the display</button>
-
-    <script>
+        <script>
 
         // Get the textarea element by its id
         let textarea = document.getElementById('names');
@@ -134,7 +135,7 @@
                 newNameInput.value = ''; // Clear the input field after adding the name
             }
         }
-        function sendPlayers() {          
+        function sendPlayers() {
             let form = document.createElement('form');
             form.setAttribute('method', 'POST');
             form.setAttribute('action', '/OCRStats/'); // Replace '/player_list/' with your Django view URL
@@ -159,66 +160,66 @@
             document.body.appendChild(form);
             form.submit();
         }
-    
+
 
         function confirmPlayers() {
             let playerString = playerArray.join(','); //NEEDED FOR SSH CALL PLS DONT DELETE
             alert('Sending players: ' + playerString); // ^^^^^^
             }
-    </script>
-    <div id="buttonContainer"></div>
-    <button id="singleDisplayBtn">Single Display</button>
-    <button id="stackedDisplayBtn">Stacked Display</button>
-    <div id="confirmationStatus"></div>
-    <script>
-        document.getElementById("singleDisplayBtn").onclick = function () {
-            let playerString = playerArray.join(', ');
-        
-            fetch('/run-single-display/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
-            }).then(response => response.json())
-                .then(data => {
-                    document.getElementById("confirmationStatus").innerText = data.message;
-                }).catch(error => console.error('Error:', error));
-        };
-        
-        document.getElementById("stackedDisplayBtn").onclick = function () {
-            let playerString = playerArray.join(',');
-        
-            fetch('/run-stacked-display/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
-            }).then(response => response.json())
-                .then(data => {
-                    document.getElementById("confirmationStatus").innerText = data.message;
-                }).catch(error => console.error('Error:', error));
-        };
+        </script>
+        <div id="buttonContainer"></div>
+        <button id="singleDisplayBtn">Single Display</button>
+        <button id="stackedDisplayBtn">Stacked Display</button>
+        <div id="confirmationStatus"></div>
+        <script>
+            document.getElementById("singleDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(', ');
 
-        
+                fetch('/run-single-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
 
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
+            document.getElementById("stackedDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(',');
+
+                fetch('/run-stacked-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
+
+
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
                     }
                 }
+                return cookieValue;
             }
-            return cookieValue;
-        }
-    </script>
+        </script>
 </body>
 </html>
