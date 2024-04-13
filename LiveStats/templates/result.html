@@ -181,62 +181,64 @@
             }
     </script>
     <div id="buttonContainer"></div>
-    <div class="button-container2">
-        <button onclick="sendPlayers()">Click to confirm and send players</button>
-        <button onclick="confirmPlayers()">Click to confirm players to be sent to the display</button>
-        <button id="singleDisplayBtn">Single Display</button>
-        <button id="stackedDisplayBtn">Stacked Display</button>
-    </div>
-    <div id="confirmationStatus"></div>
-    <script>
-        document.getElementById("singleDisplayBtn").onclick = function () {
-            let playerString = playerArray.join(', ');
+    <div class="container2">
+        <div class="button-container2">
+            <button onclick="sendPlayers()">Click to confirm and send players</button>
+            <button onclick="confirmPlayers()">Click to confirm players to be sent to the display</button>
+            <button id="singleDisplayBtn">Single Display</button>
+            <button id="stackedDisplayBtn">Stacked Display</button>
+        </div>
+        </div>
+        <div id="confirmationStatus"></div>
+        <script>
+            document.getElementById("singleDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(', ');
 
-            fetch('/run-single-display/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
-            }).then(response => response.json())
-                .then(data => {
-                    document.getElementById("confirmationStatus").innerText = data.message;
-                }).catch(error => console.error('Error:', error));
-        };
+                fetch('/run-single-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
 
-        document.getElementById("stackedDisplayBtn").onclick = function () {
-            let playerString = playerArray.join(',');
+            document.getElementById("stackedDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(',');
 
-            fetch('/run-stacked-display/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
-            }).then(response => response.json())
-                .then(data => {
-                    document.getElementById("confirmationStatus").innerText = data.message;
-                }).catch(error => console.error('Error:', error));
-        };
+                fetch('/run-stacked-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
 
 
 
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
                     }
                 }
+                return cookieValue;
             }
-            return cookieValue;
-        }
-    </script>
+        </script>
 </body>
 </html>
