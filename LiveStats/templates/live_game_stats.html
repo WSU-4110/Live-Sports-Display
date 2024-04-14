@@ -36,7 +36,7 @@
                 <span>FT%</span>
         </div>
         {% for player in stats.0 %}
-        <div class="player-stats-line">
+        <div class="players-stats-line">
             <span class="player-name">{{ player.name }}</span>
             <span>{{ player.points }}</span>
             <span>{{ player.assists }}</span>
@@ -68,8 +68,8 @@
 
 
         {% for player in stats.1 %}
-        <div class="player-stats-line">
-            <div class="player-name">{{ player.name }}</div>
+        <div class="players-stats-line">
+            <span class="player-name">{{ player.name }}</span>
             <span>{{ player.points }}</span>
             <span>{{ player.assists }}</span>
             <span>{{ player.rebounds }}</span>
