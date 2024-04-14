@@ -400,6 +400,40 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 .team-name {
         font-weight: bold;
 }
+.team-box {
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: rgba(227, 227, 227, 0.15);
+}
+.team-stats-line {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-weight: bold;
+}
+.player-stats-line {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+}
+.player-name {
+        font-weight: bold;
+}
+.title {
+        font-size: 50px;
+        text-align: center;
+        text-decoration: underline;
+}
 
 #newNameInput {
     width: 300px;
