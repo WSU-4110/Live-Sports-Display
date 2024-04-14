@@ -398,7 +398,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 .team-standings-header {
         text-decoration: underline;
-        color: white;
 }
 .team-name {
         font-weight: bold;
@@ -497,6 +496,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    font-weight: bold;    
 }
 
 #newNameInput {
