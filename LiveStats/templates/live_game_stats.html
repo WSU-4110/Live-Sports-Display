@@ -35,19 +35,19 @@
                 <span>3P%</span>
                 <span>FT%</span>
         </div>
+        {% for player in stats.0 %}
         <div class="player-stats-line">
-            {% for player in stats.0 %}
-            <span class="player-name">{{ player.name }}</span>
-            <span>{{ player.points }}</span>
-            <span>{{ player.assists }}</span>
-            <span>{{ player.rebounds }}</span>
-            <span>{{ player.blocks }} </span>
-            <span>{{ player.steals }}</span>
-            <span>{{ player.field_goals_pct }}</span>
-            <span>{{ player.three_points_pct }}</span>
-            <span>{{ player.free_throws_pct }}</span>
-            {% endfor %}
+            <div class="player-name">{{ player.name }}</div>
+            <div>{{ player.points }}</div>
+            <div>{{ player.assists }}</div>
+            <div>{{ player.rebounds }}</div>
+            <div>{{ player.blocks }} </div>
+            <div>{{ player.steals }}</div>
+            <div>{{ player.field_goals_pct }}</div>
+            <div>{{ player.three_points_pct }}</div>
+            <div>{{ player.free_throws_pct }}</div>
         </div>
+        {% endfor %}
     </div> 
 
         
@@ -66,19 +66,20 @@
             <span>FT%</span>
         </div>
 
+        
+        {% for player in stats.1 %}
         <div class="player-stats-line">
-            {% for player in stats.1 %}
-            <span class="player-name">{{ player.name }}</span>
-            <span>{{ player.points }}</span>
-            <span>{{ player.assists }}</span>
-            <span>{{ player.rebounds }}</span>
-            <span>{{ player.blocks }} </span>
-            <span>{{ player.steals }}</span>
-            <span>{{ player.field_goals_pct }}</span>
-            <span>{{ player.three_points_pct }}</span>
-            <span>{{ player.free_throws_pct }}</span>
-            {% endfor %}
+            <div class="player-name">{{ player.name }}</div>
+            <div>{{ player.points }}</div>
+            <div>{{ player.assists }}</div>
+            <div>{{ player.rebounds }}</div>
+            <div>{{ player.blocks }} </div>
+            <div>{{ player.steals }}</div>
+            <div>{{ player.field_goals_pct }}</div>
+            <div>{{ player.three_points_pct }}</div>
+            <div>{{ player.free_throws_pct }}</div>
         </div>
+        {% endfor %}
     </div>
 
     {% else %}

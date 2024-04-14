@@ -428,8 +428,10 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 .title {
         font-size: 50px;
+        color:white;
         text-align: center;
         text-decoration: underline;
+
 }
 /*For game_schedule.html page */
 .no-game {
