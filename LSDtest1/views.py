@@ -69,7 +69,7 @@ def run_single_display(request):
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname, port=port, username=username, password=password)
             execute_command = (
-                f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt "
+                f"echo -n '{player_names}' > /home/jordan/env1/pyscripts/Players.txt "
             )
             stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
             
