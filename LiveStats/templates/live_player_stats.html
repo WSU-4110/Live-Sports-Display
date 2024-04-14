@@ -7,34 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
-
-    <style>
-        .player {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 auto;
-            padding: 20px;
-            width: 400px;
-        }
-        .player-title
-        {
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: underline;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .stat-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .stat, .stat-type {
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 
@@ -50,43 +22,43 @@
     </div>
 
 
-    <div class="player">
+    <div class="player section">
         {% if not stats %}
         <h2> {{ inputted_player_name }} is not playing.</h2>
         {% else %}
 
         <div class="player-title">{{ stats.name }}</div>
-        <div class="stat-line">
-            <span class="stat-type">Points:</span>
-            <span class="stat">{{ stats.points }}</span>
+        <div class="player-stat-line">
+            <span>Points:</span>
+            <span>{{ stats.points }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Assists:</span>
-            <span class="stat">{{ stats.assists }}</span>
+        <div class="player-stat-line">
+            <span>Assists:</span>
+            <span>{{ stats.assists }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Rebounds:</span>
-            <span class="stat">{{ stats.rebounds }}</span>
+        <div class="player-stat-line">
+            <span>Rebounds:</span>
+            <span>{{ stats.rebounds }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Steals:</span>
-            <span class="stat">{{ stats.steals }}</span>
+        <div class="player-stat-line">
+            <span>Steals:</span>
+            <span>{{ stats.steals }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Blocks:</span>
-            <span class="stat">{{ stats.blocks }}</span>
+        <div class="player-stat-line">
+            <span>Blocks:</span>
+            <span>{{ stats.blocks }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Field Goal Percentage:</span>
-            <span class="stat">{{ stats.field_goals_pct }}</span>
+        <div class="player-stat-line">
+            <span>Field Goal Percentage:</span>
+            <span>{{ stats.field_goals_pct }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Three Point Percentage:</span>
-            <span class="stat">{{ stats.three_points_pct }}</span>
+        <div class="player-stat-line">
+            <span>Three Point Percentage:</span>
+            <span>{{ stats.three_points_pct }}</span>
         </div>
-        <div class="stat-line">
-            <span class="stat-type">Free Throw Percentage:</span>
-            <span class="stat">{{ stats.free_throws_pct }}</span>
+        <div class="player-stat-line">
+            <span>Free Throw Percentage:</span>
+            <span>{{ stats.free_throws_pct }}</span>
         </div>
         {% endif %}
     </div>
