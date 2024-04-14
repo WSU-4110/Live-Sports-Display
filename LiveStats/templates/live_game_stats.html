@@ -35,8 +35,8 @@
                 <span>3P%</span>
                 <span>FT%</span>
         </div>
-        {% for player in stats.0 %}
         <div class="player-stats-line">
+            {% for player in stats.0 %}
             <span class="player-name">{{ player.name }}</span>
             <span>{{ player.points }}</span>
             <span>{{ player.assists }}</span>
@@ -46,8 +46,8 @@
             <span>{{ player.field_goals_pct }}</span>
             <span>{{ player.three_points_pct }}</span>
             <span>{{ player.free_throws_pct }}</span>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div> 
 
         
@@ -66,10 +66,8 @@
             <span>FT%</span>
         </div>
 
-
-
-        {% for player in stats.1 %}
         <div class="player-stats-line">
+            {% for player in stats.1 %}
             <span class="player-name">{{ player.name }}</span>
             <span>{{ player.points }}</span>
             <span>{{ player.assists }}</span>
@@ -79,8 +77,8 @@
             <span>{{ player.field_goals_pct }}</span>
             <span>{{ player.three_points_pct }}</span>
             <span>{{ player.free_throws_pct }}</span>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
     {% else %}

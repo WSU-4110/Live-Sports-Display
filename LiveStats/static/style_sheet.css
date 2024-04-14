@@ -393,7 +393,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
    	    margin-left: 15%;
         margin-right: 15%;
     	font-weight: bold;
-	    padding: 10px;
 	    font-size: 20px;
 }
 .team-standings-header {
