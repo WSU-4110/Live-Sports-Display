@@ -167,6 +167,7 @@ textarea {
 	padding-right: 130px;
 	max-width: 500px;
 	text-align: center;
+	justify-content: center;
 }
 
 /* Button Styles */
