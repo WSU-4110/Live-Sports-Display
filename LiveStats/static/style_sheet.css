@@ -157,8 +157,6 @@ textarea {
     padding-right: 130px;
 }
 .thinSec{
-	display: flex;
-	flex-direction: row;
 	background: #ffffff;
 	top: 0;
 	bottom: 0;
