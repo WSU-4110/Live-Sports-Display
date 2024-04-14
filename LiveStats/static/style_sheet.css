@@ -158,6 +158,7 @@ textarea {
 }
 .thinSec{
 	display: flex;
+	flex-direction: row;
 	background: #ffffff;
 	top: 0;
 	bottom: 0;
