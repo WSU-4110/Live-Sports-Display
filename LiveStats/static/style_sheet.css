@@ -158,7 +158,11 @@ textarea {
 }
 .thinSec{
 	background: #fff;
-	margin: 20px 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
 	padding: 20px;
 	box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
 	border-radius: 18px;
