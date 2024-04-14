@@ -384,25 +384,25 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     margin: 20px auto;
 }
 .team-standings-header, .team-standings-line {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            justify-items: center;
-            align-items: center;
-            justify-content: space-evenly;
-            margin-bottom: 20px;
-            margin-left: 15%;
-            margin-right: 15%;
-            font-weight: bold;
-            padding: 10px;
-            font-size: 20px;
-        }
-        .team-standings-header {
-            text-decoration: underline;
-            color: white;
-        }
-        .team-name {
-            font-weight: bold;
-        }
+	display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+    	justify-content: space-evenly;
+        margin-bottom: 20px;
+   	 margin-left: 15%;
+        margin-right: 15%;
+    	font-weight: bold;
+	padding: 10px;
+	font-size: 20px;
+}
+.team-standings-header {
+        text-decoration: underline;
+        color: black;
+}
+.team-name {
+        font-weight: bold;
+}
 
 #newNameInput {
     width: 300px;
