@@ -157,8 +157,6 @@ textarea {
     padding-right: 130px;
 }
 .thinSec{
-	display: flex;
-	flex-direction: row;
 	background: #ffffff;
 	top: 0;
 	bottom: 0;
@@ -246,9 +244,9 @@ input[type="file"] {
     width: 100%; 
     box-sizing: border-box; 
 }
-/*Upload and OCR*/
-button[type="submit"], .stats-button {
-    padding: 12px 20px;
+/*Upload and OCR and For Looking At team stats button*/
+button[type="submit"], input[type="submit"], .stats-button {
+    padding: 12px 0px;
     cursor: pointer;
     display: block;
     width: 100%;
@@ -263,30 +261,11 @@ button[type="submit"], .stats-button {
 
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     background-color: #1c1c1e; 
 }
 
-/*For Looking At team stats button*/
-input[type="submit"] {
-    padding: 12px 20px;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    margin-top: 0;
-    background-color: #2d2d30; 
-    color: #fff; 
-    border: none;
-    border-radius: 20px; 
-    font-size: 16px;
-    font-weight: bold; 
-    transition: background-color 0.3s;
 
-}
-
-input[type="submit"]:hover {
-    background-color: #1c1c1e; 
-}
 
 .standing-entry {
     margin-bottom: 50px;
