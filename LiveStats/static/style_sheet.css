@@ -395,7 +395,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 .team-standings-header {
         text-decoration: underline;
-        color: black;
+        color: white;
 }
 .team-name {
         font-weight: bold;
