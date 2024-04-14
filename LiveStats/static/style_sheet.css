@@ -17,7 +17,6 @@ ul {
 	list-style-type: none;
 }
 main { /* Adding gradient */
-	position: fixed;
 	top: auto;
 	height: 50px;
 	width: 100%;
