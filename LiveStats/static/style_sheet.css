@@ -246,7 +246,7 @@ input[type="file"] {
 }
 /*Upload and OCR*/
 button[type="submit"], .stats-button {
-    padding: 12px 20px;
+    padding: 12px 0px;
     cursor: pointer;
     display: block;
     width: 100%;
