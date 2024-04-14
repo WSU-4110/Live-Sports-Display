@@ -14,9 +14,6 @@ body {
     height: 100%;
 
 }
-ul {
-	list-style-type: none;
-}
 main { /* Adding gradient */
 	height: 50px;
 	width: 100%;
