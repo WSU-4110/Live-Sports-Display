@@ -380,31 +380,30 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     text-align: center;
     margin: 20px auto;
 }
+
+
+/*For league_standings.html page */
 .team-standings-header, .team-standings-line {
-	display: grid;
+	    display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
         align-items: center;
     	justify-content: space-evenly;
         margin-bottom: 20px;
-   	 margin-left: 15%;
+   	    margin-left: 15%;
         margin-right: 15%;
     	font-weight: bold;
-	padding: 10px;
-	font-size: 20px;
+	    padding: 10px;
+	    font-size: 20px;
 }
 .team-standings-header {
         text-decoration: underline;
-        color: black;
+        color: white;
 }
 .team-name {
         font-weight: bold;
 }
-.team-box {
-        border: 1px solid black;
-        border-radius: 10px;
-        background-color: rgba(227, 227, 227, 0.15);
-}
+/*For live_game_stats.html page */
 .team-stats-line {
         display: grid;
         grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -434,6 +433,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         text-align: center;
         text-decoration: underline;
 }
+/*For game_schedule.html page */
 
 #newNameInput {
     width: 300px;
