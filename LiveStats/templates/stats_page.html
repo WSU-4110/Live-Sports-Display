@@ -21,32 +21,26 @@
             </ul>
         </div>
         <main>
-        <ul>
-            <li class="thinSec">
-                <h1>Statistics Page</h1>
-                <p>Here you can view the statistics of the games that have been played.</p>
-                <a href="/league_standings/" class="stats-button">League Standings</a>
-                <a href="/game_schedule/" class="stats-button">Game Schedule</a>
-            </li>
-            <li>
-                <form action="/live_team_stats/" method="get">
-                    <input type="text" name="inputted_team_name" placeholder="Enter team name">
-                    <input type="submit" value="Get Live Team Stats">
-                </form>
-            </li>
-            <li>
-                <form action="/live_game_stats/" method="get">
-                    <input type="text" name="inputted_team_name" placeholder="Enter team name">
-                    <input type="submit" value="Get Live Game Stats">
-                </form>
-            </li>
-            <li>
-                <form action="/live_player_stats/" method="get">
-                    <input type="text" name="inputted_player_name" placeholder="Enter player name">
-                    <input type="submit" value="Get Live Player Stats">
-                </form>
-            </li>
-        </ul>
+        <div class="thinsec">
+            <h1>Statistics Page</h1>
+            <p>Here you can view the statistics of the games that have been played.</p>
+            <a href="/league_standings/" class="stats-button">League Standings</a>
+            <a href="/game_schedule/" class="stats-button">Game Schedule</a>
+        </div>
+            <form action="/live_team_stats/" method="get">
+                <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                <input type="submit" value="Get Live Team Stats">
+            </form>
+            
+            <form action="/live_game_stats/" method="get">
+                <input type="text" name="inputted_team_name" placeholder="Enter team name">
+                <input type="submit" value="Get Live Game Stats">
+            </form>
+            
+            <form action="/live_player_stats/" method="get">
+                <input type="text" name="inputted_player_name" placeholder="Enter player name">
+                <input type="submit" value="Get Live Player Stats">
+            </form>
         </main>
     </body>
 
