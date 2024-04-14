@@ -157,17 +157,20 @@ textarea {
     padding-right: 130px;
 }
 .thinSec{
-	background: #fff;
-	margin: 20px 0;
-	padding: 20px;
-	box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
-	border-radius: 18px;
+	display: flex;
+	background: #ffffff;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 20px auto;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
 	border: 2px solid #f0f0f0;
-	padding-left: 130px;
-	padding-right: 130px;
+	padding: 20px;
 	max-width: 500px;
 	text-align: center;
-	justify-content: center;
+	justify-content: center; 
 }
 
 /* Button Styles */
