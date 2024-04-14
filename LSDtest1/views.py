@@ -24,7 +24,7 @@ def run_stacked_display(request):
         hostname = 'us2.pitunnel.com'  
         username = 'timkosinski'  
         password = '20010972'  
-        port = 36737  #Will change every bootup!
+        port = 51095  #Will change every bootup!
 
         execute_command = (
             f"echo '{player_names}' > /home/timkosinski/rpi-rgb-led-matrix/bindings/python/samples/Players.txt "
