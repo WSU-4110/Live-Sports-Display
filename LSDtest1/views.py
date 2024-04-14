@@ -62,27 +62,14 @@ def run_single_display(request):
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 36471
+        port = 44473
         try:
             # Initialize the SSH client with settings for PiTunnel access
             client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname, port=port, username=username, password=password)
-            
-            # Clear the content of the file before adding new names
-            clear_command = "truncate -s 0 /home/jordan/env1/pyscripts/Players.txt"
-            client.exec_command(clear_command)
-            
-            # Write new player names to the file
-            write_command = f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt"
-            client.exec_command(write_command)
-            
-            # Run other commands
             execute_command = (
-                "sudo su '"
-                "python3 -m venv /env1; "
-                "source /env1/bin/activate; "
-                "/home/jordan/env1/pyscripts/strandtest.py'"
+                f"echo '{player_names}' > /home/jordan/env1/pyscripts/Players.txt "
             )
             stdin, stdout, stderr = client.exec_command(execute_command, get_pty=True)
             
