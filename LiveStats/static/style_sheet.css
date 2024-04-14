@@ -419,6 +419,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         justify-items: center;
         align-items: center;
+        margin-top: 20px;
         margin-bottom: 20px;
         margin-left: 5%;
         margin-right: 5%;
