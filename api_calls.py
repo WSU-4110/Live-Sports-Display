@@ -1,7 +1,7 @@
 import http.client
 import json
 from datetime import datetime, timedelta
-import time
+from time import sleep
 import csv
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
@@ -173,7 +173,7 @@ class GameFacade:
             writer.writerow(["Team ID", "Team Name", "Player Name", "Position", "Jersey Number", "Player ID"])
 
             for team in nba_team_ids:
-                time.sleep(3)
+                sleep(2)
                 try:
                     self.connection.request("GET", f"/nba/trial/v8/en/teams/{team}//profile.json?api_key={api_key}")
                     response = self.connection.getresponse()
