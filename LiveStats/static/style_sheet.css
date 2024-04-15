@@ -613,3 +613,13 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     .ConfirmButton:hover {
         background-color: gray;
     }
+
+.StatsTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    color: white; /* Text color */
+    background-color: transparent; /* Background color */
+    padding: 10px; /* Padding around the content */
+    text-align: center; /* Center align the text */
+}

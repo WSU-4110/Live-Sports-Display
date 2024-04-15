@@ -44,6 +44,7 @@
 
         </ul>
     </div>
+    <div class="StatsTitle">Live Player Stats </div>
     <div class="container">
         <h1>Live Stats</h1>
 
@@ -52,7 +53,6 @@
             {% for name in NamesArray %}
             <li>
                 <ul class="special-list">
-
                     {% for stats in StatsArray %}
 
                     {% if  name  ==  stats.name  %}
@@ -68,9 +68,7 @@
 
                     {% endif %}
                     {% endfor %}
-                    {% if not stats %}
-                    <li>{{ name }} is not currently playing</li>
-                    {% endif %}
+
                 </ul>
 
             </li>
