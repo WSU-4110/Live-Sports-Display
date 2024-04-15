@@ -7,7 +7,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Archivo', sans-serif, Arial;
-    font-size:30px
     margin: 0;
     line-height: 1.6;
     color: #333;
@@ -218,10 +217,11 @@ textarea {
 .close-button {
     color: #fff;
     cursor: pointer;
-    background-color: #333;
-    border: 0px solid #333;
+    background-color: black;
+    border: 0px solid black;
     border-radius: 50%;
     padding: 5px;
+    font-size: 18px;
 }
 
 .close-button:hover {
@@ -588,12 +588,14 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 
 #confirmationStatus {
-    margin-top: 10px; 
-    padding: 10px; 
-    background-color: #dff0d8; 
+    margin-top: 10px;
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #fff; 
     color: #3c763d; 
     border: 1px solid #d6e9c6; 
-    border-radius: 4px; 
-    width: 100%; 
+    display: flex;
+    border-radius: 8px; 
+    max-width: 600px; 
     text-align: center;
 }
