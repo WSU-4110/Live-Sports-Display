@@ -22,11 +22,12 @@
     </div>
 
 
-    <div class="player section">
+    
         {% if not stats %}
-        <h2> {{ inputted_player_name }} is not playing.</h2>
+        <div class="no-game section-margin section"> {{ inputted_player_name }} is not playing.</div>
         {% else %}
-
+        
+    <div class="player section">
         <div class="player-title">{{ stats.name }}</div>
         <div class="player-stat-line">
             <span>Points:</span>
