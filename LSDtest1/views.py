@@ -59,7 +59,7 @@ def run_single_display(request):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
         player_names = data.get('players', '')  # Default to empty string if not provided
-        port = int(data.get('port')
+        port = int(data.get('port'))
         if port is None:
            return JsonResponse({"error": "Port number is required."}, status=400)
         hostname = 'us2.pitunnel.com'
