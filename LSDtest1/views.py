@@ -20,11 +20,12 @@ def run_stacked_display(request):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
         player_names = data.get('players', '')  # Default to empty string if not provided, player names from upload.html
-        
+        port = int(data.get('port'))
+        if port is None:
+                   return JsonResponse({"error": "Port number is required."}, status=400)
         hostname = 'us2.pitunnel.com'  
         username = 'timkosinski'  
         password = '20010972'  
-        port = 45907  #Will change every bootup!
 
         execute_command = (
             f"echo '{player_names}' > /home/timkosinski/rpi-rgb-led-matrix/bindings/python/samples/Players2.txt "
@@ -58,11 +59,13 @@ def run_single_display(request):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
         player_names = data.get('players', '')  # Default to empty string if not provided
-
+        port = int(data.get('port')
+        if port is None:
+           return JsonResponse({"error": "Port number is required."}, status=400)
         hostname = 'us2.pitunnel.com'
         username = 'jordan'
         password = 'CSC4110LSD'
-        port = 55945
+        
         try:
             # Initialize the SSH client with settings for PiTunnel access
             client = paramiko.SSHClient()
