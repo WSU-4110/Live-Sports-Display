@@ -405,8 +405,8 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 /*For live_game_stats.html page */
 .game-stats-padding {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
 }
 .team-stats-line {
         display: grid;
@@ -415,10 +415,10 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         align-items: center;
         font-size: 30px;
         margin-top: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 20px;    
+        font-weight: bold;
         margin-left: 5%;
         margin-right: 5%;
-        font-weight: bold;
 }
 .players-stats-line {
         display: grid;
@@ -503,7 +503,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 .game-title, .stat-line {
     display: grid;
-    grid-template-columns: 1fr 0fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
     text-align: center;
@@ -522,8 +522,8 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 .section-margin
 {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .no-game {
