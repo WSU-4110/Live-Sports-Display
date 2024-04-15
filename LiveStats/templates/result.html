@@ -197,6 +197,10 @@
             document.getElementById("singleDisplayBtn").onclick = function () {
                 let playerString = playerArray.join(', ');
                 let portNumber = document.getElementById('portInput').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
                 fetch('/run-single-display/', {
                     method: 'POST',
                     headers: {
@@ -213,6 +217,10 @@
             document.getElementById("stackedDisplayBtn").onclick = function () {
                 let playerString = playerArray.join(',');
                 let portNumber = document.getElementById('portInput2').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
                 fetch('/run-stacked-display/', {
                     method: 'POST',
                     headers: {
