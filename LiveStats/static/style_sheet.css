@@ -588,12 +588,14 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 
 #confirmationStatus {
-    margin-top: 10px; 
-    padding: 10px; 
-    background-color: #dff0d8; 
+    margin-top: 10px;
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #fff; 
     color: #3c763d; 
     border: 1px solid #d6e9c6; 
-    border-radius: 4px; 
-    width: 100%; 
+    display: flex;
+    border-radius: 8px; 
+    max-width: 600px; 
     text-align: center;
 }
