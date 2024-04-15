@@ -19,7 +19,6 @@
             <li><a href="/stats_page/">Statistics Page</a></li>
         </ul>
     </div>
-    <main>
     {% if stats %}
     <h1 class="title">Player statistics for {{ inputted_team_name}}'s current game</h1>    
     <div class="game-stats-padding section">
@@ -80,10 +79,8 @@
         </div>
         {% endfor %}
     </div>
-
     {% else %}
-    <h1 class="no-game section">{{ inputted_team_name}} is not currently playing</h1>
+    <div class="section no-game">{{ inputted_team_name}} is not currently playing</div>
     {% endif %}
-    </main>
 </body>
 </html>
