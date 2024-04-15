@@ -219,7 +219,7 @@ textarea {
     cursor: pointer;
     background-color: #fff;
     border: 3px solid #333;
-    border-radius: 70%;
+    border-radius: 50%;
     padding: 5px;
 }
 
@@ -390,8 +390,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         align-items: center;
     	justify-content: space-evenly;
         margin-bottom: 20px;
-   	    margin-left: 15%;
-        margin-right: 15%;
     	font-weight: bold;
 	    font-size: 20px;
 }
@@ -399,13 +397,17 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         text-decoration: underline;
 }
 .team-standings-padding {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-left: 15%;
+        margin-right: 15%;
 }
 .team-name {
         font-weight: bold;
 }
 /*For live_game_stats.html page */
+.game-stats-padding {
+        margin-left: 10%;
+        margin-right: 10%;
+}
 .team-stats-line {
         display: grid;
         grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
