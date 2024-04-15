@@ -527,6 +527,14 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     margin-right: 20%;
 }
 
+.no-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 #newNameInput {
     width: 300px;
     padding: 10px;
