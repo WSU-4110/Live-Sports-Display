@@ -157,7 +157,7 @@ class GameFacade:
     ''' Get the team roster in format of player name, position, and jersey number and player_id'''
     def download_nba_roster(self) -> None:
         nba_team_ids = []
-        nba_year = datetime.datetime.now().year - 1
+        nba_year = datetime.now().year - 1
         nba_year = str(nba_year)
 
         with open("nba_teams.csv", "r") as file:
@@ -205,7 +205,7 @@ class GameFacade:
 
     ### Game methods ###
     def get_league_standings(self) -> list:
-        year = datetime.datetime.now().year - 1
+        year = datetime.now().year - 1
         year = str(year)
 
         standings = []
