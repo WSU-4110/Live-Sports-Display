@@ -22,11 +22,11 @@
 
     <div class="schedule-box section">
         {% if not schedule %}
-        <div class="no-game">No games scheduled today</div>
+        <div class="team section">No games scheduled today</div>
         {% else %}
         <div class="schedule">
             {% for game in schedule %}
-                <span class="game"><span class="team">{{ game.home_team }}</span> vs <span class="team">{{ game.away_team }}</span> at <span class="time">{{ game.time }}</span></span>
+                <span class="game"><span class="schedule-team">{{ game.home_team }}</span> vs <span class="schedule-team">{{ game.away_team }}</span> at <span class="time">{{ game.time }}</span></span>
             {% endfor %}
         </div>
         {% endif %}

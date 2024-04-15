@@ -442,17 +442,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 
 }
 /*For game_schedule.html page */
-.no-game {
-    display: flex;
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
-    padding: 10px;
-    display: block;
-    margin-left: 50%;
-    margin-top: 50%;
-}
-
 .schedule-box
 {
     margin-left: 20%;
@@ -465,8 +454,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     gap: 10px;
     justify-items: center;
     align-items: center;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 
 .game {
@@ -477,7 +464,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     display: inline-block;
 }
 
-.team, .time {
+.schedule-team, .time {
     flex: 0.8;
     text-align: center;
     font-weight: bold;
