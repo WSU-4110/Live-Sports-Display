@@ -1,11 +1,11 @@
 import http.client
 import json
-import datetime
+from datetime import datetime, timedelta
 import time
 import csv
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
-time = datetime.datetime.now()
+time = datetime.now()
 month = str(time.month).zfill(2)
 day = str(time.day).zfill(2)
 year = str(time.year)
@@ -83,7 +83,7 @@ class GameFacade:
         GETTING FULL ROSTER, SCHEDULE, AND TEAM NAMES/TEAM ID
     '''
     def download_season_schedule(self)-> None:
-        nba_year = datetime.datetime.now().year - 1
+        nba_year = datetime.now().year - 1
         nba_year = str(nba_year)
         try:
             self.connection.request("GET", f"/nba/trial/v8/en/games/{nba_year}/REG/schedule.json?api_key={api_key}")
@@ -104,11 +104,12 @@ class GameFacade:
                 for game in json_data['games']:
 
                     ''' Convert GMT time to EST '''
-                    gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
-                    est_time = gmt_time - datetime.timedelta(hours=4)
+                    gmt_time = datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
+                    est_time = gmt_time - timedelta(hours=4)
                     est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
+                    est_time_12hr_format = est_time.strftime("%I:%M %p")
 
-                    writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], est_time_str[11:16]])
+                    writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], est_time_12hr_format])
 
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -541,4 +542,6 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
+
+api.download_season_schedule()
 ### End of main method ###
