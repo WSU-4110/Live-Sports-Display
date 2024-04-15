@@ -544,7 +544,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     margin: 20px auto; 
     padding: 20px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    border-radius: 8px; 
+    border-radius: 10px; 
     max-width: 600px; 
     display: flex;
     flex-direction: column; 
@@ -553,11 +553,13 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 
 .control-block {
-    width: 100%; 
-    padding: 10px 0; 
+    width: 100%;
+    padding: 10px 0;
     display: flex;
-    justify-content: space-between; 
-    margin-top: 10px; 
+    justify-content: space-between;
+    margin-top: 10px;
+    background-color: black; /* background color */
+    color: #fff; /* text color */
 }
 
 .control-block input[type="number"],
@@ -565,7 +567,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     flex: 1; 
     margin: 0 10px; 
     padding: 10px; 
-    border-radius: 4px; 
+    border-radius: 7px; 
     border: 1px solid #ccc; 
 }
 
@@ -591,3 +593,23 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     max-width: 600px; 
     text-align: center;
 }
+
+.ConfirmButton {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: 8px auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .ConfirmButton:hover {
+        background-color: gray;
+    }
