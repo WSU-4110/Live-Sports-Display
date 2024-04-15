@@ -180,7 +180,7 @@ textarea {
 
 /* Button Styles */
 .custom-button, .add-button {
-    background-color: white;
+    background-color: #2d2d30;
     color: #2d2d30;
     padding: 10px;
     border-radius: 10px;
