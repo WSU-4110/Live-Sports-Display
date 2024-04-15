@@ -107,8 +107,11 @@ class GameFacade:
                     gmt_time = datetime.datetime.strptime(game['scheduled'], "%Y-%m-%dT%H:%M:%SZ")
                     est_time = gmt_time - datetime.timedelta(hours=4)
                     est_time_str = est_time.strftime("%Y-%m-%d %H:%M:%S")
+                    time_str = est_time_str[11:16]
+                    time_obj = datetime.strptime(time_str, "%H:%M")
+                    time_12hr_format = time_obj.strftime("%I:%M %p")
 
-                    writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], est_time_str[11:16]])
+                    writer.writerow([game['id'], game['home']['name'], game['away']['name'], est_time_str[:10], time_12hr_format])
 
         # Catching exceptions #
         except json.JSONDecodeError as e:
@@ -467,7 +470,6 @@ class GameFacade:
             data = response.read()
             json_data = json.loads(data.decode("utf-8"))
 
-            print(json_data)
             ''' Add the home and away team stats to the teams list '''
             teams.append(TeamStats(json_data['home']['market'] + " " + json_data['home']['name'], json_data['home']['statistics']['points'], json_data['home']['statistics']['assists'], json_data['home']['statistics']['offensive_rebounds']+json_data['home']['statistics']['defensive_rebounds'], json_data['home']['statistics']['blocks'], json_data['home']['statistics']['steals'], json_data['home']['statistics']['field_goals_pct'], json_data['home']['statistics']['three_points_pct'], json_data['home']['statistics']['free_throws_pct']))
             teams.append(TeamStats(json_data['away']['market'] + " " + json_data['away']['name'], json_data['away']['statistics']['points'], json_data['away']['statistics']['assists'], json_data['away']['statistics']['offensive_rebounds']+json_data['away']['statistics']['defensive_rebounds'], json_data['away']['statistics']['blocks'], json_data['away']['statistics']['steals'], json_data['away']['statistics']['field_goals_pct'], json_data['away']['statistics']['three_points_pct'], json_data['away']['statistics']['free_throws_pct']))
@@ -479,7 +481,6 @@ class GameFacade:
             print(f"An exception occurred: {str(e)}")
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
-        
         return teams
     ### End of stats methods ###
 ## End of facade class for the API calls ##
