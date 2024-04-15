@@ -25,7 +25,7 @@
     </div>
 
     <div class="team-standings-padding section">
-        <span>NBA League Standings</span>
+        <span><h1>NBA League Standings</h1></span>
         <div class="team-standings-header">
             <span>Team Name</span>
             <span>Wins</span>
@@ -35,7 +35,7 @@
 
 
     {% for standing in standings %}
-    <div class="section team-standings-line">
+    <div class="team-standings-line team-standings-padding section">
         <span class="team-name">{{ standing.team_name }}</span>
         <span>{{ standing.wins }}</span>
         <span>{{ standing.losses }}</span>

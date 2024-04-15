@@ -508,11 +508,92 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     font-weight: bold;    
 }
 
+/*For live_team_stats.html page */
+.game-title
+{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+.game-title, .stat-line {
+    display: grid;
+    grid-template-columns: 1fr 0fr 1fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.stat-type {
+    margin-bottom: 25px;
+}
+.team
+{
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.section-margin
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #newNameInput {
     width: 300px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
-    
+}
+.display-control {
+    background-color: #fff; 
+    margin: 20px auto; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    max-width: 600px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    border: 2px solid #f0f0f0; 
+}
+
+.control-block {
+    width: 100%; 
+    padding: 10px 0; 
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 10px; 
+}
+
+.control-block input[type="number"],
+.control-block button {
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 10px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc; 
+}
+
+.control-block button {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+}
+
+.control-block button:hover {
+    background-color: #0056b3;
+}
+
+#confirmationStatus {
+    margin-top: 10px; 
+    padding: 10px; 
+    background-color: #dff0d8; 
+    color: #3c763d; 
+    border: 1px solid #d6e9c6; 
+    border-radius: 4px; 
+    width: 100%; 
+    text-align: center;
 }
