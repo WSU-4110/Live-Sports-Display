@@ -1,7 +1,7 @@
 import http.client
 import json
 from datetime import datetime, timedelta
-import time
+from time import sleep
 import csv
 
 api_key = '284s83ypFD8LAEu1Y6WFK5peMLz1KF0Y7jSFHizV'
@@ -157,7 +157,7 @@ class GameFacade:
     ''' Get the team roster in format of player name, position, and jersey number and player_id'''
     def download_nba_roster(self) -> None:
         nba_team_ids = []
-        nba_year = datetime.datetime.now().year - 1
+        nba_year = datetime.now().year - 1
         nba_year = str(nba_year)
 
         with open("nba_teams.csv", "r") as file:
@@ -173,7 +173,7 @@ class GameFacade:
             writer.writerow(["Team ID", "Team Name", "Player Name", "Position", "Jersey Number", "Player ID"])
 
             for team in nba_team_ids:
-                time.sleep(3)
+                sleep(2)
                 try:
                     self.connection.request("GET", f"/nba/trial/v8/en/teams/{team}//profile.json?api_key={api_key}")
                     response = self.connection.getresponse()
@@ -205,7 +205,7 @@ class GameFacade:
 
     ### Game methods ###
     def get_league_standings(self) -> list:
-        year = datetime.datetime.now().year - 1
+        year = datetime.now().year - 1
         year = str(year)
 
         standings = []
@@ -542,4 +542,6 @@ How to use the main method:
 7. The main method is a template to show how to call the methods, it is not meant to be run as is
 '''
 api = SportsAPI()
+
+api.download_nba_roster()
 ### End of main method ###
