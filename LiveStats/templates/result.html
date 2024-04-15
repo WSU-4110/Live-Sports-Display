@@ -181,27 +181,25 @@
             <div class="control-block">
                 <input type="number" id="portInput" placeholder="Enter Single Security Key" required>
                 <button id="singleDisplayBtn">Single Display</button>
-                <button onclick="stopDisplay('Single')">Stop Single Display</button>
+                <button onclick="stopSingleDisplay()">Stop Single Display</button>
             </div>
             <div class="control-block">
                 <input type="number" id="portInput2" placeholder="Enter Stacked Security Key" required>
                 <button id="stackedDisplayBtn">Stacked Display</button>
-                <button onclick="stopDisplay('Stacked')">Stop Stacked Display</button>
+                <button onclick="stopStackedDisplay()">Stop Stacked Display</button>
             </div>
         </div>
     
         <div id="confirmationStatus"></div>
         <script>
-            function stopDisplay(type) {
-                let portInput = type === 'single' ? 'portInput' : 'portInput2';
-                let portNumber = document.getElementById(portInput).value;
+            function stopSingleDisplay() {
+                let portNumber = document.getElementById('portInput').value;
                 if (!portNumber) {
                     alert('Please enter a port number.');
                     return;  // Stop the function if no port number is entered
                 }
-    
-                let actionUrl = type === 'single' ? '/run-single-display/' : '/run-stacked-display/';
-                fetch(actionUrl, {
+        
+                fetch('/run-single-display/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -213,6 +211,27 @@
                         document.getElementById("confirmationStatus").innerText = data.message;
                     }).catch(error => console.error('Error:', error));
             }
+        
+            function stopStackedDisplay() {
+                let portNumber = document.getElementById('portInput2').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
+        
+                fetch('/run-stacked-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stopDisplay', port: portNumber }) // Sending an empty array to stop
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            }
+
             document.getElementById("singleDisplayBtn").onclick = function () {
                 let playerString = playerArray.join(', ');
                 let portNumber = document.getElementById('portInput').value;
