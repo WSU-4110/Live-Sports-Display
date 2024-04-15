@@ -545,63 +545,54 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
-    
+}
 .display-control {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;  /* Light grey background */
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 60%; /* Adjusted width */
+    background-color: #fff; 
+    margin: 20px auto; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    max-width: 600px; 
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
+    border: 2px solid #f0f0f0; 
 }
 
 .control-block {
+    width: 100%; 
+    padding: 10px 0; 
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px; 
+    justify-content: space-between; 
+    margin-top: 10px; 
 }
 
-.control-block input,
+.control-block input[type="number"],
 .control-block button {
-    width: 200px; 
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ced4da; 
-    border-radius: 0.25rem;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075); 
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 10px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc; 
 }
 
 .control-block button {
-    color: #fff;
-    background-color: black; 
-    border-color: #007bff;
-    cursor: pointer;
-    font-size: 16px;
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
 }
 
 .control-block button:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
-
-.control-block button:active {
-    background-color: #005cbf;
-    border-color: #0056b3;
-    box-shadow: inset 0 3px 5px rgba(0,0,0,0.3); 
+    background-color: #0056b3;
 }
 
 #confirmationStatus {
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #e9ecef; 
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    color: #343a40; 
+    margin-top: 10px; 
+    padding: 10px; 
+    background-color: #dff0d8; 
+    color: #3c763d; 
+    border: 1px solid #d6e9c6; 
+    border-radius: 4px; 
+    width: 100%; 
     text-align: center;
 }
