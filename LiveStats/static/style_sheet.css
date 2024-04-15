@@ -558,7 +558,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    background-color: black; /* background color */
+    background-color: #fff; /* background color */
     color: #fff; /* text color */
 }
 
@@ -571,14 +571,14 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     border: 1px solid #ccc; 
 }
 
-.control-block button {
-    background-color: #007bff; 
-    color: white; 
-    border: none; 
-}
+    .control-block button {
+        background-color: #2d2d30;
+        color: white;
+        border: none;
+    }
 
 .control-block button:hover {
-    background-color: #0056b3;
+    background-color: gray;
 }
 
 #confirmationStatus {
@@ -595,7 +595,7 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 }
 
 .ConfirmButton {
-    background-color: black;
+    background-color: #2d2d30;
     color: white;
     padding: 10px;
     border-radius: 10px;
