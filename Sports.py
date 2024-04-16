@@ -76,7 +76,7 @@ class RunText(SampleBase):
         self.update_thread.start()
         
         
-        #Had issues from Previous Library... So included both incase of an Unexpected Error!
+        #Had issues from Previous Library... So included both in case of an Unexpected Error!
         try:
             self.resample_filter = Image.LANCZOS  # Newer versions of Pillow
         except AttributeError:
@@ -102,22 +102,19 @@ class RunText(SampleBase):
         self.updating_stats_color =graphics.Color(0, 255, 0) #Green
 
 
-        self.datetime_color = graphics.Color(255, 255, 255) # WHITE 
-        self.teamstats = graphics.Color(0, 255, 255)# CYAN -- still working on it.
+        self.datetime_color = graphics.Color(255, 255, 255) # WHITE
         
     
-
-        
     def display_image(self, offscreen_canvas, image_path):
         # Open the image using PIL
         image = Image.open(image_path)
-        # Resize the image to fit display
+        #Resize to fit display
         image = image.resize((128, 58), self.resample_filter)
         
-        # Convert the image to RGB format
+        #RGB format
         image = image.convert('RGB')
         
-        # Display the image on the LED matrix
+        #Displays image
         for x in range(128):
             for y in range(58):
                 r, g, b = image.getpixel((x, y))
@@ -129,18 +126,18 @@ class RunText(SampleBase):
         try:
             with open('Players2.txt','r') as file:
                 line = file.readline().strip()
-                if not line:  # Check if the line is empty
+                if not line:
                     self.players.clear()
-                    self.interrupt = 0
+                    self.interrupt = 0 #used to set back to homescreen
                     print("No players to load. File is empty.")
                     return
                 player_names = line.split(',')
                 for name in player_names:
-                    self.players.append(PlayerStats(name, "random", "0", "0", "0", "0", "0", "0%", "0%", "0%"))
+                    self.players.append(PlayerStats(name, "random", "0", "0", "0", "0", "0", "0%", "0%", "0%")) #defult values on load in.
         except IOError as e:
             print(f"An error occurred while reading the file: {e}")
             self.players.clear()
-            self.interrupt = 0 
+            self.interrupt = 0 #setting ot homescreen value
                 
     def populatePlayerStats(self):
         api =  GameFacade()
@@ -154,10 +151,10 @@ class RunText(SampleBase):
         # Prepare the offscreen canvas
         offscreen_canvas = self.matrix.CreateFrameCanvas()
 
-        # Clear the screen
+        #Clear the screen
         self.clearScreen(offscreen_canvas)
 
-        # Display the image for a certain period
+        #display the image for a certain period
         self.display_image(offscreen_canvas, 'Logo3.png')
         
        
@@ -178,7 +175,7 @@ class RunText(SampleBase):
                 self.display_image(offscreen_canvas, 'Logo3.png')
                 graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos-1, self.error_color, stats_Error)
                 time.sleep(1)
-                continue  # Skip to next player if an error occurs
+                continue  #skip to next player if an error occurs
 
             if not player_stats:
                 print(f"No stats found for {player.name}")
@@ -188,9 +185,8 @@ class RunText(SampleBase):
                 self.display_image(offscreen_canvas, 'Logo3.png')
                 graphics.DrawText(offscreen_canvas, self.font,x_pos, vertical_pos-1, self.no_stats_color, no_stats)
                 time.sleep(1)
-                continue  # Skip to next player if no stats were returned
-
-            found = False  # Flag to check if matching stats were found
+                continue  # skip to next player if no stats were found
+            found = False  
 
       
                 
@@ -307,7 +303,7 @@ class RunText(SampleBase):
         player_name_lengths = []
         
         for player in non_random_players :
-            # Temporarily draw the text offscreen to measure its length
+            # Used for the length
             length = graphics.DrawText(offscreen_canvas, self.font, -offscreen_canvas.width, -offscreen_canvas.height, self.name_color, player.name)
             player_name_lengths.append(length)
         
@@ -407,13 +403,13 @@ class RunText(SampleBase):
                         try:
                             updated_stats = self.api.get_live_player_stats(player.name)
                             if updated_stats:
-                                # Safely update player stats
+                                # good practice, safetly
                                 with threading.Lock():
                                     player.update_stats(updated_stats.name, updated_stats.team, updated_stats.points,updated_stats.assists, updated_stats.rebounds, updated_stats.blocks,updated_stats.steals, updated_stats.field_goals_pct,updated_stats.three_points_pct, updated_stats.free_throws_pct)
                             print(f"Updating stats for {player.name}")
                         except Exception as e:
                             print(f"Error updating stats for {player.name}: {e}")
-                time.sleep(120)  # AExecution Time
+                time.sleep(120)  # How long it takes for the thread to be used!
             else:
                 time.sleep(1)
                     
@@ -433,7 +429,7 @@ class RunText(SampleBase):
                 self.displayDateTime(offscreen_canvas)
 
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-            time.sleep(0.03)  # Adjust delay for refresh rate
+            time.sleep(0.03)  # Adjust for display speed. bigger the number the slower it is
 
             # Check for file updates
             try:
