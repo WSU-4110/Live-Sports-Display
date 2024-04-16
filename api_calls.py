@@ -249,7 +249,7 @@ class GameFacade:
                 reader = csv.reader(file)
 
                 for row in reader:
-                    if row[date_col] == f"{year}-{month}-07":
+                    if row[date_col] == f"{year}-{month}-12":
                         schedule.append(Schedule(row[1], row[2] , row[3] , row[4]))
         
         
@@ -367,7 +367,7 @@ class GameFacade:
         players = []
 
         try:
-            game_id = api.get_game_id(team_name, year, month, "07")
+            game_id = api.get_game_id(team_name, year, month, "12")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
@@ -416,7 +416,7 @@ class GameFacade:
                     if row[2] == player_name:
                         player_team = row[1]
 
-            game_id = api.get_game_id(player_team, year,month,"07")
+            game_id = api.get_game_id(player_team, year,month,"12")
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
 
@@ -456,7 +456,7 @@ class GameFacade:
         game_id = None
 
         try:
-            game_id = api.get_game_id(team_name, year, month, "07")
+            game_id = api.get_game_id(team_name, year, month, "12")
 
             self.connection.request("GET", f"/nba/trial/v8/en/games/{game_id}/summary.json?api_key={api_key}")
             response = self.connection.getresponse()
