@@ -50,7 +50,20 @@
             <h2>Development</h2>
             <p>Founded by a team of Wayne State Universities computer science students, Motion Matrix Media started with the vision of enhancing live sports viewing. Our journey from conceptualizing to creating interactive LED displays showcases our commitment to innovation.</p>
             <p>Dive deeper into our design process, meeting minutes, early versions, and more on our project's <a href="https://github.com/WSU-4110/Live-Sports-Display/wiki" target="_blank">GitHub Wiki page</a>.</p>
-        </div>
+            <div class="galleries-container">
+                <div class="gallery">
+                    <div class="image-box">
+                        <h3 class="image-title">Development Photos/h3>
+                        <img id="galleryImage3" src="{% static 'images/dev5.jpg' %}" alt="Image 1">
+                    </div>
+                    <div class="gallery-buttons">
+                        <button onclick="changeImage(1, -1)">Prev</button>
+                        <button onclick="changeImage(1, 1)">Next</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
 
         <div id="Current-version" class="section">
             <h2>Current Version</h2>
@@ -102,7 +115,17 @@
           "{% static 'images/Display2.jpg' %}",
           "{% static 'images/Display3.jpg' %}",
           "{% static 'images/Display4.jpg' %}"
-          
+        ];
+        var gallery3Images = [
+          "{% static 'images/dev5.jpg' %}",
+          "{% static 'images/dev2.jpg' %}",
+          "{% static 'images/dev6.jpg' %}",
+          "{% static 'images/dev5.png' %}",
+          "{% static 'images/dev7.png' %}",
+          "{% static 'images/dev8.jpg' %}",
+          "{% static 'images/dev3.jpg' %}",
+          "{% static 'images/first image.png' %}",
+          "{% static 'images/dev4.jpg' %}"
         ];
         
         var currentIndex1 = 0; // Starting index
