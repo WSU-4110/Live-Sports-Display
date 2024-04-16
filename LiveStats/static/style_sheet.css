@@ -623,3 +623,26 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
     padding: 10px; /* Padding around the content */
     text-align: center; /* Center align the text */
 }
+.special-list {
+            list-style-type: none; /* Remove default bullet points */
+            padding: 0; /* Remove default padding */
+            background-color: #fff; /* Background color for the list */
+            color: #444; /* Text color for the list */
+            border-radius: 5px; /* Add rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            margin-bottom: 20px; /* Add margin below the list */
+        }
+
+            .special-list li {
+                padding: 10px; /* Add padding to list items */
+                border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+            }
+
+                .special-list li:last-child {
+                    border-bottom: none; /* Remove bottom border for the last item */
+                }
+
+            .special-list .not-playing {
+                color: #777; /* Text color for not playing message */
+                font-style: italic; /* Make the text italic */
+            }
