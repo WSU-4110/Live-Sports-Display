@@ -646,3 +646,6 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
 	color: #777; /* Text color for not playing message */
         font-style: italic; /* Make the text italic */
 }
+.spacer {
+	padding: 1px;
+}
