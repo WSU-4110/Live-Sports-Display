@@ -13,31 +13,6 @@
             flex-direction: column;
             justify-content: center;
         }
-        .container1 {
-            width: 100%; /* Define a width for the container */
-            margin: 20px auto; /* Center the container horizontally */
-        }
-        .container2 {
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
-            justify-content: center; /* Center items horizontally */
-            align-items: center; /* Center items vertically */
-        }
-        .button-container2 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
-            gap: 20px; /* Adjust spacing between buttons */
-            padding-top: 20px;
-        }
-            .button-container2 button {
-                height: 60px; /* Adjust the height as needed */
-                width: 250px;
-                border-radius: 20px; /* Rounded corners */
-                background-color: white;
-                font-family: 'Bebas Neue', sans-serif;
-                font-weight: bold;
-                color: black;
-            }
     </style>
 </head>
 
@@ -50,6 +25,9 @@
             <li><a href="#game-schedule">Game Schedule</a></li>
         </ul>
     </div>
+    <main>    
+    <div class="spacer"></div>
+        
     <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
 
     <h1 style="color:white;">Edit and Confirm Names</h1>
@@ -291,5 +269,6 @@
                 return cookieValue;
             }
         </script>
+    </main>
 </body>
 </html>
