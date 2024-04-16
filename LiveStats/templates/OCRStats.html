@@ -8,31 +8,6 @@
     <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        .special-list {
-            list-style-type: none; /* Remove default bullet points */
-            padding: 0; /* Remove default padding */
-            background-color: #fff; /* Background color for the list */
-            color: #444; /* Text color for the list */
-            border-radius: 5px; /* Add rounded corners */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-            margin-bottom: 20px; /* Add margin below the list */
-        }
-
-            .special-list li {
-                padding: 10px; /* Add padding to list items */
-                border-bottom: 1px solid #ddd; /* Add bottom border for separation */
-            }
-
-                .special-list li:last-child {
-                    border-bottom: none; /* Remove bottom border for the last item */
-                }
-
-            .special-list .not-playing {
-                color: #777; /* Text color for not playing message */
-                font-style: italic; /* Make the text italic */
-            }
-    </style>
 </head>
 <body>
     <div class="header">
@@ -44,6 +19,8 @@
 
         </ul>
     </div>
+
+    <main>
     <div class="StatsTitle">Live Player Stats </div>
     <div class="container">
         <ul>
@@ -72,5 +49,6 @@
             {% endfor %}
         </ul>
     </div>
+    </main>
 </body>
 </html>
