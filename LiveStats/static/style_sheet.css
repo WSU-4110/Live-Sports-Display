@@ -676,3 +676,9 @@ button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
         font-weight: bold;
         color: black;
 }
+.styled-iframe {
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
