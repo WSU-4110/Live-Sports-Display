@@ -1,0 +1,20 @@
+65 width
+124.20 Height
+
+Plate Specs
+5Diameter
+10Depth
+
+Connector Specs
+3.5Diameter
+4.05
+
+outter 6
+
+
+screw insert...
+6 D
+3 long
+
+2.5D
+3 long
