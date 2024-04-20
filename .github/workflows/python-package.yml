@@ -38,7 +38,7 @@ jobs:
     - name: Test with pytest
       run: |
         
-        pytest DisplayMessage_test.py
+        pytest DisplayMessage_Test.py
         pytest LEDindex_test.py
         pytest Sports_Modified_Test.py
         pytest ColorWipe_test.py
