@@ -37,7 +37,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest api_calls_test.py
         pytest api_calls_string_unit_test.py
         pytest DisplayMessage_test.py
         pytest LEDindex_test.py
@@ -47,4 +46,5 @@ jobs:
         pytest api_calls_unit_test.py
         pytest singleDisplay_test.py
         pytest stackedDisplay_test.py
+        pytest api_calls_test.py
         
