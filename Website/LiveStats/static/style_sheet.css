@@ -1,0 +1,593 @@
+@import url('https://fonts.googleapis.com/css2?family=Sybarite:wght@700&display=swap');
+@import url('https://use.typekit.net/jql2yqw.css');
+
+
+body {
+    background-image: url('1pX9.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Archivo', sans-serif, Arial;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: black;
+    height: 100%;
+
+}
+main { /* Adding gradient */
+	height: 50px;
+	width: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.border {
+    max-width: 1300px;
+    margin: auto;
+    padding: 20px;
+    padding-left: 50px;
+    
+}
+
+.header {
+    background-color: #000;
+    background:linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Archivo', sans-serif;
+}
+
+.header img {
+    height: 100px;
+}
+
+footer p {
+    margin-top: 20px;
+    text-align: center;
+    color: white;  
+}
+h1 {
+    margin-top: 20px; 
+    margin-bottom: 20px;
+    text-align: center; 
+    color: black;
+}
+
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav li {
+    margin: 0 20px;
+	
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+    display: inline-block;
+        border: 5px solid black;
+        padding: 10px;
+	margin: 10px;
+}
+
+.nav a:hover {
+	border: 5px solid white;
+	padding: 10px;
+	margin: 10px;
+}
+
+h2 {
+    color: #000;
+    font-family: "bookmania", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+p {
+    font-family: Tahoma, Geneva, sans-serif;
+    margin: 10px 0;
+    padding-left: 5px
+}
+textarea, input[type="text"] {
+    font-family: 'Archivo', Arial, sans-serif;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px); 
+}
+
+textarea {
+    width: calc(100% - 22px);
+    height: 100px; 
+}
+
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px; 
+}
+
+.team-member {
+    flex: 0 1 calc(33.333% - 20px); 
+    margin: 10px; 
+    text-align: center;
+}
+
+.team-member h3 {
+    flex: 0 1 calc(33.333% - 20px); 
+    margin: 10px; 
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.team-member img {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    font-family: 'Brixton', sans-serif;
+    display: inline-block;
+    margin: 5px;
+    
+}
+
+.section {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 2px 2px 11px -3px rgba(168,168,168,1);
+    border-radius: 18px;
+    border: 2px solid #f0f0f0;
+    padding-left: 130px;
+    padding-right: 130px;
+}
+.thinSec{
+	background: #ffffff;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0px auto;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	border: 2px solid #f0f0f0;
+	padding: 20px;
+	max-width: 500px;
+	text-align: center;
+	justify-content: center; 
+}
+
+/* Button Styles */
+.custom-button, .add-button {
+    background-color: #2d2d30;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: 8px auto;
+}
+
+.custom-button {
+    width: 700px;
+    cursor: default;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.custom-button:hover, .add-button:hover {
+    color: #fff;
+    background-color: #555;
+    opacity: 1;
+}
+
+.add-button {
+    width: 400px;
+    cursor: default;
+    text-align: center;
+    margin: 0 auto 10px;
+    border-radius: 20px;
+}
+
+.close-button {
+    color: #fff;
+    cursor: pointer;
+    border: 0px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 25px;
+}
+
+.close-button:hover {
+    color: red;
+    border: 0px solid red;
+}
+
+form {
+    max-width: 500px; 
+    margin: 20px auto; 
+    background: #ffffff; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+form p {
+    color: #333; 
+}
+
+input[type="file"] {
+    font-family: 'Brixton', sans-serif;
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: 2px solid #ccc; 
+    border-radius: 4px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+/*Upload and OCR and For Looking At team stats button*/
+button[type="submit"], input[type="submit"], .stats-button {
+    padding: 12px 0px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #2d2d30; 
+    color: #fff; 
+    border: none;
+    border-radius: 20px; 
+    font-size: 16px;
+    font-weight: bold; 
+    transition: background-color 0.3s;
+
+}
+
+button[type="submit"]:hover, input[type="submit"]:hover, .stats-button {
+    background-color: #1c1c1e; 
+}
+
+
+
+.standing-entry {
+    margin-bottom: 50px;
+}
+
+.standing-attribute {
+    margin-right: 100px;
+}
+.team_name {
+    font-size: 20px;
+}
+
+.container {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 80%;
+
+}
+
+.galleries-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.gallery {
+    flex: 1;
+    margin: 15px;
+    text-align: center;
+    margin-left:0px;
+}
+.image-box {
+  background-color: #2d2d30;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+  border-radius: 10px; 
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center; 
+}
+.image-title {
+  margin-bottom: 10px; 
+  font-family: 'Brixton', sans-serif;
+  color: #fff;
+
+}
+
+.gallery img {
+    width: 100%; 
+    max-width: 450px;
+    height: auto; 
+    border-radius: 10px; 
+}
+
+.gallery-buttons button {
+    margin: 10px;
+    padding: 10px 20px; 
+    background-color: #2d2d30; 
+    color: #fff; 
+    border: none;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold; 
+    transition: background-color 0.3s; 
+}
+
+
+
+.gallery-buttons button:hover {
+    background-color: #1c1c1e;
+}
+
+/*For results.html*/
+#names {
+    display: none;
+}
+
+.message {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+
+/*For league_standings.html page */
+.team-standings-header, .team-standings-line {
+	    display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+    	justify-content: space-evenly;
+        margin-bottom: 20px;
+    	font-weight: bold;
+	    font-size: 20px;
+}
+.team-standings-header {
+        text-decoration: underline;
+}
+.team-standings-padding {
+        margin-left: 15%;
+        margin-right: 15%;
+}
+.team-name {
+        font-weight: bold;
+}
+/*For live_game_stats.html page */
+.game-stats-padding {
+        margin-left: 5%;
+        margin-right: 5%;
+}
+.team-stats-line {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;    
+        font-weight: bold;
+        margin-left: 5%;
+        margin-right: 5%;
+}
+.players-stats-line {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+}
+.player-name {
+        font-weight: bold;
+}
+.title {
+        font-size: 50px;
+        color:white;
+        text-align: center;
+        text-decoration: underline;
+
+}
+/*For game_schedule.html page */
+.schedule-box
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+}
+
+.game {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.schedule-team, .time {
+    flex: 0.8;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*For live_player_stats.html page */
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.player-title
+{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.player-stat-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;    
+}
+
+/*For live_team_stats.html page */
+.game-title
+{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+.game-title, .stat-line {
+    display: grid;
+    grid-template-columns: 1fr 0fr 1fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.stat-type {
+    margin-bottom: 25px;
+}
+.team
+{
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.section-margin
+{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.no-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#newNameInput {
+    width: 300px;
+    padding: 10px;
+    border-radius: 0px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.display-control {
+    background-color: #fff; 
+    margin: 20px auto; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    max-width: 600px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    border: 2px solid #f0f0f0; 
+}
+
+.control-block {
+    width: 100%; 
+    padding: 10px 0; 
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 10px; 
+}
+
+.control-block input[type="number"],
+.control-block button {
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 10px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc; 
+}
+
+.control-block button {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+}
+
+.control-block button:hover {
+    background-color: #0056b3;
+}
+
+#confirmationStatus {
+    margin-top: 10px;
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #fff; 
+    color: #3c763d; 
+    border: 1px solid #d6e9c6; 
+    display: flex;
+    border-radius: 8px; 
+    max-width: 600px; 
+    text-align: center;
+}
