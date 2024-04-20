@@ -42,10 +42,14 @@ jobs:
         pytest LEDindex_test.py
         pytest Sports_Modified_Test.py
         pytest ColorWipe_test.py
-        pytest Unit_Testing_Functions.py
         pytest singleDisplay_test.py
         pytest stackedDisplay_test.py
         pytest api_calls_test.py
         pytest api_calls_string_unit_test.py
         pytest api_calls_unit_test.py
+        pytest PyTest.py
+        pytest tDisplay_test.py
+        pytest test_OCRFacade.py
+        pytest test_PyTest.py
+    
         
