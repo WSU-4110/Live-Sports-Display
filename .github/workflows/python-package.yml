@@ -39,3 +39,6 @@ jobs:
       run: |
         pytest api_calls_test.py
         pytest api_calls_string_unit_test.py
+        pytest DisplayMessage_test.py
+        pytest LEDindex_test.py
+        Sports_Modified_Test.py
