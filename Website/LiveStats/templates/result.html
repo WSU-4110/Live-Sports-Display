@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container1 {
+            width: 100%; /* Define a width for the container */
+            margin: 20px auto; /* Center the container horizontally */
+        }
+        .container2 {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+        .button-container2 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
+            gap: 20px; /* Adjust spacing between buttons */
+            padding-top: 20px;
+        }
+            .button-container2 button {
+                height: 60px; /* Adjust the height as needed */
+                width: 250px;
+                border-radius: 20px; /* Rounded corners */
+                background-color: white;
+                font-family: 'Bebas Neue', sans-serif;
+                font-weight: bold;
+                color: black;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="#game-schedule">Game Schedule</a></li>
+        </ul>
+    </div>
+    <textarea id="names" rows="10" cols="50">{{ text }}</textarea>
+
+    <h1 style="color:white;">Edit and Confirm Names</h1>
+    <p style="text-align:center;color:white;"> Enter the name of any player in the box below. If you wish to remove a name, simply press the 'X' button next to the name.</p>
+    </div>
+    <div id="errorMessage" style="color: red; display: none;">Duplicate names are not allowed!</div>
+    <div class="container2">
+        <input type="text" id="newNameInput">
+    </div>
+
+    <button onclick="addNewName()" class="add-button">Click to Add Name</button>
+    <h2 style="text-align:center;font-family:Arial;color:white;">Names</h2>
+    <div class="container2">
+        <div id="buttonContainer"></div>
+    </div>
+
+    <script>
+
+        // Get the textarea element by its id
+        let textarea = document.getElementById('names');
+
+        // Get the value (text content) of the textarea
+        let text = textarea.value;
+
+        let playerArray = text.split(', ');
+        // Display the text in the HTML document
+        let buttonContainer = document.getElementById('buttonContainer');
+
+        // Loop through the array and create a button for each item
+
+        playerArray.forEach(function (item) {
+            let container = document.createElement('div'); // Container for button and "x"
+            container.classList.add('item-container');
+
+            let button = document.createElement('button');
+            button.textContent = item;
+            button.classList.add('custom-button');
+            container.appendChild(button);
+
+            let closeButton = document.createElement('span');
+            closeButton.textContent = 'x';
+            closeButton.classList.add('close-button');
+            closeButton.addEventListener('click', function () {
+                let index = playerArray.indexOf(item);
+                if (index !== -1) {
+                    playerArray.splice(index, 1); // Remove item from array
+                    container.remove(); // Remove the container (button + "x")
+                }
+            });
+            container.appendChild(closeButton);
+
+            buttonContainer.appendChild(container);
+        });
+
+        function addNewName() {
+            let newNameInput = document.getElementById('newNameInput');
+            let newName = newNameInput.value.trim();
+            let isDup = false;
+            if (newName !== '') {
+                for (let i = 0; i < playerArray.length; i++) {
+                    if (playerArray[i] === newName) {
+                        isDup = true;
+                        break;
+                    }
+                }
+                if (isDup === false) {
+                    errorMessage.style.display = 'none';
+                    playerArray.push(newName); // Add the new name to the array
+
+                    let container = document.createElement('div'); // Container for button and "x"
+                    container.classList.add('item-container');
+
+                    let button = document.createElement('button');
+                    button.textContent = newName;
+                    button.classList.add('custom-button');
+                    container.appendChild(button);
+
+                    let closeButton = document.createElement('span');
+                    closeButton.textContent = 'x';
+                    closeButton.classList.add('close-button');
+                    closeButton.addEventListener('click', function () {
+                        let index = playerArray.indexOf(newName);
+                        if (index !== -1) {
+                            playerArray.splice(index, 1); // Remove item from array
+                            container.remove(); // Remove the container (button + "x")
+                        }
+                    });
+                    container.appendChild(closeButton);
+
+                    buttonContainer.appendChild(container);
+                }
+                else {
+                    errorMessage.style.display = 'block';
+                }
+
+                newNameInput.value = ''; // Clear the input field after adding the name
+            }
+        }
+        function sendPlayers() {
+            let form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', '/OCRStats/'); // Replace '/player_list/' with your Django view URL
+
+            // Create a hidden input field for each player name
+            playerArray.forEach(player => {
+                let input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', 'players[]'); // Use 'players[]' to send as an array
+                input.setAttribute('value', player); // Set the player name as the input value
+                form.appendChild(input); // Append the input field to the form
+            });
+
+            let csrfInput = document.createElement('input');
+            csrfInput.setAttribute('type', 'hidden');
+            csrfInput.setAttribute('name', 'csrfmiddlewaretoken');
+            csrfInput.setAttribute('value', '{{ csrf_token }}'); // Use Django template tag to get CSRF token value
+            form.appendChild(csrfInput); // Append the CSRF token input field to the form
+
+
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        </script>
+        <div id="buttonContainer"></div>
+        <button onclick="sendPlayers()">Click to confirm and send players</button>
+        <div class="display-control">
+            <div class="control-block">
+                <input type="number" id="portInput" placeholder="Enter Single Security Key" required>
+                <button id="singleDisplayBtn">Single Display</button>
+                <button onclick="stopSingleDisplay()">Stop Single Display</button>
+            </div>
+            <div class="control-block">
+                <input type="number" id="portInput2" placeholder="Enter Stacked Security Key" required>
+                <button id="stackedDisplayBtn">Stacked Display</button>
+                <button onclick="stopStackedDisplay()">Stop Stacked Display</button>
+            </div>
+        </div>
+    
+        <div id="confirmationStatus"></div>
+        <script>
+            function stopSingleDisplay() {
+                let portNumber = document.getElementById('portInput').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
+        
+                fetch('/run-single-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stopDisplay', port: portNumber }) // Sending an empty array to stop
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            }
+        
+            function stopStackedDisplay() {
+                let portNumber = document.getElementById('portInput2').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
+        
+                fetch('/run-stacked-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stopDisplay', port: portNumber }) // Sending an empty array to stop
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            }
+
+            document.getElementById("singleDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(', ');
+                let portNumber = document.getElementById('portInput').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
+                fetch('/run-single-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString, port: portNumber })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
+
+            document.getElementById("stackedDisplayBtn").onclick = function () {
+                let playerString = playerArray.join(',');
+                let portNumber = document.getElementById('portInput2').value;
+                if (!portNumber) {
+                    alert('Please enter a port number.');
+                    return;  // Stop the function if no port number is entered
+                }
+                fetch('/run-stacked-display/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ action: 'stackedDisplay', players: playerString, port: portNumber })
+                }).then(response => response.json())
+                    .then(data => {
+                        document.getElementById("confirmationStatus").innerText = data.message;
+                    }).catch(error => console.error('Error:', error));
+            };
+
+
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        </script>
+</body>
+</html>
