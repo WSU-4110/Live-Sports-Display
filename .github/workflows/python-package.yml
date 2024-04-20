@@ -37,8 +37,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        
-        #pytest DisplayMessage_Test.py
         pytest LEDindex_test.py
         pytest Sports_Modified_Test.py
         pytest ColorWipe_test.py
@@ -51,5 +49,6 @@ jobs:
         pytest tDisplay_test.py
         pytest test_OCRFacade.py
         pytest test_PyTest.py
+        pytest DisplayMessage_Test.py
     
         
