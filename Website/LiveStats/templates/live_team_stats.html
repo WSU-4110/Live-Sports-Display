@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Stats</title>
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+</head>
+
+
+
+<body class="body">
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <li><a href='/'>Home</a></li>
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/stats_page/">Statistics Page</a></li>
+        </ul>
+    </div>
+
+
+    {% if not stats %}
+    <div class="no-game section-margin section">{{ inputted_team_name}} is not currently playing</div>
+    {% else %}
+    <div class="section-margin section">
+        <div class="game-title">
+            <span class="team">{{ stats.0.team_name }}</span>
+            <span class="vs">vs</span>
+            <span class="team">{{ stats.1.team_name }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_points }}</span>
+            <span class="stat-type">PTS</span>
+            <span class="stat-line">{{ stats.1.team_points }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_assists }}</span>
+            <span class="stat-type">AST</span>
+            <span class="stat-line">{{ stats.1.team_assists }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_rebounds }}</span>
+            <span class="stat-type">REB</span>
+            <span class="stat-line">{{ stats.1.team_rebounds }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_steals }}</span>
+            <span class="stat-type">STL</span>
+            <span class="stat-line">{{ stats.1.team_steals }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_blocks }}</span>
+            <span class="stat-type">BLK</span>
+            <span class="stat-line">{{ stats.1.team_blocks }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_field_goals_pct }}</span>
+            <span class="stat-type">FG%</span>
+            <span class="stat-line">{{ stats.1.team_field_goals_pct }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_three_points_pct }}</span>
+            <span class="stat-type">3P%</span>
+            <span class="stat-line">{{ stats.1.team_three_points_pct }}</span>
+        </div>
+        <div class="stat-line">
+            <span class="stat-line">{{ stats.0.team_free_throws_pct }}</span>
+            <span class="stat-type">FT%</span>
+            <span class="stat-line">{{ stats.1.team_free_throws_pct }}</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

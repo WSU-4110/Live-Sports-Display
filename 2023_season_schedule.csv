@@ -1,4 +1,4 @@
-Game ID,Home ID,Away Team,Date,Time
+Game ID,Home Team,Away Team,Date,Time
 0343c99e-bd5e-4887-aa21-94875b8dfba3,Denver Nuggets,Los Angeles Lakers,2023-10-24,19:30
 b06ae4da-247e-4696-973a-7f1cbd813fec,Golden State Warriors,Phoenix Suns,2023-10-24,22:00
 2ccf34f5-0139-4b4d-b84e-810af53ea9ba,Charlotte Hornets,Atlanta Hawks,2023-10-25,19:00
@@ -1129,7 +1129,6 @@ c778564c-d53f-487e-b4b7-b5dee94ac431,New Orleans Pelicans,Phoenix Suns,2024-04-0
 7ac81549-2da3-4935-b6ef-dc8a463b6274,Toronto Raptors,Los Angeles Lakers,2024-04-02,19:00
 b4676a70-002f-4f5d-bcf4-5fb898161b18,Washington Wizards,Milwaukee Bucks,2024-04-02,19:00
 19791516-2ffd-49b1-b9e1-4553eb6927ec,Philadelphia 76ers,Oklahoma City Thunder,2024-04-02,19:30
-4b598413-0ea8-473b-a48e-520264b7f74a,Dallas Mavericks,Golden State Warriors,2024-04-02,19:30
 bd49874b-6c5e-446c-b080-61393caa5467,Miami Heat,New York Knicks,2024-04-02,19:30
 90798c84-1881-46de-bc53-39387faecaba,Minnesota Timberwolves,Houston Rockets,2024-04-02,20:00
 3ce1028a-6497-46a2-8cbd-ec55cba6f6fd,Utah Jazz,Cleveland Cavaliers,2024-04-02,21:00
@@ -1160,7 +1159,6 @@ ae003ab1-8065-49d9-b12b-54f95d38c863,Houston Rockets,Miami Heat,2024-04-05,20:00
 cb75bb4f-4c62-41a2-bf81-6fa45f2950ca,Chicago Bulls,New York Knicks,2024-04-05,20:00
 ec871d98-d832-41a1-9de4-4f57ec4b00db,Milwaukee Bucks,Toronto Raptors,2024-04-05,20:00
 181233f8-63c0-460f-97bb-cc3255a7167e,Dallas Mavericks,Golden State Warriors,2024-04-05,20:30
-30832349-f998-4123-818f-dfa160efa686,Dallas Mavericks,Atlanta Hawks,2024-04-05,20:30
 0fb1ab62-6352-4841-8ecb-ff886ab1791a,Phoenix Suns,Minnesota Timberwolves,2024-04-05,22:00
 8c231b19-cf11-4ca4-9972-25ff280a83cf,LA Clippers,Utah Jazz,2024-04-05,22:30
 f43ae40d-a10c-4588-b021-3c04107b63b8,Los Angeles Lakers,Cleveland Cavaliers,2024-04-06,15:30

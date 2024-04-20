@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Stats</title>
+    <link rel="icon" type="image/png" href="{% static 'images/MMM_Mini_Logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style_sheet.css' %}">
+</head>
+
+
+
+<body class="body">
+    <div class="header">
+        <img src="{% static 'images/MMM_Logo.png' %}" alt="Motion Matrix Media Logo">
+        <ul class="nav">
+            <li><a href='/'>Home</a></li>
+            <li><a href="/upload/">Upload Roster</a></li>
+            <li><a href="/stats_page/">Statistics Page</a></li>
+        </ul>
+    </div>
+
+
+    
+        {% if not stats %}
+        <div class="no-game section-margin section"> {{ inputted_player_name }} is not playing.</div>
+        {% else %}
+        
+    <div class="player section">
+        <div class="player-title">{{ stats.name }}</div>
+        <div class="player-stat-line">
+            <span>Points:</span>
+            <span>  {{ stats.points }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Assists:</span>
+            <span>  {{ stats.assists }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Rebounds:</span>
+            <span>  {{ stats.rebounds }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Steals:</span>
+            <span>  {{ stats.steals }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Blocks:</span>
+            <span>  {{ stats.blocks }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Field Goal Percentage:</span>
+            <span>  {{ stats.field_goals_pct }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Three Point Percentage:</span>
+            <span>  {{ stats.three_points_pct }}</span>
+        </div>
+        <div class="player-stat-line">
+            <span>Free Throw Percentage:</span>
+            <span>  {{ stats.free_throws_pct }}</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
