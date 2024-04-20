@@ -12,9 +12,11 @@ connection = http.client.HTTPSConnection("api.sportradar.us")
 comConnect = http.client.HTTPSConnection("api.sportradar.com")
 
 month = datetime.datetime.now().month
-day = datetime.datetime.now().day
+#day = datetime.datetime.now().day
+day = 10
 year = datetime.datetime.now().year
-hour = datetime.datetime.now().hour
+#hour = datetime.datetime.now().hour
+hour = 19
 
 season_year = 2023
 season_type = "REG"
